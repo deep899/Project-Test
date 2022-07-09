@@ -1,0 +1,3 @@
+diff a/src/router/routes.js b/src/router/routes.js	(rejected hunks)
+@@ -1 +0,0 @@
+-const routes = [
