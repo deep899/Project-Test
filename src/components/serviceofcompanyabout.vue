@@ -12,10 +12,8 @@
   >
     <div class="col-md-12 col-sm-10">
       <h3
-        class="
-          text-indigo-10 text-center text-weight-bold text-center
-          sm-q-gutter-x-md
-        "
+        class="text-indigo-10 text-center text-center sm-q-gutter-x-md"
+        style="background-color: #fcfcfc; padding: 12px; font-family: impact"
       >
         SERVICE OF COMPANY
       </h3>
@@ -23,20 +21,13 @@
         class="text-center para-section text-body1"
         style="padding-left: 150px; padding-right: 150px"
       >
-        Deserunt dolor Lorem reprehenderit excepteur id consequat mollit laboris
-        ex elit mollit dolor. Ad nisi voluptate incididunt voluptate dolore
-        exercitation commodo consequat excepteur aute exercitation in
-        exercitation incididunt. Aute nulla ex qui proident sunt amet eiusmod
-        occaecat voluptate nulla eiusmod mollit. Deserunt dolor Lorem
-        reprehenderit excepteur id consequat mollit laboris ex elit mollit
-        dolor. Ad nisi voluptate incididunt voluptate dolore exercitation
-        commodo consequat excepteur aute exercitation in exercitation
-        incididunt. Aute nulla ex qui proident sunt amet eiusmod occaecat
-        voluptate nulla eiusmod mollit. Deserunt dolor Lorem reprehenderit
-        excepteur id consequat mollit laboris ex elit mollit dolor. Ad nisi
-        voluptate incididunt voluptate dolore exercitation commodo consequat
-        excepteur aute exercitation in exercitation incididunt. Aute nulla ex
-        qui proident sunt amet eiusmod occaecat voluptate nulla eiusmod mollit.
+        We provide websites, mobile apps, hybrid apps, digital marketing, SEO,
+        and so on. The facilities serve global companies with 100% satisfaction
+        and numerical evolution. Our proficient staff has up-todate expertise in
+        technology and all possible areas; we update our system regularly. Your
+        digital business path with us would be the perfect one. We look forward
+        to participating in your evolving business journey. We believe in
+        establishing and maintaining longterm relationships with our clients.
       </p>
     </div>
   </div>

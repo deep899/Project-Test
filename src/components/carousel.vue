@@ -29,21 +29,31 @@
               align-items: center;
             "
           >
-            <h1 style="margin-bottom: 0px; margin-top: 0px; text-weight-bold">
-              Versatile <br />
+            <h1
+              style="
+                margin-bottom: 0px;
+                margin-top: 0px;
+                font-size: 74px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-weight: bold;
+              "
+            >
+              Multifaceted <br />
               Innovators
             </h1>
             <p
               class="carousel-text text-h5 q-pl-xl text-weight-bold q-pt-lg"
               style="padding-left: 80px"
             >
-              We Deliver Websites,Mobile App,Hybrid Apps,Software,Digital
-              Marketing,SAP
+              We are the trailblazers with expertise in various fields. Being
+              with us will allow you to get acquainted with advancement and
+              expansion.
             </p>
           </div>
         </div>
       </q-carousel-slide>
-      <q-carousel-slide
+      <!-- <q-carousel-slide
         :name="2"
         img-src="~/src/img/Group_carousel.jpg"
         class="carousel"
@@ -129,7 +139,7 @@
             </p>
           </div>
         </div>
-      </q-carousel-slide>
+      </q-carousel-slide> -->
     </q-carousel>
   </div>
 </template>

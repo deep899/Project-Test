@@ -1,7 +1,13 @@
 <template>
   <div class="service_section row items-center mine">
     <div class="col-12 vertical-middle items-center justify-content-center">
-      <h3 class="text-white text-center" style="margin-bottom: 24px">
+      <h3
+        class="text-white text-center"
+        style="
+          margin-bottom: 24px;
+          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        "
+      >
         {{ Title }}
       </h3>
       <p class="text-white text-center text-h5">
@@ -19,8 +25,9 @@ export default {
   setup() {
     return {
       Title: "SERVICES",
-      text1: "We Deliver Website,Mobile app,Hybrid Apps",
-      text2: "Softwate,Digital Marketing,SAP,etc",
+      text1: "We deliver Digital marketing, SEO, Content writing, PHP(Laravel)",
+      text2:
+        " Mobile app, Hybrid Development service,Graphic Design services, etc.",
     };
   },
 };
