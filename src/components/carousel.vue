@@ -53,7 +53,7 @@
           </div>
         </div>
       </q-carousel-slide>
-      <!-- <q-carousel-slide
+      <q-carousel-slide
         :name="2"
         img-src="~/src/img/Group_carousel.jpg"
         class="carousel"
@@ -139,7 +139,7 @@
             </p>
           </div>
         </div>
-      </q-carousel-slide> -->
+      </q-carousel-slide>
     </q-carousel>
   </div>
 </template>

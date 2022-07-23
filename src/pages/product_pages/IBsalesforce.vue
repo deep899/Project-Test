@@ -265,23 +265,23 @@ export default {
       showProducts: true,
       id: "",
       disable: false,
-      country_id: "",
-      state_id: "",
-      city_id: "",
+
       list: [],
       state: [],
       city: [],
       country: [],
       amount_pay: "",
+
       email: "",
       phone_no: "",
       first_name: "",
       last_name: "",
       address: "",
-      //   txnid: this.makeid(),
-      //   hash: this.hash,
       pincode: "",
       coupon_code: "",
+      country_id: "101",
+      state_id: "",
+      city_id: "",
 
       // =================================Payment Data================================
 
@@ -296,29 +296,7 @@ export default {
   Detailsunted() {
     this.showProducts = true;
   },
-  async mounted() {
-    let result = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/show/9"
-    );
-    console.warn(result.data.data);
-    this.list = result.data.data;
 
-    let countries = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/countries"
-    );
-    console.warn(countries.data.data.data);
-    this.country = countries.data.data;
-
-    let state = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/states"
-    );
-    console.warn(state.data.data);
-    this.state = state.data.data;
-
-    let city = await axios.get("https://api.restroworld.com/public/api/cities");
-    console.warn(city.data.data);
-    this.city = city.data.data;
-  },
   setup() {
     const navPos = ref("bottom");
     const vertical = ref(false);

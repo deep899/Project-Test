@@ -61,7 +61,7 @@
                 class="scroll"
               >
                 <div class="q-pa-md" style="max-width: 400px">
-                  <q-form @submit="signInButtonPressed" class="q-gutter-md">
+                  <q-form class="q-gutter-md">
                     <q-input
                       filled
                       v-model="first_name"
@@ -113,24 +113,72 @@
                           (val && val.length > 0) || 'Please type something',
                       ]"
                     />
-                    <q-select
-                      filled
+
+                    <select
+                      style="
+                        padding: 1.4rem 3.25rem 0.375rem 0.75rem;
+                        font-size: 1rem;
+                      "
+                      class="form-select"
+                      aria-required="true"
+                      aria-invalid="false"
                       v-model="country_id"
-                      :options="country"
-                      label="Country"
-                    />
-                    <q-select
-                      filled
+                      @change="getState()"
+                      required
+                    >
+                      <option value="" disabled selected>Country</option>
+                      <option
+                        v-for="country in list"
+                        :value="country.id"
+                        v-bind:key="country.id"
+                      >
+                        {{ country.name }}
+                      </option>
+                    </select>
+
+                    <select
+                      style="
+                        padding: 1.4rem 1.3rem 0.375rem 0.75rem;
+                        font-size: 1rem;
+                      "
+                      class="form-select"
+                      aria-required="true"
+                      aria-invalid="false"
                       v-model="state_id"
-                      :options="state"
-                      label="Stat"
-                    />
-                    <q-select
-                      filled
+                      @change="getCity()"
+                      required
+                    >
+                      <option value="" disabled selected>State</option>
+                      <option
+                        v-for="item in state"
+                        :value="item.id"
+                        v-bind:key="item.id"
+                      >
+                        {{ item.name }}
+                      </option>
+                    </select>
+
+                    <select
+                      style="
+                        padding: 1.4rem 12.45rem 0.375rem 0.75rem;
+                        font-size: 1rem;
+                      "
+                      class="form-select"
+                      aria-required="true"
+                      aria-invalid="false"
                       v-model="city_id"
-                      :options="city"
-                      label="City"
-                    />
+                      required
+                    >
+                      <option value="" disabled selected>City</option>
+                      <option
+                        v-for="item in city"
+                        :value="item.id"
+                        v-bind:key="item.id"
+                      >
+                        {{ item.name }}
+                      </option>
+                    </select>
+
                     <q-input
                       filled
                       v-model="pincode"
@@ -149,13 +197,14 @@
                     <q-input
                       filled
                       disable
+                      :v-bind="list.price"
                       v-model="amount_pay"
                       label="100000"
                       label-color="black"
                     />
 
                     <div>
-                      <div>
+                      <!-- <div>
                         <a
                           style="
                             width: 135px;
@@ -172,15 +221,12 @@
                         >
                           Buy Now
                         </a>
-                      </div>
-                      <!-- <q-btn
-                        label="Reset"
-                        type="reset"
+                      </div> -->
+                      <q-btn
                         color="primary"
-                        flat
-                        class="q-ml-sm"
-                        onclick="signInButtonPressed()"
-                      /> -->
+                        label="Buy now"
+                        @click="sendData()"
+                      />
                     </div>
                   </q-form>
                 </div>
@@ -265,23 +311,22 @@ export default {
       showProducts: true,
       id: "",
       disable: false,
-      country_id: "",
-      state_id: "",
-      city_id: "",
       list: [],
       state: [],
       city: [],
       country: [],
       amount_pay: "",
+
       email: "",
       phone_no: "",
       first_name: "",
       last_name: "",
       address: "",
-      //   txnid: this.makeid(),
-      //   hash: this.hash,
       pincode: "",
       coupon_code: "",
+      country_id: "101",
+      state_id: "",
+      city_id: "",
 
       // =================================Payment Data================================
 
@@ -296,29 +341,7 @@ export default {
   Detailsunted() {
     this.showProducts = true;
   },
-  async mounted() {
-    let result = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/show/8s"
-    );
-    console.warn(result.data.data);
-    this.list = result.data.data;
 
-    let countries = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/countries"
-    );
-    console.warn(countries.data.data.data);
-    this.country = countries.data.data;
-
-    let state = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/states"
-    );
-    console.warn(state.data.data);
-    this.state = state.data.data;
-
-    let city = await axios.get("https://api.restroworld.com/public/api/cities");
-    console.warn(city.data.data);
-    this.city = city.data.data;
-  },
   setup() {
     const navPos = ref("bottom");
     const vertical = ref(false);
@@ -347,40 +370,78 @@ export default {
     };
   },
   methods: {
-    // makeid() {
-    //   var text = "";
-    //   var possible =
-    //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    //   for (var i = 0; i < 20; i++)
-    //     text += possible.charAt(Math.floor(Math.random() * possible.length));
-    //   return text;
-    // },
-    // signInButtonPressed() {
-    //   var data =
-    //     this.mkey +
-    //     "|" +
-    //     this.txnid +
-    //     "|" +
-    //     this.amount_pay +
-    //     "|" +
-    //     this.productInfo +
-    //     "|" +
-    //     this.first_name +
-    //     "|" +
-    //     this.email +
-    //     "|||||||||||";
-    //   var sha512 = require("js-sha512");
-    //   var salt = this.saltKey;
-    //   var hash = sha512(data + salt);
-    //   if (hash) {
-    //     localStorage.setItem("hash", hash);
-    //     localStorage.setItem("expireSession", "sesion12dgtdb");
-    //   }
-    //   // console.log(hash);
-    //   // console.log(data);
-    //   document.getElementById("hash").value = hash;
-    //   document.getElementById("paymentForm").submit();
-    // },
+    getData() {
+      axios
+        .get("https://api.restroworld.com/public/api/countries?is_light=true")
+        .then((result) => {
+          this.list = result.data.data;
+          if (this.country_id) {
+            this.getState();
+          }
+        });
+    },
+
+    getState() {
+      axios
+        .get(
+          "https://api.restroworld.com/public/api/states_of_country?is_light=1" +
+            this.country_id,
+          {
+            params: { country_id: this.country_id },
+          }
+        )
+        .then((result) => {
+          this.state = result.data.data;
+          if (this.state_id) {
+            this.getCity();
+          }
+        });
+    },
+    getCity() {
+      axios
+        .get(
+          "https://api.restroworld.com/public/api/cities_of_state?is_light=1" +
+            this.state_id,
+          {
+            params: { state_id: this.state_id },
+          }
+        )
+        .then((result) => {
+          this.city = result.data.data;
+        });
+    },
+    getList() {
+      axios
+        .get("https://uatapi.infinitybrains.com/public/api/show/8")
+        .then((result) => {
+          this.list = result.data.data;
+          console.warn(result.data.data);
+        });
+    },
+
+    async sendData() {
+      const response = await axios.post(
+        "https://uatapi.infinitybrains.com/public/api/payment/8",
+        {
+          email: this.email,
+          firstname: this.first_name,
+          lastname: this.last_name,
+          phoneno: this.phone_no,
+          address: this.address,
+          country: this.country_id,
+          state: this.state_id,
+          city: this.city_id,
+          pincode: this.pincode,
+        }
+      );
+      console.warn(response);
+    },
+  },
+
+  async mounted() {
+    this.getList();
+    this.sendData();
+    this.getData();
   },
 };
 </script>
