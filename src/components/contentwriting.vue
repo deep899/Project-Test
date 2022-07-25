@@ -1,6 +1,13 @@
 <template>
   <div
-    class="servicesubsections row items-start flex service_section_digital product-section"
+    class="
+      servicesubsections
+      row
+      items-start
+      flex
+      service_section_digital
+      product-section
+    "
     style="margin: auto; margin-top: 50px; margin-bottom: 50px"
   >
     <div class="col-md-4 col-xs-10 q-ma-auto">
@@ -12,13 +19,11 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">Content Writing</p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sed
-        accusantium nulla blanditiis optio sit fuga enim a laudantium tenetur,
-        fugiat atque illo inventore quis ducimus. Voluptas doloremque velit
-        itaque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-        sed accusantium nulla blanditiis optio sit fuga enim a laudantium
-        tenetur, fugiat atque illo inventore quis ducimus. Voluptas doloremque
-        velit itaque?
+        Writing content is a process of planning, reviewing and publishing in
+        digital form. It’s a way of generating content in the digital world. The
+        content should be appealing to the target audience and trustworthy as
+        well. We are here to assist you to get clients with our proficient
+        content writers.
       </p>
     </div>
   </div>

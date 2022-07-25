@@ -1,6 +1,13 @@
 <template>
   <div
-    class="servicesubsections row items-start flex service_section_digital product-section"
+    class="
+      servicesubsections
+      row
+      items-start
+      flex
+      service_section_digital
+      product-section
+    "
     style="margin: auto; margin-top: 50px; margin-bottom: 50px"
   >
     <div class="col-md-4 col-xs-10 q-ma-auto">
@@ -12,13 +19,11 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">App Development</p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sed
-        accusantium nulla blanditiis optio sit fuga enim a laudantium tenetur,
-        fugiat atque illo inventore quis ducimus. Voluptas doloremque velit
-        itaque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-        sed accusantium nulla blanditiis optio sit fuga enim a laudantium
-        tenetur, fugiat atque illo inventore quis ducimus. Voluptas doloremque
-        velit itaque?
+        This includes iOS and Android apps. With the help of this, we provide a
+        range of mobile app development services, including personalised mobile
+        development on iOS or Android platforms. the development of
+        cross-platform applications, the design of user experiences and the
+        integration of new mobile interfaces such as chat and voice
       </p>
     </div>
   </div>

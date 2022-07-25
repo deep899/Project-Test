@@ -16,16 +16,16 @@
     <div class="product">
       <!-- =======================main product Image section===================================== -->
       <div class="img">
-        <img :src="list.product_image" style="width: 35rem" />
+        <img :src="products.product_image" style="width: 35rem" />
       </div>
       <!-- =======================main product Side part section===================================== -->
       <div class="sidePart">
-        <div class="name">{{ list.name }}</div>
+        <div class="name">{{ products.name }}</div>
         <div class="info">
-          {{ list.short_desc }}<br />
+          {{ products.short_desc }}<br />
           <!-- <q-rating v-model="ratingModel" size="2em"  color="purple" disable /> -->
         </div>
-        <div class="btn">Price : ₹ {{ list.price }}.00<br /></div>
+        <div class="btn">Price : ₹ {{ products.price }}.00<br /></div>
         <!-- <div>
           <div>
             <a
@@ -237,7 +237,7 @@
       </div>
     </div>
     <!-- =======================discription section===================================== -->
-    <div class="desc">{{ list.desc }}</div>
+    <div class="desc">{{ products.desc }}</div>
     <!-- <img src="../../img/Scroll Group 8.jpg" /> -->
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
@@ -316,7 +316,7 @@ export default {
       city: [],
       country: [],
       amount_pay: "",
-
+      products: [],
       email: "",
       phone_no: "",
       first_name: "",
@@ -414,7 +414,7 @@ export default {
       axios
         .get("https://uatapi.infinitybrains.com/public/api/show/10")
         .then((result) => {
-          this.list = result.data.data;
+          this.products = result.data.data;
           console.warn(result.data.data);
         });
     },

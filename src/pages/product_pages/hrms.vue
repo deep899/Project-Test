@@ -16,16 +16,16 @@
     <div class="product">
       <!-- =======================main product Image section===================================== -->
       <div class="img">
-        <img :src="list.product_image" style="width: 35rem" />
+        <img :src="products.product_image" style="width: 35rem" />
       </div>
       <!-- =======================main product Side part section===================================== -->
       <div class="sidePart">
-        <div class="name">{{ list.name }}</div>
+        <div class="name">{{ products.name }}</div>
         <div class="info">
-          {{ list.short_desc }}<br />
+          {{ products.short_desc }}<br />
           <!-- <q-rating v-model="ratingModel" size="2em"  color="purple" disable /> -->
         </div>
-        <div class="btn">Price : ₹ {{ list.price }}.00<br /></div>
+        <div class="btn">Price : ₹ {{ products.price }}.00<br /></div>
         <!-- <div>
           <div>
             <a
@@ -197,7 +197,6 @@
                     <q-input
                       filled
                       disable
-                      :v-bind="list.price"
                       v-model="amount_pay"
                       label="100000"
                       label-color="black"
@@ -237,7 +236,7 @@
       </div>
     </div>
     <!-- =======================discription section===================================== -->
-    <div class="desc">{{ list.desc }}</div>
+    <div class="desc">{{ products.desc }}</div>
     <!-- <img src="../../img/Scroll Group 8.jpg" /> -->
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
@@ -312,6 +311,7 @@ export default {
       id: "",
       disable: false,
       list: [],
+      products: [],
       state: [],
       city: [],
       country: [],
@@ -414,7 +414,7 @@ export default {
       axios
         .get("https://uatapi.infinitybrains.com/public/api/show/8")
         .then((result) => {
-          this.list = result.data.data;
+          this.products = result.data.data;
           console.warn(result.data.data);
         });
     },

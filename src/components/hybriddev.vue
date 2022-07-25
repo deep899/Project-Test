@@ -1,6 +1,13 @@
 <template>
   <div
-    class="servicesubsections row items-start flex service_section_digital product-section"
+    class="
+      servicesubsections
+      row
+      items-start
+      flex
+      service_section_digital
+      product-section
+    "
     style="margin: auto; margin-top: 50px; margin-bottom: 50px"
   >
     <div class="col-md-4 col-xs-10 q-ma-auto">
@@ -12,13 +19,12 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">Hybrid Development</p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sed
-        accusantium nulla blanditiis optio sit fuga enim a laudantium tenetur,
-        fugiat atque illo inventore quis ducimus. Voluptas doloremque velit
-        itaque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-        sed accusantium nulla blanditiis optio sit fuga enim a laudantium
-        tenetur, fugiat atque illo inventore quis ducimus. Voluptas doloremque
-        velit itaque?
+        The development of hybrid mobile applications is a programming approach
+        for mobile devices that combines the forces of native programming with
+        the development of HTML5 mobile applications. It includes FLUTTER, REACT
+        NATVE, and ANGULAR JS. To construct a hybrid mobile app, developers
+        write the core of the app as an HTML5 mobile app and then place a native
+        device around it
       </p>
     </div>
   </div>

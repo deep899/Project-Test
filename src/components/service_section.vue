@@ -1,6 +1,13 @@
 <template>
   <div
-    class="servicesubsections row items-start flex service_section_digital product-section"
+    class="
+      servicesubsections
+      row
+      items-start
+      flex
+      service_section_digital
+      product-section
+    "
     style="margin: auto; margin-top: 50px; margin-bottom: 50px"
   >
     <div class="col-md-4 col-xs-10 q-ma-auto">
@@ -12,13 +19,10 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">Digital Marketing</p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sed
-        accusantium nulla blanditiis optio sit fuga enim a laudantium tenetur,
-        fugiat atque illo inventore quis ducimus. Voluptas doloremque velit
-        itaque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-        sed accusantium nulla blanditiis optio sit fuga enim a laudantium
-        tenetur, fugiat atque illo inventore quis ducimus. Voluptas doloremque
-        velit itaque?
+        Digital marketing is an aspect of marketing using an online platform. It
+        conveys a promotional message to the targeting audience. Infinitybrain
+        provides branding, advertising, social media & email marketing.
+        Companies can expand their business by promoting it on the internet
       </p>
     </div>
   </div>
