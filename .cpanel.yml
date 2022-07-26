@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/infinitybrains/public_html/
+    - export DEPLOYPATH=/home/infinitybrains/repositories/
     - /bin/cp * $DEPLOYPATH
     
