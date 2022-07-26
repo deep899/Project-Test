@@ -47,164 +47,164 @@
           </div>
         </div> -->
         <div class="q-pa-md q-gutter-sm">
-          <q-btn label="BUY NOW" color="primary" @click="fixed = true" />
-          <q-dialog v-model="fixed">
-            <q-card style="width: 50rem">
+          <q-btn label="Buy me" color="primary" @click="inception = true" />
+
+          <q-dialog v-model="inception">
+            <q-card>
               <q-card-section>
                 <div class="text-h6">Buy Now</div>
               </q-card-section>
 
-              <q-separator />
+              <q-card-section class="q-pt-none">
+                <q-card-section
+                  style="max-height: 50vh; text-align: -webkit-center"
+                  class="scroll"
+                >
+                  <div class="q-pa-md" style="max-width: 400px">
+                    <q-form class="q-gutter-md">
+                      <q-input
+                        filled
+                        v-model="first_name"
+                        label="First name *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="last_name"
+                        label="Last name *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="email"
+                        label="Email *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        type="number"
+                        v-model="mobile_no"
+                        label="Phone no *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="address"
+                        label="Address *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
 
-              <q-card-section
-                style="max-height: 50vh; text-align: -webkit-center"
-                class="scroll"
-              >
-                <div class="q-pa-md" style="max-width: 400px">
-                  <q-form class="q-gutter-md">
-                    <q-input
-                      filled
-                      v-model="first_name"
-                      label="First name *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="last_name"
-                      label="Last name *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="email"
-                      label="Email *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      type="number"
-                      v-model="phone_no"
-                      label="Phone no *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="address"
-                      label="Address *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-
-                    <select
-                      style="
-                        padding: 1.4rem 3.25rem 0.375rem 0.75rem;
-                        font-size: 1rem;
-                      "
-                      class="form-select"
-                      aria-required="true"
-                      aria-invalid="false"
-                      v-model="country_id"
-                      @change="getState()"
-                      required
-                    >
-                      <option value="" disabled selected>Country</option>
-                      <option
-                        v-for="country in list"
-                        :value="country.id"
-                        v-bind:key="country.id"
+                      <select
+                        style="
+                          padding: 1.4rem 3.25rem 0.375rem 0.75rem;
+                          font-size: 1rem;
+                        "
+                        class="form-select"
+                        aria-required="true"
+                        aria-invalid="false"
+                        v-model="country_id"
+                        @change="getState()"
+                        required
                       >
-                        {{ country.name }}
-                      </option>
-                    </select>
+                        <option value="" disabled selected>Country</option>
+                        <option
+                          v-for="country in list"
+                          :value="country.id"
+                          v-bind:key="country.id"
+                        >
+                          {{ country.name }}
+                        </option>
+                      </select>
 
-                    <select
-                      style="
-                        padding: 1.4rem 1.3rem 0.375rem 0.75rem;
-                        font-size: 1rem;
-                      "
-                      class="form-select"
-                      aria-required="true"
-                      aria-invalid="false"
-                      v-model="state_id"
-                      @change="getCity()"
-                      required
-                    >
-                      <option value="" disabled selected>State</option>
-                      <option
-                        v-for="item in state"
-                        :value="item.id"
-                        v-bind:key="item.id"
+                      <select
+                        style="
+                          padding: 1.4rem 1.3rem 0.375rem 0.75rem;
+                          font-size: 1rem;
+                        "
+                        class="form-select"
+                        aria-required="true"
+                        aria-invalid="false"
+                        v-model="state_id"
+                        @change="getCity()"
+                        required
                       >
-                        {{ item.name }}
-                      </option>
-                    </select>
+                        <option value="" disabled selected>State</option>
+                        <option
+                          v-for="item in state"
+                          :value="item.id"
+                          v-bind:key="item.id"
+                        >
+                          {{ item.name }}
+                        </option>
+                      </select>
 
-                    <select
-                      style="
-                        padding: 1.4rem 12.45rem 0.375rem 0.75rem;
-                        font-size: 1rem;
-                      "
-                      class="form-select"
-                      aria-required="true"
-                      aria-invalid="false"
-                      v-model="city_id"
-                      required
-                    >
-                      <option value="" disabled selected>City</option>
-                      <option
-                        v-for="item in city"
-                        :value="item.id"
-                        v-bind:key="item.id"
+                      <select
+                        style="
+                          padding: 1.4rem 12.45rem 0.375rem 0.75rem;
+                          font-size: 1rem;
+                        "
+                        class="form-select"
+                        aria-required="true"
+                        aria-invalid="false"
+                        v-model="city_id"
+                        required
                       >
-                        {{ item.name }}
-                      </option>
-                    </select>
+                        <option value="" disabled selected>City</option>
+                        <option
+                          v-for="item in city"
+                          :value="item.id"
+                          v-bind:key="item.id"
+                        >
+                          {{ item.name }}
+                        </option>
+                      </select>
 
-                    <q-input
-                      filled
-                      v-model="pincode"
-                      label="Pincode *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="coupon_code"
-                      label="Apply Coupon"
-                    />
-                    <q-input
-                      filled
-                      disable
-                      :v-bind="list.price"
-                      v-model="amount_pay"
-                      label="100000"
-                      label-color="black"
-                    />
+                      <q-input
+                        filled
+                        v-model="pincode"
+                        label="Pincode *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="coupon_code"
+                        label="Apply Coupon"
+                      />
+                      <q-input
+                        filled
+                        disable
+                        :v-bind="list.price"
+                        v-model="amount_pay"
+                        label="100000"
+                        label-color="black"
+                      />
 
-                    <div>
-                      <!-- <div>
+                      <div>
+                        <!-- <div>
                         <a
                           style="
                             width: 135px;
@@ -222,15 +222,42 @@
                           Buy Now
                         </a>
                       </div> -->
-                      <q-btn
-                        color="primary"
-                        label="Buy now"
-                        @click="sendData()"
-                      />
-                    </div>
-                  </q-form>
-                </div>
+                      </div>
+                    </q-form>
+                  </div>
+                </q-card-section>
               </q-card-section>
+
+              <q-card-actions align="right" class="text-primary">
+                <q-btn
+                  flat
+                  label="Pay now"
+                  @click="
+                    secondDialog = true;
+                    sendData();
+                  "
+                />
+                <q-btn flat label="Close" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <q-dialog
+            v-model="secondDialog"
+            persistent
+            transition-show="scale"
+            transition-hide="scale"
+          >
+            <q-card class="bg-teal text-white" style="width: 300px">
+              <q-card-section>
+                <div class="text-h6">Confirm Payment</div>
+              </q-card-section>
+
+              <q-card-section class="q-pt-none"> Confirm Buy </q-card-section>
+
+              <q-card-actions align="right" class="bg-white text-teal">
+                <q-btn flat label="OK" v-close-popup />
+              </q-card-actions>
             </q-card>
           </q-dialog>
         </div>
@@ -318,7 +345,7 @@ export default {
       amount_pay: "",
       products: [],
       email: "",
-      phone_no: "",
+      mobile_no: "",
       first_name: "",
       last_name: "",
       address: "",
@@ -335,6 +362,8 @@ export default {
       // saltKey: "e5iIg1jwi8",
       // surl: window.location.origin + "/home/User/Success",
       // furl: window.location.origin + "/home/User/Fail",
+
+      // =========================For testing===============================
     };
   },
 
@@ -349,6 +378,8 @@ export default {
       navPos.value = val === true ? "right" : "bottom";
     });
     return {
+      inception: ref(false),
+      secondDialog: ref(false),
       padding: ref(true),
       vertical,
       arrows: ref(true),
@@ -426,7 +457,7 @@ export default {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
-          phoneno: this.phone_no,
+          phoneno: this.mobile_no,
           address: this.address,
           country: this.country_id,
           state: this.state_id,

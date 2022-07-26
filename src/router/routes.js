@@ -21,6 +21,10 @@ const routes = [
         path: "/IBsalesforce",
         component: () => import("pages/product_pages/IBsalesforce.vue"),
       },
+      {
+        path: "/Success",
+        component: () => import("pages/success.vue"),
+      },
     ],
   },
 
