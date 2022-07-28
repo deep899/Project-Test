@@ -61,7 +61,7 @@
                   class="scroll"
                 >
                   <div class="q-pa-md" style="max-width: 400px">
-                    <q-form class="q-gutter-md">
+                    <q-form class="q-gutter-md" @submit.prevent="sendData">
                       <q-input
                         filled
                         v-model="first_name"
@@ -229,14 +229,30 @@
               </q-card-section>
 
               <q-card-actions align="right" class="text-primary">
-                <q-btn
+                <!-- <q-btn
                   flat
                   label="Pay now"
                   @click="
                     secondDialog = true;
                     sendData();
                   "
-                />
+                /> -->
+                <button
+                  type="submit"
+                  class="
+                    btn
+                    shadow-none
+                    btn-primary
+                    fw-500
+                    font-xss
+                    text-primary-500
+                    w-100
+                    mb-2
+                  "
+                >
+                  {{ paynowbtn ? "Processing..." : "Pay Now" }}
+                </button>
+
                 <q-btn flat label="Close" v-close-popup />
               </q-card-actions>
             </q-card>
@@ -250,10 +266,35 @@
           >
             <q-card class="bg-teal text-white" style="width: 300px">
               <q-card-section>
-                <div class="text-h6">Confirm Payment</div>
+                <form
+                  class="p-1 m-4 mb-0 text-center d-block form-group"
+                  @submit.prevent="sendData"
+                >
+                  <div class="justify-content-center align-items-center mt-4">
+                    <button
+                      type="submit"
+                      class="
+                        btn
+                        shadow-none
+                        btn-primary
+                        fw-500
+                        font-xss
+                        text-light-500
+                        p-1
+                      "
+                      @click="confirmBuy()"
+                    >
+                      {{ loading ? "Processing..." : "Verify" }}
+                    </button>
+                    <!-- <button @click="$refs['modal'].hide()" type="button" class="btn shadow-none btn-dark fw-500 font-xss text-dark-500  p-1 ml-3">Cancel</button> -->
+                  </div>
+                </form>
+                <!-- <div class="text-h6">Confirm Payment</div>
               </q-card-section>
 
-              <q-card-section class="q-pt-none"> Confirm Buy </q-card-section>
+              <q-card-section class="q-pt-none" onclick="confirmBuy()">
+                Confirm Buy -->
+              </q-card-section>
 
               <q-card-actions align="right" class="bg-white text-teal">
                 <q-btn flat label="OK" v-close-popup />
@@ -304,6 +345,20 @@
     </div>
   </div>
   <!-- PayU money payment form=============================================================================================== -->
+  <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
+    <input type="hidden" name="key" v-model="mkey" size="64" />
+    <input type="hidden" name="txnid" v-model="txnid" size="64" />
+    <input type="hidden" name="amount" v-model="amount_pay" size="64" />
+    <input type="hidden" name="productinfo" v-model="productInfo" size="64" />
+    <input type="hidden" name="firstname" v-model="first_name" size="64" />
+    <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
+    <input type="hidden" name="email" v-model="email" size="64" />
+    <input type="hidden" name="phone" v-model="mobile_no" size="64" />
+    <input type="hidden" name="lastname" v-model="last_name" size="64" />
+    <input type="hidden" name="surl" v-model="surl" />
+    <input type="hidden" name="furl" v-model="furl" />
+    <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
+  </form>
 </template>
 
 <script>
@@ -342,11 +397,11 @@ export default {
       state: [],
       city: [],
       country: [],
-      amount_pay: "",
+      amount_pay: "9999",
       products: [],
-      email: "",
-      mobile_no: "",
-      first_name: "",
+      email: "jaydeep@gmail.com",
+      mobile_no: "3216547891",
+      first_name: "Jaydeep",
       last_name: "",
       address: "",
       pincode: "",
@@ -354,14 +409,16 @@ export default {
       country_id: "101",
       state_id: "",
       city_id: "",
-
+      productInfo: "Salesforce",
+      paynowbtn: "",
+      loading: "",
       // =================================Payment Data================================
-
-      // payuUrl: "https://test.payu.in/_payment",
-      // mkey: "rjQUPktU",
-      // saltKey: "e5iIg1jwi8",
-      // surl: window.location.origin + "/home/User/Success",
-      // furl: window.location.origin + "/home/User/Fail",
+      txnid: this.makeid(),
+      payuUrl: "https://test.payu.in/_payment",
+      mkey: "rjQUPktU",
+      saltKey: "e5iIg1jwi8",
+      surl: window.location.origin + "/home/User/Success",
+      furl: window.location.origin + "/home/User/Fail",
 
       // =========================For testing===============================
     };
@@ -401,6 +458,16 @@ export default {
     };
   },
   methods: {
+    makeid() {
+      var text = "";
+      var possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < 20; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+    },
+
     getData() {
       axios
         .get("https://api.restroworld.com/public/api/countries?is_light=true")
@@ -451,9 +518,9 @@ export default {
     },
 
     async sendData() {
-      const response = await axios.post(
-        "https://uatapi.infinitybrains.com/public/api/payment/9",
-        {
+      this.paynowbtn = true;
+      await axios
+        .post("https://uatapi.infinitybrains.com/public/api/payment/9", {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
@@ -463,9 +530,49 @@ export default {
           state: this.state_id,
           city: this.city_id,
           pincode: this.pincode,
-        }
-      );
-      console.warn(response);
+        })
+        .then((res) => {
+          this.failMsg = "";
+          this.paynowbtn = false;
+          localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+        })
+        .catch((error) => {
+          this.failMsg = error.response.data.message;
+          this.paynowbtn = false;
+        });
+    },
+
+    hashGen() {
+      var data =
+        this.mkey +
+        "|" +
+        this.txnid +
+        "|" +
+        this.amount_pay +
+        "|" +
+        this.productInfo +
+        "|" +
+        this.first_name +
+        "|" +
+        this.email +
+        "|||||||||||";
+      var sha512 = require("js-sha512");
+      var salt = this.saltKey;
+      var hash = sha512(data + salt);
+      if (hash) {
+        localStorage.setItem("hash", hash);
+        localStorage.setItem("expireSession", "sesion12dgtdb");
+      }
+      console.log(hash);
+      console.log(data);
+
+      document.getElementById("hash").value = hash;
+
+      document.getElementById("paymentForm").submit();
+    },
+    confirmBuy() {
+      this.loading = true;
+      this.hashGen();
     },
   },
 
@@ -473,6 +580,8 @@ export default {
     this.getList();
     this.sendData();
     this.getData();
+    this.hashGen();
+    this.makeid();
   },
 };
 </script>

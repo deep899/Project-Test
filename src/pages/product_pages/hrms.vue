@@ -47,163 +47,164 @@
           </div>
         </div> -->
         <div class="q-pa-md q-gutter-sm">
-          <q-btn label="BUY NOW" color="primary" @click="fixed = true" />
-          <q-dialog v-model="fixed">
-            <q-card style="width: 50rem">
+          <q-btn label="Buy me" color="primary" @click="inception = true" />
+
+          <q-dialog v-model="inception">
+            <q-card>
               <q-card-section>
                 <div class="text-h6">Buy Now</div>
               </q-card-section>
 
-              <q-separator />
+              <q-card-section class="q-pt-none">
+                <q-card-section
+                  style="max-height: 50vh; text-align: -webkit-center"
+                  class="scroll"
+                >
+                  <div class="q-pa-md" style="max-width: 400px">
+                    <q-form class="q-gutter-md" @submit.prevent="sendData">
+                      <q-input
+                        filled
+                        v-model="first_name"
+                        label="First name *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="last_name"
+                        label="Last name *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="email"
+                        label="Email *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        type="number"
+                        v-model="mobile_no"
+                        label="Phone no *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="address"
+                        label="Address *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
 
-              <q-card-section
-                style="max-height: 50vh; text-align: -webkit-center"
-                class="scroll"
-              >
-                <div class="q-pa-md" style="max-width: 400px">
-                  <q-form class="q-gutter-md">
-                    <q-input
-                      filled
-                      v-model="first_name"
-                      label="First name *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="last_name"
-                      label="Last name *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="email"
-                      label="Email *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      type="number"
-                      v-model="phone_no"
-                      label="Phone no *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="address"
-                      label="Address *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-
-                    <select
-                      style="
-                        padding: 1.4rem 3.25rem 0.375rem 0.75rem;
-                        font-size: 1rem;
-                      "
-                      class="form-select"
-                      aria-required="true"
-                      aria-invalid="false"
-                      v-model="country_id"
-                      @change="getState()"
-                      required
-                    >
-                      <option value="" disabled selected>Country</option>
-                      <option
-                        v-for="country in list"
-                        :value="country.id"
-                        v-bind:key="country.id"
+                      <select
+                        style="
+                          padding: 1.4rem 3.25rem 0.375rem 0.75rem;
+                          font-size: 1rem;
+                        "
+                        class="form-select"
+                        aria-required="true"
+                        aria-invalid="false"
+                        v-model="country_id"
+                        @change="getState()"
+                        required
                       >
-                        {{ country.name }}
-                      </option>
-                    </select>
+                        <option value="" disabled selected>Country</option>
+                        <option
+                          v-for="country in list"
+                          :value="country.id"
+                          v-bind:key="country.id"
+                        >
+                          {{ country.name }}
+                        </option>
+                      </select>
 
-                    <select
-                      style="
-                        padding: 1.4rem 1.3rem 0.375rem 0.75rem;
-                        font-size: 1rem;
-                      "
-                      class="form-select"
-                      aria-required="true"
-                      aria-invalid="false"
-                      v-model="state_id"
-                      @change="getCity()"
-                      required
-                    >
-                      <option value="" disabled selected>State</option>
-                      <option
-                        v-for="item in state"
-                        :value="item.id"
-                        v-bind:key="item.id"
+                      <select
+                        style="
+                          padding: 1.4rem 1.3rem 0.375rem 0.75rem;
+                          font-size: 1rem;
+                        "
+                        class="form-select"
+                        aria-required="true"
+                        aria-invalid="false"
+                        v-model="state_id"
+                        @change="getCity()"
+                        required
                       >
-                        {{ item.name }}
-                      </option>
-                    </select>
+                        <option value="" disabled selected>State</option>
+                        <option
+                          v-for="item in state"
+                          :value="item.id"
+                          v-bind:key="item.id"
+                        >
+                          {{ item.name }}
+                        </option>
+                      </select>
 
-                    <select
-                      style="
-                        padding: 1.4rem 12.45rem 0.375rem 0.75rem;
-                        font-size: 1rem;
-                      "
-                      class="form-select"
-                      aria-required="true"
-                      aria-invalid="false"
-                      v-model="city_id"
-                      required
-                    >
-                      <option value="" disabled selected>City</option>
-                      <option
-                        v-for="item in city"
-                        :value="item.id"
-                        v-bind:key="item.id"
+                      <select
+                        style="
+                          padding: 1.4rem 12.45rem 0.375rem 0.75rem;
+                          font-size: 1rem;
+                        "
+                        class="form-select"
+                        aria-required="true"
+                        aria-invalid="false"
+                        v-model="city_id"
+                        required
                       >
-                        {{ item.name }}
-                      </option>
-                    </select>
+                        <option value="" disabled selected>City</option>
+                        <option
+                          v-for="item in city"
+                          :value="item.id"
+                          v-bind:key="item.id"
+                        >
+                          {{ item.name }}
+                        </option>
+                      </select>
 
-                    <q-input
-                      filled
-                      v-model="pincode"
-                      label="Pincode *"
-                      lazy-rules
-                      :rules="[
-                        (val) =>
-                          (val && val.length > 0) || 'Please type something',
-                      ]"
-                    />
-                    <q-input
-                      filled
-                      v-model="coupon_code"
-                      label="Apply Coupon"
-                    />
-                    <q-input
-                      filled
-                      disable
-                      v-model="amount_pay"
-                      label="100000"
-                      label-color="black"
-                    />
+                      <q-input
+                        filled
+                        v-model="pincode"
+                        label="Pincode *"
+                        lazy-rules
+                        :rules="[
+                          (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                        ]"
+                      />
+                      <q-input
+                        filled
+                        v-model="coupon_code"
+                        label="Apply Coupon"
+                      />
+                      <q-input
+                        filled
+                        disable
+                        :v-bind="list.price"
+                        v-model="amount_pay"
+                        label="100000"
+                        label-color="black"
+                      />
 
-                    <div>
-                      <!-- <div>
+                      <div>
+                        <!-- <div>
                         <a
                           style="
                             width: 135px;
@@ -221,15 +222,83 @@
                           Buy Now
                         </a>
                       </div> -->
-                      <q-btn
-                        color="primary"
-                        label="Buy now"
-                        @click="sendData()"
-                      />
-                    </div>
-                  </q-form>
-                </div>
+                      </div>
+                    </q-form>
+                  </div>
+                </q-card-section>
               </q-card-section>
+
+              <q-card-actions align="right" class="text-primary">
+                <!-- <q-btn
+                  flat
+                  label="Pay now"
+                  @click="
+                    secondDialog = true;
+                    sendData();
+                  "
+                /> -->
+                <button
+                  type="submit"
+                  class="
+                    btn
+                    shadow-none
+                    btn-primary
+                    fw-500
+                    font-xss
+                    text-primary-500
+                    w-100
+                    mb-2
+                  "
+                >
+                  {{ paynowbtn ? "Processing..." : "Pay Now" }}
+                </button>
+
+                <q-btn flat label="Close" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <q-dialog
+            v-model="secondDialog"
+            persistent
+            transition-show="scale"
+            transition-hide="scale"
+          >
+            <q-card class="bg-teal text-white" style="width: 300px">
+              <q-card-section>
+                <form
+                  class="p-1 m-4 mb-0 text-center d-block form-group"
+                  @submit.prevent="sendData"
+                >
+                  <div class="justify-content-center align-items-center mt-4">
+                    <button
+                      type="submit"
+                      class="
+                        btn
+                        shadow-none
+                        btn-primary
+                        fw-500
+                        font-xss
+                        text-light-500
+                        p-1
+                      "
+                      @click="confirmBuy()"
+                    >
+                      {{ loading ? "Processing..." : "Verify" }}
+                    </button>
+                    <!-- <button @click="$refs['modal'].hide()" type="button" class="btn shadow-none btn-dark fw-500 font-xss text-dark-500  p-1 ml-3">Cancel</button> -->
+                  </div>
+                </form>
+                <!-- <div class="text-h6">Confirm Payment</div>
+              </q-card-section>
+
+              <q-card-section class="q-pt-none" onclick="confirmBuy()">
+                Confirm Buy -->
+              </q-card-section>
+
+              <q-card-actions align="right" class="bg-white text-teal">
+                <q-btn flat label="OK" v-close-popup />
+              </q-card-actions>
             </q-card>
           </q-dialog>
         </div>
@@ -276,6 +345,20 @@
     </div>
   </div>
   <!-- PayU money payment form=============================================================================================== -->
+  <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
+    <input type="hidden" name="key" v-model="mkey" size="64" />
+    <input type="hidden" name="txnid" v-model="txnid" size="64" />
+    <input type="hidden" name="amount" v-model="amount_pay" size="64" />
+    <input type="hidden" name="productinfo" v-model="productInfo" size="64" />
+    <input type="hidden" name="firstname" v-model="first_name" size="64" />
+    <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
+    <input type="hidden" name="email" v-model="email" size="64" />
+    <input type="hidden" name="phone" v-model="mobile_no" size="64" />
+    <input type="hidden" name="lastname" v-model="last_name" size="64" />
+    <input type="hidden" name="surl" v-model="surl" />
+    <input type="hidden" name="furl" v-model="furl" />
+    <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
+  </form>
 </template>
 
 <script>
@@ -311,15 +394,14 @@ export default {
       id: "",
       disable: false,
       list: [],
-      products: [],
       state: [],
       city: [],
       country: [],
-      amount_pay: "",
-
-      email: "",
-      phone_no: "",
-      first_name: "",
+      amount_pay: "1999",
+      products: [],
+      email: "jaydeep@gmail.com",
+      mobile_no: "3216547891",
+      first_name: "Jaydeep",
       last_name: "",
       address: "",
       pincode: "",
@@ -327,14 +409,18 @@ export default {
       country_id: "101",
       state_id: "",
       city_id: "",
-
+      productInfo: "Salesforce",
+      paynowbtn: "",
+      loading: "",
       // =================================Payment Data================================
+      txnid: this.makeid(),
+      payuUrl: "https://test.payu.in/_payment",
+      mkey: "rjQUPktU",
+      saltKey: "e5iIg1jwi8",
+      surl: window.location.origin + "/home/User/Success",
+      furl: window.location.origin + "/home/User/Fail",
 
-      // payuUrl: "https://test.payu.in/_payment",
-      // mkey: "rjQUPktU",
-      // saltKey: "e5iIg1jwi8",
-      // surl: window.location.origin + "/home/User/Success",
-      // furl: window.location.origin + "/home/User/Fail",
+      // =========================For testing===============================
     };
   },
 
@@ -349,6 +435,8 @@ export default {
       navPos.value = val === true ? "right" : "bottom";
     });
     return {
+      inception: ref(false),
+      secondDialog: ref(false),
       padding: ref(true),
       vertical,
       arrows: ref(true),
@@ -370,6 +458,16 @@ export default {
     };
   },
   methods: {
+    makeid() {
+      var text = "";
+      var possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < 20; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+    },
+
     getData() {
       axios
         .get("https://api.restroworld.com/public/api/countries?is_light=true")
@@ -420,21 +518,61 @@ export default {
     },
 
     async sendData() {
-      const response = await axios.post(
-        "https://uatapi.infinitybrains.com/public/api/payment/8",
-        {
+      this.paynowbtn = true;
+      await axios
+        .post("https://uatapi.infinitybrains.com/public/api/payment/8", {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
-          phoneno: this.phone_no,
+          phoneno: this.mobile_no,
           address: this.address,
           country: this.country_id,
           state: this.state_id,
           city: this.city_id,
           pincode: this.pincode,
-        }
-      );
-      console.warn(response);
+        })
+        .then((res) => {
+          this.failMsg = "";
+          this.paynowbtn = false;
+          localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+        })
+        .catch((error) => {
+          this.failMsg = error.response.data.message;
+          this.paynowbtn = false;
+        });
+    },
+
+    hashGen() {
+      var data =
+        this.mkey +
+        "|" +
+        this.txnid +
+        "|" +
+        this.amount_pay +
+        "|" +
+        this.productInfo +
+        "|" +
+        this.first_name +
+        "|" +
+        this.email +
+        "|||||||||||";
+      var sha512 = require("js-sha512");
+      var salt = this.saltKey;
+      var hash = sha512(data + salt);
+      if (hash) {
+        localStorage.setItem("hash", hash);
+        localStorage.setItem("expireSession", "sesion12dgtdb");
+      }
+      console.log(hash);
+      console.log(data);
+
+      document.getElementById("hash").value = hash;
+
+      document.getElementById("paymentForm").submit();
+    },
+    confirmBuy() {
+      this.loading = true;
+      this.hashGen();
     },
   },
 
@@ -442,6 +580,8 @@ export default {
     this.getList();
     this.sendData();
     this.getData();
+    this.hashGen();
+    this.makeid();
   },
 };
 </script>
