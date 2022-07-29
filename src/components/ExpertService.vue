@@ -5,42 +5,59 @@
     <div class="row text-center">
       <div class="col">
         <div class="inline">
-          <q-btn flat rounded color="white" class="q-mr-5" label="SEO" />
-          <q-btn
-            flat
-            rounded
-            color="white"
-            class="q-mr-5"
-            label="Content Marketing"
-          />
-          <q-btn
-            flat
-            rounded
-            color="white"
-            class="q-mr-5"
-            label="Website Development"
-          />
-          <q-btn
-            flat
-            rounded
-            color="white"
-            class="q-mr-5"
-            label="Mobile Development"
-          />
-          <q-btn
-            flat
-            rounded
-            color="white"
-            class="q-mr-5"
-            label="Hybrid Development"
-          />
-          <q-btn
-            flat
-            rounded
-            color="white"
-            class="q-mr-5"
-            label="Graphics/UI/UX Design"
-          />
+          <router-link to="/Services">
+            <q-btn flat rounded color="white" class="q-mr-5" label="SEO" />
+          </router-link>
+
+          <router-link to="/Services">
+            <q-btn
+              flat
+              rounded
+              color="white"
+              class="q-mr-5"
+              label="Content Marketing"
+            />
+          </router-link>
+
+          <router-link to="/Services">
+            <q-btn
+              flat
+              rounded
+              color="white"
+              class="q-mr-5"
+              label="Website Development"
+            />
+          </router-link>
+
+          <router-link to="/Services">
+            <q-btn
+              flat
+              rounded
+              color="white"
+              class="q-mr-5"
+              label="Mobile Development"
+            />
+          </router-link>
+
+          <router-link to="/Services">
+            <q-btn
+              flat
+              rounded
+              color="white"
+              class="q-mr-5"
+              label="Hybrid Development"
+            />
+          </router-link>
+
+          <router-link to="/Services">
+            <q-btn
+              flat
+              rounded
+              color="white"
+              class="q-mr-5"
+              label="Graphics/UI/UX Design"
+            />
+          </router-link>
         </div>
       </div>
     </div>

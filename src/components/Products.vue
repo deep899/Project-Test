@@ -40,13 +40,6 @@
 
     <!-- =============================================product2============================================ -->
     <div class="row product2">
-      <router-link to="/IBsalesforce">
-        <img
-          class="col-sm-6 col-xs-12 self-center text-center"
-          :src="list2.product_image"
-          alt=""
-          style="width: 35rem; margin-left: 7rem; margin-top: 7rem"
-      /></router-link>
       <div
         class="col-2 text-center col-md-6 col-xs-12"
         style="margin-top: 5rem"
@@ -68,6 +61,13 @@
           {{ list2.desc }}
         </p>
       </div>
+      <router-link to="/IBsalesforce">
+        <img
+          class="col-sm-6 col-xs-12 self-center text-center"
+          :src="list2.product_image"
+          alt=""
+          style="width: 35rem; margin-left: 7rem; margin-top: 7rem"
+      /></router-link>
     </div>
     <!-- =============================================product3============================================ -->
     <div class="row product3">
