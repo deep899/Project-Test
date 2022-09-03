@@ -5,6 +5,6 @@ deployment:
     - /bin/chmod 755 ${DEPLOYPATH}
     - /bin/find ${DEPLOYPATH} -type d -exec /bin/chmod 755 '{}' \;
     - /bin/find ${DEPLOYPATH} -type f -exec /bin/chmod 644 '{}' \;
-    - /bin/cp -R dist/spa* $DEPLOYPATH
+    - /bin/cp -R dist/spa/* $DEPLOYPATH
 
     
