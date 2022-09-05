@@ -3,7 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/garba/public_html/
     - /bin/chmod 755 ${DEPLOYPATH}
-    - /bin/chmod 644 ${DEPLOYPATH}
     - /bin/find ${DEPLOYPATH} -type d -exec /bin/chmod 755 '{}' \;
     - /bin/find ${DEPLOYPATH} -type f -exec /bin/chmod 644 '{}' \;
     - /bin/rm -Rf favicon.ico
