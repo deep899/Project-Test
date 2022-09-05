@@ -11,5 +11,4 @@ deployment:
     - /bin/rm -r img
     - /bin/rm -r icons
     - /bin/rm -r fonts
-    - /bin/rm -r css
     - /bin/cp -R dist/spa/* $DEPLOYPATH
