@@ -6,5 +6,5 @@ deployment:
     - /bin/find ${DEPLOYPATH} -type d -exec /bin/chmod 755 '{}' \;
     - /bin/find ${DEPLOYPATH} -type f -exec /bin/chmod 644 '{}' \;
     - /bin/rm  favicon.ico
-    - /bin/rm  index.html
+    - /bin/rm -rf index.html
     - /bin/cp -R dist/spa/* $DEPLOYPATH
