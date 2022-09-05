@@ -10,5 +10,4 @@ deployment:
     - /bin/rm -r js
     - /bin/rm -r img
     - /bin/rm -r icons
-    - /bin/rm -r fonts
     - /bin/cp -R dist/spa/* $DEPLOYPATH
