@@ -1,0 +1,90 @@
+.product:nth-of-type(even){
+  /* background-color: black; */
+  flex-direction: row-reverse;
+}
+body{
+  background-color: #fafafa;
+}
+.service_section_digital:nth-of-type(odd){
+  /* background-color: black; */
+  flex-direction: row-reverse;
+}
+.black-space-blue {
+  height: 50px;
+}
+.product-section{
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 50px;
+}
+.mine:nth-of-type(even){
+  /* background-color: black; */
+  flex-direction: row-reverse;
+}
+.mine{
+  background-color: black;
+}
+html{
+  scroll-behavior: smooth ;
+}
+:root {
+  --animate-delay: 0.5s;
+}
+
+a{
+  text-decoration: none;
+}
+.carousel_image_bg{
+  background-color:black;
+}
+.carousel{
+  font-family: 'Fjalla One', sans-serif;
+}
+.carousel-text{
+  font-family: 'Oxygen', sans-serif;
+}
+.header-links, .product-desc{
+  font-family: 'Oxygen', sans-serif;
+}
+.product-heading{
+  font-family: 'Fjalla One', sans-serif;
+}
+.product-sub-heading{
+  font-family: 'Fjalla One', sans-serif;
+}
+.progress-title{
+  font-family: 'Fjalla One', sans-serif;
+}
+.contactusbanner{
+  font-family: 'Fjalla One', sans-serif;
+}
+.contactusform {
+  font-family: 'Fjalla One', sans-serif;
+}
+.contactusformdiv{
+  font-family: 'Fjalla One', sans-serif;
+}
+.aboutusbanner{
+  font-family: 'Fjalla One', sans-serif;
+}
+.service_section{
+  font-family: 'Fjalla One', sans-serif;
+}
+.servicecompanyabout{
+  font-family: 'Fjalla One', sans-serif;
+}
+.servicesubsections {
+  font-family: 'Fjalla One', sans-serif;
+}
+.portfoliobanner{
+  font-family: 'Fjalla One', sans-serif;
+}
+.ourworktheory, .ourworktitle{
+  font-family: 'Fjalla One', sans-serif;
+}
+.table {
+  margin: auto;
+  width: 50%;
+}
