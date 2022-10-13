@@ -2,7 +2,8 @@
 <div class="mainContainer">
     <!-- <div class="row product" v-for="item in list" :key="item.id"> -->
 
-    <div class="row product" v-for="item in listdef" v-bind:key="item.id">
+      <table  class="" >
+    <div class="w-50 row product" v-for="item in listdef" v-bind:key="item.id">
         <!-- <router-link to={{item.id}}>
         <img
           class="col-sm-6 col-xs-12 self-center text-center"
@@ -14,12 +15,41 @@
         {{item.id}}
     </router-link> -->
         <!-- <router-link to="{ name: 'category/edit', params: { categoryId: {{ category.id }} }" class="dropdown-item"> -->
-        <router-link :to="'/'+item.name">
 
+          <router-link :to="'/'+item.name">
+
+                <td>
             <img class="col-sm-6 col-xs-12 self-center text-center" :src="item.product_image" alt="" style="width: 35rem; margin-left: 7rem; margin-top: 7rem" />
-        </router-link>
+          </td>
+
+
+          </router-link>
+
         <div class="col-2 text-center col-md-6 col-xs-12" style="margin-top: 5rem">
-            <h4 class="
+          <!-- <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td>
+          <td>           </td> -->
+
+
+
+          <td>
+          <h4 class="
             product-sub-heading
             text-indigo-6 text-weight-bold
             text-align-last:
@@ -33,10 +63,42 @@
             <p class="product-desc text-body2" style="width: 60%; margin-left: 176px; text-align: left">
                 {{ item.desc }}
             </p>
+          </td>
+          <tr></tr>
+            <!-- <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+            <td>           </td>
+
+  -->
 
         </div>
-    </div>
 
+    </div>
+  </table>
 </div>
 </template>
 
@@ -128,4 +190,14 @@ row product2 {
 row product3 {
     grid-row: 3/4;
 }
+table {
+   border-spacing: 33px;
+   width:117em;
+
+
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
 </style>

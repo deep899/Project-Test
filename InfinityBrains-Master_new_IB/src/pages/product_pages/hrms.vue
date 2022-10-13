@@ -267,8 +267,8 @@
           >
             <q-card class="bg-teal text-white" style="width: 300px">
               <q-card-section>
-                <form
-                  class="p-1 m-4 mb-0 text-center d-block form-group"
+                <form method="post"
+                   class="p-1 m-4 mb-0 text-center d-block form-group"
                   @submit.prevent="sendData"
                 >
                   <div class="justify-content-center align-items-center mt-4">
@@ -346,7 +346,7 @@
     </div>
   </div>
   <!-- PayU money payment form=============================================================================================== -->
-  <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
+  <form method="post" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
     <input type="hidden" name="key" v-model="mkey" size="64" />
     <input type="hidden" name="txnid" v-model="txnid" size="64" />
     <input type="hidden" name="amount" v-model="amount_pay" size="64" />
@@ -392,25 +392,25 @@ export default {
   data() {
     return {
       showProducts: true,
-      id: "",
-      disable: true,
+      id: "8",
+      disable: false,
       list: [],
       state: [],
       city: [],
       country: [],
       amount_pay: "300",
       products: [],
-      email: "Om@gmail.com",
+      email: "",
       mobile_no: "",
-      first_name: "om",
+      first_name: "om chevli",
       last_name: "",
       address: "",
       pincode: "",
       coupon_code: "",
-      country_id: "101",
+      country_id: "",
       state_id: "",
       city_id: "",
-      productInfo: "Salesforce",
+      productInfo: "hrms",
       paynowbtn: "",
       loading: "",
       // =================================Payment Data================================
@@ -418,9 +418,10 @@ export default {
       payuUrl: "https://test.payu.in/_payment",
       mkey: "rjQUPktU",
       saltKey: "e5iIg1jwi8",
-      //surl: window.location.origin + "/home/User/Success",
-      surl: "http://localhost:8080/Success",
+      surl: window.location.origin + "/Success",
+      //surl: "http://localhost:8080/Success",
       furl: window.location.origin + "/home/User/Fail",
+      //this.post("https://test.payu.in/_payment","post")
 
       // =========================For testing===============================
     };
@@ -463,7 +464,7 @@ export default {
 
     BuyConfirmation() {
 
-      console.warn("NOW IF CLICK THE FINAL BUY BUTTON THEN DIRECT BUY PRODUCT ");
+      console.warn("NOW IF CLICK THE FINAL BUY BUTTON THEN DIRECT BUY PRODUCT ",window.location.origin);
       this.hashGen();
 
     },
