@@ -1,106 +1,46 @@
 <template>
 <div class="mainContainer">
-    <!-- <div class="row product" v-for="item in list" :key="item.id"> -->
 
-      <table  class="" >
-    <div class="w-50 row product" v-for="item in listdef" v-bind:key="item.id">
-        <!-- <router-link to={{item.id}}>
-        <img
-          class="col-sm-6 col-xs-12 self-center text-center"
-          :src="item.product_image"
-          alt=""
-          style="width: 35rem; margin-left: 7rem; margin-top: 7rem"
-      />
+    <table >
 
-        {{item.id}}
-    </router-link> -->
-        <!-- <router-link to="{ name: 'category/edit', params: { categoryId: {{ category.id }} }" class="dropdown-item"> -->
+        <div class="col-2 text-center col-md-6 col-xs-12 row product" v-for="item in listdef" v-bind:key="item.id">
 
-          <router-link :to="'/'+item.name">
+            <router-link :to="'/'+item.name">
+
+                <td style=" ">
+                    <img class="col-sm-6 col-xs-12 self-center text-center " :src="item.product_image" alt="" style="width: 30rem; margin-left: 7rem; margin-top: 7rem" />
+                </td>
+
+            </router-link>
+
+            <div class="col-2 text-center col-md-6 col-xs-12" style="margin-top: 5rem">
 
                 <td>
-            <img class="col-sm-6 col-xs-12 self-center text-center" :src="item.product_image" alt="" style="width: 35rem; margin-left: 7rem; margin-top: 7rem" />
-          </td>
+                    <h4 class="
+              product-sub-heading
+              text-indigo-6 text-weight-bold
+              text-align-last:
+              justify
+            " style="
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
 
+            ">
+                        {{ item.name }}
+                    </h4>
+                    <p class="product-desc text-body2" style=" margin-left: 176px; text-align: left">
+                        {{ item.desc }}
+                    </p>
+                </td>
 
-          </router-link>
-
-        <div class="col-2 text-center col-md-6 col-xs-12" style="margin-top: 5rem">
-          <!-- <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td>
-          <td>           </td> -->
-
-
-
-          <td>
-          <h4 class="
-            product-sub-heading
-            text-indigo-6 text-weight-bold
-            text-align-last:
-            justify
-          " style="
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-          ">
-                {{ item.name }}
-            </h4>
-            <p class="product-desc text-body2" style="width: 60%; margin-left: 176px; text-align: left">
-                {{ item.desc }}
-            </p>
-          </td>
-          <tr></tr>
-            <!-- <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-            <td>           </td>
-
-  -->
+            </div>
 
         </div>
 
-    </div>
-  </table>
+    </table>
 </div>
 </template>
+
 
 <script>
 import {
@@ -172,6 +112,7 @@ export default defineComponent({
 });
 </script>
 
+
 <style scoped>
 .mainContainer {
 
@@ -191,13 +132,35 @@ row product3 {
     grid-row: 3/4;
 }
 table {
-   border-spacing: 33px;
-   width:117em;
-
-
-
+    border-spacing: 33px;
+    width: 107em;
+    /* table-layout: fixed; */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* table {
+    border-spacing: 33px;
+    width: 17em;
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto;
+} */
+/* table {
+    border-spacing: 33px;
+    width: 100%;
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+th{
+  display: block;
+  width: 99em;
+  align-content: center;
   margin-left: auto;
   margin-right: auto;
 }
-
+img{
+  width: 100%;
+  height: auto;
+} */
 </style>

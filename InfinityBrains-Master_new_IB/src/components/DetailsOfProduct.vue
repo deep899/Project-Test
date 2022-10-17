@@ -39,22 +39,22 @@ export default {
 };
 </script>
 <style scoped>
-.mainContainer {
+/* .mainContainer {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-}
+} */
 /* <!-- =======================main product section===================================== --> */
-.product {
+/* .product {
   grid-row: 1/2;
-}
+} */
 
 /* <!-- =======================discription section===================================== --> */
-.desc {
+/* .desc {
   grid-row: 2/3;
-}
+} */
 
 /* <!-- =======================demo image section===================================== --> */
-.demo {
+/* .demo {
   grid-row: 3/4;
 }
-</style>
+</style> */

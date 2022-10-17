@@ -421,10 +421,10 @@ export default {
       surl: window.location.origin + "/Success",
       //surl: "http://localhost:8080/Success",
       furl: window.location.origin + "/home/User/Fail",
-      //this.post("https://test.payu.in/_payment","post")
 
       // =========================For testing===============================
     };
+
   },
 
   Detailsunted() {
@@ -466,6 +466,69 @@ export default {
 
       console.warn("NOW IF CLICK THE FINAL BUY BUTTON THEN DIRECT BUY PRODUCT ",window.location.origin);
       this.hashGen();
+
+            //##############################################################################################################
+
+            {
+
+
+//       module.exports = function (app) {
+//        app.post('/PaymentStatus', function (req, res) {
+//         console.log(req.body);
+//         res.send(req.body.status);
+//     })
+// };
+
+       var data = this.mkey + "|" + this.txnid + "|" + this.amount_pay + "|" +  this.productInfo + "|" + this.users.first_name + "|" + this.email +  "|||||||||||";
+
+
+
+
+
+      var salt = "e5iIg1jwi8";
+      var hash = sha512(data + salt);
+
+       if (hash != null) {
+          this.rout= this.$router.push('/');
+       }
+      console.log(hash);
+      console.log(data);
+      document.getElementById("hash").value = hash;
+
+      axios.baseURL = 'https://test.payu.in/_payment';
+
+      axios
+          .post(axios.baseURL, {
+            headers: {
+                                "Content-type": "application/json",
+                          "Access-Control-Allow-Origin" :"*",
+                          'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS, post, get',
+                          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+
+
+
+                        //   header("Access-Control-Max-Age", "3600");
+                        //   header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+                        //   header("Access-Control-Allow-Credentials", "true");
+                   },
+              // key:this.mkey,
+              // txnid:this.txnid,
+              //   amount:this.amount_pay,
+              //   productinfo:this.productInfo,
+              //   firstname:this.users.first_name,
+              //    email:this.email
+
+
+
+
+       })}
+
+
+
+
+
+
+      //##############################################################################################################
 
     },
 
