@@ -249,7 +249,7 @@
                     w-100
                     mb-2
                   "
-                  v-on:click="BuyConfirmation()"
+                 onclick="location.href='https://pmny.in/6IvNFycHSNew'"
                 >
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
                 </button>
