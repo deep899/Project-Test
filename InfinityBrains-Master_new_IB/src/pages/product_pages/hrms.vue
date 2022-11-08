@@ -249,7 +249,7 @@
                     w-100
                     mb-2
                   "
-                 onclick="location.href='https://pmny.in/6IvNFycHSNew'"
+                 @click="BuyConfirmation()"
                 >
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
                 </button>
@@ -346,7 +346,7 @@
     </div>
   </div>
   <!-- PayU money payment form=============================================================================================== -->
-  <form method="post" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
+  <form method="post" class="pl-5 pr-5" id="paymentForm" action="https://test.payu.in/_payment">
     <input type="hidden" name="key" v-model="mkey" size="64" />
     <input type="hidden" name="txnid" v-model="txnid" size="64" />
     <input type="hidden" name="amount" v-model="amount_pay" size="64" />
@@ -402,9 +402,9 @@ export default {
       products: [],
       email: "",
       mobile_no: "",
-      first_name: "om chevli",
-      last_name: "",
-      address: "",
+      first_name: "om",
+      last_name: "chevli",
+      address: "266,",
       pincode: "",
       coupon_code: "",
       country_id: "",
@@ -416,10 +416,11 @@ export default {
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://test.payu.in/_payment",
-      mkey: "rjQUPktU",
-      saltKey: "e5iIg1jwi8",
-      surl: window.location.origin + "/Success",
-      //surl: "http://localhost:8080/Success",
+      mkey: "VUrf9GIT",
+      saltKey: "niG76crq4U",
+      //surl: window.location.origin + "/home/User/Success",
+      //surl: "http://localhost:8080/home/User/Success",
+      surl: "https://uat.infinitybrains.com",
       furl: window.location.origin + "/home/User/Fail",
 
       // =========================For testing===============================
@@ -469,7 +470,6 @@ export default {
 
             //##############################################################################################################
 
-            {
 
 
 //       module.exports = function (app) {
@@ -485,7 +485,7 @@ export default {
 
 
 
-      var salt = "e5iIg1jwi8";
+      var salt = "niG76crq4U";
       var hash = sha512(data + salt);
 
        if (hash != null) {
@@ -521,7 +521,7 @@ export default {
 
 
 
-       })}
+       })
 
 
 
