@@ -1,21 +1,26 @@
 <template>
 <div class="mainContainer">
 
-    <table >
+    <table border="2px">
 
         <div class="col-2 text-center col-md-6 col-xs-12 row product" v-for="item in listdef" v-bind:key="item.id">
 
             <router-link :to="'/'+item.name">
 
-                <td style=" ">
-                    <img class="col-sm-6 col-xs-12 self-center text-center " :src="item.product_image" alt="" style="width: 30rem; margin-left: 7rem; margin-top: 7rem" />
+                <td style="width: 100%;">
+                    <img id="flames" class="col-sm-6 col-xs-12 self-center text-center " :src="item.product_image" alt="" style="width: 30rem;
+
+  max-width: 99%;
+  max-height: 99%;
+
+                    margin-left: 7rem; margin-top: 7rem" />
                 </td>
 
             </router-link>
 
             <div class="col-2 text-center col-md-6 col-xs-12" style="margin-top: 5rem">
 
-                <td>
+                <td id="Ptag">
                     <h4 class="
               product-sub-heading
               text-indigo-6 text-weight-bold
@@ -133,11 +138,207 @@ row product3 {
 }
 table {
     border-spacing: 33px;
-    width: 107em;
+    min-width: 32%;
+    border: 100%;
+    margin-right: 15%;
+    margin-left: 15%;
+
     /* table-layout: fixed; */
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
+
+@media only screen and (max-width: 4000px) {
+  table {
+    border: 100%;
+    margin-right: 30%;
+    margin-left: 25%;
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+}
+/* #Ptag{
+  width: fit-content;
+} */
+/* p{
+  padding-left: 50%;
+} */
+
+
+@media only screen and (max-width: 2700px) {
+  table {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+
+
+}
+
+@media only screen and (max-width: 2400px) {
+  table {
+    width: 70%;
+    margin-left: 0%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2000px) {
+  table {
+    width: 74%;
+    margin-left: 15%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 1870px) {
+  table {
+    width: 74%;
+    /* margin-left: 15%;
+    margin-right: 30%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 1900px) {
+  table {
+    width: 99%;
+    margin-left: -100%;
+    margin-right: 400%;
+
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+
+
+}
+@media only screen and (max-width: 1800px) {
+  table {
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 4%;
+
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}}
+@media only screen and (max-width: 1850px) {
+  table {
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 4%;
+
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}}
+@media only screen and (max-width: 1870px) {
+  table {
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 4%;
+
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}}
+
+
+
+@media only screen and (max-width: 600px) {
+  table {
+    margin-left: 0%;
+    width:-100px;
+    min-width: 100%;
+
+    margin-right: 10000px;
+  }
+  #flames{
+    width: fit-content;
+    /* margin-right: 20%; */
+    padding-right: 40%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  table {
+    margin-left: 0%;
+    min-width: 100%;
+    border-spacing: 0px;
+  }
+  p{
+    width: fit-content;
+  }
+  image{
+    width: fit-content;
+    background-color: brown;
+
+  }
+}
+
 /* table {
     border-spacing: 33px;
     width: 17em;
@@ -163,4 +364,5 @@ img{
   width: 100%;
   height: auto;
 } */
+
 </style>
