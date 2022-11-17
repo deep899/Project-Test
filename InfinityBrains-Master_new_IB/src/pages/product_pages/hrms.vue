@@ -240,13 +240,13 @@
                 state: [],
                 city: [],
                 country: [],
-                amount_pay: "200",
+                amount_pay: "100000",
                 products: [],
                 email: "",
                 mobile_no: "",
-                first_name: "om",
-                last_name: "chevli",
-                address: "266,",
+                first_name: "",
+                last_name: "",
+                address: "",
                 pincode: "",
                 coupon_code: "",
                 country_id: "",
@@ -419,10 +419,10 @@
             hashGen() {
                 ///alert(this.products.price);
                 //this.amount_pay = 20000;
-                axios.defaults.baseURL = process.env.BASE_URL;
-                axios.defaults.headers.get['Accepts'] = 'application/json';
-                axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-                axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+                // axios.defaults.baseURL = process.env.BASE_URL;
+                // axios.defaults.headers.get['Accepts'] = 'application/json';
+                // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+                // axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
 
                 var data =
                     this.mkey +
@@ -448,24 +448,24 @@
                     localStorage.setItem("expireSession", "sesion12dgtdb");
                 }
                 console.log(hash);
-                alert(data);
+                //alert(data);
 
-                let result = axios.post("https://secure.payu.in/_payment", {
+                // let result = axios.post("https://secure.payu.in/_payment", {
 
-                    key: this.mkey,
-                    txnid: this.txnid,
-                    amount: this.amount_pay,
-                    productinfo: this.productInfo,
-                    email: this.email
-                }).then((res) => {
-                    alert(res);
-                    localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
-                })
-                console.log(result);
+                //     key: this.mkey,
+                //     txnid: this.txnid,
+                //     amount: this.amount_pay,
+                //     productinfo: this.productInfo,
+                //     email: this.email
+                // }).then((res) => {
+                //     alert(res);
+                //     localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+                // })
+                // console.log(result);
 
                 document.getElementById("hash").value = hash;
 
-                // document.getElementById("paymentForm").submit();
+                document.getElementById("paymentForm").submit();
 
             },
 
