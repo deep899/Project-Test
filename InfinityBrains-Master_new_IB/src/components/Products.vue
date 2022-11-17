@@ -1,13 +1,13 @@
 <template>
 <div class="mainContainer">
 
-    <table border="2px">
+    <table >
 
         <div class="col-2 text-center col-md-6 col-xs-12 row product" v-for="item in listdef" v-bind:key="item.id">
 
             <router-link :to="'/'+item.name">
 
-                <td style="width: 100%;">
+                <td id="tablecell" style="width: 100%;">
                     <img id="flames" class="col-sm-6 col-xs-12 self-center text-center " :src="item.product_image" alt="" style="width: 30rem;
 
   max-width: 99%;
@@ -168,7 +168,70 @@ table {
 /* p{
   padding-left: 50%;
 } */
+@media only screen and (max-width: 3000px) {
+  table {
+    width: 49%;
+    margin-left: 22%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
 
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2900px) {
+  table {
+    width: 54%;
+    margin-left: 22%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2800px) {
+  table {
+    width: 54.5%;
+    margin-left: 22%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2600px) {
+  table {
+    width: 47%;
+    margin-left: 22%;
+    margin-right: 30%;
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
 
 @media only screen and (max-width: 2700px) {
   table {
@@ -192,9 +255,57 @@ table {
 
 @media only screen and (max-width: 2400px) {
   table {
+    width: 61%;
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2300px) {
+  table {
+    width: 65%;
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2200px) {
+  table {
+    width: 69%;
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 2100px) {
+  table {
     width: 70%;
-    margin-left: 0%;
-    margin-right: 30%;
+    /* margin-left: 30%;
+    margin-right: 0%; */
     /* padding-right:1000% ; */
     /* margin-right: 0%;
     margin-left: 25%; */
@@ -208,25 +319,9 @@ table {
 }
 @media only screen and (max-width: 2000px) {
   table {
-    width: 74%;
+    width: 79%;
     margin-left: 15%;
     margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
-    margin-left: 25%; */
-    /* margin-right: %;
-    margin-left: 15%; */
-
-    /* table-layout: fixed; */
-    /* margin-left: auto;
-    margin-right: auto; */
-}
-}
-@media only screen and (max-width: 1870px) {
-  table {
-    width: 74%;
-    /* margin-left: 15%;
-    margin-right: 30%; */
     /* padding-right:1000% ; */
     /* margin-right: 0%;
     margin-left: 25%; */
@@ -253,16 +348,12 @@ table {
     /* table-layout: fixed; */
     /* margin-left: auto;
     margin-right: auto; */
-}
-
-
-
-}
-@media only screen and (max-width: 1800px) {
+}}
+@media only screen and (max-width: 1870px) {
   table {
-    width: 100%;
-    margin-left: 1%;
-    margin-right: 4%;
+    width: 80%;
+    margin-left: 14%;
+    margin-right: 10%;
 
     /* padding-right:1000% ; */
     /* margin-right: 0%;
@@ -276,9 +367,9 @@ table {
 }}
 @media only screen and (max-width: 1850px) {
   table {
-    width: 100%;
-    margin-left: 1%;
-    margin-right: 4%;
+    width: 80%;
+    margin-left: 14%;
+    margin-right: 10%;
 
     /* padding-right:1000% ; */
     /* margin-right: 0%;
@@ -290,11 +381,13 @@ table {
     /* margin-left: auto;
     margin-right: auto; */
 }}
-@media only screen and (max-width: 1870px) {
+
+
+@media only screen and (max-width: 1800px) {
   table {
-    width: 100%;
-    margin-left: 1%;
-    margin-right: 4%;
+    width: 82%;
+    margin-left: 14%;
+    margin-right: 10%;
 
     /* padding-right:1000% ; */
     /* margin-right: 0%;
@@ -308,7 +401,204 @@ table {
 }}
 
 
+@media only screen and (max-width: 1700px) {
+  table {
+    width: 86.5%;
+    margin-left: 10%;
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
 
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+}
+@media only screen and (max-width: 1600px) {
+  table {
+    width:100%;
+    margin-left: 0%;
+
+
+
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+#flames{
+
+  width: 4%;
+}
+
+}
+@media only screen and (max-width: 1500px) {
+  table {
+    width:100%;
+    margin-left: 0%;
+
+
+
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+#flames{
+
+  width: 4%;
+}
+
+}
+@media only screen and (max-width: 1400px)
+{
+  table {
+    width:90%;
+    margin-left: 7%;
+}
+#tablecell{
+
+width: 100%;
+max-width: 480px;
+height: auto;
+}
+
+}
+@media only screen and (max-width: 1300px) {
+  table {
+    width:90%;
+    margin-left: 10%;
+
+
+
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+#flames{
+
+  width: 4%;
+}
+#tablecell{
+
+width: 100%;
+max-width: 380px;
+height: auto;
+}
+
+}
+
+@media only screen and (max-width: 1200px) {
+  table {
+    width:90%;
+    margin-left: 10%;
+
+
+
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+  #tablecell{
+
+    width: 100%;
+  max-width: 380px;
+  height: auto;
+  }
+
+}
+
+@media only screen and (max-width: 1100px) {
+  table {
+    width:100%;
+    margin-left: 0%;
+
+
+
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+  #tablecell{
+
+    width: 100%;
+  max-width: 380px;
+  height: auto;
+  }
+
+}
+@media only screen and (max-width: 1000px) {
+  table {
+    width:100%;
+    margin-left: 0%;
+
+
+
+    /* margin-left: 30%;
+    margin-right: 0%; */
+    /* padding-right:1000% ; */
+    /* margin-right: 0%;
+    margin-left: 25%; */
+    /* margin-right: %;
+    margin-left: 15%; */
+
+    /* table-layout: fixed; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+  #tablecell{
+
+    width: 100%;
+  max-width: 280px;
+  height: auto;
+  }
+  #ptag{
+    width: 20%;
+  }
+
+}
 @media only screen and (max-width: 600px) {
   table {
     margin-left: 0%;
@@ -323,6 +613,7 @@ table {
     padding-right: 40%;
   }
 }
+
 @media only screen and (max-width: 400px) {
   table {
     margin-left: 0%;

@@ -346,7 +346,7 @@
     </div>
   </div>
   <!-- PayU money payment form=============================================================================================== -->
-  <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
+  <form method="POST" class="pl-5 pr-5" id="paymentForm" action="https://test.payu.in/_payment">
     <input type="hidden" name="key" v-model="mkey" size="64" />
     <input type="hidden" name="txnid" v-model="txnid" size="64" />
     <input type="hidden" name="amount" v-model="amount_pay" size="64" />
@@ -393,7 +393,7 @@ export default {
     return {
       showProducts: true,
       id: "",
-      disable: false,
+      disable: true   ,
       list: [],
       state: [],
       city: [],
@@ -416,8 +416,8 @@ export default {
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://test.payu.in/_payment",
-      mkey: "Gl4Uzp",
-      saltKey: "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCv77ZSEjte7Nd9WVFTW9AJYptzW0p6eD00ZiYDPdI9NBqn0FeAs+84UR17JGI4YZX6Mu0KaLtpZBb7jrFQ+kDVmyl9GI7LulDvaxe3g5Dje3HfmbvktRQxuxomzZFrfQlcOMuxCv7GQldnYI0lo2eiDFdZnfiYAA6IDMNW2D9uEgrMm4ZxKV/PhoN/YfVUVHTe8V8arUsdw8BFHcBMR4x9LLkkHygwukwR6NqP95/tXMsx6d77oLTWSbWQZAsbjx3DTyofSEeuR+vnTMcHfqVOz73qy9hYDmAPvgAeZD0dOR6jWa5NQDoeuWko+0PgxUIskr+JT23xAfGY4knexJDpAgMBAAECggEAEtRO6P22iPREI9A5WfiLjVWWWYQ9tlnEAyWjj9k/9PjsmWU82DNpuNdFlnZQZMRc7sgggmqvFBp4MzgUVhxScAoJKLBGKBuqqdUGVsen7BC8ITgs2c9fd+sUY27Az4Y0SEBz3GDW35UeEZxNvud8IeW8O4Uio/HtnDXxegvuzfLG8JajHWsuLQFneniViSFdWGhEG+BFDqjM8+dEPXfFBY3o1n2hew0b7kFQQDgq3uv4ilmhOPvmu+HlrDpnXYOhQ8fyU9cyWgUgy8BJ8w6J+F3x3BX6fbg6Gw7hRTL3f/AsFRZEOxum0SyO1jizTdDjC7OTUDYW0/sbJ4uiLtRQAQKBgQDZRqwFINZVSBc72gvxtxhEtZWHy141v8QQW7LmBfY4NmiNYr5thVqfZ/hPe828LjAAn+Z3bbJ39L8KOefwBmC1ben9A7aKPp1xaL3QgcG0DvQ23kkjv8Y1qGuAN961ZUm9cgj+sTlY0VS0UxkCaMb2TbRqOMgjzNwD5JyabP0jAQKBgQDPSuWD8Iqt9lUOa707P4waMqS+/yUA0jcIbmjgYS4geSxSuJnjAwV8zRQltALxSND7GgAP7480yUiflKzh7d9lghkcCMDjkbOSxS4IuPbKmd2i3AvrInBR/nZ5nq8c5Bwy8I3h2qmXw6vOEF8GUon7HVTFJ06bKkhExALB0qC16QKBgF/F3x2Dk/aTiGpBevJZGsFuqTLqWeSnWu06/miWSCoPEZcA55+vIHsTgUjH8a/5S/96fEQ4fmqR34PKcopCxW4zvOhiMpxNbWkIGmNGTvPng46L/QFdDymny3sBJZIfy5lOItjhlb2oyAWUe3msZcc8CUKpNM9TBchRhRYs5IgBAoGAV5YS0iPRxN1fZP967kzUesFJQPZ3gRhRbnuQTrZhEhGA+9bKFtRQ/kF8sM2VrLOSsXZz7kfPX4No7xyXy8KBcNd+mozMS5tln6822zKj/Ej1D/ogAxMDGHIHRy4YWYG8tH1VxcdpfxmLPz9Fl1tKt9LV3ZPVL9S2wm97pr/DbfkCgYEAsqLEtnKJgEfUZIMFzcx51sZPbktMbskoVZ0JXziUGJHKo7VMSdLHgMPfqv9T6PV4N8p5KyvKzjl7z8BR9Biv9Y1Kx/CobZ98VpjiE3MCfcEUoMlajpa8GE6f3Y1JTcNzAoG1cejOYUq5kZwgxjfMBqJx/BR2M9yHCCsdR4AAUJs=",
+      mkey: "rjQUPktU",
+      salt: "e5iIg1jwi8",
       surl: window.location.origin + "/home/User/Success",
       furl: window.location.origin + "/home/User/Fail",
 
