@@ -1,0 +1,4 @@
+1. not shown read more issue  in manpowers
+2.while create job form is reset when error occur
+3.while create job form is reset when error occur when requed emty
+4.

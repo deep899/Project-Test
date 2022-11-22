@@ -1,4 +1,4 @@
-<template>
+np<template>
   <banner />
 
   <!-- Softwares added Here  -->
@@ -135,7 +135,7 @@ export default {
   data() {
     return {
       lorem:
-        "Adipisicing nisi ipsum culpa ut aliqua nostrud veniam elit aliquip tempor adipisicing velit anim labore. Sunt ex dolore ut enim quis esse consequat. Sunt tempor amet anim enim ex nisi irure elit. Et ut ex sint adipisicing velit esse duis nisi nulla cupidatat ad veniam laboris reprehenderit. Sint excepteur mollit ex id aliqua. Consequat cillum eiusmod reprehenderit ut nulla proident. Culpa consectetur cupidatat aute officia amet. Adipisicing nisi ipsum culpa ut aliqua nostrud veniam elit aliquip tempor adipisicing velit anim labore. Sunt ex dolore ut enim quis esse consequat. Sunt tempor amet anim enim ex nisi irure elit. Et ut ex sint adipisicing velit esse duis nisi nulla cupidatat ad veniam laboris reprehenderit. Sint excepteur mollit ex id aliqua. Consequat cillum eiusmod reprehenderit ut nulla proident. Culpa consectetur cupidatat aute officia amet.",
+        "We work with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!",
       softwaredata: [
         {
           href: "/",
