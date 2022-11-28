@@ -25,122 +25,14 @@
                     {{ products.short_desc }}<br />
                     <!-- <q-rating v-model="ratingModel" size="2em"  color="purple" disable /> -->
                 </div>
-                <div class="btn">Price : ₹ {{ products.price }}.00<br /></div>
-                <!-- <div>
-              <div>
-                <a
-                  style="
-                    width: 150px;
-                    background-color: #1065b7;
-                    text-align: center;
-                    font-weight: 800;
-                    padding: 11px 0px;
-                    color: white;
-                    font-size: 12px;
-                    display: inline-block;
-                    text-decoration: none;
-                  "
-                  href="https://pmny.in/HI6LNrF8W8ZH"
-                >
-                  Buy Now
-                </a>
-              </div>
-            </div> -->
-                <div class="q-pa-md q-gutter-sm">
-                    <q-btn label="Buy me" color="primary" @click="inception = true" />
-
-                    <q-dialog v-model="inception">
-                        <q-card>
-                            <!-- <q-card-section>
-                                <div class="text-h6">Buy Now</div>
-                            </q-card-section> -->
-
-                            <q-card-section class="q-pt-none">
-                                <q-card-section style="max-height: 50vh; text-align: -webkit-center" class="scroll">
-                                    <div class="q-pa-md" style="max-width: 400px">
-                                        <q-form class="q-gutter-md" @submit.prevent="paymentcreate()">
-                                            <q-input filled v-model="first_name" label="First name *" lazy-rules :rules="[
-                                          (val) =>
-                                            (val && val.length > 0) || 'Please type something',
-                                        ]" />
-                                            <q-input filled v-model="last_name" label="Last name *" lazy-rules :rules="[
-                                          (val) =>
-                                            (val && val.length > 0) || 'Please type something',
-                                        ]" />
-                                            <q-input filled v-model="email" label="Email *" lazy-rules :rules="[
-                                          (val) =>
-                                            (val && val.length > 0) || 'Please type something',
-                                        ]" />
-                                            <q-input filled type="number" v-model="mobile_no" label="Phone no *" lazy-rules :rules="[
-                                          (val) =>
-                                            (val && val.length > 0) || 'Please type something',
-                                        ]" />
-                                            <q-input filled v-model="address" label="Address *" lazy-rules :rules="[
-                                          (val) =>
-                                            (val && val.length > 0) || 'Please type something',
-                                        ]" />
-
-                                            <select style="
-                                          padding: 1.4rem 3.25rem 0.375rem 0.75rem;
-                                          font-size: 1rem;
-                                        " class="form-select" aria-required="true" aria-invalid="false" v-model="country_id" @change="getState()" required>
-                                                <option value="" disabled selected>Country</option>
-                                                <option v-for="country in list" :value="country.id" v-bind:key="country.id">
-                                                    {{ country.name }}
-                                                </option>
-                                            </select>
-
-                                            <select style="
-                                          padding: 1.4rem 1.3rem 0.375rem 0.75rem;
-                                          font-size: 1rem;
-                                        " class="form-select" aria-required="true" aria-invalid="false" v-model="state_id" @change="getCity()" required>
-                                                <option value="" disabled selected>State</option>
-                                                <option v-for="item in state" :value="item.id" v-bind:key="item.id">
-                                                    {{ item.name }}
-                                                </option>
-                                            </select>
-
-                                            <select style="
-                                          padding: 1.4rem 12.45rem 0.375rem 0.75rem;
-                                          font-size: 1rem;
-                                        " class="form-select" aria-required="true" aria-invalid="false" v-model="city_id" required>
-                                                <option value="" disabled selected>City</option>
-                                                <option v-for="item in city" :value="item.id" v-bind:key="item.id">
-                                                    {{ item.name }}
-                                                </option>
-                                            </select>
-
-                                            <q-input filled v-model="pincode" label="Pincode *" lazy-rules :rules="[
-                                          (val) =>
-                                            (val && val.length > 0) || 'Please type something',
-                                        ]" />
-                                            <q-input filled v-model="coupon_code" label="Apply Coupon" />
-                                            <q-input filled disable :v-bind="this.products.price" v-model="amount_pay" label="100000" label-color="black" />
-                                        </q-form>
-                                    </div>
-                                </q-card-section>
-                            </q-card-section>
-
-                            <q-card-actions align="right" class="text-primary">
-                                <button type="submit" class="
-                                                                btn
-                                                                shadow-none
-                                                                btn-primary
-                                                                fw-500
-                                                                font-xss
-                                                                text-primary-500
-                                                                w-100
-                                                                mb-2
-                                                            " @click="BuyConfirmation()">
-                                    {{ paynowbtn ? "Processing..." : "Pay Now" }}
-                                </button>
-
-                                <q-btn flat label="Close" v-close-popup />
-                            </q-card-actions>
-                        </q-card>
-                    </q-dialog>
-
+                <div class="btn">Price : ₹ {{ products.price }}.00<br />
+                  <q-btn label="Buy me" color="primary" @click="razorPay()" />
                 </div>
+
+                <!-- =======================PaymentGetway===================================== -->
+                <div ref="rzpform"></div>
+                <!-- =======================PaymentG===================================== -->
+
             </div>
         </div>
         <!-- =======================discription section===================================== -->
@@ -184,21 +76,6 @@
         </div>
     </div>
     <!-- PayU money payment form=============================================================================================== -->
-    <form method="post" class="pl-5 pr-5" id="paymentForm" action="https://secure.payu.in/_payment" @click.prevent="sendData()">
-        <input type="hidden" name="key" v-model="mkey" size="64" />
-        <input type="hidden" name="txnid" v-model="txnid" size="64" />
-        <input type="hidden" name="amount" v-model="amount_pay" size="64" />
-        <input type="hidden" name="productinfo" v-model="productInfo" size="64" />
-        <input type="hidden" name="firstname" v-model="first_name" size="64" />
-        <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
-        <input type="hidden" name="email" v-model="email" size="64" />
-        <input type="hidden" name="phone" v-model="mobile_no" size="64" />
-        <input type="hidden" name="lastname" v-model="last_name" size="64" />
-        <input type="hidden" name="surl" v-model="surl" />
-        <input type="hidden" name="furl" v-model="furl" />
-        <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
-
-    </form>
     </template>
 
     <script>
@@ -256,15 +133,7 @@
                 paynowbtn: "",
                 loading: "",
                 // =================================Payment Data================================
-                txnid: this.makeid(),
-                payuUrl: "https://secure.payu.in/_payment",
-                mkey: "nxpvv9VZ",
-                saltKey: "3oFxUMtWG2",
-                //surl: window.location.origin + "/home/User/Success",
-                //surl: "http://localhost:8080/home/User/Success",
-                surl: "https://uat.infinitybrains.com",
-                furl: window.location.origin + "/home/User/Fail",
-                hash: this.hash,
+
 
                 // =========================For testing===============================
             };
@@ -316,12 +185,20 @@
         },
         methods: {
 
-            BuyConfirmation() {
+          razorPay() {
 
-                //this.amount_pay = 20000;
-                this.hashGen();
+              axios
+                    .post("/api/payment/razorpay", { amount: this.amount })
+                    .then((res) => {
+                      if (res.data) {
+                        window.location.href = "/pay/razorpay?key=" + res.data.key + "&amount=" + res.data.amount + "&order_id=" + res.data.order_id;
+                      }
+                    })
+                    .catch((err) => {alert("hello");});
+
 
             },
+
             async paymentcreate() {
 
                 alert(this.amount_pay);
@@ -416,58 +293,7 @@
                     });
             },
 
-            hashGen() {
-                ///alert(this.products.price);
-                //this.amount_pay = 20000;
-                // axios.defaults.baseURL = process.env.BASE_URL;
-                // axios.defaults.headers.get['Accepts'] = 'application/json';
-                // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-                // axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
 
-                var data =
-                    this.mkey +
-                    "|" +
-                    this.txnid +
-                    "|" +
-                    this.amount_pay +
-                    "|" +
-                    this.productInfo +
-                    "|" +
-                    this.first_name +
-                    "|" +
-                    this.email +
-                    "|||||"
-
-                    +
-                    "||||||";
-                var sha512 = require("js-sha512");
-                var salt = this.saltKey;
-                var hash = sha512(data + salt);
-                if (hash) {
-                    localStorage.setItem("hash", hash);
-                    localStorage.setItem("expireSession", "sesion12dgtdb");
-                }
-                console.log(hash);
-                //alert(data);
-
-                // let result = axios.post("https://secure.payu.in/_payment", {
-
-                //     key: this.mkey,
-                //     txnid: this.txnid,
-                //     amount: this.amount_pay,
-                //     productinfo: this.productInfo,
-                //     email: this.email
-                // }).then((res) => {
-                //     alert(res);
-                //     localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
-                // })
-                // console.log(result);
-
-                document.getElementById("hash").value = hash;
-
-                document.getElementById("paymentForm").submit();
-
-            },
 
         },
 
@@ -478,9 +304,19 @@
             this.getData();
             //this.hashGen();
             this.makeid();
-        },
+
+                        var form = document.createElement("form");
+            var rzpScript = document.createElement("script");
+            rzpScript['src']="https://cdn.razorpay.com/static/widget/subscription-button.js";
+            rzpScript.setAttribute('data-subscription_button_id', "pl_IXOuwF4EldEpc5");
+            rzpScript.setAttribute('async', true);
+            form.appendChild(rzpScript);
+            this.$refs.rzpform.appendChild(form);
+
+          },
     };
     </script>
+   
 
     <style>
     .headingtag {
