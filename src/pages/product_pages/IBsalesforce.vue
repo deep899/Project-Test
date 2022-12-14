@@ -398,7 +398,7 @@ export default {
       state: [],
       city: [],
       country: [],
-      amount_pay: "300",
+      amount_pay: "10000000",
       products: [],
       email: "om@infinitybrains.com",
       mobile_no: "9898649660",
