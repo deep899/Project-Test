@@ -169,7 +169,7 @@ export default {
       transition-next="slide-left"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"
-      height="92vh"
+      height="100vh"
       style="width: 100%"
     >
       <q-carousel-slide
@@ -265,7 +265,7 @@ export default {
           </div>
         </div>
       </q-carousel-slide>
-      
+
     </q-carousel>
   </div>
 </template>
