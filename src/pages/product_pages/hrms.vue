@@ -414,7 +414,7 @@
                       this.failMsg = error.response.data.message;
                       this.paynowbtn = false;
                   });
-             // this.hashGen();
+              this.hashGen();
 
           },
           makeid() {
