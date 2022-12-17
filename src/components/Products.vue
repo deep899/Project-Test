@@ -1,12 +1,12 @@
 <template>
 <div class="mainContainer">
 
-    <table >
+    <table>
 
         <div class="col-2 text-center col-md-6 col-xs-12 row product" v-for="item in listdef" v-bind:key="item.id">
 
-            <router-link :to="'/'+item.name">
-
+            <router-link :to="'/'+item.id">
+                <!-- <router-link :to="'/${item.id}'"> -->
                 <td id="tablecell" style="width: 100%;">
                     <img id="flames" class="col-sm-6 col-xs-12 self-center text-center " :src="item.product_image" alt="" style="width: 30rem;
 
@@ -45,7 +45,6 @@
     </table>
 </div>
 </template>
-
 
 <script>
 import {
@@ -117,7 +116,6 @@ export default defineComponent({
 });
 </script>
 
-
 <style scoped>
 .mainContainer {
 
@@ -136,6 +134,7 @@ row product2 {
 row product3 {
     grid-row: 3/4;
 }
+
 table {
     border-spacing: 33px;
     min-width: 32%;
@@ -149,19 +148,20 @@ table {
 }
 
 @media only screen and (max-width: 4000px) {
-  table {
-    border: 100%;
-    margin-right: 30%;
-    margin-left: 25%;
-    /* margin-right: %;
+    table {
+        border: 100%;
+        margin-right: 30%;
+        margin-left: 25%;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
+    }
 
 }
+
 /* #Ptag{
   width: fit-content;
 } */
@@ -169,472 +169,487 @@ table {
   padding-left: 50%;
 } */
 @media only screen and (max-width: 3000px) {
-  table {
-    width: 49%;
-    margin-left: 22%;
-    margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+    table {
+        width: 49%;
+        margin-left: 22%;
+        margin-right: 30%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2900px) {
-  table {
-    width: 54%;
-    margin-left: 22%;
-    margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+    table {
+        width: 54%;
+        margin-left: 22%;
+        margin-right: 30%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2800px) {
-  table {
-    width: 54.5%;
-    margin-left: 22%;
-    margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+    table {
+        width: 54.5%;
+        margin-left: 22%;
+        margin-right: 30%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2600px) {
-  table {
-    width: 47%;
-    margin-left: 22%;
-    margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+    table {
+        width: 47%;
+        margin-left: 22%;
+        margin-right: 30%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
+    }
 }
 
 @media only screen and (max-width: 2700px) {
-  table {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+    table {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 30%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-
-
+    }
 
 }
 
 @media only screen and (max-width: 2400px) {
-  table {
-    width: 61%;
-    /* margin-left: 30%;
+    table {
+        width: 61%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2300px) {
-  table {
-    width: 65%;
-    /* margin-left: 30%;
+    table {
+        width: 65%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2200px) {
-  table {
-    width: 69%;
-    /* margin-left: 30%;
+    table {
+        width: 69%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2100px) {
-  table {
-    width: 70%;
-    /* margin-left: 30%;
+    table {
+        width: 70%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 2000px) {
-  table {
-    width: 79%;
-    margin-left: 15%;
-    margin-right: 30%;
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+    table {
+        width: 79%;
+        margin-left: 15%;
+        margin-right: 30%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 1900px) {
-  table {
-    width: 99%;
-    margin-left: -100%;
-    margin-right: 400%;
+    table {
+        width: 99%;
+        margin-left: -100%;
+        margin-right: 400%;
 
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}}
+    }
+}
+
 @media only screen and (max-width: 1870px) {
-  table {
-    width: 80%;
-    margin-left: 14%;
-    margin-right: 10%;
+    table {
+        width: 80%;
+        margin-left: 14%;
+        margin-right: 10%;
 
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}}
+    }
+}
+
 @media only screen and (max-width: 1850px) {
-  table {
-    width: 80%;
-    margin-left: 14%;
-    margin-right: 10%;
+    table {
+        width: 80%;
+        margin-left: 14%;
+        margin-right: 10%;
 
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}}
-
+    }
+}
 
 @media only screen and (max-width: 1800px) {
-  table {
-    width: 82%;
-    margin-left: 14%;
-    margin-right: 10%;
+    table {
+        width: 82%;
+        margin-left: 14%;
+        margin-right: 10%;
 
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}}
-
+    }
+}
 
 @media only screen and (max-width: 1700px) {
-  table {
-    width: 86.5%;
-    margin-left: 10%;
-    /* margin-left: 30%;
+    table {
+        width: 86.5%;
+        margin-left: 10%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
+    }
 }
-}
+
 @media only screen and (max-width: 1600px) {
-  table {
-    width:100%;
-    margin-left: 0%;
+    table {
+        width: 100%;
+        margin-left: 0%;
 
-
-
-    /* margin-left: 30%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-#flames{
+    }
 
-  width: 4%;
-}
+    #flames {
+
+        width: 4%;
+    }
 
 }
+
 @media only screen and (max-width: 1500px) {
-  table {
-    width:100%;
-    margin-left: 0%;
+    table {
+        width: 100%;
+        margin-left: 0%;
 
-
-
-    /* margin-left: 30%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-#flames{
+    }
 
-  width: 4%;
-}
+    #flames {
 
-}
-@media only screen and (max-width: 1400px)
-{
-  table {
-    width:90%;
-    margin-left: 7%;
-}
-#tablecell{
-
-width: 100%;
-max-width: 480px;
-height: auto;
-}
+        width: 4%;
+    }
 
 }
+
+@media only screen and (max-width: 1400px) {
+    table {
+        width: 90%;
+        margin-left: 7%;
+    }
+
+    #tablecell {
+
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+    }
+
+}
+
 @media only screen and (max-width: 1300px) {
-  table {
-    width:90%;
-    margin-left: 10%;
+    table {
+        width: 90%;
+        margin-left: 10%;
 
-
-
-    /* margin-left: 30%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-#flames{
+    }
 
-  width: 4%;
-}
-#tablecell{
+    #flames {
 
-width: 100%;
-max-width: 380px;
-height: auto;
-}
+        width: 4%;
+    }
+
+    #tablecell {
+
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+    }
 
 }
 
 @media only screen and (max-width: 1200px) {
-  table {
-    width:90%;
-    margin-left: 10%;
+    table {
+        width: 90%;
+        margin-left: 10%;
 
-
-
-    /* margin-left: 30%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-  #tablecell{
+    }
 
-    width: 100%;
-  max-width: 380px;
-  height: auto;
-  }
+    #tablecell {
+
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+    }
 
 }
 
 @media only screen and (max-width: 1100px) {
-  table {
-    width:100%;
-    margin-left: 0%;
+    table {
+        width: 100%;
+        margin-left: 0%;
 
-
-
-    /* margin-left: 30%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-  #tablecell{
+    }
 
-    width: 100%;
-  max-width: 380px;
-  height: auto;
-  }
+    #tablecell {
+
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+    }
 
 }
+
 @media only screen and (max-width: 1000px) {
-  table {
-    width:100%;
-    margin-left: 0%;
+    table {
+        width: 100%;
+        margin-left: 0%;
 
-
-
-    /* margin-left: 30%;
+        /* margin-left: 30%;
     margin-right: 0%; */
-    /* padding-right:1000% ; */
-    /* margin-right: 0%;
+        /* padding-right:1000% ; */
+        /* margin-right: 0%;
     margin-left: 25%; */
-    /* margin-right: %;
+        /* margin-right: %;
     margin-left: 15%; */
 
-    /* table-layout: fixed; */
-    /* margin-left: auto;
+        /* table-layout: fixed; */
+        /* margin-left: auto;
     margin-right: auto; */
-}
-  #tablecell{
+    }
 
-    width: 100%;
-  max-width: 280px;
-  height: auto;
-  }
-  #ptag{
-    width: 20%;
-  }
+    #tablecell {
+
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+
+    #ptag {
+        width: 20%;
+    }
 
 }
+
 @media only screen and (max-width: 600px) {
-  table {
-    margin-left: 0%;
-    width:-100px;
-    min-width: 100%;
+    table {
+        margin-left: 0%;
+        width: -100px;
+        min-width: 100%;
 
-    margin-right: 10000px;
-  }
-  #flames{
-    width: fit-content;
-    /* margin-right: 20%; */
-    padding-right: 40%;
-  }
+        margin-right: 10000px;
+    }
+
+    #flames {
+        width: fit-content;
+        /* margin-right: 20%; */
+        padding-right: 40%;
+    }
 }
 
 @media only screen and (max-width: 400px) {
-  table {
-    margin-left: 0%;
-    min-width: 100%;
-    border-spacing: 0px;
-  }
-  p{
-    width: fit-content;
-  }
-  image{
-    width: fit-content;
-    background-color: brown;
+    table {
+        margin-left: 0%;
+        min-width: 100%;
+        border-spacing: 0px;
+    }
 
-  }
+    p {
+        width: fit-content;
+    }
+
+    image {
+        width: fit-content;
+        background-color: brown;
+
+    }
 }
 
 /* table {
     border-spacing: 33px;
     width: 17em;
     /* table-layout: fixed; */
-    /* margin-left: auto;
+/* margin-left: auto;
     margin-right: auto;
 } */
 /* table {
@@ -655,5 +670,4 @@ img{
   width: 100%;
   height: auto;
 } */
-
 </style>

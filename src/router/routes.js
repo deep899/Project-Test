@@ -10,18 +10,24 @@ const routes = [
       { path: "/aboutus", name: "aboutus",  component: () => import("pages/aboutus.vue") },
       { path: "/portfolio",name: "portfolio", component: () => import("pages/portfolio.vue") },
       { path: "/career",name: "career", component: () => import("pages/careerpage.vue") },
+      // {
+      //   path: "/festivalCreative",name: "festivalCreative",
+      //   component: () => import("pages/product_pages/festivalCreative.vue"),
+      // },
+      // {
+      //   path: "/HRMS",name: "hrms",
+      //   component: () => import("pages/product_pages/hrms.vue"),
+      // },
+      // {
+      //   path: "/Salesforce",name: "IBsalesforce",
+      //   component: () => import("pages/product_pages/IBsalesforce.vue"),
+      // },
       {
-        path: "/festivalCreative",name: "festivalCreative",
-        component: () => import("pages/product_pages/festivalCreative.vue"),
-      },
-      {
-        path: "/HRMS",name: "hrms",
-        component: () => import("pages/product_pages/hrms.vue"),
-      },
-      {
-        path: "/Salesforce",name: "IBsalesforce",
-        component: () => import("pages/product_pages/IBsalesforce.vue"),
-      },
+
+        path:"/:id",name:"AddToProduct",
+        component:() => import("pages/product_pages/AddToProduct"),
+      }
+      ,
       {
         path: "home/User/Success",name: "success",
         component: () => import("pages/success.vue"),

@@ -30,7 +30,7 @@
           </p>
 
           <a
-            v-bind:href="'/home'"
+            v-bind:href="'/'"
             style="margin-bottom: 6rem !important;"
             class="text-dark font-xsss fw-600"
             ><svg
@@ -59,14 +59,34 @@ export default {
   Name: "success",
   data() {
     return {
-      errormas: "",
-      coupon_code: "",
-      errormasss: "",
+      amount_pay:'534',
+              products: '9',
+              coupon_code: "123",
+              sgst: '26.7',
+              cgst:'26.7',
+              discount:'10',
+              id:'8',
+              user_id:'36',
+      errormas: '',
+
+      errormasss: '',
     };
   },
-  methods: {},
+  methods: {
+
+
+
+  },
 
   mounted() {
+    this.id  = this.$route.params.id;
+    this.user_id  = this.$route.params.user_id;
+    this.cegst  = this.$route.params.cgst;
+    this.segst  = this.$route.params.sgst;
+    this.discount = this.$route.params.discount;
+    this.amount = this.$route.params.amount_pay;
+    console.log("hello",this.cgst,this.amount);
+
 
     this.subscribe = JSON.parse(localStorage.getItem("copondetails"));
     if (this.subscribe) {
@@ -75,19 +95,19 @@ export default {
       this.coupon_code = "";
     }
 
-    if (localStorage.getItem("hash")) {
-      this.errormas =
-        "Your subscription process is in progress. Do not refresh or leave page";
+
       axios
-        .post("https://uatapi.infinitybrains.com/public/api/paymentstatusupdate", { plan_id: "1", coupon_code: this.coupon_code ,email: this.email,
-                    firstname: this.first_name,
-                    lastname: this.last_name,
-                    phoneno: this.mobile_no,
-                    address: this.address,
-                    country: this.country_id,
-                    state: this.state_id,
-                    city: this.city_id,
-                    pincode: this.pincode,})
+        .post("https://uatapi.infinitybrains.com/public/api/paymentstatusupdate", {
+          user_id:this.user_id
+          ,payment_status:"1"
+          ,product_id: this.id
+          ,cgst:this.cegst
+          ,sgst:this.sgst
+          ,discount:this.discount
+          ,amount:this.amount
+
+
+      })
         .then((result) => {
 
 
@@ -95,14 +115,14 @@ export default {
 
 
         });
-    }
+
 
     if (localStorage.getItem("expireSession")) {
       setTimeout(() => {
         localStorage.removeItem("expireSession");
       }, 10000);
     } else if (!localStorage.getItem("expireSession")) {
-      this.$router.push("/home");
+      this.$router.push("/");
     }
 
   },

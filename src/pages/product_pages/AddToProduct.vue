@@ -62,7 +62,8 @@
                             ]" />
 
                                           <select style="
-                              padding: 1.4rem 3.25rem 0.375rem 0.75rem;
+                              width: 95%;
+                                height: 48px;
                               font-size: 1rem;
                             " class="form-select" aria-required="true" aria-invalid="false" v-model="country_id" @change="getState()" required>
                                               <option value="" disabled selected>Country</option>
@@ -72,7 +73,8 @@
                                           </select>
 
                                           <select style="
-                              padding: 1.4rem 1.3rem 0.375rem 0.75rem;
+                              width: 95%;
+                                  height: 48px;
                               font-size: 1rem;
                             " class="form-select" aria-required="true" aria-invalid="false" v-model="state_id" @change="getCity()" required>
                                               <option value="" disabled selected>State</option>
@@ -82,7 +84,8 @@
                                           </select>
 
                                           <select style="
-                              padding: 1.4rem 19rem 0.375rem 0.75rem;
+                             width: 95%;
+                            height: 48px;
                               font-size: 1rem;
                             " class="form-select" aria-required="true" aria-invalid="false" v-model="city_id" required>
                                               <option value="" disabled selected>City</option>
@@ -98,7 +101,7 @@
                                           <q-input filled v-model="text" label="Apply Coupon" />
 
 
-                                          <q-btn color="primary" style="width: 95%; " label="Apply" @click="getDiscount()" />
+                                          <q-btn color="primary" style="width: 95%;  " label="Apply" @click="getDiscount()" />
                                           <q-input filled disable :v-bind="price" v-model="final_amount" label="Price : " label-color="black" />
                                           <q-input filled disable :v-bind="price" v-model="sgst" label="SGST : " label-color="black" />
                                           <q-input filled disable :v-bind="price" v-model="cgst" label="CGST : " label-color="black" />
@@ -260,7 +263,7 @@
   import expertservice from "components/ExpertService.vue";
   import quicklink from "components/QuickLinks.vue";
   import axios from "axios";
-  import { allGeneratedPositionsFor } from "@jridgewell/trace-mapping";
+
   // import productDetails from "src/components/DetailsOfProduct.vue";
   export default {
       name: "hrms",
@@ -394,7 +397,7 @@
 
 
             await axios
-                  .post("https://uatapi.infinitybrains.com/public/api/payment/8", {
+                  .post('https://uatapi.infinitybrains.com/public/api/payment/'+this.id, {
                       email: this.email,
                       firstname: this.first_name,
                       lastname: this.last_name,
@@ -439,7 +442,7 @@
           },
           getGstValye() {
               axios
-                  .get("https://uatapi.infinitybrains.com/public/api/showpayment_product_details/8")
+                  .get('https://uatapi.infinitybrains.com/public/api/showpayment_product_details/'+this.id)
                   .then((result) => {
                       this.Gst = result.data.data;
                      // this.Gst.price = this.amount_pay;
@@ -456,7 +459,7 @@
 
           getDiscount() {
               axios
-                  .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/8',{code : this.text})
+                  .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/'+this.id,{code : this.text})
                   .then((result) => {
                       this.Dis = result.data.data;
                       console.log(this.Dis);
@@ -504,19 +507,19 @@
                       this.city = result.data.data;
                   });
           },
-          getList() {
-              axios
-                  .get("https://uatapi.infinitybrains.com/public/api/show/8")
-                  .then((result) => {
-                      this.products = result.data.data;
-                      console.warn(result.data.data);
-                  });
-          },
+          // getList() {
+          //     axios
+          //         .get("https://uatapi.infinitybrains.com/public/api/show/9")
+          //         .then((result) => {
+          //             this.products = result.data.data;
+          //             console.warn(result.data.data);
+          //         });
+          // },
 
           async sendData() {
               this.paynowbtn = true;
               await axios
-                  .post("https://uatapi.infinitybrains.com/public/api/payment/8", {
+                  .post('https://uatapi.infinitybrains.com/public/api/payment/'+this.id, {
                       email: this.email,
                       firstname: this.first_name,
                       lastname: this.last_name,
@@ -573,9 +576,18 @@
       },
 
       async mounted() {
+        this.id  = this.$route.params.id;
+          console.log("name",this.id);
+
+              axios
+                  .get('https://uatapi.infinitybrains.com/public/api/show/'+this.id)
+                  .then((result) => {
+                      this.products = result.data.data;
+
+                  });
 
         this.getGstValye();
-          this.getList();
+          //this.getList();
           this.sendData();
           this.getData();
 
