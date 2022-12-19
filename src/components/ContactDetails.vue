@@ -84,6 +84,16 @@ import { ref } from 'vue'
 export default {
   name: "contactdetail",
 
+  data(){
+    return{
+
+      first_name: "",
+      email: "",
+      mobile_no: ""
+
+    }
+  },
+
   setup () {
     return {
       persistent: ref(false)

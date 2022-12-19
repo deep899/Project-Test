@@ -1,5 +1,6 @@
 <template>
   <banner
+    
     :heading="mydata[0].heading"
     :text1="mydata[0].text1"
     :text2="mydata[0].text2"

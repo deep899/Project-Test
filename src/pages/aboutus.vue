@@ -4,6 +4,7 @@
     :text1="mydata[0].text1"
     :text2="mydata[0].text2"
   />
+
   <thoerysection
     :src="img"
     :heading="mydata[0].heading"
@@ -136,4 +137,12 @@ export default {
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
 }
+.heading {
+      color: #2f518a;
+      font-size: 35px;
+      text-transform: uppercase;
+
+      grid-row: 1/2;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
 </style>
