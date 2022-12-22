@@ -234,41 +234,41 @@
       <h2>Creative</h2>
 
     </div>
-    <div class="carsoule1">
+    <!-- <div class="carsoule1">
 
-    <div class="carousel_item" style="--i:1">
+                  <div class="carousel_item" style="--i:1">
 
-<img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-</div>
+              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+              </div>
 
-<div class="carousel_item" style="--i:2">
+              <div class="carousel_item" style="--i:2">
 
-<img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-</div>
+              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+              </div>
 
-<div class="carousel_item" style="--i:3">
+              <div class="carousel_item" style="--i:3">
 
-<img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-</div>
+              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+              </div>
 
-<div class="carousel_item" style="--i:4">
+              <div class="carousel_item" style="--i:4">
 
-<img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-</div>
+              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+              </div>
 
-<div class="carousel_item" style="--i:5">
+              <div class="carousel_item" style="--i:5">
 
-<img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-</div>
+              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+              </div>
 
-<div class="carousel_item" style="--i:6 ">
+              <div class="carousel_item" style="--i:6 ">
 
-<img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-</div>
+            <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+        </div> -->
     <!-- <img src="../../img/Scroll Group 8.jpg" /> -->
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
-</div>
+
 </div>
 <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
 <!-- Blacnk Background0-blue End Here -->
