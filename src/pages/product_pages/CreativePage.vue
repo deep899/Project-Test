@@ -102,11 +102,11 @@
                                         <q-input filled v-model="text" label="Apply Coupon" />
 
                                         <q-btn color="primary" style="width: 95%;  " label="Apply" @click="getDiscount()" />
-                                        <q-input filled disable :v-bind="price" v-model="final_amount" label="Price : " label-color="black" />
-                                        <q-input filled disable :v-bind="price" v-model="sgst" label="SGST : " label-color="black" />
-                                        <q-input filled disable :v-bind="price" v-model="cgst" label="CGST : " label-color="black" />
-                                        <q-input filled disable :v-bind="price" v-model="discount" label="Total Discount : " label-color="black" />
-                                        <q-input filled disable :v-bind="price" v-model="amount_pay" label="Total Amount : " label-color="black" />
+                                        <q-input filled disable  v-model="final_amount" label="Price : " label-color="black" />
+                                        <q-input filled disable  v-model="sgst" label="SGST : " label-color="black" />
+                                        <q-input filled disable  v-model="cgst" label="CGST : " label-color="black" />
+                                        <q-input filled disable  v-model="discount" label="Total Discount : " label-color="black" />
+                                        <q-input filled disable  v-model="amount_pay" label="Total Amount : " label-color="black" />
 
                                         <div>
                                             <!-- <div>
@@ -517,6 +517,8 @@ export default {
                 .get('https://uatapi.infinitybrains.com/public/api/showpayment_product_details/13')
                 .then((result) => {
                     this.Gst = result.data.data;
+                    console.log(this.Gst);
+                    console.log(this.final_amount);
                     // this.Gst.price = this.amount_pay;
                     this.final_amount = this.Gst.price;
                     this.sgst = this.Gst.sgst;
@@ -530,7 +532,7 @@ export default {
 
         getDiscount() {
             axios
-                .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/' + this.id, {
+                .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/13', {
                     code: this.text
                 })
                 .then((result) => {
