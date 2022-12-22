@@ -576,6 +576,11 @@
       },
 
       async mounted() {
+
+
+          
+
+
         this.id  = this.$route.params.id;
           console.log("name",this.id);
 

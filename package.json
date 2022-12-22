@@ -16,6 +16,7 @@
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.6.5",
     "js-sha512": "^0.8.0",
+    "materialize-css": "^1.0.0-rc.2",
     "payumoney": "^1.0.1",
     "payumoney-node": "^2.0.1",
     "quasar": "^2.10.0",

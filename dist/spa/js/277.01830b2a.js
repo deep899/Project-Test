@@ -1,0 +1,1 @@
+"use strict";(globalThis["webpackChunkinfinity_brains"]=globalThis["webpackChunkinfinity_brains"]||[]).push([[277],{277:(i,n,t)=>{function r(i,n,t,r,e,a){return" Productyivity product created "}t.r(n),t.d(n,{default:()=>c});const e={name:"CreativeBuy"};var a=t(1639);const u=(0,a.Z)(e,[["render",r]]),c=u}}]);
