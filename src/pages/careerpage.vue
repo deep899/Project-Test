@@ -1,6 +1,6 @@
 <template>
   <banner
-    
+
     :heading="mydata[0].heading"
     :text1="mydata[0].text1"
     :text2="mydata[0].text2"
@@ -21,9 +21,7 @@
     :para7="theorydata[0].para7"
   />
 
-  <p class="text-h4 text-center text-indigo-7 text-weight-bold">
-    CURRENT OPENINGS
-  </p>
+
 
   <div class="q-ma-lg row justify-center">
     <div class="col-md-10 col-sm-12">
@@ -67,8 +65,8 @@
   </div>
 </template>
 <script>
-import thoerysection from "components/theorysection.vue";
-import banner from "components/banner.vue";
+import thoerysection from "components/theorysection1.vue";
+import banner from "components/banner1.vue";
 import ourvision from "components/ourvision.vue";
 import infinityabout from "components/InfinityAbout.vue";
 import contactdetail from "components/ContactDetails.vue";
@@ -93,7 +91,7 @@ export default {
   setup() {
     return {
       lorem:
-        "Lorem ipsum dolor, sit ametWe work  with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!",
+        "We work with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!",
     };
   },
   data() {
@@ -104,22 +102,19 @@ export default {
             "We are group of passionate people,who have come together with an  aim to ",
           text2:
             "create impactful and value-driven software solutions for global customers",
-          img: require("/src/img/career2.jpg"),
-          heading: "About Us",
+          img:"",
+          heading: "CAREER AT INFINITYBRAINS",
           para1:
-            "We, at Inifnity Brains,endevor to offer you the best solutions in order to acquire your maximum satisfaction . ",
+            "There are many variations of passages of Lorem Ipsum available,but the majority have suffered. ",
           para2:
-            "We are experts in offering effective information Technology We Have Experience in solving problems like web or software development etc",
+            "It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,",
           para3:
             "We Have Experience in solving problems like web or software development etc",
           para4:
-            "Our experts handle your assigned projects prudently as well We Strive for perfectionsim in this era of Technological",
+            "It uses a dictionary of over 200 Latin words, combined with a",
           para5:
-            "advancement,by providing best plus affordable IT Services to numerous large as well as medium entreprenuers ",
-          para6:
-            "Everydat we become better & learn the new latest technlogies in the market",
-          para7:
-            "Inifnity Brains is a place built by dreamers to make your dreams come   true",
+            "advancement, by providing the best plus affordable IT Services to numerous large as well as medium entrepreneurs ",
+
         },
       ],
       mydata: [

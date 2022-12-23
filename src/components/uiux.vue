@@ -19,10 +19,7 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">UI/UX Designing</p>
       <p>
-        UI alludes to the screens, buttons, toggles, icons, and other visual
-        segments that you interact with when using a website, app, or other
-        electronic devices. While, UX alludes to the entire interaction you have
-        with a product, including how you think about the interaction.
+        UI alludes to the screens, buttons, toggles, icons, and other visual segments that you interact with when using a website, app, or other electronic devices. While, UX alludes to the entire interaction you have with a product, including how you think about the interaction.
       </p>
     </div>
   </div>

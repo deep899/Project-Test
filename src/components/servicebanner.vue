@@ -27,7 +27,7 @@ export default {
       Title: "SERVICES",
       text1: "We deliver Digital marketing, SEO, Content writing, PHP(Laravel)",
       text2:
-        " Mobile app, Hybrid Development service,Graphic Design services, etc.",
+        " Mobile app, Hybrid Development service, Graphic Design services, etc.",
     };
   },
 };

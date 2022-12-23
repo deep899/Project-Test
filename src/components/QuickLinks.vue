@@ -20,7 +20,7 @@
             <q-btn flat rounded color="white" class="q-mr-5" label="Services" />
           </router-link>
 
-          <router-link to="/contactus">
+          <router-link to="/portfolio">
             <q-btn
               flat
               rounded
@@ -30,15 +30,15 @@
             />
           </router-link>
 
-          <router-link to="/aboutus">
+          <router-link to="/career">
             <q-btn flat rounded color="white" class="q-mr-5" label="Career" />
           </router-link>
 
-          <router-link to="/portfolio">
+          <router-link to="/aboutus">
             <q-btn flat rounded color="white" class="q-mr-5" label="About" />
           </router-link>
 
-          <router-link to="/career">
+          <router-link to="/contactus">
             <q-btn flat rounded color="white" class="q-mr-5" label="Contact" />
           </router-link>
         </div>

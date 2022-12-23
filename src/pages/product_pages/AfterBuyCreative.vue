@@ -1,8 +1,6 @@
 <template>
-
-
     <h1>
-      Hello
+      This Page is Inform to User Recipt confirmation
     </h1>
 
     <a

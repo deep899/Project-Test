@@ -19,11 +19,7 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">Content Writing</p>
       <p>
-        Writing content is a process of planning, reviewing and publishing in
-        digital form. It’s a way of generating content in the digital world. The
-        content should be appealing to the target audience and trustworthy as
-        well. We are here to assist you to get clients with our proficient
-        content writers.
+        Writing content is a process of planning, reviewing, and publishing in digital form. It’s a way of generating content in the digital world. The content should be appealing to the target audience and trustworthy as well. We are here to assist you to get clients with our proficient content writers.
       </p>
     </div>
   </div>

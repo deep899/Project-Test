@@ -49,6 +49,19 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
+                            <q-input filled v-model="B_Name" label="Business Name *" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
+                            <q-input filled v-model="B_Gst_N" label="Business Gst Number *" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
+                            <q-input filled v-model="S_Name" label="SalesMan Name*" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
+
                                         <q-input filled v-model="email" label="Email *" lazy-rules :rules="[
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
@@ -479,6 +492,7 @@ export default {
                     state: this.state_id,
                     city: this.city_id,
                     pincode: this.pincode,
+                    
                 })
                 .then((res) => {
                     console.log(res);

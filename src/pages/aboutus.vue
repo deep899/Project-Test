@@ -23,13 +23,7 @@
     <div class="col-md-8 col-sm-12">
       <p class="text-h4 text-center text-indigo-7">MISSION</p>
       <p>
-        Breaking the industry stereotype and demonstrating measurable results.
-        That's how Kamal Dhari executes digital business empowerment. Every
-        effort at our organizational level has one goal. To add value to our
-        client's business. We are a highly rated agency on Upwork. Yet we get
-        bulk of our clients by referrals. Existing clients referring new leads
-        to us is perhaps the only achievement we cherish. Market reputation is
-        our biggest
+        Breaking the industry stereotype and demonstrating measurable results. That's how Kamal Dhari executes digital business empowerment. Every effort at our organizational level has one goal. To add value to our client's business. We are a highly-rated agency on Upwork. Yet we get the bulk of our clients by referrals. Existing clients referring new leads to us is perhaps the only achievement we cherish. Market reputation is our biggest
       </p>
     </div>
   </div>
@@ -53,7 +47,7 @@
   <!-- Link Mennu Contact Addreess -->
   <div class="row bg-indigo-8 justify-evenly">
     <!-- Infinit ABout -->
-    <infinityabout :lorem="lorem" />
+    <infinityabout lorem="We work with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!" />
 
     <!-- End Infinity About -->
 

@@ -48,6 +48,18 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
+                            <q-input filled v-model="email" label="Business Name *" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
+                            <q-input filled v-model="email" label="Business Gst Number *" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
+                            <q-input filled v-model="email" label="SalesMan Name*" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
                                           <q-input filled v-model="email" label="Email *" lazy-rules :rules="[
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
@@ -578,7 +590,7 @@
       async mounted() {
 
 
-          
+
 
 
         this.id  = this.$route.params.id;
@@ -632,14 +644,7 @@
       row-gap: 10px;
   }
 
-  .name {
-      color: #2f518a;
-      font-size: 35px;
-      text-transform: uppercase;
-
-      grid-row: 1/2;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  }
+    
 
   .info {
       grid-row: 2/3;

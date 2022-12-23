@@ -21,13 +21,7 @@
         class="text-center para-section text-body1"
         style="padding-left: 150px; padding-right: 150px"
       >
-        We provide websites, mobile apps, hybrid apps, digital marketing, SEO,
-        and so on. The facilities serve global companies with 100% satisfaction
-        and numerical evolution. Our proficient staff has up-todate expertise in
-        technology and all possible areas; we update our system regularly. Your
-        digital business path with us would be the perfect one. We look forward
-        to participating in your evolving business journey. We believe in
-        establishing and maintaining longterm relationships with our clients.
+      We provide websites, mobile apps, hybrid apps, digital marketing, SEO, and so on. The facilities serve global companies with 100% satisfaction and numerical evolution. Our proficient staff has up-to-date expertise in technology and all possible areas; we update our system regularly. Your digital business path with us would be the perfect one. We look forward to participating in your evolving business journey. We believe in establishing and maintaining long-term relationships with our clients.
       </p>
     </div>
   </div>

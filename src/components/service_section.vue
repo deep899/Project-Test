@@ -19,10 +19,7 @@
     <div class="col-md-5 col-sm-12 q-ma-lg text-center">
       <p class="text-weight-bold text-h5 text-center">Digital Marketing</p>
       <p>
-        Digital marketing is an aspect of marketing using an online platform. It
-        conveys a promotional message to the targeting audience. Infinitybrain
-        provides branding, advertising, social media & email marketing.
-        Companies can expand their business by promoting it on the internet
+        Digital marketing is an aspect of marketing using an online platform. It conveys a promotional message to the target audience. Infinitybrain provides branding, advertising, social media & email marketing. Companies can expand their business by promoting it on the internet
       </p>
     </div>
   </div>
