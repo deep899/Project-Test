@@ -492,7 +492,7 @@ export default {
                     state: this.state_id,
                     city: this.city_id,
                     pincode: this.pincode,
-                    
+
                 })
                 .then((res) => {
                     console.log(res);
@@ -688,7 +688,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .headingtag {
     text-align: center;
 }
