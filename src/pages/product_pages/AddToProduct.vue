@@ -644,7 +644,7 @@
       row-gap: 10px;
   }
 
-    
+
 
   .info {
       grid-row: 2/3;
