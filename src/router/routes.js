@@ -24,6 +24,11 @@ const routes = [
       // },
       {
 
+        path:"/IbsfPrivacy",name:"privacy1",
+        component:() => import("pages/product_pages/privercy1.vue"),
+      },
+      {
+
         path:"/:id",name:"AddToProduct",
         component:() => import("pages/product_pages/AddToProduct"),
       },
