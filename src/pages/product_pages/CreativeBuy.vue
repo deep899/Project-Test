@@ -1,5 +1,6 @@
 
 <template>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
   <!-- <img  style=" width: 10rem; margin-top: 80%; opacity: 0.5;" src="../../img/ScrollGroup7.png" /> -->
@@ -15,17 +16,18 @@
 </div>
   <div class="row  headers ">
       <div class="postimg text-center " v-for="item in creative1" v-bind:key="item.id">
-        <div class="imgclassUper">
-          <!-- <i class="fa fa-download" >
-          <input  type="button"  value="Download" /></i> -->
-          <Button  @click="downloadImg(remoteURL)"><i class="fa fa-download"></i> &nbsp; Download</Button>
-        </div>
-          <div class="imgclass">
-            <!-- <a id="myAnchor" :href="item.creative" download="w3logo8"> -->
-          <img  :src="item.creative" id="downloadimg"  />
-        <!-- </a> -->
-        </div>
-        </div>
+                <div class="imgclassUper">
+                          <!-- <i class="fa fa-download" >
+                          <input  type="button"  value="Download" /></i> -->
+                          <Button  onmouseover="" class="innerbutton"  @click="downloadImg()"><i class="fa fa-download"></i> &nbsp; Download</Button>
+                </div>
+                  <div class="imgclass">
+                            <!-- <a id="myAnchor" :href="item.creative" download="w3logo8"> -->
+                            <img  :src="item.creative" id="downloadimgs"  />
+
+                            <!-- </a> -->
+                </div>
+      </div>
 
 
 
@@ -108,17 +110,33 @@ import axios from "axios";
         return{
 
           creative1: [],
-          link: 'https://i.imgur.com/lF1GKDt.jpg',
+          // link: 'https://i.imgur.com/lF1GKDt.jpg',
         }
       },
         methods: {
-          remoteURL(link) {
-                          return this.BASE_URL+ link  //link is the image's path fetched from database
-                  },
 
-                  downloadImg(url) {
-                    console.log('downloading', url);
-                    Document.execCommand('SaveAs',true, url);
+
+
+
+                  downloadImg() {
+
+
+                    axios({
+
+                      //url: "https://i.imgur.com/lF1GKDt.jpg",
+                      // url: "https://uatapi.infinitybrains.com/public/api/showcreatives",
+                       url: "https://uatapi.infinitybrains.com/public/storage/creatives/BMdXNjJrzkZgr0jzzHAsX5xZfLsStg.jpg",
+                      method: 'GET',
+                      responseType: 'blob'
+                      }).then((response) => {
+
+                          const url = window.URL.createObjectURL(new Blob([response.data]));
+                          const link = document.createElement("a");
+                          link.href = url;
+                          link.setAttribute("download","file.jpg");
+                          document.body.appendChild(link);
+                          link.click();
+                      });
 
                     },
 
@@ -127,7 +145,13 @@ import axios from "axios";
         },
       mounted(){
 
-
+    //     app.use(function (req, res, next) {
+    // //Enabling CORS
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+    //   next();
+    // });
 
         axios
                   .get('https://uatapi.infinitybrains.com/public/api/showcreatives')
@@ -142,7 +166,14 @@ import axios from "axios";
 </script>
 
 <style>
+.postimg .innerbutton:hover .downloadimg{
 
+  filter: brightness(55%);
+
+  /* color: black; */
+
+
+}
 /* all buton  */
 .btnall{
   margin-left: 1%;
@@ -172,20 +203,15 @@ import axios from "axios";
   } */
   .imgclassUper{
 
+
     position: absolute;
 
     opacity: 0;
     z-index: 1;
     transition: 2sec ease;
-
+    flex-direction: row;
 
   }
-   button:hover .img{
-
-    filter: brightness(55%);
-
-
-}
 
 
   .browse{
@@ -198,6 +224,14 @@ import axios from "axios";
   .postimg:hover .imgclassUper{
     opacity: 1;
     transition: 2sec ease;
+
+  }
+  .postimg:hover .imgclassUper button{
+    opacity: 1;
+    transition: 2sec ease;
+    width: 15vh;
+    align-items: baseline;
+
   }
 
   .imgclassUper:hover .postimg {
