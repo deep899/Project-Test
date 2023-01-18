@@ -14,6 +14,11 @@ const { configure } = require('quasar/wrappers')
 
 module.exports = configure(function (ctx) {
   return {
+    devServer: {
+      proxy: 'https://uatapi.infinitybrains.com/'
+        
+      // proxy:'http://localhost:8081/LozGareLNLEoTnwcOFzZsYwL2Nvqdc.jpg'
+    },
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
     supportTS: false,
 
@@ -80,10 +85,11 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-devServer
     devServer: {
+      // proxy: 'https://uatapi.infinitybrains.com/public/storage/creatives/',
       server: {
         type: 'http'
       },
-      port: 8080,
+      port: 3000,
       open: true // opens browser window automatically
     },
 
