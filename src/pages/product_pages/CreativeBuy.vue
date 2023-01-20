@@ -42,7 +42,7 @@
 
                         <div class="row-2 col-6" style="grid-column: 2/3; ">
                             <h6 class="containstext" style=" grid-column: 1/2;">Contact Number</h6>
-                            <input type="text" placeholder="Contact Number" style=" font-size: 20px;"  />
+                            <input type="text" placeholder="Contact Number" maxlength="10"  style=" font-size: 20px;"  />
                         </div>
 
 
@@ -51,7 +51,7 @@
                             <input type="text" placeholder="Website" style=" font-size: 20px;"  />
                         </div>
 
-                        <Button  style="background-color: #2f518a; color: white; width: 98%; padding: 7px 11px; margin-top: 2.5rem; margin-bottom  : 2.5rem;  "  >SAVE</Button>
+                        <Button  style="background-color: #2f518a; color: white; width: 98%; padding: 7px 11px; margin-top: 2.5rem; margin-bottom  : 2.5rem;  " @click=" Controle()" >SAVE</Button>
 
                     </div>
 
@@ -250,12 +250,61 @@ export default {
     //   }
     // },
     methods: {
+
+      Controle(){
+
+
+let imgelogo = document.getElementById('imgelogo').value;
+
+let Contectnumber = document.getElementById('Contectnumber').value;
+
+let address1 = document.getElementById('address1').value;
+
+let website1 = document.getElementById('website1').value;
+
+
+
+axios
+        .post('https://uatapi.infinitybrains.com/public/api/creativedata', {
+
+            website:website1,
+            address:address1,
+            contact_number:Contectnumber
+
+        },)
+        .then((response) => {
+          console.log(response.data);
+        });
+
+},
       Submitedkey(){
              let keyvalue = document.getElementById("iban").value;
                   // alert("hello");
                   //  keyvalue = this.input.value;
                        let keyoriginalvalue =  keyvalue.replace(/\s/g, '');
 
+
+
+
+                       axios
+            .post('https://uatapi.infinitybrains.com/public/api/checkkey/'+keyoriginalvalue)
+            .then((result) => {
+
+
+
+
+                                          axios
+                                              .get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=1')
+                                              .then((result) => {
+                                                  this.creative1 = result.data.data;
+                                                  this.id1 = result.data.data;
+                                                  let idess = result.data.data;
+
+                                                  // console.log("yourn ", result.data.data);
+
+                                              });
+
+                              })
             },
 
         spacing(){
@@ -387,13 +436,15 @@ export default {
                  idx = idx+1;
 
                 console.log("your button id",idx);
+            axios({
+                url: "https://uatapi.infinitybrains.com/public/api/Download-creative/"+idx,
+                method: 'POST',
 
-                axios.post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
-                      id:[1],
-                      product_key: 'TJQGZcefRYU8KPFN',
-                      responseType: 'blob'
+                responseType: 'blob'
+            }, {
 
-                  }).then((response) => {
+            }).then((response) => {
+
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement("a");
                 link.href = url;
@@ -407,20 +458,14 @@ export default {
     },
 
     mounted() {
-
-
       this.alerted = true;
 
-        axios
-            .get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=1')
-            .then((result) => {
-                this.creative1 = result.data.data;
-                this.id1 = result.data.data;
-                let idess = result.data.data;
 
-                // console.log("yourn ", result.data.data);
 
-            });
+
+
+
+
 
     }
 }

@@ -30,11 +30,17 @@
             <div class="btn">Price : ₹ {{ products.price }}.00<br /></div>
             <div class="q-pa-md q-gutter-sm">
                 <q-btn label="Buy me" color="primary" @click="inception = true" />
+                <router-link to="/CreativeBuy">
+                <q-btn label="ALREADY PURCHESED ?" outline color="primary" @click="" />
+              </router-link>
+            <div style="margin-top: 15%;"></div>
+
 
                 <q-dialog v-model="inception">
                     <q-card>
                         <q-card-section>
                             <div class="text-h6">Buy Now</div>
+
                         </q-card-section>
 
                         <q-card-section class="q-pt-none">
