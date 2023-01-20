@@ -25,6 +25,7 @@
     "razorpay": "^2.8.4",
     "vue": "^3.2.45",
     "vue-loader": "^17.0.1",
+    "vue-popup": "^0.2.14",
     "vue-router": "^4.0.0",
     "vuex": "^4.0.2"
   },

@@ -62,8 +62,31 @@
 
         </q-card>
     </q-dialog>
-    <q-btn style="width: 12rem;" class="btnall" outline color="primary"><i class="fa fa-download  "></i> &nbsp;&nbsp;&nbsp; Download </q-btn>
+    <q-btn  @click="DownloadAllCreative()"   style="width: 12rem;" class="btnall" outline color="primary"><i class="fa fa-download  "></i> &nbsp;&nbsp;&nbsp; Download All </q-btn>
 </div>
+
+<q-dialog v-model="alerted" style="">
+        <q-card style="max-width: 40rem; height: 37rem;" class="cardd">
+          <div  class="Keyproduct" style="align-items: center;justify-content: center; ">
+             <center> <img style="margin-top: 5rem; width:14rem;" src="../../img/IB_KEY/keyy.svg"/>
+
+             <p class="typep">
+
+              "Please enter the 16-digit Key Provided in your purchase confirmation email to acttivate your Digital Services."
+             </p>
+
+            <input id="iban" required minlength="32" placeholder="xxxx xxxx xxxx xxxx"  maxlength="32"  type="text" name="iban"  @click="spacing()"/>
+            <br/>
+            <q-btn  style=" width:25rem ;max-width: 100%; background-color: #2f518a; color: white;   font-size: 1.2rem; " @click="Submitedkey()" >SUBMIT</q-btn>
+          </center>
+          </div>
+
+
+        </q-card>
+    </q-dialog>
+
+
+
 <div class="row  headers ">
     <div class="postimg text-center " v-for="item in creative1" v-bind:key="item.id">
 
@@ -83,9 +106,9 @@
     </div>
 
 </div>
-<div class="row browse">
+<div class="row browse load" id="load1">
 
-    <q-btn style="width: 12rem;" class="btnall" outline color="primary"> &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
+    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click="simulateProgress(0)  , loadmore()"  > &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
 
 </div>
 
@@ -135,9 +158,8 @@ import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
-import {
-    ref
-} from 'vue'
+
+import { ref} from 'vue'
 export default {
 
     name: 'CreativeBuy',
@@ -154,6 +176,9 @@ export default {
     },
 
     data() {
+
+
+
         return {
           showButton: true,
           searchText: '',
@@ -161,15 +186,60 @@ export default {
             searchValue: '',
             creative1: [],
             id:"",
-            buttonindex:[]
+            buttonindex:[],
+            result1:[],
+            secondpagecreative:[],
+            creative2:[]
             // link: 'https://i.imgur.com/lF1GKDt.jpg',
+            ,idess:[],
+            keyvalue:'',
+            keyoriginalvalue:''
+
 
         }
     },
 
     setup() {
+
+
+            const loading = ref([  false,  ])
+    function simulateProgress (number) {
+      // we set loading state
+      loading.value[ number ] = true
+
+      // simulate a delay
+      setTimeout(() => {
+
+
+        //alert('3 seconds have passed!');
+        // anotherpageLoad();
+
+        var divElement = document.getElementById('load1');
+
+            // Get a reference to the parent element
+            var parentElement = divElement.parentNode;
+
+            // Remove the div element from its parent
+            parentElement.removeChild(divElement);
+
+         loading.value[ number ] = false
+        // we're done, we reset loading state
+      }, 30)
+
+        }
+
+
         return {
-            alert: ref(false)
+          // creative1,
+            alert: ref(false),
+            alerted: ref(false),
+         loading ,
+         simulateProgress
+
+
+
+
+
         }
     },
 
@@ -180,19 +250,124 @@ export default {
     //   }
     // },
     methods: {
+      Submitedkey(){
+             let keyvalue = document.getElementById("iban").value;
+                  // alert("hello");
+                  //  keyvalue = this.input.value;
+                       let keyoriginalvalue =  keyvalue.replace(/\s/g, '');
+
+            },
+
+        spacing(){
+
+            var input = document.getElementById("iban");
+
+                            input.onkeydown = function () {
+                         if (input.value.length > 0) {
+
+       if (input.value.length % 4 == 0) {
+                  if(input.value.length <32 ){
+
+
+                    input.value += "    ";
+                      if(input.value.length  == 32 ){
+
+                       //write here to complete 32 key pressed
+
+                      }
+                  }
+        }
+
+    }
+}
+
+        },
+
+
+      DownloadAllCreative(){
+        axios
+                  .post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
+                      id:[1,2,3,4,5,6,7,8,9],
+                      product_key: 'TJQGZcefRYU8KPFN',
+                      responseType: 'blob'
+
+                  },)
+                  .then((response) => {
+                    console.log(response.data);
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'file.zip');
+                    document.body.appendChild(link);
+                    link.click();
+                  });
+
+        // axios({
+        //         // url: 'https://uatapi.infinitybrains.com/public/api/Download-creative?id='+this.idess.id+'&product_key='+this.keyoriginalvalue,
+        //           url: "https://uatapi.infinitybrains.com/public/api/Download-creative?id=2&product_key=TJQGZcefRYU8KPFN",
+
+        //         method: 'POST',
+
+        //         responseType: 'stream'
+        //     }).then((response) => {
+
+        //         const url = window.URL.createObjectURL(new Blob([response.data]));
+        //         const link = document.createElement("a");
+        //         link.href = url;
+        //         link.setAttribute("download");
+        //         document.body.appendChild(link);
+        //         link.click();
+        //     });
+
+      },
+
+
+
+      loadmore(){
+
+
+
+
+
+        axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=2')
+            .then((result) => {
+
+                //console.log(result.data.data);
+                // let secondpagecreative = result.data.data;
+
+                 this.creative1 = result.data.data;
+                // console.log("im creative1",this.creative1);
+                // let creative2  = [this.creative1,secondpagecreative];
+                // console.log("im creative2",creative2.length);
+                //console.log(this.creative1);
+                //alert(creative2[1]);
+                //this.creative1 = creative2;
+
+
+
+            })
+          },
+      //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
+      //   //console.warn(result.data.data);
+      //   // this.listdef1 = resultfinal1.data.data;
+      //   //this.creative1 = resultfinal1.data.data;
+      //   console.log(result1);
+      //   alert(result1);
+      // },
+
+
 
       ginventext(){
 
-        alert(this.searchText);
+        //this alert search creative base alert(this.searchText);
 
 
-        axios
-                  .get('https://uatapi.infinitybrains.com/public/api/showcreatives?search='+this.searchText)
+        axios .get('https://uatapi.infinitybrains.com/public/api/showcreatives?search='+this.searchText)
                   .then((result) => {
 
                     console.log('this searchbar',result.data.data);
 
-                      this.creative1 = result.data.data.creative;
+                      this.creative1 = result.data.data;
 
                   })
 
@@ -212,15 +387,13 @@ export default {
                  idx = idx+1;
 
                 console.log("your button id",idx);
-            axios({
-                url: "https://uatapi.infinitybrains.com/public/api/Download-creative?id="+idx,
-                method: 'POST',
 
-                responseType: 'blob'
-            }, {
+                axios.post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
+                      id:[1],
+                      product_key: 'TJQGZcefRYU8KPFN',
+                      responseType: 'blob'
 
-            }).then((response) => {
-
+                  }).then((response) => {
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement("a");
                 link.href = url;
@@ -236,16 +409,19 @@ export default {
     mounted() {
 
 
+      this.alerted = true;
 
         axios
-            .get('https://uatapi.infinitybrains.com/public/api/showcreatives')
+            .get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=1')
             .then((result) => {
                 this.creative1 = result.data.data;
                 this.id1 = result.data.data;
-                console.log("yourn id",this.id1);
-                console.log("yourn ", result.data.data);
+                let idess = result.data.data;
+
+                // console.log("yourn ", result.data.data);
 
             });
+
     }
 }
 </script>
@@ -416,5 +592,38 @@ input[type=file], select {
     margin-block-end: 0%;
 
     color: #2f518a;
+}
+.Keyproduct{
+
+
+  height: fit-content;
+
+}
+.cardd{
+  margin-top: -1%;
+  margin-left: -1%;
+  background-image: url('../../img/IB_KEY/gt.png');
+
+}
+
+#iban{
+  text-align: center;
+  width: 26rem;
+  max-width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+.typep{
+
+  color: #2f518a;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
+  width: 80%;
+
+
+
 }
 </style>

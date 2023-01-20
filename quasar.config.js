@@ -16,7 +16,7 @@ module.exports = configure(function (ctx) {
   return {
     devServer: {
       proxy: 'https://uatapi.infinitybrains.com/'
-        
+
       // proxy:'http://localhost:8081/LozGareLNLEoTnwcOFzZsYwL2Nvqdc.jpg'
     },
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
