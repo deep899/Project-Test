@@ -2,7 +2,7 @@
 <template>
 <!-- Slider Carousel -->
 
-<img src="../../assets/img/bener.jpg" alt="" style="width: 100%; height: 25rem;">
+<!-- <img src="../../assets/img/bener.jpg" alt="" style="width: 100%; height: 25rem;"> -->
 <!-- Carousel End Here -->
 <!-- OUR PRODUTCS -->
 
@@ -31,7 +31,7 @@
             <div class="q-pa-md q-gutter-sm">
                 <q-btn label="Buy me" color="primary" @click="inception = true" />
                 <router-link to="/CreativeBuy">
-                <q-btn label="ALREADY PURCHESED ?" outline color="primary" @click="" />
+                <q-btn  style="margin-top: 1%;"  label="ALREADY PURCHESED ?" outline color="primary" @click="" />
               </router-link>
             <div style="margin-top: 15%;"></div>
 
@@ -118,7 +118,7 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
-                                        <q-input filled v-model="text" label="Apply Coupon" />
+                                        <q-input filled v-model="text" label="Promocode ?" />
 
                                         <q-btn color="primary" style="width: 95%;  " label="Apply" @click="getDiscount()" />
                                         <q-input filled disable  v-model="final_amount" label="Price : " label-color="black" />
@@ -253,36 +253,14 @@
       <h2>Creative</h2>
 
     </div>
+
     <!-- <div class="carsoule1">
 
                   <div class="carousel_item" style="--i:1">
 
-              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
+
               </div>
 
-              <div class="carousel_item" style="--i:2">
-
-              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-              </div>
-
-              <div class="carousel_item" style="--i:3">
-
-              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-              </div>
-
-              <div class="carousel_item" style="--i:4">
-
-              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-              </div>
-
-              <div class="carousel_item" style="--i:5">
-
-              <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
-              </div>
-
-              <div class="carousel_item" style="--i:6 ">
-
-            <img style="" src="../../img/img1.jpg" alt="" class="carousel-img">
         </div> -->
     <!-- <img src="../../img/Scroll Group 8.jpg" /> -->
     <!-- =======================demo image section===================================== -->

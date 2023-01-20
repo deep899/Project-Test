@@ -7,7 +7,7 @@
   />
 
   <p class="q-mt-lg text-weight-bolder text-center text-indigo-7 text-h4">
-    CAREER AT INFINITY BRAINS
+    CAREERS AT INFINITY BRAINS
   </p>
 
   <thoerysection

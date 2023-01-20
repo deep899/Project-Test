@@ -677,4 +677,12 @@
   .demo {
       grid-row: 4/5;
   }
+  .name {
+    color: #2f518a;
+    font-size: 35px;
+    text-transform: uppercase;
+
+    grid-row: 1/2;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
   </style>

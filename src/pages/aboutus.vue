@@ -104,19 +104,19 @@ export default {
           img: "unsplash.com/720x450",
           heading: "About Us",
           para1:
-            "We, at Inifnity Brains,endevor to offer you the best solutions in order to acquire your maximum satisfaction . ",
+            "We, at InfinityBrains, endeavour to offer you the best solutions in order to acquire your maximum satisfaction. ",
           para2:
             "We are experts in offering effective information Technology We Have Experience in solving problems like web or software development etc",
           para3:
             "We Have Experience in solving problems like web or software development etc",
           para4:
-            "Our experts handle your assigned projects prudently as well We Strive for perfectionsim in this era of Technological",
+            "Our experts handle your assigned projects prudently as well We Strive for perfectionism in this era of Technological",
           para5:
-            "advancement,by providing best plus affordable IT Services to numerous large as well as medium entreprenuers ",
+            "advancement, by providing the best plus affordable IT Services to numerous large as well as medium entrepreneurs ",
           para6:
-            "Everydat we become better & learn the new latest technlogies in the market",
+            "Every day we become better & learn the new latest technologies in the market",
           para7:
-            "Inifnity Brains is a place built by dreamers to make your dreams come   true",
+            "InfinityBrains is a place built by dreamers to make your dreams come true",
         },
       ],
     };
