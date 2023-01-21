@@ -7,17 +7,13 @@
 <div class="text-center titlee name">Creatives</div>
 <div class="row browse">
 
+    <div v-if="showButton">
+        <q-btn style="width: 12rem;" @click="showSearchbar" class="btnall" outline color="primary"><i class="fa-solid fa-magnifying-glass  "></i> &nbsp;&nbsp;&nbsp; SEARCH </q-btn>
+    </div>
 
-
-     <div v-if="showButton">
-    <q-btn style="width: 12rem;"  @click="showSearchbar" class="btnall" outline color="primary"><i class="fa-solid fa-magnifying-glass  "></i> &nbsp;&nbsp;&nbsp; SEARCH </q-btn>
-  </div>
-
-
-  <div v-else>
-    <input type="text" style="margin-top: 1%;"  v-model="searchText" placeholder="Search Creative"
-      class="quasar-searchbar" />
-    <q-btn outline color="primary" style=" margin-top: -2.3rem; margin-right: 5%;  float: right;  "   @click="ginventext()"><i class="fa-solid fa-magnifying-glass  "></i> </q-btn>
+    <div v-else>
+        <input type="text" style="margin-top: 1%;" v-model="searchText" placeholder="Search Creative" class="quasar-searchbar" />
+        <q-btn outline color="primary" style=" margin-top: -2.3rem; margin-right: 5%;  float: right;  " @click="ginventext()"><i class="fa-solid fa-magnifying-glass  "></i> </q-btn>
 
     </div>
     <q-btn style="width: 12rem;" class="btnall" @click="alert = true" outline color="primary"><i class="fa-solid fa-file"></i> &nbsp;&nbsp;&nbsp; FILL YOUR DETAILS </q-btn>
@@ -27,76 +23,69 @@
                 <h4 style=" margin-block-end:0%;   margin-top: 0%; font-size: x-large; width: 100%; background-color:#2f518a; color: white;">FIll YOUR COMPANY DETAILS </h4>
             </center>
             <div style="margin-top: 5%; display: flex;justify-content: center;">
-                    <div class="row " style=" width: 90%; display: flex; align-items: center;">
-                        <div class="row-1 col-6" style="grid-column: 2/3; ">
-                            <h6 class="containstext" style=" grid-column: 1/2;">Your Company Logo</h6>
-                            <!-- <label for="files" class="btn">Select Image</label> -->
-                            <!-- <input id="files" placeholder="Your Company Logo" style="visibility:hidden;" type="file"> -->
-                            <input type="file"  title="" accept="image/*"  />
-                        </div>
-
-                        <div class="row-1 col-6" >
-                            <h6 class="containstext"   >Address</h6>
-                            <input type="text" placeholder="Address" style=" font-size: 20px;" />
-                        </div>
-
-                        <div class="row-2 col-6" style="grid-column: 2/3; ">
-                            <h6 class="containstext" style=" grid-column: 1/2;">Contact Number</h6>
-                            <input type="text" placeholder="Contact Number" maxlength="10"  style=" font-size: 20px;"  />
-                        </div>
-
-
-                        <div class="row-2 col-6" >
-                            <h6 class="containstext" style="" >Website</h6>
-                            <input type="text" placeholder="Website" style=" font-size: 20px;"  />
-                        </div>
-
-                        <Button  style="background-color: #2f518a; color: white; width: 98%; padding: 7px 11px; margin-top: 2.5rem; margin-bottom  : 2.5rem;  " @click=" Controle()" >SAVE</Button>
-
+                <div class="row " style=" width: 90%; display: flex; align-items: center;">
+                    <div class="row-1 col-6" style="grid-column: 2/3; ">
+                        <h6 class="containstext" style=" grid-column: 1/2;">Your Company Logo</h6>
+                        <!-- <label for="files" class="btn">Select Image</label> -->
+                        <!-- <input id="files" placeholder="Your Company Logo" style="visibility:hidden;" type="file"> -->
+                        <input type="file" title="" accept="image/*" />
                     </div>
 
+                    <div class="row-1 col-6">
+                        <h6 class="containstext">Address</h6>
+                        <input type="text" placeholder="Address" style=" font-size: 20px;" />
+                    </div>
 
+                    <div class="row-2 col-6" style="grid-column: 2/3; ">
+                        <h6 class="containstext" style=" grid-column: 1/2;">Contact Number</h6>
+                        <input type="text" placeholder="Contact Number" maxlength="10" style=" font-size: 20px;" />
+                    </div>
+
+                    <div class="row-2 col-6">
+                        <h6 class="containstext" style="">Website</h6>
+                        <input type="text" placeholder="Website" style=" font-size: 20px;" />
+                    </div>
+
+                    <Button style="background-color: #2f518a; color: white; width: 98%; padding: 7px 11px; margin-top: 2.5rem; margin-bottom  : 2.5rem;  " @click=" Controle()">SAVE</Button>
+
+                </div>
 
             </div>
 
-
         </q-card>
     </q-dialog>
-    <q-btn  @click="DownloadAllCreative()"   style="width: 12rem;" class="btnall" outline color="primary"><i class="fa fa-download  "></i> &nbsp;&nbsp;&nbsp; Download All </q-btn>
+    <q-btn @click="DownloadAllCreative()" style="width: 12rem;" class="btnall" outline color="primary"><i class="fa fa-download  "></i> &nbsp;&nbsp;&nbsp; Download All </q-btn>
 </div>
 
 <q-dialog v-model="alerted" style="">
-        <q-card style="max-width: 40rem; height: 37rem;" class="cardd">
-          <div  class="Keyproduct" style="align-items: center;justify-content: center; ">
-             <center> <img style="margin-top: 5rem; width:14rem;" src="../../img/IB_KEY/keyy.svg"/>
+    <q-card style="max-width: 40rem; height: 37rem;" class="cardd">
+        <div class="Keyproduct" style="align-items: center;justify-content: center; ">
+            <center> <img style="margin-top: 5rem; width:14rem;" src="../../img/IB_KEY/keyy.svg" />
 
-             <p class="typep">
+                <p class="typep">
 
-              "Please enter the 16-digit Key Provided in your purchase confirmation email to acttivate your Digital Services."
-             </p>
+                    "Please enter the 16-digit Key Provided in your purchase confirmation email to acttivate your Digital Services."
+                </p>
 
-            <input id="iban" required minlength="32" placeholder="xxxx xxxx xxxx xxxx"  maxlength="32"  type="text" name="iban"  @click="spacing()"/>
-            <br/>
-            <q-btn  style=" width:25rem ;max-width: 100%; background-color: #2f518a; color: white;   font-size: 1.2rem; " @click="Submitedkey()" >SUBMIT</q-btn>
-          </center>
-          </div>
+                <input id="iban" required minlength="32" placeholder="xxxx xxxx xxxx xxxx" maxlength="32" type="text" name="iban" @click="spacing()" />
+                <br />
+                <q-btn style=" width:25rem ;max-width: 100%; background-color: #2f518a; color: white;   font-size: 1.2rem; " @click="Submitedkey()">SUBMIT</q-btn>
+            </center>
+        </div>
 
-
-        </q-card>
-    </q-dialog>
-
-
+    </q-card>
+</q-dialog>
 
 <div class="row  headers ">
     <div class="postimg text-center " v-for="item in creative1" v-bind:key="item.id">
 
-        <div class="imgclassUper" v-for="(grp, idx) in item.id" >
+        <div class="imgclassUper" v-for="(grp, idx) in item.id">
 
             <!-- <i class="fa fa-download" >
                           <input  type="button"  value="Download" /></i> -->
-            <Button  class="innerbutton"  @click="downloadImg(idx)"><i class="fa fa-download"></i> &nbsp; Download</Button>
+            <Button class="innerbutton" @click="downloadImg(idx)"><i class="fa fa-download"></i> &nbsp; Download</Button>
 
-          </div>
+        </div>
         <div class="imgclass">
             <!-- <a id="myAnchor" :href="item.creative" download="w3logo8"> -->
             <img :src="item.creative" v-bind="creativeurls" id="downloadimgs" />
@@ -108,7 +97,7 @@
 </div>
 <div class="row browse load" id="load1">
 
-    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click="simulateProgress(0)  , loadmore()"  > &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
+    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click="simulateProgress(0)  , loadmore()"> &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
 
 </div>
 
@@ -159,7 +148,9 @@ import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
 
-import { ref} from 'vue'
+import {
+    ref
+} from 'vue'
 export default {
 
     name: 'CreativeBuy',
@@ -177,68 +168,60 @@ export default {
 
     data() {
 
-
-
         return {
-          showButton: true,
-          searchText: '',
+            showButton: true,
+            searchText: '',
 
             searchValue: '',
             creative1: [],
-            id:"",
-            buttonindex:[],
-            result1:[],
-            secondpagecreative:[],
-            creative2:[]
-            // link: 'https://i.imgur.com/lF1GKDt.jpg',
-            ,idess:[],
-            keyvalue:'',
-            keyoriginalvalue:''
-
+            id: "",
+            buttonindex: [],
+            result1: [],
+            secondpagecreative: [],
+            creative2: []
+                // link: 'https://i.imgur.com/lF1GKDt.jpg',
+                ,
+            idess: [],
+            keyvalue: '',
+            keyoriginalvalue: ''
 
         }
     },
 
     setup() {
 
+        const loading = ref([false, ])
 
-            const loading = ref([  false,  ])
-    function simulateProgress (number) {
-      // we set loading state
-      loading.value[ number ] = true
+        function simulateProgress(number) {
+            // we set loading state
+            loading.value[number] = true
 
-      // simulate a delay
-      setTimeout(() => {
+            // simulate a delay
+            setTimeout(() => {
 
+                //alert('3 seconds have passed!');
+                // anotherpageLoad();
 
-        //alert('3 seconds have passed!');
-        // anotherpageLoad();
+                var divElement = document.getElementById('load1');
 
-        var divElement = document.getElementById('load1');
+                // Get a reference to the parent element
+                var parentElement = divElement.parentNode;
 
-            // Get a reference to the parent element
-            var parentElement = divElement.parentNode;
+                // Remove the div element from its parent
+                parentElement.removeChild(divElement);
 
-            // Remove the div element from its parent
-            parentElement.removeChild(divElement);
-
-         loading.value[ number ] = false
-        // we're done, we reset loading state
-      }, 30)
+                loading.value[number] = false
+                // we're done, we reset loading state
+            }, 30)
 
         }
 
-
         return {
-          // creative1,
+            // creative1,
             alert: ref(false),
             alerted: ref(false),
-         loading ,
-         simulateProgress
-
-
-
-
+            loading,
+            simulateProgress
 
         }
     },
@@ -251,97 +234,86 @@ export default {
     // },
     methods: {
 
-      Controle(){
+        Controle() {
 
+            let imgelogo = document.getElementById('imgelogo').value;
 
-let imgelogo = document.getElementById('imgelogo').value;
+            let Contectnumber = document.getElementById('Contectnumber').value;
 
-let Contectnumber = document.getElementById('Contectnumber').value;
+            let address1 = document.getElementById('address1').value;
 
-let address1 = document.getElementById('address1').value;
+            let website1 = document.getElementById('website1').value;
 
-let website1 = document.getElementById('website1').value;
+            axios
+                .post('https://uatapi.infinitybrains.com/public/api/creativedata', {
 
+                    website: website1,
+                    address: address1,
+                    contact_number: Contectnumber
 
+                }, )
+                .then((response) => {
+                    console.log(response.data);
+                });
 
-axios
-        .post('https://uatapi.infinitybrains.com/public/api/creativedata', {
+        },
+        Submitedkey() {
+            let keyvalue = document.getElementById("iban").value;
+            // alert("hello");
+            //  keyvalue = this.input.value;
+            let keyoriginalvalue = keyvalue.replace(/\s/g, '');
 
-            website:website1,
-            address:address1,
-            contact_number:Contectnumber
+            axios
+                .post('https://uatapi.infinitybrains.com/public/api/checkkey/' + keyoriginalvalue)
+                .then((result) => {
 
-        },)
-        .then((response) => {
-          console.log(response.data);
-        });
+                    axios
+                        .get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=1')
+                        .then((result) => {
+                            this.creative1 = result.data.data;
+                            this.id1 = result.data.data;
+                            let idess = result.data.data;
 
-},
-      Submitedkey(){
-             let keyvalue = document.getElementById("iban").value;
-                  // alert("hello");
-                  //  keyvalue = this.input.value;
-                       let keyoriginalvalue =  keyvalue.replace(/\s/g, '');
+                            // console.log("yourn ", result.data.data);
 
+                        });
 
+                })
+        },
 
-
-                       axios
-            .post('https://uatapi.infinitybrains.com/public/api/checkkey/'+keyoriginalvalue)
-            .then((result) => {
-
-
-
-
-                                          axios
-                                              .get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=1')
-                                              .then((result) => {
-                                                  this.creative1 = result.data.data;
-                                                  this.id1 = result.data.data;
-                                                  let idess = result.data.data;
-
-                                                  // console.log("yourn ", result.data.data);
-
-                                              });
-
-                              })
-            },
-
-        spacing(){
+        spacing() {
 
             var input = document.getElementById("iban");
 
-                            input.onkeydown = function () {
-                         if (input.value.length > 0) {
+            input.onkeydown = function () {
+                if (input.value.length > 0) {
 
-       if (input.value.length % 4 == 0) {
-                  if(input.value.length <32 ){
+                    if (input.value.length % 4 == 0) {
+                        if (input.value.length < 32) {
 
+                            input.value += "    ";
+                            if (input.value.length == 32) {
 
-                    input.value += "    ";
-                      if(input.value.length  == 32 ){
+                                //write here to complete 32 key pressed
 
-                       //write here to complete 32 key pressed
+                            }
+                        }
+                    }
 
-                      }
-                  }
-        }
-
-    }
-}
+                }
+            }
 
         },
 
+        DownloadAllCreative() {
+            axios
+                .post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
+                    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    product_key: 'TJQGZcefRYU8KPFN',
+                    responseType: 'blob'
 
-      DownloadAllCreative(){
-        axios
-                  .post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
-                      id:[1,2,3,4,5,6,7,8,9],
-                      product_key: 'TJQGZcefRYU8KPFN',
-                      responseType: 'blob'
-
-                  },)
-                  .then((response) => {
+                }, )
+                .then((response) => {
                     console.log(response.data);
                     const url = window.URL.createObjectURL(new Blob([response.data]));
                     const link = document.createElement('a');
@@ -349,95 +321,82 @@ axios
                     link.setAttribute('download', 'file.zip');
                     document.body.appendChild(link);
                     link.click();
-                  });
+                });
 
-        // axios({
-        //         // url: 'https://uatapi.infinitybrains.com/public/api/Download-creative?id='+this.idess.id+'&product_key='+this.keyoriginalvalue,
-        //           url: "https://uatapi.infinitybrains.com/public/api/Download-creative?id=2&product_key=TJQGZcefRYU8KPFN",
+            // axios({
+            //         // url: 'https://uatapi.infinitybrains.com/public/api/Download-creative?id='+this.idess.id+'&product_key='+this.keyoriginalvalue,
+            //           url: "https://uatapi.infinitybrains.com/public/api/Download-creative?id=2&product_key=TJQGZcefRYU8KPFN",
 
-        //         method: 'POST',
+            //         method: 'POST',
 
-        //         responseType: 'stream'
-        //     }).then((response) => {
+            //         responseType: 'stream'
+            //     }).then((response) => {
 
-        //         const url = window.URL.createObjectURL(new Blob([response.data]));
-        //         const link = document.createElement("a");
-        //         link.href = url;
-        //         link.setAttribute("download");
-        //         document.body.appendChild(link);
-        //         link.click();
-        //     });
+            //         const url = window.URL.createObjectURL(new Blob([response.data]));
+            //         const link = document.createElement("a");
+            //         link.href = url;
+            //         link.setAttribute("download");
+            //         document.body.appendChild(link);
+            //         link.click();
+            //     });
 
-      },
+        },
 
+        loadmore() {
 
+            axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=2')
+                .then((result) => {
 
-      loadmore(){
+                    //console.log(result.data.data);
+                    // let secondpagecreative = result.data.data;
 
+                    this.creative1 = result.data.data;
+                    // console.log("im creative1",this.creative1);
+                    // let creative2  = [this.creative1,secondpagecreative];
+                    // console.log("im creative2",creative2.length);
+                    //console.log(this.creative1);
+                    //alert(creative2[1]);
+                    //this.creative1 = creative2;
 
+                })
+        },
+        //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
+        //   //console.warn(result.data.data);
+        //   // this.listdef1 = resultfinal1.data.data;
+        //   //this.creative1 = resultfinal1.data.data;
+        //   console.log(result1);
+        //   alert(result1);
+        // },
 
+        ginventext() {
 
+            //this alert search creative base alert(this.searchText);
 
-        axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=2')
-            .then((result) => {
+            axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?search=' + this.searchText)
+                .then((result) => {
 
-                //console.log(result.data.data);
-                // let secondpagecreative = result.data.data;
+                    console.log('this searchbar', result.data.data);
 
-                 this.creative1 = result.data.data;
-                // console.log("im creative1",this.creative1);
-                // let creative2  = [this.creative1,secondpagecreative];
-                // console.log("im creative2",creative2.length);
-                //console.log(this.creative1);
-                //alert(creative2[1]);
-                //this.creative1 = creative2;
+                    this.creative1 = result.data.data;
 
+                })
 
-
-            })
-          },
-      //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
-      //   //console.warn(result.data.data);
-      //   // this.listdef1 = resultfinal1.data.data;
-      //   //this.creative1 = resultfinal1.data.data;
-      //   console.log(result1);
-      //   alert(result1);
-      // },
-
-
-
-      ginventext(){
-
-        //this alert search creative base alert(this.searchText);
-
-
-        axios .get('https://uatapi.infinitybrains.com/public/api/showcreatives?search='+this.searchText)
-                  .then((result) => {
-
-                    console.log('this searchbar',result.data.data);
-
-                      this.creative1 = result.data.data;
-
-                  })
-
-
-      },
-            showSearchbar() {
+        },
+        showSearchbar() {
             this.showButton = false;
-          },
-          hideSearchbar() {
+        },
+        hideSearchbar() {
             this.showButton = true;
             this.searchValue = '';
-          },
-
+        },
 
         downloadImg(idx) {
 
-                 idx = idx+1;
+            idx = idx + 1;
 
-                console.log("your button id",idx);
+            console.log("your button id", idx);
             axios({
-                url: "https://uatapi.infinitybrains.com/public/api/Download-creative/"+idx,
+                url: "https://uatapi.infinitybrains.com/public/api/Download-creative/" + idx,
                 method: 'POST',
 
                 responseType: 'blob'
@@ -458,14 +417,7 @@ axios
     },
 
     mounted() {
-      this.alerted = true;
-
-
-
-
-
-
-
+        this.alerted = true;
 
     }
 }
@@ -473,38 +425,40 @@ axios
 
 <style>
 .quasar-searchbar {
-  width: 45rem;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid rgb(72, 68, 175);
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  border-color: #2f518a;
+    width: 45rem;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid rgb(72, 68, 175);
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    border-color: #2f518a;
 }
 
-input[type=text], select {
+input[type=text],
+select {
     margin-top: 0%;
-  width: 95%;
-  padding: 7px 14px;
+    width: 95%;
+    padding: 7px 14px;
 
-  display: inline-block;
-  border: 1px solid #ccc;
-  /* border-radius: 4px; */
-  box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid #ccc;
+    /* border-radius: 4px; */
+    box-sizing: border-box;
 }
 
-input[type=file], select {
+input[type=file],
+select {
     margin-top: 0%;
-  width: 95%;
-  /* padding: 12px 20px; */
+    width: 95%;
+    /* padding: 12px 20px; */
 
     font-size: 14px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
- ::file-selector-button{
+::file-selector-button {
 
     float: right;
     padding: 1em;
@@ -513,8 +467,6 @@ input[type=file], select {
     color: white;
 }
 
-
-
 .postimg .innerbutton:hover .downloadimg {
 
     filter: brightness(55%);
@@ -522,8 +474,6 @@ input[type=file], select {
     /* color: black; */
 
 }
-
-
 
 /* all buton  */
 .btnall {
@@ -632,43 +582,43 @@ input[type=file], select {
 
 /* this is header  */
 
-.containstext{
+.containstext {
     margin-block-start: 3%;
     margin-block-end: 0%;
 
     color: #2f518a;
 }
-.Keyproduct{
 
+.Keyproduct {
 
-  height: fit-content;
-
-}
-.cardd{
-  margin-top: -1%;
-  margin-left: -1%;
-  background-image: url('../../img/IB_KEY/gt.png');
+    height: fit-content;
 
 }
 
-#iban{
-  text-align: center;
-  width: 26rem;
-  max-width: 100%;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  font-weight: bold;
+.cardd {
+    margin-top: -1%;
+    margin-left: -1%;
+    background-image: url('../../img/IB_KEY/gt.png');
+
 }
-.typep{
 
-  color: #2f518a;
-  font-size: 1.5rem;
-  margin-top: 3rem;
-  text-align: center;
-  width: 80%;
+#iban {
+    text-align: center;
+    width: 26rem;
+    max-width: 100%;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-weight: bold;
+}
 
+.typep {
 
+    color: #2f518a;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    text-align: center;
+    width: 80%;
 
 }
 </style>
