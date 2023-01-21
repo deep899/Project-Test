@@ -486,6 +486,7 @@ export default {
                 })
                 .then((result) => {
                     this.Dis = result.data.data;
+
                     console.log(this.Dis);
                     this.final_amount = this.Dis.price;
                     this.sgst = this.Dis.sgst;
