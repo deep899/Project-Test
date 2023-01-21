@@ -118,7 +118,17 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
-                                        <q-input filled v-model="text" label="Promocode ?" />
+                                         <select style="
+                                                                width: 95%;
+                                                                height: 48px;
+                                                                  font-size: 1rem;
+                                                                " class="form-select" aria-required="true" aria-invalid="false" id="optionsOfcode" required>
+
+                                            <option value="" disabled selected>Promocode</option>
+                                            <option v-for="item in optionse" :value="item.code" v-bind:key="item.id">
+                                                {{ item.code }}
+                                            </option>
+                                        </select>
 
                                         <q-btn color="primary" style="width: 95%;  " label="Apply" @click="getDiscount()" />
                                         <q-input filled disable  v-model="final_amount" label="Price : " label-color="black" />
@@ -529,12 +539,15 @@ export default {
         },
 
         getDiscount() {
+          let naming =  document.getElementById('optionsOfcode').value;
+            console.log(naming);
             axios
-                .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/13', {
-                    code: this.text
+                .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/' + this.id, {
+                    code: naming
                 })
                 .then((result) => {
                     this.Dis = result.data.data;
+
                     console.log(this.Dis);
                     this.final_amount = this.Dis.price;
                     this.sgst = this.Dis.sgst;
