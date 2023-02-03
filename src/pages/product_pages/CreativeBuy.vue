@@ -16,8 +16,7 @@
         <q-btn outline color="primary" style=" margin-top: -2.3rem; margin-right: 5%;  float: right;  " @click="ginventext()"><i class="fa-solid fa-magnifying-glass  "></i> </q-btn>
 
     </div>
-    <q-btn style="width: 12rem;" class="btnall" @click="alert = true" outline color="primary"><i class="fa-solid fa-file"></i> &nbsp;&nbsp;&nbsp; FILL YOUR DETAILS </q-btn>
-    <q-dialog v-model="alert">
+       <q-dialog v-model="alert">
         <q-card style="max-width: 60rem;  ">
             <center>
                 <h4 style=" margin-block-end:0%;   margin-top: 0%; font-size: x-large; width: 100%; background-color:#2f518a; color: white;">FIll YOUR COMPANY DETAILS </h4>
@@ -78,24 +77,26 @@
 
 <div class="row  headers ">
     <div class="postimg text-center flex " v-for="item in creative1" v-bind:key="item.id">
-     
+
         <div class="imgclassUper" v-for="(grp , idx) in item.id"  >
 
-            <!-- <i class="fa fa-download" >
-                          <input  type="button"  value="Download" /></i> -->
             <Button class="innerbutton" @click="downloadImg(idx)"><i class="fa fa-download"></i> &nbsp; Download</Button>
 
         </div>
+        <!-- <canvas style="width: 100%; height: 200%;">
+
+    </canvas> -->
         <div class="imgclass">
-            <!-- <a id="myAnchor" :href="item.creative" download="w3logo8"> -->
-            <!-- <img style="width: 5%;" src="../../assets/img/img1.jpg"  /> -->
+
 
             <img :src="item.creative" v-bind="creativeurls" id="downloadimgs" />
 
-            <!-- </a> -->
         </div>
 
+
     </div>
+
+    <!-- {{ this.canvas }} -->
 
 </div>
 <div class="row browse load" id="load1">
@@ -150,6 +151,7 @@ import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
+import { createCanvas } from 'canvas';
 
 import {
     ref
@@ -398,6 +400,7 @@ export default {
 
         downloadImg(idx) {
 
+
             idx = idx + 1;
 
             console.log("your button id", idx);
@@ -424,7 +427,19 @@ export default {
     },
 
     mounted() {
-        this.alerted = true;
+        // this.alerted = true;
+
+        // let canvas = document.createElement('canvas');
+
+        //   // Get the image element
+        //   let img = document.getElementById('downloadimgs');
+
+        //   let ctx = canvas.getContext('2d');
+        //   ctx.drawImage(img, 0, 0);
+        //   // let logo = document.createElement('img');
+        //   // logo.src = 'src/img/IB_logo.png';
+        //   ctx.drawImage(logo, canvas.width - logo.width, 0);
+        //   document.body.appendChild(canvas);
 
     }
 }

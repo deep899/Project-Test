@@ -668,7 +668,7 @@ export default {
 
             document.getElementById("hash").value = hash;
 
-            // document.getElementById("paymentForm").submit();
+            document.getElementById("paymentForm").submit();
         },
         confirmBuy() {
             this.loading = true;
