@@ -427,7 +427,7 @@ export default {
     },
 
     mounted() {
-        // this.alerted = true;
+        this.alerted = true;
 
         // let canvas = document.createElement('canvas');
 
