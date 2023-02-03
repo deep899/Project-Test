@@ -31,10 +31,9 @@
             <div class="q-pa-md q-gutter-sm">
                 <q-btn label="Buy me" color="primary" @click="inception = true" />
                 <router-link to="/CreativeBuy">
-                <q-btn  style="margin-top: 1%;"  label="ALREADY PURCHESED ?" outline color="primary" @click="" />
-              </router-link>
-            <div style="margin-top: 15%;"></div>
-
+                    <q-btn style="margin-top: 1%;" label="ALREADY PURCHESED ?" outline color="primary" @click="" />
+                </router-link>
+                <div style="margin-top: 15%;"></div>
 
                 <q-dialog v-model="inception">
                     <q-card>
@@ -55,18 +54,9 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
-                            <q-input filled v-model="B_Name" label="Business Name *" lazy-rules :rules="[
-                              (val) =>
-                                (val && val.length > 0) || 'Please type something',
-                            ]" />
-                            <q-input filled v-model="B_Gst_N" label="Business Gst Number *" lazy-rules :rules="[
-                              (val) =>
-                                (val && val.length > 0) || 'Please type something',
-                            ]" />
-                            <q-input filled v-model="S_Name" label="SalesMan Name*" lazy-rules :rules="[
-                              (val) =>
-                                (val && val.length > 0) || 'Please type something',
-                            ]" />
+                                        <q-input filled v-model="B_Name" label="Business Name *" />
+                                        <q-input filled v-model="B_Gst_N" label="Business Gst Number *" />
+                                        <q-input filled v-model="S_Name" label="SalesManager Name*" />
 
                                         <q-input filled v-model="email" label="Email *" lazy-rules :rules="[
                               (val) =>
@@ -80,6 +70,16 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
+                                        <q-input filled v-model="Website" label="Web Site *" lazy-rules :rules="[
+                              (val) =>
+                                (val && val.length > 0) || 'Please type something',
+                            ]" />
+
+                                        <q-file filled v-model="CompanyImage" label="Company Logo">
+                                            <template v-slot:prepend>
+                                                <q-icon name="cloud_upload" />
+                                            </template>
+                                        </q-file>
 
                                         <select style="
                               width: 95%;
@@ -118,7 +118,7 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
-                                         <select style="
+                                        <select style="
                                                                 width: 95%;
                                                                 height: 48px;
                                                                   font-size: 1rem;
@@ -131,11 +131,11 @@
                                         </select>
 
                                         <q-btn color="primary" style="width: 95%;  " label="Apply" @click="getDiscount()" />
-                                        <q-input filled disable  v-model="final_amount" label="Price : " label-color="black" />
-                                        <q-input filled disable  v-model="sgst" label="SGST : " label-color="black" />
-                                        <q-input filled disable  v-model="cgst" label="CGST : " label-color="black" />
-                                        <q-input filled disable  v-model="discount" label="Total Discount : " label-color="black" />
-                                        <q-input filled disable  v-model="amount_pay" label="Total Amount : " label-color="black" />
+                                        <q-input filled disable v-model="final_amount" label="Price : " label-color="black" />
+                                        <q-input filled disable v-model="sgst" label="SGST : " label-color="black" />
+                                        <q-input filled disable v-model="cgst" label="CGST : " label-color="black" />
+                                        <q-input filled disable v-model="discount" label="Total Discount : " label-color="black" />
+                                        <q-input filled disable v-model="amount_pay" label="Total Amount : " label-color="black" />
 
                                         <div>
                                             <!-- <div>
@@ -222,9 +222,7 @@
     <!-- =======================discription section===================================== -->
     <div class="desc">{{ products.desc }}
 
-
-
-            <!-- <div class="carousel_item" style="">
+        <!-- <div class="carousel_item" style="">
 
                 <img style="width:15%; height:15%" src="../../img/img1.jpg" alt="" class="carousel-img">
             </div>
@@ -254,20 +252,16 @@
                 <img style="width:15%; height:15%" src="../../img/img1.jpg" alt="" class="carousel-img">
             </div> -->
 
-
-
     </div>
 
-
     <div class="after_desc name">
-      <h2>Creative</h2>
+        <h2>Creative</h2>
 
     </div>
 
     <!-- <div class="carsoule1">
 
                   <div class="carousel_item" style="--i:1">
-
 
               </div>
 
@@ -328,7 +322,6 @@
 </form>
 </template>
 
-
 <script>
 // import { defineComponent } from 'vue'
 import {
@@ -383,10 +376,14 @@ export default {
             sgst: "",
             cgst: "",
             city_id: "",
-            productInfo: "Salesforce",
+            productInfo: "CreativePurchase",
             paynowbtn: "",
             loading: "",
             price: "",
+            B_Name: "",
+            B_Gst_N: "",
+            S_Name: "",
+            CompanyImage: "",
             // =================================Payment Data================================
             txnid: this.makeid(),
             payuUrl: "https://secure.payu.in/_payment",
@@ -492,6 +489,24 @@ export default {
                     console.log(res);
                     this.paynowbtn = false;
                     localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+
+                    console.log("thisis", res.data.data.id);
+
+                    let user_id = res.data.data.id;
+                    const formDatas = new FormData();
+                    formDatas.append('company_logo',this.CompanyImage);
+                    formDatas.append('address',this.address);
+                    formDatas.append('website',this.Website);
+                    formDatas.append('contact_number', this.mobile_no);
+                    formDatas.append('user_id',user_id);
+                    axios
+                        .post('https://uatapi.infinitybrains.com/public/api/creativedata', formDatas, {
+
+                        }, )
+                        .then((response) => {
+                            console.log("hello",response.data);
+                        });
+
                 })
                 .catch((error) => {
                     this.failMsg = error.response.data.message;
@@ -539,10 +554,10 @@ export default {
         },
 
         getDiscount() {
-          let naming =  document.getElementById('optionsOfcode').value;
+            let naming = document.getElementById('optionsOfcode').value;
             console.log(naming);
             axios
-                .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/' + this.id, {
+                .post('https://uatapi.infinitybrains.com/public/api/checkcoupen/' + 13, {
                     code: naming
                 })
                 .then((result) => {
@@ -653,7 +668,7 @@ export default {
 
             document.getElementById("hash").value = hash;
 
-            document.getElementById("paymentForm").submit();
+            // document.getElementById("paymentForm").submit();
         },
         confirmBuy() {
             this.loading = true;
@@ -662,10 +677,14 @@ export default {
     },
 
     async mounted() {
-
         this.id = this.$route.params.id;
         console.log("name", this.id);
-
+        axios.get('https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' + 13 + '"}')
+            .then(response => {
+                // handle success
+                console.log("helooooooooooo", response.data.data.data[0].code);
+                this.optionse = response.data.data.data;
+            })
         axios
             .get('https://uatapi.infinitybrains.com/public/api/show/13')
             .then((result) => {
@@ -683,7 +702,6 @@ export default {
     },
 };
 </script>
-
 
 <style scoped>
 .headingtag {
@@ -754,48 +772,48 @@ export default {
 .demo {
     grid-row: 4/5;
 }
-.after_desc{
 
-  text-align: center;
+.after_desc {
 
-  grid-row: 4/5;
+    text-align: center;
+
+    grid-row: 4/5;
 }
-.carsoule1{
+
+.carsoule1 {
     margin-left: 43%;
-  grid-row: 5/6;
-  position: relative;
-  width: 300px;
-  height: 200px;
-  transform-style: preserve-3d;
-  transform:perspective(1100px) rotateY(0deg);
-  animation: rotate 12s linear ;
+    grid-row: 5/6;
+    position: relative;
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: perspective(1100px) rotateY(0deg);
+    animation: rotate 12s linear;
 
 }
-.carousel_item{
 
-  position:absolute;
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-  transform-style: preserve-3d;
-  transform: rotateY(calc(var(--i) * 45deg))
-  translateZ(400px);
-}
-.carousel-img{
+.carousel_item {
 
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
 }
 
-@keyframes rotate{
+.carousel-img {
 
-    100%{
-        transform:perspective(1100px) rotateY(360deg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes rotate {
+
+    100% {
+        transform: perspective(1100px) rotateY(360deg);
     }
 }
-
-
-
 </style>

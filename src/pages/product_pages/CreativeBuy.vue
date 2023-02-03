@@ -77,9 +77,9 @@
 </q-dialog>
 
 <div class="row  headers ">
-    <div class="postimg text-center " v-for="item in creative1" v-bind:key="item.id">
-
-        <div class="imgclassUper" v-for="(grp, idx) in item.id">
+    <div class="postimg text-center flex " v-for="item in creative1" v-bind:key="item.id">
+     
+        <div class="imgclassUper" v-for="(grp , idx) in item.id"  >
 
             <!-- <i class="fa fa-download" >
                           <input  type="button"  value="Download" /></i> -->
@@ -88,10 +88,13 @@
         </div>
         <div class="imgclass">
             <!-- <a id="myAnchor" :href="item.creative" download="w3logo8"> -->
+            <!-- <img style="width: 5%;" src="../../assets/img/img1.jpg"  /> -->
+
             <img :src="item.creative" v-bind="creativeurls" id="downloadimgs" />
 
             <!-- </a> -->
         </div>
+
     </div>
 
 </div>
@@ -236,36 +239,39 @@ export default {
 
         Controle() {
 
-            let imgelogo = document.getElementById('imgelogo').value;
+            // let imgelogo = document.getElementById('imgelogo').value;
 
-            let Contectnumber = document.getElementById('Contectnumber').value;
+            // let Contectnumber = document.getElementById('Contectnumber').value;
 
-            let address1 = document.getElementById('address1').value;
+            // let address1 = document.getElementById('address1').value;
 
-            let website1 = document.getElementById('website1').value;
+            // let website1 = document.getElementById('website1').value;
 
-            axios
-                .post('https://uatapi.infinitybrains.com/public/api/creativedata', {
+            // axios
+            //     .post('https://uatapi.infinitybrains.com/public/api/creativedata', {
 
-                    website: website1,
-                    address: address1,
-                    contact_number: Contectnumber
+            //         website: website1,
+            //         address: address1,
+            //         contact_number: Contectnumber
 
-                }, )
-                .then((response) => {
-                    console.log(response.data);
-                });
+            //     }, )
+            //     .then((response) => {
+            //         console.log(response.data);
+            //     });
 
         },
         Submitedkey() {
             let keyvalue = document.getElementById("iban").value;
-            // alert("hello");
-            //  keyvalue = this.input.value;
-            let keyoriginalvalue = keyvalue.replace(/\s/g, '');
+            // // alert("hello");
+             let keyoriginalvalue = keyvalue;
+             alert(keyoriginalvalue);
+            // let keyoriginalvalue = keyvalue.replace(/\s/g, '');
 
             axios
                 .post('https://uatapi.infinitybrains.com/public/api/checkkey/' + keyoriginalvalue)
                 .then((result) => {
+
+                  console.log("hello",result.data.data.company_logo);
 
                     axios
                         .get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=1')
@@ -403,6 +409,7 @@ export default {
             }, {
 
             }).then((response) => {
+
 
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement("a");

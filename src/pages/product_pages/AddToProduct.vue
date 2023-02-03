@@ -196,7 +196,9 @@
                             text-light-500
                             p-1
                           " @click="confirmBuy()">
+
                                         {{ loading ? "Processing..." : "Verify" }}
+
                                     </button>
 
                                 </div>
@@ -591,7 +593,6 @@ export default {
             console.log(data);
 
             document.getElementById("hash").value = hash;
-
             document.getElementById("paymentForm").submit();
         },
         confirmBuy() {
@@ -608,8 +609,8 @@ export default {
 
         axios.get('https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' + this.id + '"}')
             .then(response => {
-                // handle success
-                console.log("helooooooooooo", response.data.data.data[0].code);
+                // // handle success
+                // console.log("helooooooooooo", response.data.data.data[0].code);
                 this.optionse = response.data.data.data;
             })
 
