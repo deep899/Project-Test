@@ -257,6 +257,15 @@
     <div class="after_desc name">
         <h2>Creative</h2>
 
+          <!-- <carousel-3d>
+                <slide :index="0">
+                  Slide 1 Content
+                </slide>
+                <slide :index="1">
+                  Slide 2 Content
+                </slide>
+              </carousel-3d> -->
+
     </div>
 
     <!-- <div class="carsoule1">
@@ -337,6 +346,9 @@ import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
+import Vue from 'vue';
+import { Carousel3d, Slide } from 'vue-carousel-3d';
+
 
 // import productDetails from "src/components/DetailsOfProduct.vue";
 export default {
@@ -351,6 +363,8 @@ export default {
         contactdetail,
         expertservice,
         quicklink,
+        Carousel3d,
+         Slide
         // productDetails,
     },
     data() {

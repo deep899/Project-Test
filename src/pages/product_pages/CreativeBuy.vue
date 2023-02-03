@@ -101,7 +101,7 @@
 </div>
 <div class="row browse load" id="load1">
 
-    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click="simulateProgress(0)  , loadmore()"> &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
+    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click=" loadmore()"> &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
 
 </div>
 
@@ -316,8 +316,8 @@ export default {
         DownloadAllCreative() {
             axios
                 .post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
-                    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                    product_key: 'TJQGZcefRYU8KPFN',
+                    id: 1,
+                    // product_key: 'TJQGZcefRYU8KPFN',
                     responseType: 'blob'
 
                 }, )
@@ -352,7 +352,19 @@ export default {
 
         loadmore() {
 
-            axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=2')
+            let pagescreative = 30;
+            if (pagescreative = 30 ){
+                // pagescreative = 60;
+                pagescreative = pagescreative + pagescreative;
+
+            }
+            else{
+              pagescreative = pagescreative + pagescreative;
+              pagescreative = 4000;
+            }
+
+            // alert(pagescreative);
+            axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?per_page='+pagescreative +'&page=1')
                 .then((result) => {
 
                     //console.log(result.data.data);
@@ -366,7 +378,9 @@ export default {
                     //alert(creative2[1]);
                     //this.creative1 = creative2;
 
+
                 })
+
         },
         //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
         //   //console.warn(result.data.data);
@@ -400,6 +414,30 @@ export default {
 
         downloadImg(idx) {
 
+          // downloadImg() {
+            // Create a canvas element
+//                 let canvas = document.createElement('canvas');
+//                 let ctx = canvas.getContext('2d');
+
+//                 // Create an image element
+//                 let img = document.createElement('img');
+//                 let logo = document.createElement('img');
+//                 img.src = 'https://i.imgur.com/lF1GKDt.jpg';
+//                 logo.src  = 'https://i.imgur.com/lF1GKDt.jpg';
+// // Draw the image on the canvas
+
+//                   ctx.drawImage(img, 0, 0);
+
+//                   // Add your logo to the canvas
+//                   ctx.drawImage(logo, 0, 0); // Add your logo to the canvas
+
+//                   // Generate the download link
+//                   let downloadLink = document.createElement('a');
+//                   downloadLink.href = canvas.toDataURL('image/jpg');
+//                   downloadLink.download = 'your_image.jpg';
+
+//                   // Click the link to download the image
+//                   downloadLink.click();
 
             idx = idx + 1;
 
