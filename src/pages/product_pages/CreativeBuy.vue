@@ -16,43 +16,7 @@
         <q-btn outline color="primary" style=" margin-top: -2.3rem; margin-right: 5%;  float: right;  " @click="ginventext()"><i class="fa-solid fa-magnifying-glass  "></i> </q-btn>
 
     </div>
-       <q-dialog v-model="alert">
-        <q-card style="max-width: 60rem;  ">
-            <center>
-                <h4 style=" margin-block-end:0%;   margin-top: 0%; font-size: x-large; width: 100%; background-color:#2f518a; color: white;">FIll YOUR COMPANY DETAILS </h4>
-            </center>
-            <div style="margin-top: 5%; display: flex;justify-content: center;">
-                <div class="row " style=" width: 90%; display: flex; align-items: center;">
-                    <div class="row-1 col-6" style="grid-column: 2/3; ">
-                        <h6 class="containstext" style=" grid-column: 1/2;">Your Company Logo</h6>
-                        <!-- <label for="files" class="btn">Select Image</label> -->
-                        <!-- <input id="files" placeholder="Your Company Logo" style="visibility:hidden;" type="file"> -->
-                        <input type="file" title="" accept="image/*" />
-                    </div>
-
-                    <div class="row-1 col-6">
-                        <h6 class="containstext">Address</h6>
-                        <input type="text" placeholder="Address" style=" font-size: 20px;" />
-                    </div>
-
-                    <div class="row-2 col-6" style="grid-column: 2/3; ">
-                        <h6 class="containstext" style=" grid-column: 1/2;">Contact Number</h6>
-                        <input type="text" placeholder="Contact Number" maxlength="10" style=" font-size: 20px;" />
-                    </div>
-
-                    <div class="row-2 col-6">
-                        <h6 class="containstext" style="">Website</h6>
-                        <input type="text" placeholder="Website" style=" font-size: 20px;" />
-                    </div>
-
-                    <Button style="background-color: #2f518a; color: white; width: 98%; padding: 7px 11px; margin-top: 2.5rem; margin-bottom  : 2.5rem;  " @click=" Controle()">SAVE</Button>
-
-                </div>
-
-            </div>
-
-        </q-card>
-    </q-dialog>
+      
     <q-btn @click="DownloadAllCreative()" style="width: 12rem;" class="btnall" outline color="primary"><i class="fa fa-download  "></i> &nbsp;&nbsp;&nbsp; Download All </q-btn>
 </div>
 
