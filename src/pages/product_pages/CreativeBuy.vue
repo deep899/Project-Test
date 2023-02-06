@@ -16,43 +16,7 @@
         <q-btn outline color="primary" style=" margin-top: -2.3rem; margin-right: 5%;  float: right;  " @click="ginventext()"><i class="fa-solid fa-magnifying-glass  "></i> </q-btn>
 
     </div>
-       <q-dialog v-model="alert">
-        <q-card style="max-width: 60rem;  ">
-            <center>
-                <h4 style=" margin-block-end:0%;   margin-top: 0%; font-size: x-large; width: 100%; background-color:#2f518a; color: white;">FIll YOUR COMPANY DETAILS </h4>
-            </center>
-            <div style="margin-top: 5%; display: flex;justify-content: center;">
-                <div class="row " style=" width: 90%; display: flex; align-items: center;">
-                    <div class="row-1 col-6" style="grid-column: 2/3; ">
-                        <h6 class="containstext" style=" grid-column: 1/2;">Your Company Logo</h6>
-                        <!-- <label for="files" class="btn">Select Image</label> -->
-                        <!-- <input id="files" placeholder="Your Company Logo" style="visibility:hidden;" type="file"> -->
-                        <input type="file" title="" accept="image/*" />
-                    </div>
-
-                    <div class="row-1 col-6">
-                        <h6 class="containstext">Address</h6>
-                        <input type="text" placeholder="Address" style=" font-size: 20px;" />
-                    </div>
-
-                    <div class="row-2 col-6" style="grid-column: 2/3; ">
-                        <h6 class="containstext" style=" grid-column: 1/2;">Contact Number</h6>
-                        <input type="text" placeholder="Contact Number" maxlength="10" style=" font-size: 20px;" />
-                    </div>
-
-                    <div class="row-2 col-6">
-                        <h6 class="containstext" style="">Website</h6>
-                        <input type="text" placeholder="Website" style=" font-size: 20px;" />
-                    </div>
-
-                    <Button style="background-color: #2f518a; color: white; width: 98%; padding: 7px 11px; margin-top: 2.5rem; margin-bottom  : 2.5rem;  " @click=" Controle()">SAVE</Button>
-
-                </div>
-
-            </div>
-
-        </q-card>
-    </q-dialog>
+      
     <q-btn @click="DownloadAllCreative()" style="width: 12rem;" class="btnall" outline color="primary"><i class="fa fa-download  "></i> &nbsp;&nbsp;&nbsp; Download All </q-btn>
 </div>
 
@@ -101,7 +65,7 @@
 </div>
 <div class="row browse load" id="load1">
 
-    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click="simulateProgress(0)  , loadmore()"> &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
+    <q-btn style="width: 12rem;" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary" @click=" loadmore()"> &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE </q-btn>
 
 </div>
 
@@ -316,8 +280,8 @@ export default {
         DownloadAllCreative() {
             axios
                 .post('https://uatapi.infinitybrains.com/public/api/Download-creative', {
-                    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                    product_key: 'TJQGZcefRYU8KPFN',
+                    id: 1,
+                    // product_key: 'TJQGZcefRYU8KPFN',
                     responseType: 'blob'
 
                 }, )
@@ -352,7 +316,19 @@ export default {
 
         loadmore() {
 
-            axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?page=2')
+            let pagescreative = 30;
+            if (pagescreative = 30 ){
+                // pagescreative = 60;
+                pagescreative = pagescreative + pagescreative;
+
+            }
+            else{
+              pagescreative = pagescreative + pagescreative;
+              pagescreative = 4000;
+            }
+
+            // alert(pagescreative);
+            axios.get('https://uatapi.infinitybrains.com/public/api/showcreatives?per_page='+pagescreative +'&page=1')
                 .then((result) => {
 
                     //console.log(result.data.data);
@@ -366,7 +342,9 @@ export default {
                     //alert(creative2[1]);
                     //this.creative1 = creative2;
 
+
                 })
+
         },
         //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
         //   //console.warn(result.data.data);
@@ -400,6 +378,30 @@ export default {
 
         downloadImg(idx) {
 
+          // downloadImg() {
+            // Create a canvas element
+//                 let canvas = document.createElement('canvas');
+//                 let ctx = canvas.getContext('2d');
+
+//                 // Create an image element
+//                 let img = document.createElement('img');
+//                 let logo = document.createElement('img');
+//                 img.src = 'https://i.imgur.com/lF1GKDt.jpg';
+//                 logo.src  = 'https://i.imgur.com/lF1GKDt.jpg';
+// // Draw the image on the canvas
+
+//                   ctx.drawImage(img, 0, 0);
+
+//                   // Add your logo to the canvas
+//                   ctx.drawImage(logo, 0, 0); // Add your logo to the canvas
+
+//                   // Generate the download link
+//                   let downloadLink = document.createElement('a');
+//                   downloadLink.href = canvas.toDataURL('image/jpg');
+//                   downloadLink.download = 'your_image.jpg';
+
+//                   // Click the link to download the image
+//                   downloadLink.click();
 
             idx = idx + 1;
 
