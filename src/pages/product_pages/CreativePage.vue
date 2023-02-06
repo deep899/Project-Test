@@ -27,7 +27,8 @@
                 {{ products.short_desc }}<br />
                 <!-- <q-rating v-model="ratingModel" size="2em"  color="purple" disable /> -->
             </div>
-            <div class="btn">Price : ₹ {{ products.price }}.00<br /></div>
+            <div class="btn" style="text-decoration: line-through;">Price : ₹ {{ products.price }}.00<br /></div>
+            <div class="" style=" font-size: 18px; font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;  ">Price : ₹ 58982.00<br /></div>
             <div class="q-pa-md q-gutter-sm">
                 <q-btn label="Buy me" color="primary" @click="inception = true" />
                 <router-link to="/CreativeBuy">
@@ -257,9 +258,72 @@
     <div class="after_desc name">
         <h2>Creative</h2>
 
+        <div>
+              <center>
+              <div class="carousel" >
+              <ul class="slides">
+                <input type="radio" name="radio-buttons" id="img-1" checked />
+                <li class="slide-container">
+                  <div class="slide-image">
+                    <img src="https://uatapi.infinitybrains.com/public/storage/creatives/jVjeG1P195Um0axeGaAo3CHmVvUCp6.jpg">
+                  </div>
+                  <div class="carousel-controls">
+                    <label for="img-3" class="prev-slide">
+                      <span>&lsaquo;</span>
+                    </label>
+                    <label for="img-2" class="next-slide">
+                      <span>&rsaquo;</span>
+                    </label>
+                  </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-2" />
+                <li class="slide-container">
+                  <div class="slide-image">
+                    <img src="https://uatapi.infinitybrains.com/public/storage/creatives/LB48sTv83G340ZskspgCokPWIZXm3M.jpg">
+
+                  </div>
+                  <div class="carousel-controls">
+                    <label for="img-1" class="prev-slide">
+                      <span>&lsaquo;</span>
+                    </label>
+                    <label for="img-3" class="next-slide">
+                      <span>&rsaquo;</span>
+                    </label>
+                  </div>
+                </li>
+
+
+                <input type="radio" name="radio-buttons" id="img-3" />
+                <li class="slide-container">
+                  <div class="slide-image">
+                   <div>
+                    <q-btn label="Buy Creative" color="primary" @click="inception = true" />
+
+                   </div>
+                  </div>
+                  <div class="carousel-controls">
+                    <label for="img-2" class="prev-slide">
+                      <span>&lsaquo;</span>
+                    </label>
+                    <label for="img-1" class="next-slide">
+                      <span>&rsaquo;</span>
+                    </label>
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+          </center>
+
+
+        </div>
+
     </div>
 
-    <!-- <div class="carsoule1">
+
+  <!-- <div class="carsoule1">
 
                   <div class="carousel_item" style="--i:1">
 
@@ -338,6 +402,8 @@ import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
 
+
+
 // import productDetails from "src/components/DetailsOfProduct.vue";
 export default {
     name: "hrms",
@@ -350,7 +416,7 @@ export default {
         infinityabout,
         contactdetail,
         expertservice,
-        quicklink,
+        quicklink
         // productDetails,
     },
     data() {
@@ -494,17 +560,17 @@ export default {
 
                     let user_id = res.data.data.id;
                     const formDatas = new FormData();
-                    formDatas.append('company_logo',this.CompanyImage);
-                    formDatas.append('address',this.address);
-                    formDatas.append('website',this.Website);
+                    formDatas.append('company_logo', this.CompanyImage);
+                    formDatas.append('address', this.address);
+                    formDatas.append('website', this.Website);
                     formDatas.append('contact_number', this.mobile_no);
-                    formDatas.append('user_id',user_id);
+                    formDatas.append('user_id', user_id);
                     axios
                         .post('https://uatapi.infinitybrains.com/public/api/creativedata', formDatas, {
 
                         }, )
                         .then((response) => {
-                            console.log("hello",response.data);
+                            console.log("hello", response.data);
                         });
 
                 })
@@ -562,7 +628,6 @@ export default {
                 })
                 .then((result) => {
                     this.Dis = result.data.data;
-
                     console.log(this.Dis);
                     this.final_amount = this.Dis.price;
                     this.sgst = this.Dis.sgst;
@@ -690,7 +755,9 @@ export default {
             .then((result) => {
                 this.products = result.data.data;
 
-            });
+                });
+
+
 
         this.getGstValye();
         //this.getList();
@@ -780,40 +847,140 @@ export default {
     grid-row: 4/5;
 }
 
-.carsoule1 {
-    margin-left: 43%;
-    grid-row: 5/6;
+
+.carousel {
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 20rem;
+    width: 60vh;
+}
+
+ul.slides {
+    display: block;
     position: relative;
-    width: 300px;
-    height: 200px;
-    transform-style: preserve-3d;
-    transform: perspective(1100px) rotateY(0deg);
-    animation: rotate 12s linear;
-
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
 }
 
-.carousel_item {
+.slides * {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
 
+ul.slides input {
+    display: none;
+}
+
+
+.slide-container {
+    display: block;
+}
+
+.slide-image {
+    display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    transform-origin: center;
-    transform-style: preserve-3d;
-    transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+    top: 0;
+    opacity: 0;
+    transition: all .7s ease-in-out;
 }
 
-.carousel-img {
-
-    position: absolute;
-    width: 100%;
+.slide-image img {
+    width: auto;
+    min-width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 
-@keyframes rotate {
-
-    100% {
-        transform: perspective(1100px) rotateY(360deg);
-    }
+.carousel-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    font-size: 100px;
+    line-height: 600px;
+    color: #fff;
 }
+
+.carousel-controls label {
+    display: none;
+    position: absolute;
+    padding: 0 20px;
+    opacity: 0;
+    transition: opacity .2s;
+    cursor: pointer;
+}
+
+.slide-image:hover + .carousel-controls label{
+    opacity: 0.5;
+}
+
+.carousel-controls label:hover {
+    opacity: 1;
+}
+
+.carousel-controls .prev-slide {
+    width: 20%;
+    text-align: left;
+
+    margin-bottom: 50%;
+
+}
+
+.carousel-controls .next-slide {
+    width: 49%;
+    text-align: right;
+    right: 0;
+}
+
+.carousel-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    z-index: 999;
+    text-align: center;
+}
+
+.carousel-dots .carousel-dot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    margin-bottom: 0px;
+}
+
+input:checked + .slide-container .slide-image {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1s ease-in-out;
+}
+
+input:checked + .slide-container .carousel-controls label {
+     display: block;
+}
+
+input#img-1:checked ~ .carousel-dots label#img-dot-1,
+input#img-2:checked ~ .carousel-dots label#img-dot-2,
+input#img-3:checked ~ .carousel-dots label#img-dot-3,
+input#img-4:checked ~ .carousel-dots label#img-dot-4,
+input#img-5:checked ~ .carousel-dots label#img-dot-5,
+input#img-6:checked ~ .carousel-dots label#img-dot-6 {
+	opacity: 1;
+}
+
+
+input:checked + .slide-container .nav label { display: block; }
+
+
 </style>
