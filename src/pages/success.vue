@@ -19,11 +19,6 @@
               font-weight: 400;
 
               line-height: 3rem;
-
-
-
-
-              
               letter-spacing: -0.01562em;
               /* border: 1px solid black !important; */
               color: #00a00b!important;"
