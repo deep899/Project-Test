@@ -426,9 +426,9 @@ export default {
     },
 
     DownloadAllCreative() {
-      // alert(this.mainid);
+      alert(this.mainid);
       let lesthenCreativeId = this.mainid - 15;
-      // alert(lesthenCreativeId);
+      alert(lesthenCreativeId);
       for (let i = this.mainid; i >= lesthenCreativeId; i--) {
         axios
           .get("https://uatapi.infinitybrains.com/public/api/showcreative/" + i)
