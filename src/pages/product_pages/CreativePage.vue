@@ -37,7 +37,7 @@
             font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
           "
         >
-          Price : ₹ 58982.00<br />
+          Price : ₹ {{this.coupon_codePrice }}.00<br />
         </div>
         <div class="q-pa-md q-gutter-sm">
           <q-btn label="Buy me" color="primary" @click="inception = true" />
@@ -52,10 +52,10 @@
           </router-link>
           <div style="margin-top: 15%"></div>
 
-          <q-dialog v-model="inception">
-            <q-card>
+          <q-dialog v-model="inception" >
+            <q-card style="max-width: 50%;">
               <q-card-section>
-                <div class="text-h6">Buy Now</div>
+                <div class="text-h6">Buy Now  <p style="float: right; font-size: 70%; margin-right: 5%; color: red;"> {{ this.MainErrorOfForm}}</p></div>
               </q-card-section>
 
               <q-card-section class="q-pt-none">
@@ -64,7 +64,7 @@
                   class="scroll"
                 >
                   <div class="q-pa-md" style="max-width: 400px">
-                    <q-form class="q-gutter-md" @submit.prevent="sendData">
+                    <q-form class="q-gutter-md" @submit.prevent="BuyConfirmation()">
                       <q-input
                         filled
                         v-model="first_name"
@@ -109,7 +109,7 @@
                       />
                       <q-input
                         filled
-                        type="number"
+                        maxlength="10"
                         v-model="mobile_no"
                         label="Phone no *"
                         lazy-rules
@@ -309,20 +309,20 @@
                         sendData();
                       "
                     /> -->
-                <button
+                <q-btn
                   type="submit"
-                  class="btn shadow-none btn-primary fw-500 font-xss text-primary-500 w-100 mb-2"
+                  class="btn shadow-none "
                   v-on:click="BuyConfirmation()"
                 >
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
-                </button>
+                </q-btn>
 
                 <q-btn flat label="Close" v-close-popup />
               </q-card-actions>
             </q-card>
           </q-dialog>
 
-          <q-dialog
+          <!-- <q-dialog
             v-model="secondDialog"
             persistent
             transition-show="scale"
@@ -350,7 +350,7 @@
                 <q-btn flat label="OK" v-close-popup />
               </q-card-actions>
             </q-card>
-          </q-dialog>
+          </q-dialog> -->
         </div>
       </div>
     </div>
@@ -560,6 +560,7 @@ export default {
       mobile_no: "",
       first_name: "",
       last_name: "",
+      Website:"",
       address: "",
       pincode: "",
       coupon_code: "",
@@ -576,6 +577,8 @@ export default {
       B_Gst_N: "",
       S_Name: "",
       CompanyImage: "",
+      MainErrorOfForm:"",
+      coupon_codePrice:"",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -663,6 +666,7 @@ export default {
     //           },
 
     async BuyConfirmation() {
+
       await axios
         .post("https://uatapi.infinitybrains.com/public/api/payment/13", {
           email: this.email,
@@ -697,10 +701,13 @@ export default {
             )
             .then((response) => {
               console.log("hello", response.data);
+              this.loading = true;
+              // this.hashGen();
             });
         })
         .catch((error) => {
-          this.failMsg = error.response.data.message;
+          this.MainErrorOfForm = error.response.data.message;
+
           this.paynowbtn = false;
         });
       // this.hashGen();
@@ -739,7 +746,7 @@ export default {
           this.sgst = this.Gst.sgst;
           this.cgst = this.Gst.cgst;
           this.discount = this.Gst.discount;
-          this.amount_pay = this.Gst.final_amount;
+          this.amount_pay =  Math.round(this.Gst.final_amount);
           localStorage.setItem("copondetails", JSON.stringify(response.data));
         });
     },
@@ -761,7 +768,7 @@ export default {
           this.sgst = this.Dis.sgst;
           this.cgst = this.Dis.cgst;
           this.discount = this.Dis.discount;
-          this.amount_pay = this.Dis.final_amount;
+          this.amount_pay =  Math.round(this.Dis.final_amount);
           localStorage.setItem("copondetails", JSON.stringify(response.data));
           //this.coupon = response.data;
           // this.Gst.price = this.amount_pay;
@@ -810,30 +817,7 @@ export default {
         });
     },
 
-    async sendData() {
-      this.paynowbtn = true;
-      await axios
-        .post("https://uatapi.infinitybrains.com/public/api/payment/13", {
-          email: this.email,
-          firstname: this.first_name,
-          lastname: this.last_name,
-          phoneno: this.mobile_no,
-          address: this.address,
-          country: this.country_id,
-          state: this.state_id,
-          city: this.city_id,
-          pincode: this.pincode,
-        })
-        .then((res) => {
-          this.failMsg = "";
-          this.paynowbtn = false;
-          localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
-        })
-        .catch((error) => {
-          this.failMsg = error.response.data.message;
-          this.paynowbtn = false;
-        });
-    },
+    
 
     hashGen() {
       var data =
@@ -863,14 +847,25 @@ export default {
 
       document.getElementById("paymentForm").submit();
     },
-    confirmBuy() {
-      this.loading = true;
-      this.hashGen();
-    },
+  
   },
 
   async mounted() {
     this.id = this.$route.params.id;
+    // this.BeforeMountedApplyeCoupenCode();
+    axios
+        .post(
+          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + 13,
+          {
+            code: "Festival Creatives",
+          }
+        )
+        .then((result) => {
+         
+          this.coupon_codePrice =  Math.round(result.data.data.final_amount);
+            console.log("Creative",result.data.data.final_amount);
+  
+        });
     console.log("name", this.id);
     axios
       .get(
@@ -891,7 +886,7 @@ export default {
 
     this.getGstValye();
     //this.getList();
-    this.sendData();
+    // this.sendData();
     this.getData();
 
     //this.hashGen();

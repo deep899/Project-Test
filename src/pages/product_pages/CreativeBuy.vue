@@ -370,40 +370,43 @@ export default {
       let keyvalue = document.getElementById("iban").value;
 
       axios
-        .get(
-          "https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc"
+        .post(
+          "https://uatapi.infinitybrains.com/public/api/checkkey/" + keyvalue
         )
         .then((result) => {
-          this.creative1 = result.data.data;
-          this.id1 = result.data.data;
+          this.alerted = false;
+          this.logoImageUrl = result.data.data.company_logo;
+          this.text11 = result.data.data.address;
+          this.text22 = result.data.data.contact_number;
+          this.text33 = result.data.data.website;
+
+          if (this.text11 == null) {
+            this.text1 = " ";
+          } else {
+            this.text1 = " Address :" + result.data.data.address;
+          }
+          if (this.text22 == null) {
+            this.text2 = " ";
+          } else {
+            this.text2 = "PhNo. :" + result.data.data.contact_number;
+          }
+          if (this.text33 == null) {
+            this.text3 = " ";
+          } else {
+            this.text3 = "Website :" + result.data.data.website;
+          }
 
           axios
-            .post(
-              "https://uatapi.infinitybrains.com/public/api/checkkey/" +
-                keyvalue
+            .get(
+              "https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc"
             )
             .then((result) => {
+              this.creative1 = result.data.data;
+              this.id1 = result.data.data;
               this.alerted = false;
-              this.logoImageUrl = result.data.data.company_logo;
-              this.text11 = result.data.data.address;
-              this.text22 = result.data.data.contact_number;
-              this.text33 = result.data.data.website;
-
-              if (this.text11 == null) {
-                this.text1 = " ";
-              } else {
-                this.text1 = " Address :" + result.data.data.address;
-              }
-              if (this.text22 == null) {
-                this.text2 = " ";
-              } else {
-                this.text2 = "PhNo. :" + result.data.data.contact_number;
-              }
-              if (this.text33 == null) {
-                this.text3 = " ";
-              } else {
-                this.text3 = "Website :" + result.data.data.website;
-              }
+            })
+            .catch((error) => {
+              this.alerted = true;
             });
         })
         .catch((error) => {
