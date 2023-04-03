@@ -28,7 +28,7 @@
           <p  style="width: 70%;color:rgb(65,65,65);;
           /* text-align: justify;   text-justify: inter-word; */
            " class="pl-5 pr-5 ml-5 mr-5 fw-300 text-danger-300 font-xssss mb-4">
-            Your Payment of ₹500.00 has been SuccessFul Payment receipt sent to your email
+            Your Payment of ₹{{this.amount}}.00 has been SuccessFul Payment receipt sent to your email
           </p>
           <!-- <a v-bind:href="'/CreativeBuy'" style="" class="text-dark  ">
           <svg
@@ -78,9 +78,57 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
 
     name: 'AfterBuyCreative',
+    methods:{
+
+
+
+
+    },
+    mounted(){
+
+      this.id  = this.$route.params.id;
+    this.user_id  = this.$route.params.user_id;
+    this.cegst  = this.$route.params.cgst;
+    this.segst  = this.$route.params.sgst;
+    this.discount = this.$route.params.discount;
+    this.amount = this.$route.params.amount_pay;
+    console.log("hello",this.cgst,this.amount);
+
+
+    this.subscribe = JSON.parse(localStorage.getItem("copondetails"));
+    if (this.subscribe) {
+      this.coupon_code = this.text;
+    } else {
+      this.coupon_code = "";
+    }
+
+
+      axios
+        .post("https://uatapi.infinitybrains.com/public/api/paymentstatusupdate", {
+          user_id:this.user_id
+          ,payment_status:"1"
+          ,product_id: this.id
+          ,cgst:this.cegst
+          ,sgst:this.sgst
+          ,discount:this.discount
+          ,amount:this.amount
+
+
+      })
+        .then((result) => {
+
+
+            console.log(result.data);
+
+
+        });
+
+
+    }
 
 
 }
