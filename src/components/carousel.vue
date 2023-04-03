@@ -282,4 +282,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+*{
+  max-width: 100%;
+}
+img{
+  max-width: 100%;
+}
+</style>
 

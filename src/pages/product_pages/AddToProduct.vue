@@ -33,13 +33,16 @@
                 <q-dialog v-model="inception">
                     <q-card>
                         <q-card-section>
-                            <div class="text-h6">Buy Now</div>
+                            <div class="text-h6">Buy Now  <p style="float: right; font-size: 70%; margin-right: 5%; color: red;"> {{ this.MainErrorOfForm}}</p>  </div>
+                            
                         </q-card-section>
 
                         <q-card-section class="q-pt-none">
                             <q-card-section style="max-height: 50vh; text-align: -webkit-center" class="scroll">
                                 <div class="q-pa-md" style="max-width: 400px">
-                                    <q-form class="q-gutter-md" @submit.prevent="sendData">
+                                    
+                                    <q-form class="q-gutter-md" @submit.prevent="BuyConfirmation()">
+                                      
                                         <q-input filled v-model="first_name" label="First name *" lazy-rules :rules="[
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
@@ -48,25 +51,19 @@
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
-                                        <q-input filled v-model="email" label="Business Name *" lazy-rules :rules="[
+                                        <q-input filled v-model="BusinessName" label="Business Name " lazy-rules :rules="[
                               (val) =>
                                 (val && val.length > 0) || 'Please type something',
                             ]" />
-                                        <q-input filled v-model="email" label="Business Gst Number *" lazy-rules :rules="[
-                              (val) =>
-                                (val && val.length > 0) || 'Please type something',
-                            ]" />
-                                        <q-input filled v-model="email" label="SalesMan Name*" lazy-rules :rules="[
-                              (val) =>
-                                (val && val.length > 0) || 'Please type something',
-                            ]" />
+                                        <q-input filled v-model="BusinessGstNumber" label="Business Gst Number"  />
+                                        <q-input filled v-model="SalesManName" label="SalesMan Name"  />
                                         <q-input filled v-model="email" label="Email *" lazy-rules :rules="[
                               (val) =>
-                                (val && val.length > 0) || 'Please type something',
+                                (val && val.length > 0) || 'Please type Email',
                             ]" />
-                                        <q-input filled type="number" v-model="mobile_no" label="Phone no *" lazy-rules :rules="[
+                                        <q-input filled type="text" maxlength="10" v-model="mobile_no" label="Phone no *" lazy-rules :rules="[
                               (val) =>
-                                (val && val.length > 0) || 'Please type something',
+                                (val && val.length > 0) || 'Please type Phone Number',
                             ]" />
                                         <q-input filled v-model="address" label="Address *" lazy-rules :rules="[
                               (val) =>
@@ -164,7 +161,7 @@
                         sendData();
                       "
                     /> -->
-                            <button type="submit" class="
+                            <q-btn type="submit" class="
                         btn
                         shadow-none
                         btn-primary
@@ -175,14 +172,14 @@
                         mb-2
                       " v-on:click="BuyConfirmation()">
                                 {{ paynowbtn ? "Processing..." : "Pay Now" }}
-                            </button>
+                            </q-btn>
 
                             <q-btn flat label="Close" v-close-popup />
                         </q-card-actions>
                     </q-card>
                 </q-dialog>
 
-                <q-dialog v-model="secondDialog" persistent transition-show="scale" transition-hide="scale">
+                <!-- <q-dialog v-model="secondDialog" persistent transition-show="scale" transition-hide="scale">
                     <q-card class="bg-teal text-white" style="width: 300px">
                         <q-card-section>
                             <form class="p-1 m-4 mb-0 text-center d-block form-group" @submit.prevent="sendData">
@@ -210,7 +207,7 @@
                             <q-btn flat label="OK" v-close-popup />
                         </q-card-actions>
                     </q-card>
-                </q-dialog>
+                </q-dialog> -->
             </div>
         </div>
     </div>
@@ -317,6 +314,9 @@ export default {
             mobile_no: "",
             first_name: "",
             last_name: "",
+            SalesManName:"",
+            BusinessGstNumber:"",
+            BusinessName:"",
             address: "",
             pincode: "",
             coupon_code: "",
@@ -330,6 +330,7 @@ export default {
             loading: "",
             price: "",
             code:"",
+            MainErrorOfForm:"",
             // =================================Payment Data================================
             txnid: this.makeid(),
             payuUrl: "https://secure.payu.in/_payment",
@@ -435,12 +436,14 @@ export default {
                     console.log(res);
                     this.paynowbtn = false;
                     localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+                    this.hashGen();
                 })
                 .catch((error) => {
-                    this.failMsg = error.response.data.message;
+                    this.MainErrorOfForm = error.response.data.message;
+                    // alert(error.response.data.message);
                     this.paynowbtn = false;
                 });
-            this.hashGen();
+            // this.hashGen();
 
         },
         makeid() {
@@ -472,8 +475,8 @@ export default {
                     this.final_amount = this.Gst.price;
                     this.sgst = this.Gst.sgst;
                     this.cgst = this.Gst.cgst;
-                    this.discount = this.Gst.discount;
-                    this.amount_pay = this.Gst.final_amount;
+                    this.discount =  Math.round(this.Gst.discount);
+                    this.amount_pay =  Math.round(this.Gst.final_amount);
                     localStorage.setItem("copondetails", JSON.stringify(response.data));
                 });
 
@@ -493,8 +496,8 @@ export default {
                     this.final_amount = this.Dis.price;
                     this.sgst = this.Dis.sgst;
                     this.cgst = this.Dis.cgst;
-                    this.discount = this.Dis.discount;
-                    this.amount_pay = this.Dis.final_amount;
+                    this.discount =  Math.round(this.Dis.discount);
+                    this.amount_pay =  Math.round(this.Dis.final_amount);
                     localStorage.setItem("copondetails", JSON.stringify(response.data));
                     //this.coupon = response.data;
                     // this.Gst.price = this.amount_pay;
@@ -543,30 +546,30 @@ export default {
         //         });
         // },
 
-        async sendData() {
-            this.paynowbtn = true;
-            await axios
-                .post('https://uatapi.infinitybrains.com/public/api/payment/' + this.id, {
-                    email: this.email,
-                    firstname: this.first_name,
-                    lastname: this.last_name,
-                    phoneno: this.mobile_no,
-                    address: this.address,
-                    country: this.country_id,
-                    state: this.state_id,
-                    city: this.city_id,
-                    pincode: this.pincode,
-                })
-                .then((res) => {
-                    this.failMsg = "";
-                    this.paynowbtn = false;
-                    localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
-                })
-                .catch((error) => {
-                    this.failMsg = error.response.data.message;
-                    this.paynowbtn = false;
-                });
-        },
+        // async sendData() {
+        //     this.paynowbtn = true;
+        //     await axios
+        //         .post('https://uatapi.infinitybrains.com/public/api/payment/' + this.id, {
+        //             email: this.email,
+        //             firstname: this.first_name,
+        //             lastname: this.last_name,
+        //             phoneno: this.mobile_no,
+        //             address: this.address,
+        //             country: this.country_id,
+        //             state: this.state_id,
+        //             city: this.city_id,
+        //             pincode: this.pincode,
+        //         })
+        //         .then((res) => {
+        //             this.failMsg = "";
+        //             this.paynowbtn = false;
+        //             localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+        //         })
+        //         .catch((error) => {
+        //             this.failMsg = error.response.data.message;
+        //             this.paynowbtn = false;
+        //         });
+        // },
 
         hashGen() {
             var data =
@@ -623,7 +626,7 @@ export default {
 
         this.getGstValye();
         //this.getList();
-        this.sendData();
+        // this.sendData();
         this.getData();
 
         //this.hashGen();

@@ -47,6 +47,10 @@ const routes = [
       }
       ,
       {
+        path:"/downloadImg",name:"logoimg",
+        component:() => import("pages/product_pages/downloadLogoImg.vue"),
+      },
+      {
         path: "home/User/Success",name: "success",
         component: () => import("pages/success.vue"),
       },
