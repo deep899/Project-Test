@@ -1,5 +1,5 @@
 
-   <template>
+<template>
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"
   />
@@ -30,6 +30,7 @@
         v-model="searchText"
         placeholder="Search Creative"
         class="quasar-searchbar"
+        @change="ginventext()"
       />
       <q-btn
         outline
@@ -105,14 +106,17 @@
       v-for="item in creative1"
       v-bind:key="item.id"
     >
+      <!-- <h4 style="margin-left: 50%; margin-top: 40%; z-index: 5;">hello</h4> -->
+      <h4 class="imgclassUper1 text-center" style="color: white">
+        {{ item.name }}
+      </h4>
       <div class="imgclassUper">
-        <Button class="innerbutton" @click="ShereUrl(item.id)"
+        <Button style="background-color: white; color: black;" class=" btn  innerbutton" @click="ShereUrl(item.id)"
           ><i class="fa fa-download"></i> &nbsp; Download</Button
         >
       </div>
 
-      <div class="imgclass">
-        <!-- <img :src="logoImageUrl"> -->
+      <div class="imgclass" style="margin-left: 0%; z-index: 0">
         <img :src="item.creative" v-bind="creativeurls" id="downloadimgs" />
       </div>
     </div>
@@ -190,6 +194,7 @@
 </template>
 
       <script>
+import { saveAs } from "file-saver";
 import products from "components/Products.vue";
 import carousel from "components/carousel.vue";
 import workInprogress from "components/WorkInProgress.vue";
@@ -240,6 +245,8 @@ export default {
       text1: "",
       text2: "",
       text3: "",
+      DownloadCreativeName: "",
+      AllCreativeUrl: [],
     };
   },
 
@@ -301,9 +308,11 @@ export default {
         .get("https://uatapi.infinitybrains.com/public/api/showcreative/" + id)
         .then((result) => {
           // alert(result.data.data);
-          // console.log(result.data.data);
+          console.log("getImgName", result.data.data.name);
+
           this.mainImageUrl =
             result.data.data.creative + "?not-from-cache-please";
+          this.DownloadCreativeName = result.data.data.name;
           //  this.logoImageUrl = "https://thumbs.dreamstime.com/b/gradient-fire-phoenix-bird-simple-logo-design-black-bird-simple-logo-design-simple-gradient-fire-phoenix-bird-logo-158339374.jpg";
           // this.logoImageUrl=""
         });
@@ -360,7 +369,7 @@ export default {
       // Convert canvas to data URL and download
       const dataUrl = canvas.toDataURL("image/jpeg");
       const link = document.createElement("a");
-      link.download = "watermarked-image.jpg";
+      link.download = this.DownloadCreativeName + ".jpg";
       link.href = dataUrl;
       document.body.appendChild(link);
       link.click();
@@ -372,6 +381,7 @@ export default {
       axios
         .post(
           "https://uatapi.infinitybrains.com/public/api/checkkey/" + keyvalue
+          // "U1E43IdtZ0kBCYzv"
         )
         .then((result) => {
           this.alerted = false;
@@ -403,6 +413,7 @@ export default {
             .then((result) => {
               this.creative1 = result.data.data;
               this.id1 = result.data.data;
+              this.mainid = result.data.data[0].id;
               this.alerted = false;
             })
             .catch((error) => {
@@ -415,55 +426,129 @@ export default {
     },
 
     DownloadAllCreative() {
-      axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/Download-creative",
-          {
-            id: 1,
-            // product_key: 'TJQGZcefRYU8KPFN',
-            responseType: "blob",
-          }
-        )
-        .then((response) => {
-          console.log(response.data);
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", "file.zip");
-          document.body.appendChild(link);
-          link.click();
+      alert(this.mainid);
+      let lesthenCreativeId = this.mainid - 15;
+      alert(lesthenCreativeId);
+      for (let i = this.mainid; i >= lesthenCreativeId; i--) {
+        axios
+          .get("https://uatapi.infinitybrains.com/public/api/showcreative/" + i)
+          .then((result) => {
+            // console.log(result.data.data.creative);
+            this.mainImageUrl1 =
+              result.data.data.creative + "?not-from-cache-please";
+              this.DownloadCreativeName1 = result.data.data.name;
+            this.DownloadCreativePartII();
+          });
+
+        // if(i >=lesthenCreativeId){
+        //  this.allcreativesDownloaded();
+        // }
+        // setTimeout(function(){}2000)
+        setTimeout(function () {
+          this.allcreativesDownloaded();
+        }, 2000);
+      }
+    },
+    async allcreativesDownloaded() {
+      // alert();
+      const fileNamePrefix = "All CreativeFile"; // replace with your desired filename prefix
+
+      for (let i = 0; i < this.AllCreativeUrl.length; i++) {
+        const response = await axios.get(this.AllCreativeUrl[i], {
+          responseType: "blob",
         });
+        const fileName = fileNamePrefix + (i + 1) + ".zip"; // construct filename with prefix and index
+        saveAs(response.data, fileName);
+      }
+    },
+    async DownloadCreativePartII() {
+      // const AllCreativeUrl
+
+      const canvas = document.getElementById("canvas");
+      canvas.width = 850;
+      canvas.height = 920;
+      const ctx = canvas.getContext("2d");
+
+      // Load main image
+      const mainImage1 = new Image();
+      mainImage1.crossOrigin = "anonymous";
+      mainImage1.src = this.mainImageUrl1 + "?not-from-cache-please";
+      await new Promise((resolve) => (mainImage1.onload = resolve));
+
+      // Load logo image
+      const logoImage1 = new Image();
+      logoImage1.crossOrigin = "anonymous";
+      logoImage1.src = this.logoImageUrl + "?not-from-cache-please";
+      await new Promise((resolve) => (logoImage1.onload = resolve));
+
+      // Draw main image
+      ctx.drawImage(mainImage1, 0, 0, 850, 920);
+
+      // Draw logo image as watermark
+      const logoWidth = 100;
+      const logoHeight = logoWidth * (logoImage1.height / logoImage1.width);
+      // const padding = 10;
+      // const x = canvas.width - logoWidth - padding;
+      // const y = canvas.height - logoHeight - padding;
+      const x = 20;
+      const y = 20;
+      ctx.globalAlpha = 1;
+      ctx.drawImage(logoImage1, x, y, logoWidth, logoHeight);
+
+      // add text in image
+      // Set font and text alignment
+      ctx.font = "20px Arial";
+      ctx.textAlign = "center";
+
+      // Set positions for each text
+      var x1 = canvas.width / 5;
+      var x2 = canvas.width / 2;
+      var x3 = (canvas.width * 3.5) / 4;
+      var y1 = canvas.height - 25;
+
+      // Fill text at each position
+      ctx.fillText(this.text1, x1, y1);
+      ctx.fillText(this.text2, x2, y1);
+      ctx.fillText(this.text3, x3, y1);
+
+      // add text in image
+
+      // Convert canvas to data URL and download
+      const dataUrl = canvas.toDataURL("image/jpeg");
+      const link = document.createElement("a");
+      // link.download = this.DownloadCreativeName + ".jpg";
+      link.download = this.DownloadCreativeName1 + ".jpg";
+      link.href = dataUrl;
+
+      // this.AllCreativeUrl.push(dataUrl);
+      // console.log(this.AllCreativeUrl);
+      // link.0........href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     },
 
     loadmore() {
-      let pagescreative = 30;
-      if ((pagescreative = 30)) {
-        // pagescreative = 60;
-        pagescreative = pagescreative + pagescreative;
-      } else {
-        pagescreative = pagescreative + pagescreative;
-        pagescreative = 4000;
-      }
+      let pages = 40;
 
-      // alert(pagescreative);
       axios
         .get(
           "https://uatapi.infinitybrains.com/public/api/showcreatives?per_page=" +
-            pagescreative +
-            "&page=1"
+            pages +
+            '&page=1&sort=id&order_by=desc&filter={"status":"1"}'
         )
         .then((result) => {
-          //console.log(result.data.data);
-          // let secondpagecreative = result.data.data;
-
           this.creative1 = result.data.data;
-          // console.log("im creative1",this.creative1);
-          // let creative2  = [this.creative1,secondpagecreative];
-          // console.log("im creative2",creative2.length);
-          //console.log(this.creative1);
-          //alert(creative2[1]);
-          //this.creative1 = creative2;
         });
+      if (pages == 40) {
+        axios
+          .get(
+            'https://uatapi.infinitybrains.com/public/api/showcreatives?per_page=500&page=1&page=1&sort=id&order_by=desc&filter={"status":"1"}'
+          )
+          .then((result) => {
+            this.creative1 = result.data.data;
+          });
+      }
     },
     //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
     //   //console.warn(result.data.data);
@@ -528,6 +613,7 @@ export default {
     //   .then((result) => {
     //     this.creative1 = result.data.data;
     //   });
+    this.allcreativesDownloaded();
   },
 };
 </script>
@@ -618,6 +704,14 @@ select {
   transition: 2sec ease;
   flex-direction: row;
 }
+.imgclassUper1 {
+  position: absolute;
+
+  opacity: 0;
+  z-index: 1;
+  transition: 2sec ease;
+  flex-direction: row;
+}
 
 .browse {
   grid-row: 2/4;
@@ -631,12 +725,17 @@ select {
   opacity: 1;
   transition: 2sec ease;
 }
-
+.postimg:hover .imgclassUper1 {
+  margin-left: 8vh;
+  opacity: 1;
+  transition: 2sec ease;
+}
 .postimg:hover .imgclassUper button {
   opacity: 1;
   transition: 2sec ease;
   width: 15vh;
   align-items: baseline;
+  /* font-size: 1.5vw; */
 }
 
 .imgclassUper:hover .postimg {
@@ -655,7 +754,7 @@ select {
   align-content: center;
   justify-content: center;
   margin-left: 11vh;
-  margin-top: 21vh;
+  margin-top: 22vh;
   background-color: white;
   color: white;
 }
