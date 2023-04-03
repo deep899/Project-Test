@@ -702,7 +702,7 @@ export default {
             .then((response) => {
               console.log("hello", response.data);
               this.loading = true;
-              // this.hashGen();
+              this.hashGen();
             });
         })
         .catch((error) => {
