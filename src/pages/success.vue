@@ -28,7 +28,7 @@
             <p  style="width: 70%;color:rgb(65,65,65);;
             /* text-align: justify;   text-justify: inter-word; */
              " class="pl-5 pr-5 ml-5 mr-5 fw-300 text-danger-300 font-xssss mb-4">
-              Your Payment of ₹500.00 has been SuccessFul Payment receipt sent to your email
+              Your Payment of ₹{{ this.amount }}.00 has been SuccessFul Payment receipt sent to your email
             </p>
             <!-- <a v-bind:href="'/CreativeBuy'" style="" class="text-dark  ">
             <svg
@@ -57,7 +57,7 @@
           <!-- <i class="fa-solid fa-arrow-left" style="width: 20px;"></i> -->
 
           <a
-              v-bind:href="'/CreativeBuy'"
+              v-bind:href="'/'"
               class="  fw-900"
               style="font-size: 1.2rem;  color: white;"
               >
@@ -65,7 +65,7 @@
               <path id="Path_7376" data-name="Path 7376" d="M134.476,256.705a13.477,13.477,0,0,1-9.33-3.635L6.881,140.275a12.129,12.129,0,0,1,0-17.8L125.146,9.682a13.651,13.651,0,0,1,18.66,0,12.177,12.177,0,0,1,0,17.8L34.739,131.376l109.066,103.9a12.129,12.129,0,0,1,0,17.8A13.477,13.477,0,0,1,134.476,256.705Z" transform="translate(-2.994 -5.996)" fill="#fff"/>
               <path id="Path_7377" data-name="Path 7377" d="M329.076,41.281H16.043a13.141,13.141,0,0,1,0-26.281H329.076a13.141,13.141,0,0,1,0,26.281Z" transform="translate(-2.924 97.24)" fill="#fff"/>
             </svg>
-              &nbsp;GO TO CREATIVE SCREENS
+              &nbsp;GO TO Home Screen
 
               </a>
             </div>
@@ -82,14 +82,14 @@ export default {
   Name: "success",
   data() {
     return {
-      amount_pay:'534',
-              products: '9',
-              coupon_code: "123",
-              sgst: '26.7',
-              cgst:'26.7',
-              discount:'10',
-              id:'8',
-              user_id:'36',
+      amount_pay:'',
+              products: '',
+              coupon_code: "",
+              sgst: '',
+              cgst:'',
+              discount:'',
+              id:'',
+              user_id:'',
       errormas: '',
 
       errormasss: '',
