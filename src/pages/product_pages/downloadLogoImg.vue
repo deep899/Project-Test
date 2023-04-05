@@ -9,7 +9,9 @@
   />
   <link src="https://unpkg.com/vue@2" />
   <!-- <img  style=" width: 10rem; margin-top: 80%; opacity: 0.5;" src="../../img/ScrollGroup7.png" /> -->
-
+  <div v-if="loading" class="loading-overlay">
+      <q-spinner-gears color="white" size="80px" />
+    </div>
   <div class="text-center titlee name">Creatives</div>
   <div class="row browse">
     <div v-if="showButton">
@@ -304,17 +306,14 @@ export default {
     },
 
     async ShereUrl(id) {
+      this.loading = true;
       await axios
         .get("https://uatapi.infinitybrains.com/public/api/showcreative/" + id)
         .then((result) => {
-          // alert(result.data.data);
-          console.log("getImgName", result.data.data.name);
-
           this.mainImageUrl =
             result.data.data.creative + "?not-from-cache-please";
           this.DownloadCreativeName = result.data.data.name;
-          //  this.logoImageUrl = "https://thumbs.dreamstime.com/b/gradient-fire-phoenix-bird-simple-logo-design-black-bird-simple-logo-design-simple-gradient-fire-phoenix-bird-logo-158339374.jpg";
-          // this.logoImageUrl=""
+       
         });
 
       const canvas = document.getElementById("canvas");
@@ -374,6 +373,7 @@ export default {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      this.loading = false;
     },
     Submitedkey() {
       let keyvalue = document.getElementById("iban").value;
@@ -408,7 +408,7 @@ export default {
 
           axios
             .get(
-              "https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc"
+              'https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc&filter={"status":"1"}'
             )
             .then((result) => {
               this.creative1 = result.data.data;
@@ -418,7 +418,9 @@ export default {
             })
             .catch((error) => {
               this.alerted = true;
-            });
+            }).finally(() => {
+        this.loading = false;
+      });
         })
         .catch((error) => {
           this.alerted = true;
@@ -619,6 +621,18 @@ export default {
 </script>
 
       <style>
+      .loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .quasar-searchbar {
   width: 45rem;
   padding: 10px;
