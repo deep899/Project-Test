@@ -215,7 +215,7 @@
                             (val && val.length > 0) || 'Please type something',
                         ]"
                       />
-                      <select
+                      <!-- <select
                         style="width: 95%; height: 48px; font-size: 1rem"
                         class="form-select"
                         aria-required="true"
@@ -231,8 +231,16 @@
                         >
                           {{ item.code }}
                         </option>
-                      </select>
-
+                      </select> -->
+                      <q-input
+                        filled
+                        v-model="CouponCode"
+                        label="Coupon Code "
+                        style=""
+                      />
+                      <q-banner color="green" v-if="couponCodeSuccess">
+                    {{ couponCodeSuccess }}
+                      </q-banner>
                       <q-btn
                         color="primary"
                         style="width: 95%"
@@ -575,10 +583,12 @@ export default {
       price: "",
       B_Name: "",
       B_Gst_N: "",
+      CouponCode:"",
       S_Name: "",
       CompanyImage: "",
       MainErrorOfForm:"",
       coupon_codePrice:"",
+      couponCodeSuccess:"",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -752,16 +762,17 @@ export default {
     },
 
     getDiscount() {
-      let naming = document.getElementById("optionsOfcode").value;
-      console.log(naming);
+      // let naming = document.getElementsByClassName("CoupenIsHere").value;
+      // console.log(naming);
       axios
         .post(
           "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + 13,
           {
-            code: naming,
+            code: this.CouponCode,
           }
         )
         .then((result) => {
+          this.couponCodeSuccess = result.data.message;
           this.Dis = result.data.data;
           console.log(this.Dis);
           this.final_amount = this.Dis.price;
@@ -770,8 +781,11 @@ export default {
           this.discount = this.Dis.discount;
           this.amount_pay =  Math.round(this.Dis.final_amount);
           localStorage.setItem("copondetails", JSON.stringify(response.data));
-          //this.coupon = response.data;
-          // this.Gst.price = this.amount_pay;
+
+        }).catch((error) => {
+
+          this.couponCodeSuccess = error.data.message;
+
         });
     },
 
