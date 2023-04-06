@@ -40,7 +40,7 @@ export default {
   setup() {},
   async mounted() {
     let result = await axios.get(
-      "https://uatapi.infinitybrains.com/public/api/showvacancy"
+      "https://api.infinitybrains.com/public/api/showvacancy"
     );
     console.warn(result.data.data);
     this.list = result.data.data;
