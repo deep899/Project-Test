@@ -550,7 +550,7 @@ export default {
     async BuyConfirmation() {
       await axios
         .post(
-          "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
+          "https://api.infinitybrains.com/public/api/payment/" + this.id,
           {
             email: this.email,
             firstname: this.first_name,
@@ -599,7 +599,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showpayment_product_details/" +
+          "https://api.infinitybrains.com/public/api/showpayment_product_details/" +
             this.id
         )
         .then((result) => {
@@ -619,7 +619,7 @@ export default {
       //     console.log(naming);
       axios
         .post(
-          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + this.id,
+          "https://api.infinitybrains.com/public/api/checkcoupen/" + this.id,
           {
             code: this.CouponCode,
           }
@@ -749,7 +749,7 @@ export default {
 
     axios
       .get(
-        'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+        'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
           this.id +
           '"}'
       )
@@ -760,7 +760,7 @@ export default {
       });
 
     axios
-      .get("https://uatapi.infinitybrains.com/public/api/show/" + this.id)
+      .get("https://api.infinitybrains.com/public/api/show/" + this.id)
       .then((result) => {
         this.products = result.data.data;
       });

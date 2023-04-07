@@ -106,7 +106,7 @@ export default {
         //  })
 
 
-        axios.post('https://uatapi.infinitybrains.com/public/api/contactdetails', this.post)
+        axios.post('https://api.infinitybrains.com/public/api/contactdetails', this.post)
                  .then((res) => {
                      //Perform Success Action
                  })
