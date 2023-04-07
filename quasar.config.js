@@ -18,7 +18,7 @@ module.exports = configure(function (ctx) {
     devServer: {
       proxy: {
         "/api": {
-          target: "https://uatapi.infinitybrains.com",
+          target: "https://api.infinitybrains.com",
           changeOrigin: true,
           headers: {
             "Access-Control-Allow-Origin": "*",
