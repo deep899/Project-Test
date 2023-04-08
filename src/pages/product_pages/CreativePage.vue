@@ -408,7 +408,7 @@
               <li class="slide-container">
                 <div class="slide-image">
                   <img
-                    src="https://api.infinitybrains.com/public/storage/creatives/jVjeG1P195Um0axeGaAo3CHmVvUCp6.jpg"
+                    src="https://ib-bucketlive.s3.ap-south-1.amazonaws.com/public/creatives/nxZUmMnBz8VZEPSWCAOuByhQHY5Yhq.jpg"
                   />
                 </div>
                 <div class="carousel-controls">
@@ -424,7 +424,7 @@
               <li class="slide-container">
                 <div class="slide-image">
                   <img
-                    src="https://api.infinitybrains.com/public/storage/creatives/LB48sTv83G340ZskspgCokPWIZXm3M.jpg"
+                    src="https://ib-bucketlive.s3.ap-south-1.amazonaws.com/public/creatives/YXGK1qfN6C936tygonpyMuWwvreBkJ.jpg"
                   />
                 </div>
                 <div class="carousel-controls">
@@ -526,6 +526,7 @@
 </template>
 
 <script>
+
 // import { defineComponent } from 'vue'
 import { ref, watch } from "vue";
 import products from "components/Products.vue";
@@ -712,7 +713,8 @@ export default {
             .then((response) => {
               console.log("hello", response.data);
               this.loading = true;
-              this.hashGen();
+              // this.hashGen();
+              this.rezorpayed();
             });
         })
         .catch((error) => {
@@ -861,6 +863,46 @@ export default {
 
       document.getElementById("paymentForm").submit();
     },
+    rezorpayed(){
+
+      var options = {
+          key: "rzp_test_EpNayKPHUEGLMY",
+          amount: this.amount_pay*100 ,
+          
+          currency: 'INR',
+          name: this.name,
+          description: "Test Transaction",
+          image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
+          handler: function(response) {
+            this.paymentId = response.razorpay_payment_id;
+            this.orderId = response.razorpay_order_id;
+            this.signature = response.razorpay_signature;
+            if(response.razorpay_payment_id) {
+                // Payment successful
+                alert("Payment successful!");
+            } else {
+                        // Payment unsuccessful
+                        console.log("Payment unsuccessful!");
+                        alert("Payment failed. Please try again later.");
+                    }
+                    }.bind(this),
+          prefill: {
+            name: this.name,
+            email: this.email
+          },
+          notes: {
+            address: "Razorpay Corporate Office"
+          },
+          theme: {
+            color: "#F37254"
+          }
+        };
+        var rzp1 = new window.Razorpay(options);
+        rzp1.open();
+    
+
+
+    }
   
   },
 
