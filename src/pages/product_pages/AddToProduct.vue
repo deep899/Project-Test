@@ -760,7 +760,7 @@ export default {
       });
 
     axios
-      .get("https://api.infinitybrains.com/public/api/showproduct/" + this.id)
+      .get("https://api.infinitybrains.com/public/api/show/" + this.id)
       .then((result) => {
         this.products = result.data.data;
       });
