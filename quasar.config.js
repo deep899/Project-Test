@@ -15,7 +15,12 @@ const { configure } = require("quasar/wrappers");
 
 module.exports = configure(function (ctx) {
   return {
+    plugins: [
+      // ...
+      '~/axios.js'
+    ],
     devServer: {
+
       proxy: {
         "/api": {
           target: "https://api.infinitybrains.com",
@@ -111,7 +116,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ["Notify"],
+      plugins: ['Notify']
     },
 
     // animations: 'all', // --- includes all animations

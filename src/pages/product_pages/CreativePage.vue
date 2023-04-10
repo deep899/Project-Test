@@ -826,7 +826,7 @@ export default {
     },
     getList() {
       axios
-        .get("https://api.infinitybrains.com/public/api/show/13")
+        .get("https://api.infinitybrains.com/public/api/showproduct/13")
         .then((result) => {
           this.products = result.data.data;
           console.warn(result.data.data);
@@ -935,7 +935,7 @@ export default {
         this.optionse = response.data.data.data;
       });
     axios
-      .get("https://api.infinitybrains.com/public/api/show/13")
+      .get("https://api.infinitybrains.com/public/api/showproduct/13")
       .then((result) => {
         this.products = result.data.data;
       });

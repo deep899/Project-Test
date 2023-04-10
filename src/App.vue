@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { defineComponent } from 'vue'
 
 export default defineComponent({
