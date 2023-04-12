@@ -102,14 +102,14 @@ export default defineComponent({
     //################################################################# This Axios Is Redirect All Data #######################
 
     let resultfinal = await axios.get(
-      "https://api.infinitybrains.com/public/api/showproduct"
+      "https://uatapi.infinitybrains.com/public/api/showproduct"
     );
     this.listdef = resultfinal.data.data;
 
     //################################################################# This Axios Is Redirect All Data #######################
 
     let resultfinal1 = await axios.get(
-      "https://api.infinitybrains.com/public/api/showproduct"
+      "https://uatapi.infinitybrains.com/public/api/showproduct"
     );
     //console.warn(result.data.data);
     this.listdef1 = resultfinal1.data.data;
