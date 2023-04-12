@@ -72,7 +72,7 @@ export default {
   methods: {
     async applyVacciencey() {
       let result = await axios.post(
-        "https://api.infinitybrains.com/public/api/candidateform/2",
+        "https://uatapi.infinitybrains.com/public/api/candidateform/2",
         {
           firstname: this.firstname,
           lastname: this.lastname,
