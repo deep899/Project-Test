@@ -1260,7 +1260,7 @@ export default {
 
     getData() {
       axios
-        .get("https://api.restroworld.com/public/api/countries?is_light=true")
+        .get("https://api.restroworld.com/api/countries?is_light=true")
         .then((result) => {
           this.list = result.data.data;
           if (this.country_id) {
@@ -1318,7 +1318,7 @@ export default {
     getState() {
       axios
         .get(
-          "https://api.restroworld.com/public/api/states_of_country?is_light=1" +
+          "https://api.restroworld.com/api/states_of_country?is_light=1" +
             this.country_id,
           {
             params: {
@@ -1336,7 +1336,7 @@ export default {
     getCity() {
       axios
         .get(
-          "https://api.restroworld.com/public/api/cities_of_state?is_light=1" +
+          "https://api.restroworld.com/api/cities_of_state?is_light=1" +
             this.state_id,
           {
             params: {

@@ -193,6 +193,28 @@
                             (val && val.length > 0) || 'Please type something',
                         ]"
                       />
+                      <q-input
+                        filled
+                        disable
+                        v-model="CoupyCode"
+                        label-color="black"
+                      />
+                      <!-- <q-btn filled @click="coupyCodeed()">Copy Code</q-btn> -->
+                      <!-- <q-btn filled style="" @click="triggerPositive()">Copy Code</q-btn> -->
+                      
+                      <q-btn
+                        color="primary"
+                        label="Copy Code"
+                        style="width: 95%;" 
+                        @click="triggerPositive()"
+                      />
+                      <br />
+                      
+                      <!-- {{ this.selectedCoupen }} -->
+                      <div v-if="selectedCoupen"  :style="couponCodeSuccessColorCopy">{{ this.selectedCoupen }}</div>
+
+
+
 
                       <!-- <select style="
                                                                 width: 95%;
@@ -211,9 +233,7 @@
                         label="Coupon Code "
                         style=""
                       />
-                      <q-banner color="green" v-if="couponCodeSuccess">
-                        {{ couponCodeSuccess }}
-                      </q-banner>
+                      
 
                       <q-btn
                         color="primary"
@@ -221,6 +241,9 @@
                         label="Apply"
                         @click="getDiscount()"
                       />
+                      <br />
+
+                      <div v-if="couponCodeSuccess" id="bannerMsg" :style="couponCodeSuccessColor">{{ couponCodeSuccess }}</div>
                       <q-input
                         filled
                         disable
@@ -410,6 +433,8 @@ import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
+// import { QDialog } from 'quasar/components/dialog'
+
 
 // import productDetails from "src/components/DetailsOfProduct.vue";
 export default {
@@ -460,6 +485,9 @@ export default {
       MainErrorOfForm: "",
       CouponCode: "",
       couponCodeSuccess: "",
+      couponCodeSuccessCopy:"",
+      couponCode: "",
+      selectedCoupen: "",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -468,22 +496,34 @@ export default {
       surl: window.location.origin + "/home/User/Success",
       furl: window.location.origin + "/home/User/Fail",
       optionse: [],
+      CoupyCode: "",
 
       // =========================For testing===============================
     };
   },
 
-  Detailsunted() {
-    this.showProducts = true;
+  computed: {
+    couponCodeSuccessColor() {
+      return { color: this.couponCodeSuccess.startsWith('Coupon code applied successfully') ? 'green' : 'red' };
+    },
+    couponCodeSuccessColorCopy(){
+
+      return { color: 'green'  };
+    }
   },
 
   setup() {
     const navPos = ref("bottom");
+    // const $q = useQuasar()
     const vertical = ref(false);
     watch(vertical, (val) => {
       navPos.value = val === true ? "right" : "bottom";
     });
     return {
+    
+    
+
+
       text: ref(""),
       coupon_code: ref(""),
       inception: ref(false),
@@ -521,32 +561,17 @@ export default {
     };
   },
   methods: {
-    // applyCoupon() {
-    //             axios
-    //               .get("apply-coupon/1", {
-    //                 params: {
-    //                   country_id: this.user.country_id,
-    //                   coupon_code: this.coupon_code,
-    //                 },
-    //               })
-    //               .then((response) => {
-    //                 this.coupon = response.data;
-    //                 this.amount_pay = response.data.payable_amount;
-    //                 this.amount_payPrint = response.data.payable_amount;
-    //                 this.couponerr = this.coupon.message;
-    //                 localStorage.setItem("copondetails", JSON.stringify(response.data));
-    //               })
-    //               .catch((error) => {
-    //                 console.log(error);
-    //                 if (error.response.data.status_code == 422) {
-    //                   this.couponerr = error.response.data.message;
-    //                   this.coupon_code = "";
-    //                   this.$refs.removecou.reset();
-    //                 }
-    //                 console.log(error);
-    //               });
-    //           },
+    triggerPositive () {
 
+          navigator.clipboard.writeText(this.CoupyCode);
+        if (this.CoupyCode) {
+          this.selectedCoupen = "Code is Copy !!";
+        } else {
+          alert("Something went Wrong");
+        }
+  
+      },
+    
     async BuyConfirmation() {
       await axios
         .post(
@@ -588,7 +613,7 @@ export default {
 
     getData() {
       axios
-        .get("https://api.restroworld.com/public/api/countries?is_light=true")
+        .get("https://api.restroworld.com/api/countries?is_light=true")
         .then((result) => {
           this.list = result.data.data;
           if (this.country_id) {
@@ -604,7 +629,6 @@ export default {
         )
         .then((result) => {
           this.Gst = result.data.data;
-          // this.Gst.price = this.amount_pay;
           this.final_amount = this.Gst.price;
           this.sgst = this.Gst.sgst;
           this.cgst = this.Gst.cgst;
@@ -615,38 +639,37 @@ export default {
     },
 
     getDiscount() {
-      //    let naming =  document.getElementById('optionsOfcode').value;
-      //     console.log(naming);
       axios
         .post(
-          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + this.id,
+          "https://api.infinitybrains.com/public/api/checkcoupen/" + this.id,
           {
             code: this.CouponCode,
           }
         )
-        .then((result) => {
-          this.Dis = result.data.data;
-
+        .then(response => {
+          // Handle success response
+          this.Dis = response.data.data;
           console.log(this.Dis);
           this.final_amount = this.Dis.price;
           this.sgst = this.Dis.sgst;
           this.cgst = this.Dis.cgst;
           this.discount = Math.round(this.Dis.discount);
           this.amount_pay = Math.round(this.Dis.final_amount);
-          this.couponCodeSuccess = "Coupen Code is Success!";
-          localStorage.setItem("copondetails", JSON.stringify(response.data));
-          //this.coupon = response.data;
-          // this.Gst.price = this.amount_pay;
+          this.couponCodeSuccess = 'Coupon code applied successfully!';
+          localStorage.setItem('copondetails', JSON.stringify(response.data));
         })
-        .catch(() => {
-          this.couponCodeSuccess = "Coupen Code is Invalid!";
+        .catch(error => {
+          // Handle error response
+          this.couponCodeSuccess = error.response.data.message;
+          console.log(error.response.data);
         });
+    
     },
 
     getState() {
       axios
         .get(
-          "https://api.restroworld.com/public/api/states_of_country?is_light=1" +
+          "https://api.restroworld.com/api/states_of_country?is_light=1" +
             this.country_id,
           {
             params: {
@@ -664,7 +687,7 @@ export default {
     getCity() {
       axios
         .get(
-          "https://api.restroworld.com/public/api/cities_of_state?is_light=1" +
+          "https://api.restroworld.com/api/cities_of_state?is_light=1" +
             this.state_id,
           {
             params: {
@@ -755,7 +778,7 @@ export default {
       )
       .then((response) => {
         // // handle success
-        // console.log("helooooooooooo", response.data.data.data[0].code);
+        this.CoupyCode = response.data.data.data[0].code;
         this.optionse = response.data.data.data;
       });
 
