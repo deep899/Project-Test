@@ -56,7 +56,7 @@
                   <div class="q-pa-md" style="max-width: 400px">
                     <q-form
                       class="q-gutter-md"
-                      @submit.prevent="BuyConfirmation()"
+                      @submit.prevent="SelectPaymentGatewayoption()"
                     >
                       <q-input
                         filled
@@ -201,20 +201,22 @@
                       />
                       <!-- <q-btn filled @click="coupyCodeed()">Copy Code</q-btn> -->
                       <!-- <q-btn filled style="" @click="triggerPositive()">Copy Code</q-btn> -->
-                      
+
                       <q-btn
                         color="primary"
                         label="Copy Code"
-                        style="width: 95%;" 
+                        style="width: 95%"
                         @click="triggerPositive()"
                       />
                       <br />
-                      
+
                       <!-- {{ this.selectedCoupen }} -->
-                      <div v-if="selectedCoupen"  :style="couponCodeSuccessColorCopy">{{ this.selectedCoupen }}</div>
-
-
-
+                      <div
+                        v-if="selectedCoupen"
+                        :style="couponCodeSuccessColorCopy"
+                      >
+                        {{ this.selectedCoupen }}
+                      </div>
 
                       <!-- <select style="
                                                                 width: 95%;
@@ -233,7 +235,6 @@
                         label="Coupon Code "
                         style=""
                       />
-                      
 
                       <q-btn
                         color="primary"
@@ -243,7 +244,13 @@
                       />
                       <br />
 
-                      <div v-if="couponCodeSuccess" id="bannerMsg" :style="couponCodeSuccessColor">{{ couponCodeSuccess }}</div>
+                      <div
+                        v-if="couponCodeSuccess"
+                        id="bannerMsg"
+                        :style="couponCodeSuccessColor"
+                      >
+                        {{ couponCodeSuccess }}
+                      </div>
                       <q-input
                         filled
                         disable
@@ -284,7 +291,21 @@
                         label="Total Amount : "
                         label-color="black"
                       />
+                      <q-radio
+                          v-model="selectedPaymentMethod"
+                          val="razorpay"
+                        >
+                          <img style="width:100px;"  :src="razorpayIconUrl" alt="Razor Pay">
+                          <!-- <i class="fab fa-razorpay"></i> -->
+                        </q-radio>
+                        <q-radio
+                          v-model="selectedPaymentMethod"
+                          val="payumoney"
+                        >
+                          <img style="width:100px;" :src="payumoneyIconUrl" alt="PayUmoney">
+                          <!-- <i class="fa fa-payumoney"></i> -->
 
+                        </q-radio>
                       <div>
                         <!-- <div>
                             <a
@@ -322,7 +343,7 @@
                 <q-btn
                   type="submit"
                   class="btn shadow-none btn-primary fw-500 font-xss text-primary-500 w-100 mb-2"
-                  v-on:click="BuyConfirmation()"
+                  v-on:click="SelectPaymentGatewayoption()"
                 >
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
                 </q-btn>
@@ -435,7 +456,6 @@ import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
 // import { QDialog } from 'quasar/components/dialog'
 
-
 // import productDetails from "src/components/DetailsOfProduct.vue";
 export default {
   name: "hrms",
@@ -485,9 +505,13 @@ export default {
       MainErrorOfForm: "",
       CouponCode: "",
       couponCodeSuccess: "",
-      couponCodeSuccessCopy:"",
+      couponCodeSuccessCopy: "",
       couponCode: "",
       selectedCoupen: "",
+      usersidN:"",
+      selectedPaymentMethod: null,
+      razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
+      payumoneyIconUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -504,12 +528,17 @@ export default {
 
   computed: {
     couponCodeSuccessColor() {
-      return { color: this.couponCodeSuccess.startsWith('Coupon code applied successfully') ? 'green' : 'red' };
+      return {
+        color: this.couponCodeSuccess.startsWith(
+          "Coupon code applied successfully"
+        )
+          ? "green"
+          : "red",
+      };
     },
-    couponCodeSuccessColorCopy(){
-
-      return { color: 'green'  };
-    }
+    couponCodeSuccessColorCopy() {
+      return { color: "green" };
+    },
   },
 
   setup() {
@@ -520,10 +549,6 @@ export default {
       navPos.value = val === true ? "right" : "bottom";
     });
     return {
-    
-    
-
-
       text: ref(""),
       coupon_code: ref(""),
       inception: ref(false),
@@ -561,17 +586,112 @@ export default {
     };
   },
   methods: {
-    triggerPositive () {
+    triggerPositive() {
+      navigator.clipboard.writeText(this.CoupyCode);
+      if (this.CoupyCode) {
+        this.selectedCoupen = "Code is Copy !!";
+      } else {
+        alert("Something went Wrong");
+      }
+    },
 
-          navigator.clipboard.writeText(this.CoupyCode);
-        if (this.CoupyCode) {
-          this.selectedCoupen = "Code is Copy !!";
-        } else {
-          alert("Something went Wrong");
+    SelectPaymentGatewayoption(){
+
+        if (this.selectedPaymentMethod == 'razorpay')
+        { 
+            
+            this.rezorpayed();
         }
-  
-      },
-    
+        else {
+
+
+          this.BuyConfirmation();
+
+        }
+
+    },
+       rezorpayed() {
+      var options = {
+        key: "rzp_live_tazg9e4O5sAPdQ",
+        // key: "rzp_test_EpNayKPHUEGLMY",
+        amount: this.amount_pay * 100,
+
+        currency: "INR",
+        name: this.first_name,
+        description: "Test Transaction",
+        image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
+        handler: function (response) {
+          this.paymentId = response.razorpay_payment_id;
+          this.orderId = response.razorpay_order_id;
+          this.signature = response.razorpay_signature;
+          axios
+        .post(
+          "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
+          {
+            email: this.email,
+            firstname: this.first_name,
+            lastname: this.last_name,
+            phoneno: this.mobile_no,
+            address: this.address,
+            country: this.country_id,
+            state: this.state_id,
+            city: this.city_id,
+            pincode: this.pincode,
+          }
+        )
+        .then((res) => {
+          console.log(res.data.data);
+          this.user_id = res.data.data.id;
+          this.paynowbtn = false;
+             localStorage.setItem("UserDetails", JSON.stringify(res.data.data.id));
+        })
+        .catch((error) => {
+          this.MainErrorOfForm = error.response.data.message;
+          this.paynowbtn = false;
+        });
+
+          if (response.razorpay_payment_id) {
+
+             this.usersidN =  localStorage.getItem("UserDetails");
+                        axios
+                  .post(
+                    "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
+                    {
+                      user_id: this.usersidN,
+                      payment_status: "1",
+                      product_id: this.id,
+                      cgst: this.cegst,
+                      sgst: this.sgst,
+                      discount: this.discount,
+                      amount: this.amount,
+                    }
+                  )
+                  .then((result) => {
+                    console.log(result.data);
+                    alert("PaymentSuccess" , this.usersidN);
+                  });
+           
+          } else {
+            // Payment unsuccessful
+            // console.log("Payment unsuccessful!");
+            alert("Payment failed. Please try again later.");
+          }
+        }.bind(this),
+        prefill: {
+          name: this.first_name,
+          email: this.email,
+        },
+        notes: {
+          address: "Redjinni Corporate Office",
+        },
+        theme: {
+          color: "#F37254",
+        },
+      };
+      var rzp1 = new window.Razorpay(options);
+      rzp1.open();
+    },
+
     async BuyConfirmation() {
       await axios
         .post(
@@ -591,7 +711,7 @@ export default {
         .then((res) => {
           console.log(res);
           this.paynowbtn = false;
-          localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
+          localStorage.setItem("UserDetails", JSON.stringify(res.data.data.id));
           this.hashGen();
         })
         .catch((error) => {
@@ -646,7 +766,7 @@ export default {
             code: this.CouponCode,
           }
         )
-        .then(response => {
+        .then((response) => {
           // Handle success response
           this.Dis = response.data.data;
           console.log(this.Dis);
@@ -655,15 +775,14 @@ export default {
           this.cgst = this.Dis.cgst;
           this.discount = Math.round(this.Dis.discount);
           this.amount_pay = Math.round(this.Dis.final_amount);
-          this.couponCodeSuccess = 'Coupon code applied successfully!';
-          localStorage.setItem('copondetails', JSON.stringify(response.data));
+          this.couponCodeSuccess = "Coupon code applied successfully!";
+          localStorage.setItem("copondetails", JSON.stringify(response.data));
         })
-        .catch(error => {
+        .catch((error) => {
           // Handle error response
           this.couponCodeSuccess = error.response.data.message;
           console.log(error.response.data);
         });
-    
     },
 
     getState() {
@@ -764,12 +883,16 @@ export default {
       this.loading = true;
       this.hashGen();
     },
-  },
+  },mounted() {
 
-  async mounted() {
-    this.id = this.$route.params.id;
-    console.log("name", this.id);
 
+  // Always start the page at the top
+  window.scrollTo(0, 0);
+
+  this.id = this.$route.params.id;
+  console.log("name", this.id);
+
+  Promise.all([
     axios
       .get(
         'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
@@ -777,26 +900,28 @@ export default {
           '"}'
       )
       .then((response) => {
-        // // handle success
+        // handle success
         this.CoupyCode = response.data.data.data[0].code;
         this.optionse = response.data.data.data;
-      });
-
+      }),
     axios
       .get("https://uatapi.infinitybrains.com/public/api/show/" + this.id)
       .then((result) => {
         this.products = result.data.data;
-      });
-
+      }),
+  ]).then(() => {
     this.getGstValye();
-    //this.getList();
-    // this.sendData();
     this.getData();
-
-    //this.hashGen();
     this.makeid();
-  },
-};
+
+    window.scrollTo(0, 50);
+  });
+},
+
+
+
+}
+
 </script>
 
 <style>

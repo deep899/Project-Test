@@ -78,7 +78,7 @@
                   <div class="q-pa-md" style="max-width: 400px">
                     <q-form
                       class="q-gutter-md"
-                      @submit.prevent="BuyConfirmation()"
+                      @submit.prevent="SelectPaymentGatewayoption()"
                     >
                       <q-input
                         filled
@@ -297,7 +297,21 @@
                         label="Total Amount : "
                         label-color="black"
                       />
+                      <q-radio
+                          v-model="selectedPaymentMethod"
+                          val="razorpay"
+                        >
+                          <img style="width:100px;"  :src="razorpayIconUrl" alt="Razor Pay">
+                          <!-- <i class="fab fa-razorpay"></i> -->
+                        </q-radio>
+                        <q-radio
+                          v-model="selectedPaymentMethod"
+                          val="payumoney"
+                        >
+                          <img style="width:100px;" :src="payumoneyIconUrl" alt="PayUmoney">
+                          <!-- <i class="fa fa-payumoney"></i> -->
 
+                        </q-radio>
                       <div>
                         <!-- <div>
                             <a
@@ -335,7 +349,7 @@
                 <q-btn
                   type="submit"
                   class="btn shadow-none"
-                  v-on:click="BuyConfirmation()"
+                  v-on:click="SelectPaymentGatewayoption()"
                 >
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
                 </q-btn>
@@ -604,6 +618,9 @@ export default {
       MainErrorOfForm: "",
       coupon_codePrice: "",
       couponCodeSuccess: "",
+      selectedPaymentMethod:null,
+      razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
+      payumoneyIconUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -664,6 +681,48 @@ export default {
     };
   },
   methods: {
+    SelectPaymentGatewayoption(){
+
+if (this.selectedPaymentMethod == 'razorpay')
+{ 
+  axios
+        .post(
+          "https://uatapi.infinitybrains.com/public/api/payment/" + 13,
+          {
+            email: this.email,
+            firstname: this.first_name,
+            lastname: this.last_name,
+            phoneno: this.mobile_no,
+            address: this.address,
+            country: this.country_id,
+            state: this.state_id,
+            city: this.city_id,
+            pincode: this.pincode,
+          }
+        )
+        .then((res) => {
+          console.log(res.data.data);
+          this.user_id = res.data.data.id;
+          this.paynowbtn = false;
+             localStorage.setItem("UserDetails", JSON.stringify(res.data.data.id));
+             this.rezorpayed();
+        })
+        .catch((error) => {
+          this.MainErrorOfForm = error.response.data.message;
+          this.paynowbtn = false;
+          // this.rezorpayed();
+        });
+
+    
+}
+else {
+
+
+  this.BuyConfirmation();
+
+}
+
+},
     // applyCoupon() {
     //             axios
     //               .get("apply-coupon/1", {
@@ -726,8 +785,9 @@ export default {
             .then((response) => {
               console.log("hello", response.data);
               this.loading = true;
-              // this.hashGen();
-              this.rezorpayed();
+              this.hashGen();
+              // this.rezorpayed();
+              // this.SelectPaymentGatewayoption();
             });
         })
         .catch((error) => {
@@ -878,24 +938,43 @@ export default {
         amount: this.amount_pay * 100,
 
         currency: "INR",
-        name: this.name,
+        name: this.first_name,
         description: "Test Transaction",
         image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
         handler: function (response) {
           this.paymentId = response.razorpay_payment_id;
           this.orderId = response.razorpay_order_id;
           this.signature = response.razorpay_signature;
+
           if (response.razorpay_payment_id) {
-            // Payment successful
-            alert("Payment successful!");
+
+             this.usersidN =  localStorage.getItem("UserDetails");
+                        axios
+                  .post(
+                    "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
+                    {
+                      user_id: this.usersidN,
+                      payment_status: "1",
+                      product_id: this.id,
+                      cgst: this.cegst,
+                      sgst: this.sgst,
+                      discount: this.discount,
+                      amount: this.amount,
+                    }
+                  )
+                  .then((result) => {
+                    console.log(result.data);
+                    alert("PaymentSuccess" , this.usersidN);
+                  });
+           
           } else {
             // Payment unsuccessful
-            console.log("Payment unsuccessful!");
+            // console.log("Payment unsuccessful!");
             alert("Payment failed. Please try again later.");
           }
         }.bind(this),
         prefill: {
-          name: this.name,
+          name: this.first_name,
           email: this.email,
         },
         notes: {

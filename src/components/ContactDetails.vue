@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md col-md-4 col-xs-12">
-    <h5 class="text-red text-center">Contact</h5>
+    <h5 class=" text-center" style="color: #E86D6D;">Contact</h5>
     <div class="row">
       <div class="col-1">
         <q-icon class="material-icons text-white">account_circle</q-icon>
