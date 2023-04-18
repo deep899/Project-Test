@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 .product:nth-of-type(even){
   /* background-color: black; */
   flex-direction: row-reverse;
 }
 body{
   background-color: #fafafa;
+  font-family: 'Nunito', sans-serif;
 }
 .service_section_digital:nth-of-type(odd){
   /* background-color: black; */
