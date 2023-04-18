@@ -297,21 +297,22 @@
                         label="Total Amount : "
                         label-color="black"
                       />
-                      <q-radio
-                          v-model="selectedPaymentMethod"
-                          val="razorpay"
-                        >
-                          <img style="width:100px;"  :src="razorpayIconUrl" alt="Razor Pay">
-                          <!-- <i class="fab fa-razorpay"></i> -->
-                        </q-radio>
-                        <q-radio
-                          v-model="selectedPaymentMethod"
-                          val="payumoney"
-                        >
-                          <img style="width:100px;" :src="payumoneyIconUrl" alt="PayUmoney">
-                          <!-- <i class="fa fa-payumoney"></i> -->
-
-                        </q-radio>
+                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
+                        <img
+                          style="width: 100px"
+                          :src="razorpayIconUrl"
+                          alt="Razor Pay"
+                        />
+                        <!-- <i class="fab fa-razorpay"></i> -->
+                      </q-radio>
+                      <q-radio v-model="selectedPaymentMethod" val="payumoney">
+                        <img
+                          style="width: 100px"
+                          :src="payumoneyIconUrl"
+                          alt="PayUmoney"
+                        />
+                        <!-- <i class="fa fa-payumoney"></i> -->
+                      </q-radio>
                       <div>
                         <!-- <div>
                             <a
@@ -618,9 +619,10 @@ export default {
       MainErrorOfForm: "",
       coupon_codePrice: "",
       couponCodeSuccess: "",
-      selectedPaymentMethod:null,
+      selectedPaymentMethod: null,
       razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
-      payumoneyIconUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
+      payumoneyIconUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -681,14 +683,10 @@ export default {
     };
   },
   methods: {
-    SelectPaymentGatewayoption(){
-
-if (this.selectedPaymentMethod == 'razorpay')
-{ 
-  axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/payment/" + 13,
-          {
+    SelectPaymentGatewayoption() {
+      if (this.selectedPaymentMethod == "razorpay") {
+        axios
+          .post("https://api.infinitybrains.com/public/api/payment/" + 13, {
             email: this.email,
             firstname: this.first_name,
             lastname: this.last_name,
@@ -698,31 +696,26 @@ if (this.selectedPaymentMethod == 'razorpay')
             state: this.state_id,
             city: this.city_id,
             pincode: this.pincode,
-          }
-        )
-        .then((res) => {
-          console.log(res.data.data);
-          this.user_id = res.data.data.id;
-          this.paynowbtn = false;
-             localStorage.setItem("UserDetails", JSON.stringify(res.data.data.id));
-             this.rezorpayed();
-        })
-        .catch((error) => {
-          this.MainErrorOfForm = error.response.data.message;
-          this.paynowbtn = false;
-          // this.rezorpayed();
-        });
-
-    
-}
-else {
-
-
-  this.BuyConfirmation();
-
-}
-
-},
+          })
+          .then((res) => {
+            console.log(res.data.data);
+            this.user_id = res.data.data.id;
+            this.paynowbtn = false;
+            localStorage.setItem(
+              "UserDetails",
+              JSON.stringify(res.data.data.id)
+            );
+            this.rezorpayed();
+          })
+          .catch((error) => {
+            this.MainErrorOfForm = error.response.data.message;
+            this.paynowbtn = false;
+            // this.rezorpayed();
+          });
+      } else {
+        this.BuyConfirmation();
+      }
+    },
     // applyCoupon() {
     //             axios
     //               .get("apply-coupon/1", {
@@ -751,7 +744,7 @@ else {
 
     async BuyConfirmation() {
       await axios
-        .post("https://uatapi.infinitybrains.com/public/api/payment/13", {
+        .post("https://api.infinitybrains.com/public/api/payment/13", {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
@@ -778,7 +771,7 @@ else {
           formDatas.append("user_id", user_id);
           axios
             .post(
-              "https://uatapi.infinitybrains.com/public/api/creativedata",
+              "https://api.infinitybrains.com/public/api/creativedata",
               formDatas,
               {}
             )
@@ -820,7 +813,7 @@ else {
     getGstValye() {
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showpayment_product_details/13"
+          "https://api.infinitybrains.com/public/api/showpayment_product_details/13"
         )
         .then((result) => {
           this.Gst = result.data.data;
@@ -840,12 +833,9 @@ else {
       // let naming = document.getElementsByClassName("CoupenIsHere").value;
       // console.log(naming);
       axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + 13,
-          {
-            code: this.CouponCode,
-          }
-        )
+        .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
+          code: this.CouponCode,
+        })
         .then((result) => {
           this.couponCodeSuccess = result.data.message;
           this.Dis = result.data.data;
@@ -897,7 +887,7 @@ else {
     },
     getList() {
       axios
-        .get("https://uatapi.infinitybrains.com/public/api/showproduct/13")
+        .get("https://api.infinitybrains.com/public/api/showproduct/13")
         .then((result) => {
           this.products = result.data.data;
           console.warn(result.data.data);
@@ -947,26 +937,24 @@ else {
           this.signature = response.razorpay_signature;
 
           if (response.razorpay_payment_id) {
-
-             this.usersidN =  localStorage.getItem("UserDetails");
-                        axios
-                  .post(
-                    "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
-                    {
-                      user_id: this.usersidN,
-                      payment_status: "1",
-                      product_id: this.id,
-                      cgst: this.cegst,
-                      sgst: this.sgst,
-                      discount: this.discount,
-                      amount: this.amount,
-                    }
-                  )
-                  .then((result) => {
-                    console.log(result.data);
-                    alert("PaymentSuccess" , this.usersidN);
-                  });
-           
+            this.usersidN = localStorage.getItem("UserDetails");
+            axios
+              .post(
+                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
+                {
+                  user_id: this.usersidN,
+                  payment_status: "1",
+                  product_id: this.id,
+                  cgst: this.cegst,
+                  sgst: this.sgst,
+                  discount: this.discount,
+                  amount: this.amount,
+                }
+              )
+              .then((result) => {
+                console.log(result.data);
+                alert("PaymentSuccess", this.usersidN);
+              });
           } else {
             // Payment unsuccessful
             // console.log("Payment unsuccessful!");
@@ -993,7 +981,7 @@ else {
     this.id = this.$route.params.id;
     // this.BeforeMountedApplyeCoupenCode();
     axios
-      .post("https://uatapi.infinitybrains.com/public/api/checkcoupen/" + 13, {
+      .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
         code: "Festival Creatives",
       })
       .then((result) => {
@@ -1003,7 +991,7 @@ else {
     console.log("name", this.id);
     axios
       .get(
-        'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+        'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
           13 +
           '"}'
       )
@@ -1013,7 +1001,7 @@ else {
         this.optionse = response.data.data.data;
       });
     axios
-      .get("https://uatapi.infinitybrains.com/public/api/show/13")
+      .get("https://api.infinitybrains.com/public/api/show/13")
       .then((result) => {
         this.products = result.data.data;
       });

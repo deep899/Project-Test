@@ -291,21 +291,22 @@
                         label="Total Amount : "
                         label-color="black"
                       />
-                      <q-radio
-                          v-model="selectedPaymentMethod"
-                          val="razorpay"
-                        >
-                          <img style="width:100px;"  :src="razorpayIconUrl" alt="Razor Pay">
-                          <!-- <i class="fab fa-razorpay"></i> -->
-                        </q-radio>
-                        <q-radio
-                          v-model="selectedPaymentMethod"
-                          val="payumoney"
-                        >
-                          <img style="width:100px;" :src="payumoneyIconUrl" alt="PayUmoney">
-                          <!-- <i class="fa fa-payumoney"></i> -->
-
-                        </q-radio>
+                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
+                        <img
+                          style="width: 100px"
+                          :src="razorpayIconUrl"
+                          alt="Razor Pay"
+                        />
+                        <!-- <i class="fab fa-razorpay"></i> -->
+                      </q-radio>
+                      <q-radio v-model="selectedPaymentMethod" val="payumoney">
+                        <img
+                          style="width: 100px"
+                          :src="payumoneyIconUrl"
+                          alt="PayUmoney"
+                        />
+                        <!-- <i class="fa fa-payumoney"></i> -->
+                      </q-radio>
                       <div>
                         <!-- <div>
                             <a
@@ -508,10 +509,11 @@ export default {
       couponCodeSuccessCopy: "",
       couponCode: "",
       selectedCoupen: "",
-      usersidN:"",
+      usersidN: "",
       selectedPaymentMethod: null,
       razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
-      payumoneyIconUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
+      payumoneyIconUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -595,22 +597,14 @@ export default {
       }
     },
 
-    SelectPaymentGatewayoption(){
-
-        if (this.selectedPaymentMethod == 'razorpay')
-        { 
-            
-            this.rezorpayed();
-        }
-        else {
-
-
-          this.BuyConfirmation();
-
-        }
-
+    SelectPaymentGatewayoption() {
+      if (this.selectedPaymentMethod == "razorpay") {
+        this.rezorpayed();
+      } else {
+        this.BuyConfirmation();
+      }
     },
-       rezorpayed() {
+    rezorpayed() {
       var options = {
         key: "rzp_live_tazg9e4O5sAPdQ",
         // key: "rzp_test_EpNayKPHUEGLMY",
@@ -625,52 +619,53 @@ export default {
           this.orderId = response.razorpay_order_id;
           this.signature = response.razorpay_signature;
           axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
-          {
-            email: this.email,
-            firstname: this.first_name,
-            lastname: this.last_name,
-            phoneno: this.mobile_no,
-            address: this.address,
-            country: this.country_id,
-            state: this.state_id,
-            city: this.city_id,
-            pincode: this.pincode,
-          }
-        )
-        .then((res) => {
-          console.log(res.data.data);
-          this.user_id = res.data.data.id;
-          this.paynowbtn = false;
-             localStorage.setItem("UserDetails", JSON.stringify(res.data.data.id));
-        })
-        .catch((error) => {
-          this.MainErrorOfForm = error.response.data.message;
-          this.paynowbtn = false;
-        });
+            .post(
+              "https://api.infinitybrains.com/public/api/payment/" + this.id,
+              {
+                email: this.email,
+                firstname: this.first_name,
+                lastname: this.last_name,
+                phoneno: this.mobile_no,
+                address: this.address,
+                country: this.country_id,
+                state: this.state_id,
+                city: this.city_id,
+                pincode: this.pincode,
+              }
+            )
+            .then((res) => {
+              console.log(res.data.data);
+              this.user_id = res.data.data.id;
+              this.paynowbtn = false;
+              localStorage.setItem(
+                "UserDetails",
+                JSON.stringify(res.data.data.id)
+              );
+            })
+            .catch((error) => {
+              this.MainErrorOfForm = error.response.data.message;
+              this.paynowbtn = false;
+            });
 
           if (response.razorpay_payment_id) {
-
-             this.usersidN =  localStorage.getItem("UserDetails");
-                        axios
-                  .post(
-                    "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
-                    {
-                      user_id: this.usersidN,
-                      payment_status: "1",
-                      product_id: this.id,
-                      cgst: this.cegst,
-                      sgst: this.sgst,
-                      discount: this.discount,
-                      amount: this.amount,
-                    }
-                  )
-                  .then((result) => {
-                    console.log(result.data);
-                    alert("PaymentSuccess" , this.usersidN);
-                  });
-           
+            this.usersidN = localStorage.getItem("UserDetails");
+            axios
+              .post(
+                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
+                {
+                  user_id: this.usersidN,
+                  payment_status: "1",
+                  product_id: this.id,
+                  cgst: this.cegst,
+                  sgst: this.sgst,
+                  discount: this.discount,
+                  amount: this.amount,
+                }
+              )
+              .then((result) => {
+                console.log(result.data);
+                alert("PaymentSuccess", this.usersidN);
+              });
           } else {
             // Payment unsuccessful
             // console.log("Payment unsuccessful!");
@@ -694,20 +689,17 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
-          {
-            email: this.email,
-            firstname: this.first_name,
-            lastname: this.last_name,
-            phoneno: this.mobile_no,
-            address: this.address,
-            country: this.country_id,
-            state: this.state_id,
-            city: this.city_id,
-            pincode: this.pincode,
-          }
-        )
+        .post("https://api.infinitybrains.com/public/api/payment/" + this.id, {
+          email: this.email,
+          firstname: this.first_name,
+          lastname: this.last_name,
+          phoneno: this.mobile_no,
+          address: this.address,
+          country: this.country_id,
+          state: this.state_id,
+          city: this.city_id,
+          pincode: this.pincode,
+        })
         .then((res) => {
           console.log(res);
           this.paynowbtn = false;
@@ -744,7 +736,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showpayment_product_details/" +
+          "https://api.infinitybrains.com/public/api/showpayment_product_details/" +
             this.id
         )
         .then((result) => {
@@ -820,7 +812,7 @@ export default {
     },
     // getList() {
     //     axios
-    //         .get("https://uatapi.infinitybrains.com/public/api/show/9")
+    //         .get("https://api.infinitybrains.com/public/api/show/9")
     //         .then((result) => {
     //             this.products = result.data.data;
     //             console.warn(result.data.data);
@@ -830,7 +822,7 @@ export default {
     // async sendData() {
     //     this.paynowbtn = true;
     //     await axios
-    //         .post('https://uatapi.infinitybrains.com/public/api/payment/' + this.id, {
+    //         .post('https://api.infinitybrains.com/public/api/payment/' + this.id, {
     //             email: this.email,
     //             firstname: this.first_name,
     //             lastname: this.last_name,
@@ -883,45 +875,40 @@ export default {
       this.loading = true;
       this.hashGen();
     },
-  },mounted() {
+  },
+  mounted() {
+    // Always start the page at the top
+    window.scrollTo(0, 0);
 
+    this.id = this.$route.params.id;
+    console.log("name", this.id);
 
-  // Always start the page at the top
-  window.scrollTo(0, 0);
+    Promise.all([
+      axios
+        .get(
+          'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+            this.id +
+            '"}'
+        )
+        .then((response) => {
+          // handle success
+          this.CoupyCode = response.data.data.data[0].code;
+          this.optionse = response.data.data.data;
+        }),
+      axios
+        .get("https://api.infinitybrains.com/public/api/show/" + this.id)
+        .then((result) => {
+          this.products = result.data.data;
+        }),
+    ]).then(() => {
+      this.getGstValye();
+      this.getData();
+      this.makeid();
 
-  this.id = this.$route.params.id;
-  console.log("name", this.id);
-
-  Promise.all([
-    axios
-      .get(
-        'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
-          this.id +
-          '"}'
-      )
-      .then((response) => {
-        // handle success
-        this.CoupyCode = response.data.data.data[0].code;
-        this.optionse = response.data.data.data;
-      }),
-    axios
-      .get("https://uatapi.infinitybrains.com/public/api/show/" + this.id)
-      .then((result) => {
-        this.products = result.data.data;
-      }),
-  ]).then(() => {
-    this.getGstValye();
-    this.getData();
-    this.makeid();
-
-    window.scrollTo(0, 50);
-  });
-},
-
-
-
-}
-
+      window.scrollTo(0, 50);
+    });
+  },
+};
 </script>
 
 <style>

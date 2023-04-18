@@ -311,7 +311,7 @@ export default {
     async ShereUrl(id) {
       this.loading = true;
       await axios
-        .get("https://uatapi.infinitybrains.com/public/api/showcreative/" + id)
+        .get("https://api.infinitybrains.com/public/api/showcreative/" + id)
         .then((result) => {
           this.mainImageUrl =
             result.data.data.creative + "?not-from-cache-please";
@@ -382,7 +382,7 @@ export default {
 
       axios
         .post(
-          "https://uatapi.infinitybrains.com/public/api/checkkey/" + keyvalue
+          "https://api.infinitybrains.com/public/api/checkkey/" + keyvalue
           // "U1E43IdtZ0kBCYzv"
         )
         .then((result) => {
@@ -410,7 +410,7 @@ export default {
 
           axios
             .get(
-              'https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc&filter={"status":"1"}'
+              'https://api.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc&filter={"status":"1"}'
             )
             .then((result) => {
               this.creative1 = result.data.data;
@@ -436,7 +436,7 @@ export default {
       alert(lesthenCreativeId);
       for (let i = this.mainid; i >= lesthenCreativeId; i--) {
         axios
-          .get("https://uatapi.infinitybrains.com/public/api/showcreative/" + i)
+          .get("https://api.infinitybrains.com/public/api/showcreative/" + i)
           .then((result) => {
             // console.log(result.data.data.creative);
             this.mainImageUrl1 =
@@ -538,7 +538,7 @@ export default {
 
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showcreatives?per_page=" +
+          "https://api.infinitybrains.com/public/api/showcreatives?per_page=" +
             pages +
             '&page=1&sort=id&order_by=desc&filter={"status":"1"}'
         )
@@ -548,14 +548,14 @@ export default {
       if (pages == 40) {
         axios
           .get(
-            'https://uatapi.infinitybrains.com/public/api/showcreatives?per_page=500&page=1&page=1&sort=id&order_by=desc&filter={"status":"1"}'
+            'https://api.infinitybrains.com/public/api/showcreatives?per_page=500&page=1&page=1&sort=id&order_by=desc&filter={"status":"1"}'
           )
           .then((result) => {
             this.creative1 = result.data.data;
           });
       }
     },
-    //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
+    //    axios.get("https://api.infinitybrains.com/public/api/showcreatives").;
     //   //console.warn(result.data.data);
     //   // this.listdef1 = resultfinal1.data.data;
     //   //this.creative1 = resultfinal1.data.data;
@@ -568,7 +568,7 @@ export default {
 
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showcreatives?search=" +
+          "https://api.infinitybrains.com/public/api/showcreatives?search=" +
             this.searchText
         )
         .then((result) => {
@@ -592,7 +592,7 @@ export default {
     //   axios(
     //     {
     //       url:
-    //         "https://uatapi.infinitybrains.com/public/api/Download-creative/" +
+    //         "https://api.infinitybrains.com/public/api/Download-creative/" +
     //         idx,
     //       method: "POST",
 
@@ -614,7 +614,7 @@ export default {
     this.alerted = true;
 
     // axios
-    //   .get("https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
+    //   .get("https://api.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
     //   .then((result) => {
     //     this.creative1 = result.data.data;
     //   });
