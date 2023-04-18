@@ -924,7 +924,8 @@ export default {
     },
     rezorpayed() {
       var options = {
-        key: "rzp_test_EpNayKPHUEGLMY",
+        key: "rzp_live_tazg9e4O5sAPdQ",
+        // key: "rzp_test_EpNayKPHUEGLMY",
         amount: this.amount_pay * 100,
 
         currency: "INR",
