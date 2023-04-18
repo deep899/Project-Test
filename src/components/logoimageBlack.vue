@@ -1,7 +1,7 @@
 <template>
   <div class="column q-mt-xs" style="height: 120px">
     <div class="self-center col-md-10 col-xs-12">
-      <img src="~/src/img/logo_blue.png" style="height: 100%; width:18rem" />
+      <img src="./../img/logo.png" style="height: 100%; width:7rem" />
     </div>
   </div>
 </template>

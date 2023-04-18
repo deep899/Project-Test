@@ -1,6 +1,12 @@
 <template>
   <div class="contactusform q-pa-md" style="max-width: 400px; margin: auto">
-    <q-form @submit="onSubmit" @reset="onReset" name="myForm" class="q-gutter-md" method="post">
+    <q-form
+      @submit="onSubmit"
+      @reset="onReset"
+      name="myForm"
+      class="q-gutter-md"
+      method="post"
+    >
       <q-input
         filled
         v-model="post.name"
@@ -21,7 +27,6 @@
         hint="Enter valid email"
       ></q-input>
 
-
       <q-input
         filled
         v-model="post.age"
@@ -29,7 +34,7 @@
         hint="Post your Queries/Questions"
         lazy-rules
         :rules="[
-          (val) => (val !==null && val !== '') || 'Please type your queries',
+          (val) => (val !== null && val !== '') || 'Please type your queries',
           (val) => isValidQuery(val) || 'Please type Valid  Query',
         ]"
       />
@@ -48,29 +53,21 @@
   </div>
 </template>
 <script>
-
 import { useQuasar } from "quasar";
 import { ref } from "vue";
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "contactform",
 
-
-  data(){
-
-
-    return{
-
-        post:{
-
-          name:'',
-          age:'',
-          email:''
-        }
-
-
-    }
+  data() {
+    return {
+      post: {
+        name: "",
+        age: "",
+        email: "",
+      },
+    };
   },
 
   setup() {
@@ -80,40 +77,34 @@ export default {
     const email = ref(null);
 
     return {
-
-
       async onSubmit() {
         $q.notify({
           color: "green-4",
           textColor: "white",
 
           message: "Submitted",
-
-
-
-
         });
 
-        // let resultfinal = await axios.post("https://uatapi.infinitybrains.com/public/api/show");
+        // let resultfinal = await axios.post("https://api.infinitybrains.com/public/api/show");
         // this.listdef = resultfinal.data.data;
         // console.log("hello frind this new webasite ");
 
-        //https://uatapi.infinitybrains.com/public/api/
-        //  axios.post("https://uatapi.infinitybrains.com/public/api/contactdetails",this.post).then((result)=>{
+        //https://api.infinitybrains.com/public/api/
+        //  axios.post("https://api.infinitybrains.com/public/api/contactdetails",this.post).then((result)=>{
 
         //     console.warn("newlog",result);
 
         //  })
 
-
-        axios.post('https://api.infinitybrains.com/public/api/contactdetails', this.post)
-                 .then((res) => {
-                     //Perform Success Action
-                 })
+        axios
+          .post(
+            "https://api.infinitybrains.com/public/api/contactdetails",
+            this.post
+          )
+          .then((res) => {
+            //Perform Success Action
+          });
       },
-
-
-
 
       onReset() {
         email.value = null;
@@ -123,38 +114,26 @@ export default {
     };
   },
   methods: {
-
-
-
     isValidEmail(val) {
       const emailPattern =
         /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
       return emailPattern.test(val) || "Invalid email";
     },
-    isValidQuery(val){
-
-
-      const QueryPattern =
-        /^(?=[a-zA-Z0-9@._? %+-]{6,254}$)/;
+    isValidQuery(val) {
+      const QueryPattern = /^(?=[a-zA-Z0-9@._? %+-]{6,254}$)/;
       return QueryPattern.test(val) || "Invalid Query";
-
-
-    }
+    },
   },
 
   validate() {
-    myForm.value.validate().then(success => {
+    myForm.value.validate().then((success) => {
       if (success) {
         // yay, models are correct
-      }
-      else {
+      } else {
         // oh no, user has filled in
         // at least one invalid value
       }
-    })
-  }
-
-
-
+    });
+  },
 };
 </script>

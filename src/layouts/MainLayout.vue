@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <q-layout view="lHh Lpr lFf">
     <transition
@@ -9,25 +8,31 @@
       <q-header>
         <!-- bg-#66b6d2 -->
         <!-- linear-gradient(to right, #008dba, #012a71) -->
-        <q-toolbar class="" style="background: white">
+        <q-toolbar id="toolbar" class="tooolbars" style="background-color: transparent; z-index: 50; margin-bottom: -100%; margin-top: 0%;">
           <q-toolbar-title>
             <a href="/" class="gt-xs">
               <q-img scoped
-                src="~/src/img/IB_logo_for_web.png"
-                style="border: 250px;  width: 250px; height: 100%; margin-left: 50px"
+              id="my-image"
+               class="BgImages"
+                src="./../assets/img/Ib_logo.png"
+                style="border: 250px;  width: 250px; height: 100%; margin-left: 50px ;margin-top: 0.5%;"
               ></q-img>
             </a>
           </q-toolbar-title>
 
           <div
-            class="gt-xs"
+            class="gt-xs links"
             v-for="(link, index) in essentialLinks"
             :key="index"
             v-ripple="{ color: 'yellow' }"
           >
             <router-link
-              style="color: #012a71"
-              class="q-mr-lg primary text-h6 header-links text-weight-bold"
+              style="
+              color: white; 
+              /* color: #012A71;  */
+              
+              margin-top: 50%;"
+              class="q-mr-lg primary text-h6 header-links links  text-weight-bold "
               v-bind:to="link.link"
               tag="button"
               >{{ link.title }}</router-link
@@ -122,5 +127,75 @@ export default defineComponent({
       },
     };
   },
+ mounted() {
+  const img = document.querySelector('#my-image');
+
+window.addEventListener('scroll', () => {
+  const threshold = 200; // Change this value to adjust when the image changes
+
+  if (window.scrollY > threshold) {
+    img.src = './../assets/img/new_image.png';
+  } else {
+    img.src = './../assets/img/Ib_logo.png';
+  }
 });
+
+
+  var toolbar = document.querySelector('.tooolbars');
+  document.querySelectorAll('.links > a');
+  var links = document.querySelectorAll('.links > a');
+  window.addEventListener('scroll', function() {
+    // Get the current scroll position
+    var scrollPosition = window.pageYOffset;
+
+    // Check if the user is at the top of the page
+    if (scrollPosition === 0) {
+      toolbar.style.backgroundColor = "transparent";
+      toolbar.style.marginTop = 0;
+      links.forEach(link => {
+        link.style.color = 'white';
+      });
+    }
+
+    // Check if the user has scrolled down from the top
+    if (scrollPosition > 0) {
+      toolbar.style.backgroundColor = "white";
+      toolbar.style.marginTop = 0;
+      toolbar.style.color= "#012A71";
+      links.forEach(link => {
+        link.style.color = '#012A71';
+      });
+    }
+  });
+
+
+  // var toolbar = document.querySelector('.tooolbars');
+  // var links = document.querySelector('.links');
+  // window.addEventListener('scroll', function() {
+  //   // Get the current scroll position
+  //   var scrollPosition = window.pageYOffset;
+
+  //   // Check if the user is at the top of the page
+  //   if (scrollPosition === 0) {
+  //     toolbar.style.backgroundColor = "transparent";
+      
+     
+  //     toolbar.style.marginTop = 0;
+     
+      
+  //   }
+
+  //   // Check if the user has scrolled down from the top
+  //   if (scrollPosition > 0) {
+  //     toolbar.style.backgroundColor = "white";
+  //     toolbar.style.marginTop = 0;
+  //     toolbar.style.color= "blue";
+  //   }
+  // });
+}
+
+});
+
+
+
 </script>

@@ -37,7 +37,7 @@
             font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
           "
         >
-          Price : ₹ {{this.coupon_codePrice }}.00<br />
+          Price : ₹ {{ this.coupon_codePrice }}.00<br />
         </div>
         <div class="q-pa-md q-gutter-sm">
           <q-btn label="Buy me" color="primary" @click="inception = true" />
@@ -52,10 +52,22 @@
           </router-link>
           <div style="margin-top: 15%"></div>
 
-          <q-dialog v-model="inception" >
-            <q-card style="max-width: 50%;">
+          <q-dialog v-model="inception">
+            <q-card style="max-width: 50%">
               <q-card-section>
-                <div class="text-h6">Buy Now  <p style="float: right; font-size: 70%; margin-right: 5%; color: red;"> {{ this.MainErrorOfForm}}</p></div>
+                <div class="text-h6">
+                  Buy Now
+                  <p
+                    style="
+                      float: right;
+                      font-size: 70%;
+                      margin-right: 5%;
+                      color: red;
+                    "
+                  >
+                    {{ this.MainErrorOfForm }}
+                  </p>
+                </div>
               </q-card-section>
 
               <q-card-section class="q-pt-none">
@@ -64,7 +76,10 @@
                   class="scroll"
                 >
                   <div class="q-pa-md" style="max-width: 400px">
-                    <q-form class="q-gutter-md" @submit.prevent="BuyConfirmation()">
+                    <q-form
+                      class="q-gutter-md"
+                      @submit.prevent="SelectPaymentGatewayoption()"
+                    >
                       <q-input
                         filled
                         v-model="first_name"
@@ -239,7 +254,7 @@
                         style=""
                       />
                       <q-banner color="green" v-if="couponCodeSuccess">
-                    {{ couponCodeSuccess }}
+                        {{ couponCodeSuccess }}
                       </q-banner>
                       <q-btn
                         color="primary"
@@ -282,7 +297,22 @@
                         label="Total Amount : "
                         label-color="black"
                       />
-
+                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
+                        <img
+                          style="width: 100px"
+                          :src="razorpayIconUrl"
+                          alt="Razor Pay"
+                        />
+                        <!-- <i class="fab fa-razorpay"></i> -->
+                      </q-radio>
+                      <q-radio v-model="selectedPaymentMethod" val="payumoney">
+                        <img
+                          style="width: 100px"
+                          :src="payumoneyIconUrl"
+                          alt="PayUmoney"
+                        />
+                        <!-- <i class="fa fa-payumoney"></i> -->
+                      </q-radio>
                       <div>
                         <!-- <div>
                             <a
@@ -319,8 +349,8 @@
                     /> -->
                 <q-btn
                   type="submit"
-                  class="btn shadow-none "
-                  v-on:click="BuyConfirmation()"
+                  class="btn shadow-none"
+                  v-on:click="SelectPaymentGatewayoption()"
                 >
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
                 </q-btn>
@@ -526,7 +556,6 @@
 </template>
 
 <script>
-
 // import { defineComponent } from 'vue'
 import { ref, watch } from "vue";
 import products from "components/Products.vue";
@@ -569,7 +598,7 @@ export default {
       mobile_no: "",
       first_name: "",
       last_name: "",
-      Website:"",
+      Website: "",
       address: "",
       pincode: "",
       coupon_code: "",
@@ -584,12 +613,16 @@ export default {
       price: "",
       B_Name: "",
       B_Gst_N: "",
-      CouponCode:"",
+      CouponCode: "",
       S_Name: "",
       CompanyImage: "",
-      MainErrorOfForm:"",
-      coupon_codePrice:"",
-      couponCodeSuccess:"",
+      MainErrorOfForm: "",
+      coupon_codePrice: "",
+      couponCodeSuccess: "",
+      selectedPaymentMethod: null,
+      razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
+      payumoneyIconUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/b/b1/PayUmoney_Logo.jpg",
       // =================================Payment Data================================
       txnid: this.makeid(),
       payuUrl: "https://secure.payu.in/_payment",
@@ -650,6 +683,39 @@ export default {
     };
   },
   methods: {
+    SelectPaymentGatewayoption() {
+      if (this.selectedPaymentMethod == "razorpay") {
+        axios
+          .post("https://api.infinitybrains.com/public/api/payment/" + 13, {
+            email: this.email,
+            firstname: this.first_name,
+            lastname: this.last_name,
+            phoneno: this.mobile_no,
+            address: this.address,
+            country: this.country_id,
+            state: this.state_id,
+            city: this.city_id,
+            pincode: this.pincode,
+          })
+          .then((res) => {
+            console.log(res.data.data);
+            this.user_id = res.data.data.id;
+            this.paynowbtn = false;
+            localStorage.setItem(
+              "UserDetails",
+              JSON.stringify(res.data.data.id)
+            );
+            this.rezorpayed();
+          })
+          .catch((error) => {
+            this.MainErrorOfForm = error.response.data.message;
+            this.paynowbtn = false;
+            // this.rezorpayed();
+          });
+      } else {
+        this.BuyConfirmation();
+      }
+    },
     // applyCoupon() {
     //             axios
     //               .get("apply-coupon/1", {
@@ -677,7 +743,6 @@ export default {
     //           },
 
     async BuyConfirmation() {
-
       await axios
         .post("https://api.infinitybrains.com/public/api/payment/13", {
           email: this.email,
@@ -713,8 +778,9 @@ export default {
             .then((response) => {
               console.log("hello", response.data);
               this.loading = true;
-              // this.hashGen();
-              this.rezorpayed();
+              this.hashGen();
+              // this.rezorpayed();
+              // this.SelectPaymentGatewayoption();
             });
         })
         .catch((error) => {
@@ -736,7 +802,7 @@ export default {
 
     getData() {
       axios
-        .get("https://api.restroworld.com/public/api/countries?is_light=true")
+        .get("https://api.restroworld.com/api/countries?is_light=true")
         .then((result) => {
           this.list = result.data.data;
           if (this.country_id) {
@@ -758,7 +824,7 @@ export default {
           this.sgst = this.Gst.sgst;
           this.cgst = this.Gst.cgst;
           this.discount = this.Gst.discount;
-          this.amount_pay =  Math.round(this.Gst.final_amount);
+          this.amount_pay = Math.round(this.Gst.final_amount);
           localStorage.setItem("copondetails", JSON.stringify(response.data));
         });
     },
@@ -767,12 +833,9 @@ export default {
       // let naming = document.getElementsByClassName("CoupenIsHere").value;
       // console.log(naming);
       axios
-        .post(
-          "https://api.infinitybrains.com/public/api/checkcoupen/" + 13,
-          {
-            code: this.CouponCode,
-          }
-        )
+        .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
+          code: this.CouponCode,
+        })
         .then((result) => {
           this.couponCodeSuccess = result.data.message;
           this.Dis = result.data.data;
@@ -781,20 +844,18 @@ export default {
           this.sgst = this.Dis.sgst;
           this.cgst = this.Dis.cgst;
           this.discount = this.Dis.discount;
-          this.amount_pay =  Math.round(this.Dis.final_amount);
+          this.amount_pay = Math.round(this.Dis.final_amount);
           localStorage.setItem("copondetails", JSON.stringify(response.data));
-
-        }).catch((error) => {
-
+        })
+        .catch((error) => {
           this.couponCodeSuccess = error.data.message;
-
         });
     },
 
     getState() {
       axios
         .get(
-          "https://api.restroworld.com/public/api/states_of_country?is_light=1" +
+          "https://api.restroworld.com/api/states_of_country?is_light=1" +
             this.country_id,
           {
             params: {
@@ -812,7 +873,7 @@ export default {
     getCity() {
       axios
         .get(
-          "https://api.restroworld.com/public/api/cities_of_state?is_light=1" +
+          "https://api.restroworld.com/api/cities_of_state?is_light=1" +
             this.state_id,
           {
             params: {
@@ -832,8 +893,6 @@ export default {
           console.warn(result.data.data);
         });
     },
-
-    
 
     hashGen() {
       var data =
@@ -863,65 +922,72 @@ export default {
 
       document.getElementById("paymentForm").submit();
     },
-    rezorpayed(){
-
+    rezorpayed() {
       var options = {
-          key: "rzp_test_EpNayKPHUEGLMY",
-          amount: this.amount_pay*100 ,
-          
-          currency: 'INR',
-          name: this.name,
-          description: "Test Transaction",
-          image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
-          handler: function(response) {
-            this.paymentId = response.razorpay_payment_id;
-            this.orderId = response.razorpay_order_id;
-            this.signature = response.razorpay_signature;
-            if(response.razorpay_payment_id) {
-                // Payment successful
-                alert("Payment successful!");
-            } else {
-                        // Payment unsuccessful
-                        console.log("Payment unsuccessful!");
-                        alert("Payment failed. Please try again later.");
-                    }
-                    }.bind(this),
-          prefill: {
-            name: this.name,
-            email: this.email
-          },
-          notes: {
-            address: "Razorpay Corporate Office"
-          },
-          theme: {
-            color: "#F37254"
+        key: "rzp_test_EpNayKPHUEGLMY",
+        amount: this.amount_pay * 100,
+
+        currency: "INR",
+        name: this.first_name,
+        description: "Test Transaction",
+        image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
+        handler: function (response) {
+          this.paymentId = response.razorpay_payment_id;
+          this.orderId = response.razorpay_order_id;
+          this.signature = response.razorpay_signature;
+
+          if (response.razorpay_payment_id) {
+            this.usersidN = localStorage.getItem("UserDetails");
+            axios
+              .post(
+                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
+                {
+                  user_id: this.usersidN,
+                  payment_status: "1",
+                  product_id: this.id,
+                  cgst: this.cegst,
+                  sgst: this.sgst,
+                  discount: this.discount,
+                  amount: this.amount,
+                }
+              )
+              .then((result) => {
+                console.log(result.data);
+                alert("PaymentSuccess", this.usersidN);
+              });
+          } else {
+            // Payment unsuccessful
+            // console.log("Payment unsuccessful!");
+            alert("Payment failed. Please try again later.");
           }
-        };
-        var rzp1 = new window.Razorpay(options);
-        rzp1.open();
-    
-
-
-    }
-  
+        }.bind(this),
+        prefill: {
+          name: this.first_name,
+          email: this.email,
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#F37254",
+        },
+      };
+      var rzp1 = new window.Razorpay(options);
+      rzp1.open();
+    },
   },
 
   async mounted() {
     this.id = this.$route.params.id;
     // this.BeforeMountedApplyeCoupenCode();
     axios
-        .post(
-          "https://api.infinitybrains.com/public/api/checkcoupen/" + 13,
-          {
-            code: "Festival Creatives",
-          }
-        )
-        .then((result) => {
-         
-          this.coupon_codePrice =  Math.round(result.data.data.final_amount);
-            console.log("Creative",result.data.data.final_amount);
-  
-        });
+      .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
+        code: "Festival Creatives",
+      })
+      .then((result) => {
+        this.coupon_codePrice = Math.round(result.data.data.final_amount);
+        console.log("Creative", result.data.data.final_amount);
+      });
     console.log("name", this.id);
     axios
       .get(
@@ -935,7 +1001,7 @@ export default {
         this.optionse = response.data.data.data;
       });
     axios
-      .get("https://api.infinitybrains.com/public/api/showproduct/13")
+      .get("https://api.infinitybrains.com/public/api/show/13")
       .then((result) => {
         this.products = result.data.data;
       });

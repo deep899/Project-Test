@@ -17,10 +17,9 @@ module.exports = configure(function (ctx) {
   return {
     plugins: [
       // ...
-      '~/axios.js'
+      "~/axios.js",
     ],
     devServer: {
-
       proxy: {
         "/api": {
           target: "https://api.infinitybrains.com",
@@ -40,7 +39,7 @@ module.exports = configure(function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-webpack/boot-files
-    boot: ["axios"],
+    boot: ["axios", { path: "sweetalert", server: false }],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
     css: ["app.css"],
@@ -93,7 +92,7 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-devServer
     devServer: {
-      // proxy: 'https://uatapi.infinitybrains.com/public/storage/creatives/',
+      // proxy: 'https://api.infinitybrains.com/public/storage/creatives/',
       server: {
         type: "http",
       },
@@ -116,7 +115,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify']
+      plugins: ["Notify"],
     },
 
     // animations: 'all', // --- includes all animations

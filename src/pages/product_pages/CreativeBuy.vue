@@ -10,8 +10,8 @@
   <link src="https://unpkg.com/vue@2" />
   <!-- <img  style=" width: 10rem; margin-top: 80%; opacity: 0.5;" src="../../img/ScrollGroup7.png" /> -->
   <div v-if="loading" class="loading-overlay">
-      <q-spinner-gears color="white" size="80px" />
-    </div>
+    <q-spinner-gears color="white" size="80px" />
+  </div>
   <div class="text-center titlee name">Creatives</div>
   <div class="row browse">
     <div v-if="showButton">
@@ -113,7 +113,10 @@
         {{ item.name }}
       </h4>
       <div class="imgclassUper">
-        <Button style="background-color: white; color: black;" class=" btn  innerbutton" @click="ShereUrl(item.id)"
+        <Button
+          style="background-color: white; color: black"
+          class="btn innerbutton"
+          @click="ShereUrl(item.id)"
           ><i class="fa fa-download"></i> &nbsp; Download</Button
         >
       </div>
@@ -313,7 +316,6 @@ export default {
           this.mainImageUrl =
             result.data.data.creative + "?not-from-cache-please";
           this.DownloadCreativeName = result.data.data.name;
-       
         });
 
       const canvas = document.getElementById("canvas");
@@ -418,9 +420,10 @@ export default {
             })
             .catch((error) => {
               this.alerted = true;
-            }).finally(() => {
-        this.loading = false;
-      });
+            })
+            .finally(() => {
+              this.loading = false;
+            });
         })
         .catch((error) => {
           this.alerted = true;
@@ -438,7 +441,7 @@ export default {
             // console.log(result.data.data.creative);
             this.mainImageUrl1 =
               result.data.data.creative + "?not-from-cache-please";
-              this.DownloadCreativeName1 = result.data.data.name;
+            this.DownloadCreativeName1 = result.data.data.name;
             this.DownloadCreativePartII();
           });
 
@@ -552,7 +555,7 @@ export default {
           });
       }
     },
-    //    axios.get("https://uatapi.infinitybrains.com/public/api/showcreatives").;
+    //    axios.get("https://api.infinitybrains.com/public/api/showcreatives").;
     //   //console.warn(result.data.data);
     //   // this.listdef1 = resultfinal1.data.data;
     //   //this.creative1 = resultfinal1.data.data;
@@ -589,7 +592,7 @@ export default {
     //   axios(
     //     {
     //       url:
-    //         "https://uatapi.infinitybrains.com/public/api/Download-creative/" +
+    //         "https://api.infinitybrains.com/public/api/Download-creative/" +
     //         idx,
     //       method: "POST",
 
@@ -611,7 +614,7 @@ export default {
     this.alerted = true;
 
     // axios
-    //   .get("https://uatapi.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
+    //   .get("https://api.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
     //   .then((result) => {
     //     this.creative1 = result.data.data;
     //   });
@@ -621,7 +624,7 @@ export default {
 </script>
 
       <style>
-      .loading-overlay {
+.loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
