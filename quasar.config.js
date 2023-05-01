@@ -22,7 +22,7 @@ module.exports = configure(function (ctx) {
     devServer: {
       proxy: {
         "/api": {
-          target: "https://api.infinitybrains.com",
+          target: "https://uatapi.infinitybrains.com",
           changeOrigin: true,
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -92,7 +92,7 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-devServer
     devServer: {
-      // proxy: 'https://api.infinitybrains.com/public/storage/creatives/',
+      // proxy: 'https://uatapi.infinitybrains.com/public/storage/creatives/',
       server: {
         type: "http",
       },

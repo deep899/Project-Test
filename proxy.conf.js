@@ -3,7 +3,7 @@ module.exports = {
     proxy: {
       // add your API endpoint here
       "/api": {
-        target: "https://api.infinitybrains.com/public/storage/creatives/",
+        target: "https://uatapi.infinitybrains.com/public/storage/creatives/",
         changeOrigin: true,
         pathRewrite: {
           "^/api": "",
