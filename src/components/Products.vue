@@ -91,7 +91,7 @@ export default {
   methods: {
     async getProductList() {
       const resultfinal = await axios.get(
-        "https://uatapi.infinitybrains.com/public/api/showproduct"
+        "https://api.infinitybrains.com/public/api/showproduct"
       );
       this.listdef = resultfinal.data.data;
     },

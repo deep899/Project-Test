@@ -620,7 +620,7 @@ export default {
           this.signature = response.razorpay_signature;
           axios
             .post(
-              "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
+              "https://api.infinitybrains.com/public/api/payment/" + this.id,
               {
                 email: this.email,
                 firstname: this.first_name,
@@ -651,7 +651,7 @@ export default {
             this.usersidN = localStorage.getItem("UserDetails");
             axios
               .post(
-                "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
+                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
                 {
                   user_id: this.usersidN,
                   payment_status: "1",
@@ -689,20 +689,17 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
-          {
-            email: this.email,
-            firstname: this.first_name,
-            lastname: this.last_name,
-            phoneno: this.mobile_no,
-            address: this.address,
-            country: this.country_id,
-            state: this.state_id,
-            city: this.city_id,
-            pincode: this.pincode,
-          }
-        )
+        .post("https://api.infinitybrains.com/public/api/payment/" + this.id, {
+          email: this.email,
+          firstname: this.first_name,
+          lastname: this.last_name,
+          phoneno: this.mobile_no,
+          address: this.address,
+          country: this.country_id,
+          state: this.state_id,
+          city: this.city_id,
+          pincode: this.pincode,
+        })
         .then((res) => {
           console.log(res);
           this.paynowbtn = false;
@@ -739,7 +736,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showpayment_product_details/" +
+          "https://api.infinitybrains.com/public/api/showpayment_product_details/" +
             this.id
         )
         .then((result) => {
@@ -756,7 +753,7 @@ export default {
     getDiscount() {
       axios
         .post(
-          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + this.id,
+          "https://api.infinitybrains.com/public/api/checkcoupen/" + this.id,
           {
             code: this.CouponCode,
           }
@@ -815,7 +812,7 @@ export default {
     },
     // getList() {
     //     axios
-    //         .get("https://uatapi.infinitybrains.com/public/api/show/9")
+    //         .get("https://api.infinitybrains.com/public/api/show/9")
     //         .then((result) => {
     //             this.products = result.data.data;
     //             console.warn(result.data.data);
@@ -825,7 +822,7 @@ export default {
     // async sendData() {
     //     this.paynowbtn = true;
     //     await axios
-    //         .post('https://uatapi.infinitybrains.com/public/api/payment/' + this.id, {
+    //         .post('https://api.infinitybrains.com/public/api/payment/' + this.id, {
     //             email: this.email,
     //             firstname: this.first_name,
     //             lastname: this.last_name,
@@ -889,7 +886,7 @@ export default {
     Promise.all([
       axios
         .get(
-          'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+          'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
             this.id +
             '"}'
         )
@@ -899,7 +896,7 @@ export default {
           this.optionse = response.data.data.data;
         }),
       axios
-        .get("https://uatapi.infinitybrains.com/public/api/show/" + this.id)
+        .get("https://api.infinitybrains.com/public/api/show/" + this.id)
         .then((result) => {
           this.products = result.data.data;
         }),

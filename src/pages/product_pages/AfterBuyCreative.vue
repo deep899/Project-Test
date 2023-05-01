@@ -129,18 +129,15 @@ export default {
     }
 
     axios
-      .post(
-        "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
-        {
-          user_id: this.user_id,
-          payment_status: "1",
-          product_id: this.id,
-          cgst: this.cegst,
-          sgst: this.sgst,
-          discount: this.discount,
-          amount: this.amount,
-        }
-      )
+      .post("https://api.infinitybrains.com/public/api/paymentstatusupdate", {
+        user_id: this.user_id,
+        payment_status: "1",
+        product_id: this.id,
+        cgst: this.cegst,
+        sgst: this.sgst,
+        discount: this.discount,
+        amount: this.amount,
+      })
       .then((result) => {
         console.log(result.data);
       });
