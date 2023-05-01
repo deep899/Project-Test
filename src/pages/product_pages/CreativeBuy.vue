@@ -53,28 +53,18 @@
     </q-btn>
   </div>
 
-  <q-dialog
-    v-model="alerted"
-    persistent
-    @update:visible="onDialogUpdate"
-    style=""
-  >
-    <q-card style="max-width: 40rem; height: 37rem" class="cardd">
-      <div
-        class="Keyproduct"
-        style="align-items: center; justify-content: center"
-      >
+  <q-dialog v-model="alerted" @update:model-value="dialogClosed">
+    <q-card class="cardd">
+      <div class="Keyproduct">
         <center>
           <img
-            style="margin-top: 5rem; width: 14rem"
+            style="margin-top: 5rem; margin-bottom: 5%; width: 14rem"
             src="../../img/IB_KEY/keyy.svg"
           />
-
           <p class="typep">
             "Please enter the 16-digit Key Provided in your purchase
-            confirmation email to acttivate your Digital Services."
+            confirmation email to activate your Digital Services."
           </p>
-
           <input
             id="iban"
             required
@@ -90,18 +80,20 @@
             style="
               width: 25rem;
               max-width: 100%;
+
+              margin-bottom: 2%;
               background-color: #2f518a;
               color: white;
               font-size: 1.2rem;
             "
             @click="Submitedkey()"
-            >SUBMIT</q-btn
           >
+            SUBMIT
+          </q-btn>
         </center>
       </div>
     </q-card>
   </q-dialog>
-
   <div class="row headers">
     <div
       class="postimg text-center flex"
@@ -138,7 +130,7 @@
       color="primary"
       @click="loadmore()"
     >
-      &nbsp;&nbsp;&nbsp; LOAD MORE CREATIVE
+      LOAD MORE CREATIVE
     </q-btn>
   </div>
 
@@ -290,24 +282,21 @@ export default {
   },
 
   methods: {
-    onDialogUpdate(val) {
-      if (val === true) {
-        // dialog has been opened
-        this.$nextTick(() => {
-          document.addEventListener("click", this.onDocumentClick);
-        });
-      } else {
-        // dialog has been closed
-        document.removeEventListener("click", this.onDocumentClick);
+    redirect() {
+      this.$router.push("/other-page");
+    },
+    submitKey() {
+      // handle submit key logic
+    },
+    spacing() {
+      // handle spacing logic
+    },
+    dialogClosed(visible) {
+      if (!visible) {
+        // dialog was closed, handle logic here
+        this.$router.push("/13");
       }
     },
-    onDocumentClick(event) {
-      const dialogEl = this.$refs.dialog.$el;
-      if (!dialogEl.contains(event.target)) {
-        this.alerted = false;
-      }
-    },
-
     async ShereUrl(id) {
       this.loading = true;
       await axios
@@ -387,6 +376,7 @@ export default {
         )
         .then((result) => {
           this.alerted = false;
+          window.scrollTo(0, 50);
           this.logoImageUrl = result.data.data.company_logo;
           this.text11 = result.data.data.address;
           this.text22 = result.data.data.contact_number;
@@ -417,6 +407,7 @@ export default {
               this.id1 = result.data.data;
               this.mainid = result.data.data[0].id;
               this.alerted = false;
+              window.scrollTo(0, 50);
             })
             .catch((error) => {
               this.alerted = true;
