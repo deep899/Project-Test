@@ -427,13 +427,13 @@
             </div> -->
     </div>
 
-    <div class="after_desc name">
+    <div class="after_desc name" >
       <h2>Creative</h2>
 
       <div>
         <center>
           <div class="carousel">
-            <ul class="slides">
+            <ul class="slides" style="">
               <input type="radio" name="radio-buttons" id="img-1" checked />
               <li class="slide-container">
                 <div class="slide-image">
@@ -979,13 +979,16 @@ export default {
   },
 
   async mounted() {
+    
     this.id = this.$route.params.id;
+    
     // this.BeforeMountedApplyeCoupenCode();
     axios
       .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
         code: "Festival Creatives",
       })
       .then((result) => {
+        window.scrollTo(0, 50);
         this.coupon_codePrice = Math.round(result.data.data.final_amount);
         console.log("Creative", result.data.data.final_amount);
       });
@@ -1097,7 +1100,7 @@ export default {
 .carousel {
   margin-left: 15%;
   margin-right: 15%;
-  height: 20rem;
+  height: 22rem;
   width: 60vh;
 }
 
@@ -1153,6 +1156,7 @@ ul.slides input {
   font-size: 100px;
   line-height: 600px;
   color: #fff;
+  margin-top: -24%;
 }
 
 .carousel-controls label {
@@ -1173,7 +1177,7 @@ ul.slides input {
 }
 
 .carousel-controls .prev-slide {
-  width: 20%;
+  width: 15%;
   text-align: left;
 
   margin-bottom: 50%;
