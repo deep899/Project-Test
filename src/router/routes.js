@@ -54,6 +54,10 @@ const routes = [
         path: "home/User/Success",name: "success",
         component: () => import("pages/success.vue"),
       },
+      {
+        path: "/deletionPolicy",name: "deletionPolicy",
+        component: () => import("./../deletionPolicy.vue"),
+      },
     ],
   },
 
