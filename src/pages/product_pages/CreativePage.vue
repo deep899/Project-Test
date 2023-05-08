@@ -249,6 +249,19 @@
                       </select> -->
                       <q-input
                         filled
+                        disable
+                        v-model="CoupyCode"
+                        label-color="black"
+                      />
+                      <q-btn
+                        color="primary"
+                        label="Copy Code"
+                        style="width: 95%"
+                        @click="triggerPositive()"
+                      />
+                      <br />
+                      <q-input
+                        filled
                         v-model="CouponCode"
                         label="Coupon Code "
                         style=""
@@ -262,6 +275,14 @@
                         label="Apply"
                         @click="getDiscount()"
                       />
+                      
+                      <div
+                        v-if="couponCodeSuccess"
+                        id="bannerMsg"
+                        :style="couponCodeSuccessColor"
+                      >
+                        {{ couponCodeSuccess }}
+                      </div>
                       <q-input
                         filled
                         disable
@@ -297,13 +318,13 @@
                         label="Total Amount : "
                         label-color="black"
                       />
-                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
+                      <!-- <q-radio v-model="selectedPaymentMethod" val="razorpay">
                         <img
                           style="width: 100px"
                           :src="razorpayIconUrl"
                           alt="Razor Pay"
                         />
-                        <!-- <i class="fab fa-razorpay"></i> -->
+                       
                       </q-radio>
                       <q-radio v-model="selectedPaymentMethod" val="payumoney">
                         <img
@@ -311,8 +332,8 @@
                           :src="payumoneyIconUrl"
                           alt="PayUmoney"
                         />
-                        <!-- <i class="fa fa-payumoney"></i> -->
-                      </q-radio>
+                     
+                      </q-radio> -->
                       <div>
                         <!-- <div>
                             <a
@@ -619,6 +640,8 @@ export default {
       MainErrorOfForm: "",
       coupon_codePrice: "",
       couponCodeSuccess: "",
+      
+      
       selectedPaymentMethod: null,
       razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
       payumoneyIconUrl:
@@ -637,6 +660,20 @@ export default {
 
   Detailsunted() {
     this.showProducts = true;
+  },
+  computed: {
+    couponCodeSuccessColor() {
+      return {
+        color: this.couponCodeSuccess.startsWith(
+          "Coupon code applied successfully"
+        )
+          ? "green"
+          : "red",
+      };
+    },
+    couponCodeSuccessColorCopy() {
+      return { color: "green" };
+    },
   },
 
   setup() {
@@ -683,8 +720,17 @@ export default {
     };
   },
   methods: {
+    triggerPositive() {
+      navigator.clipboard.writeText(this.CoupyCode);
+      if (this.CoupyCode) {
+        this.selectedCoupen = "Code is Copy !!";
+      } else {
+        alert("Something went Wrong");
+      }
+    },
     SelectPaymentGatewayoption() {
-      if (this.selectedPaymentMethod == "razorpay") {
+        // if (this.selectedPaymentMethod == "razorpay") {
+          if ("nonvalue" == "razorpay") {
         axios
           .post("https://api.infinitybrains.com/public/api/payment/" + 13, {
             email: this.email,
@@ -839,7 +885,7 @@ export default {
         .then((result) => {
           this.couponCodeSuccess = result.data.message;
           this.Dis = result.data.data;
-          console.log(this.Dis);
+          console.log(this.couponCodeSuccess);
           this.final_amount = this.Dis.price;
           this.sgst = this.Dis.sgst;
           this.cgst = this.Dis.cgst;
@@ -1001,6 +1047,7 @@ export default {
       .then((response) => {
         // handle success
         console.log("helooooooooooo", response.data.data.data[0].code);
+        this.CoupyCode = response.data.data.data[0].code;
         this.optionse = response.data.data.data;
       });
     axios
