@@ -291,13 +291,13 @@
                         label="Total Amount : "
                         label-color="black"
                       />
-                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
+                      <!-- <q-radio v-model="selectedPaymentMethod" val="razorpay">
                         <img
                           style="width: 100px"
                           :src="razorpayIconUrl"
                           alt="Razor Pay"
                         />
-                        <!-- <i class="fab fa-razorpay"></i> -->
+                
                       </q-radio>
                       <q-radio v-model="selectedPaymentMethod" val="payumoney">
                         <img
@@ -305,8 +305,8 @@
                           :src="payumoneyIconUrl"
                           alt="PayUmoney"
                         />
-                        <!-- <i class="fa fa-payumoney"></i> -->
-                      </q-radio>
+                       
+                      </q-radio> -->
                       <div>
                         <!-- <div>
                             <a
@@ -598,7 +598,8 @@ export default {
     },
 
     SelectPaymentGatewayoption() {
-      if (this.selectedPaymentMethod == "razorpay") {
+      // if (this.selectedPaymentMethod == "razorpay") {
+        if ("nonvalue" == "razorpay") {
         this.rezorpayed();
       } else {
         this.BuyConfirmation();
