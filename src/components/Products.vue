@@ -1,73 +1,185 @@
 <template>
-  <div style="margin-top: 5%">
-    <div class="container" style="width: 80%; margin: 0 auto">
+  <div class="main-Container1" style="margin-top: 0%">
+    <img
+      class="imag34"
+      style="
+        object-fit: contain;
+        width: fit-content;
+        height: 100%;
+
+        margin-top: 29%;
+
+        position: absolute;
+      "
+      src="./../../src/assets/BackGround/pgb3.png"
+    />
+    <img
+      class="imag34"
+      style="
+        object-fit: contain;
+        width: fit-content;
+        height: 40%;
+
+        top: 160%;
+        right: 0;
+        position: absolute;
+      "
+      src="./../../src/assets/BackGround/pgb2.png"
+    />
+    <img
+      class="imag34"
+      style="
+        object-fit: contain;
+        width: fit-content;
+        height: 20%;
+
+        top: 275%;
+        right: 0;
+        position: absolute;
+      "
+      src="./../../src/assets/BackGround/pgb12.png"
+    />
+    <div v-if="container1" class="container container1" style="width: 100%">
       <div
         v-for="(item, index) in listdef"
         :key="item.id"
-        class="row"
-        style="height: 60vh; max-height: fit-content"
+        style="display: flex; align-items: center; justify-content: center"
       >
-        <div
-          v-if="index % 2 == 0"
-          class="col-md-6 col-sm-12"
-          style="display: flex; align-items: center; justify-content: right"
-        >
-          <router-link :to="'/' + item.id">
-            <img
-              style="
-                height: 40vh;
-                width: 60vh;
-                max-width: 100%;
-                max-height: 100%;
-                margin-left: -23%;
-              "
-              :src="item.product_image"
-              :alt="item.name"
-            />
-          </router-link>
-        </div>
-        <div class="col-md-6 col-sm-12" style="">
+        <div class="row" v-if="index % 2 == 0">
           <div
-            class="row"
-            style="margin-left: 10%; max-width: 100%; max-height: fit-content"
+            id="firstCondition1"
+            class="col-md-6 col-sm-12"
+            style="
+              display: flex;
+              height: 70vh;
+              align-items: center;
+              justify-content: end;
+            "
           >
-            <h3 class="col-12 nameProduct" style="margin-top: 10vh">
-              {{ item.name }}
-            </h3>
-            <!-- <p class="  col-12" style="width:80%; justify-content: left;">{{ item.desc }}</p> -->
-            <p
-              class="col-12"
-              style="
-                width: 80%;
-                font-size: 1rem;
-                margin-top: -2%;
-                justify-content: left;
-                max-height: fit-content;
-              "
-            >
-              <!-- The human resources management system (HRMS) is a classic solution for managing any company or firm. It constructs a pliable schedule as per the suitability of the company. It provides easy access to all employees without hampering the work engagements of the team members.  -->
-              {{ item.short_desc }}
-            </p>
+            <router-link :to="'/' + item.id">
+              <img
+                style="
+                  object-fit: contain;
+                  width: fit-content;
+                  height: 42.8vh;
+                  max-width: 100%;
+                "
+                :src="item.product_image"
+                :alt="item.name"
+              />
+            </router-link>
+          </div>
+          <div
+            class="col-md-6 col-sm-12 col-lg-6"
+            style="
+              align-items: center;
+              display: flex;
+              justify-content: center;
+              position: relative;
+            "
+          >
+            <div class="firstDiv" style="">
+              <span
+                class="nameProduct"
+                style="
+                  font-size: 5vh;
+                  line-height: 4vh;
+                  display: inline;
+                  top: 0;
+                  max-width: 100%;
+                "
+              >
+                {{ item.name }}
+              </span>
+
+              <p class="longDiscription" style="">{{ item.short_desc }}</p>
+              <p class="price" style="">
+                Price : <span style="font-size: 1vw">₹</span>
+                {{ this.formatNumber(item.price) }}/-
+              </p>
+            </div>
           </div>
         </div>
-        <div
-          v-if="index % 2 !== 0"
-          class="col-md-6 col-sm-12"
-          style="display: flex; align-items: center"
-        >
-          <router-link :to="'/' + item.id">
-            <img
-              style="
-                height: 40vh;
-                width: 60vh;
-                margin-left: 10%;
-                max-width: 100%;
-                max-height: 100%;
-              "
-              :src="item.product_image"
-              :alt="item.name"
-            />
-          </router-link>
+
+        <div class="row" v-if="index % 2 !== 0">
+          <div class="col-md-6 col-sm-12 col-lg-6 secondDiv" style="">
+            <div style="width: 80%; height: 30.8vh; padding-left: 0.2%">
+              <span class="nameSecond nameProduct" style="">
+                {{ item.name }}
+              </span>
+
+              <p class="longDiscription" style="">{{ item.short_desc }}</p>
+              <p class="price" style="">
+                Price : <span style="font-size: 1vw">₹</span>
+                {{ this.formatNumber(item.price) }}/-
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-sm-12"
+            style="
+              display: flex;
+              height: 70.8vh;
+              align-items: center;
+              justify-content: start;
+            "
+          >
+            <router-link :to="'/' + item.id">
+              <img
+                class="secondImage"
+                style=""
+                :src="item.product_image"
+                :alt="item.name"
+              />
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-else
+      class="container container2"
+      style="width: 100%; margin-bottom: 30%"
+    >
+      <div
+        v-for="(item, index) in listdef"
+        :key="item.id"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <div class="row">
+          <div
+            class="col-md-6 col-sm-12"
+            style="
+              display: flex;
+              height: 50.8vh;
+              align-items: center;
+              justify-content: start;
+            "
+          >
+            <router-link :to="'/' + item.id">
+              <img
+                class="secondImage"
+                style=""
+                :src="item.product_image"
+                :alt="item.name"
+              />
+            </router-link>
+          </div>
+
+          <div class="col-md-6 col-sm-12 col-lg-6 secondDiv" style="">
+            <div style="width: 80%; height: 30.8vh; padding-left: 0.2%">
+              <span class="nameSecond nameProduct" style="">
+                {{ item.name }}
+              </span>
+
+              <p class="longDiscription" style="">{{ item.short_desc }}</p>
+              <p class="price" style="">
+                Price : <span style="font-size: 1vw">₹</span>
+                {{ this.formatNumber(item.price) }}/-
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -76,16 +188,54 @@
 
 <script>
 import axios from "axios";
+import { ref, onMounted, onUnmounted } from "vue";
+import { useStore } from "vuex";
 
 export default {
   data() {
     return {
       listdef: [],
+      container1: false,
     };
   },
+  setup() {
+    const isVisible = ref(false);
+    const store = useStore();
 
+    onMounted(() => {
+      isVisible.value = true;
+      // Apply the lines of code when the component becomes visible
+      store.commit("setBackGroundColor", "transparent");
+      store.commit(
+        "setimageSrc",
+        `${window.location.origin}/img/Ib_logo.446e007b.png`
+      );
+      store.commit("changeColor", "white");
+    });
+
+    onUnmounted(() => {
+      isVisible.value = false;
+    });
+
+    // ... Other component logic ...
+
+    return {
+      isVisible,
+      // ... Other properties ...
+    };
+  },
   mounted() {
+    // const store = userDetails();
+    // store.commit('setBackGroundColor', 'transparent');
+    // store.commit('setimageSrc', `${window.location.origin}/img/Ib_logo.446e007b.png`);
     this.getProductList();
+    this.checkScreenSize();
+    // Add an event listener to monitor window resize
+    window.addEventListener("resize", this.checkScreenSize);
+  },
+  beforeDestroy() {
+    // Remove the event listener when the component is destroyed
+    window.removeEventListener("resize", this.checkScreenSize);
   },
 
   methods: {
@@ -95,16 +245,170 @@ export default {
       );
       this.listdef = resultfinal.data.data;
     },
+    checkScreenSize() {
+      // Update the isAbove940 flag based on window width
+      this.container1 = window.innerWidth > 940;
+    },
+    formatNumber(number) {
+      number = number.toString().replace(/\D/g, "");
+      let formattedNumber = "";
+      let commaCount = 0;
+
+      for (let i = number.length - 1; i >= 0; i--) {
+        formattedNumber = number[i] + formattedNumber;
+        commaCount++;
+
+        if (commaCount === 3 && i > 0) {
+          formattedNumber = "," + formattedNumber;
+          commaCount = 0;
+        }
+      }
+
+      return formattedNumber;
+    },
   },
 };
 </script>
 
 <style>
+@keyframes fadeInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animations to rows based on index */
+.row:nth-child(odd) {
+  animation: fadeInFromTop 0.5s ease-in-out;
+}
+
+.row:nth-child(even) {
+  animation: fadeInFromLeft 0.5s ease-in-out;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 940px) {
+  /* Adjust the animation for smaller screens if needed */
+  .row:nth-child(odd) {
+    animation: fadeInFromLeft 0.5s ease-in-out;
+  }
+
+  .row:nth-child(even) {
+    animation: fadeInFromTop 0.5s ease-in-out;
+  }
+}
 /* Optional CSS styles */
 .nameProduct {
   color: #012a71;
   color: #012a71;
   font-family: Impact, Bold, sans-serif;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.firstDiv {
+  width: 80%;
+  height: 42.8vh;
+  padding-left: 5%;
+}
+.secondImage {
+  object-fit: contain;
+  width: fit-content;
+  height: 42.8vh;
+  margin-left: 10%;
+  max-width: 100%;
+}
+.secondDiv {
+  align-items: center;
+  padding-left: 8%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.nameSecond {
+  font-size: 5vh;
+  line-height: 4vh;
+  display: inline;
+  top: 0;
+  max-width: 100%;
+}
+.firstCondition {
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  justify-content: end;
+}
+.longDiscription {
+  width: 80%;
+  margin-top: 4.5%;
+  font-size: 1.2vw;
+
+  max-height: fit-content;
+}
+
+.price {
+  font-size: 1.2vw;
+  font-weight: 900 bolder;
+  margin-top: -1.5%;
+}
+@media (max-width: 940px) {
+  .longDiscription {
+    width: 100%;
+    margin-top: 4.5%;
+    font-size: 4.3vw;
+
+    max-height: fit-content;
+  }
+  .imag34 {
+    display: none;
+  }
+  #firstCondition1 {
+    height: 50vh;
+  }
+  .secondDiv {
+    align-items: center;
+    padding-left: 0%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .secondImage {
+    margin-left: 0;
+  }
+  .firstDiv {
+    width: 80%;
+    height: 42.8vh;
+    padding-left: 0%;
+  }
+  .nameSecond {
+    font-size: 4.5vh;
+    line-height: 4vh;
+    display: inline;
+    top: 0;
+    max-width: 80%;
+  }
+  .row .col-md,
+  .col {
+    height: 50vh;
+  }
+  .price {
+    font-size: 5.2vw;
+    font-weight: 900 bolder;
+    margin-top: -1.5%;
+  }
 }
 </style>

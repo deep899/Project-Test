@@ -30,7 +30,10 @@
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
   </div>
-  <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
+  <div
+    style="background-color: #2f518a"
+    class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
+  ></div>
   <!-- Blacnk Background0-blue End Here -->
 
   <!-- Logo Image  -->
@@ -123,9 +126,8 @@ export default {
       ],
       slide: ref("style"),
       lorem:
-
-"We work  with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!",
- };
+        "We work  with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!",
+    };
   },
 };
 </script>
