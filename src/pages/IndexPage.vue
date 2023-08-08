@@ -1,33 +1,22 @@
 <template>
   <!-- Slider Carousel -->
   <carousel />
+  <br/>
   <!-- Carousel End Here -->
-  <!-- OUR PRODUTCS -->
-  <div v-show="showProducts">
-    <div
-      class="headingtag text-center"
-      style="
-        background-color: rgb(252, 252, 250);
-        height: 10vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <h4
-        class="nameProduct"
+  <span
+        class="OurTitle"
         style="
-          font-size: 3.5rem;
-          margin-top: 15%;
-          color: #012a71;
-          align-items: center;
-          display: flex;
-          justify-content: center;
+          
+          /* border: solid; */
         "
       >
+
         OUR PRODUCT
-      </h4>
-    </div>
+      </span>
+    
+  <!-- OUR PRODUTCS -->
+  <div v-show="showProducts">
+
     <products />
   </div>
   <!-- <div class="container">
@@ -74,25 +63,23 @@
       justify-content: center;
     "
   >
-    <h4
-      class="nameProduct"
-      style="
-        font-size: 3.5rem;
-        color: #012a71;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-      "
-    >
+  <span
+        class="OurTitle"
+        style="
+          width: 100%;
+          /* border: solid; */
+        "
+      >
+
       OUR WORK IN PROGRESS
-    </h4>
+      </span>
   </div>
   <workInprogress />
 
   <!-- Work In Progress End Here -->
-
+  <footer>
   <!-- Blacnk Background0-blue Start Here -->
- <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
+ <h3 class="" style="width: 100%; background-color: #446cb1;">&nbsp;</h3>
   <logoimageblack />
 
   <!-- Logo Image -->
@@ -101,28 +88,28 @@
   <div class="q-pa-md bgclass">
     <div
       class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 1920px; width: 84%"
+      style="margin: 0 auto; max-width: 100%; width: 90%"
     >
       <!-- Infinit ABout -->
-      <div class="col-md-6 col-lg-2">
+      <div class=" col-sm-6   col-md-4 col-lg-2"   >
         <infinityabout :lorem="lorem" />
       </div>
       <!-- End Infinity About -->
 
       <!-- COntact Details Start Here -->
-      <div class="col-md-6 col-lg-2">
+      <div class=" col-sm-6   col-md-4 col-lg-2">
         <contactdetail />
       </div>
       <!-- Contact Details End here -->
 
       <!-- Expert Service HEre -->
-      <div class="col-md-6 col-lg-2">
+      <div class=" col-sm-6   col-md-4 col-lg-2"   >
         <expertservice />
       </div>
       <!-- Expert Service End HEre -->
 
       <!-- Quick links Here -->
-      <div class="col-md-6 col-lg-2">
+      <div class=" col-sm-6   col-md-4 col-lg-2"    >
         <quicklink />
       </div>
       <!-- Quick links End Here -->
@@ -132,10 +119,7 @@
       <div class="col-auto text-center">
         <p
           style="
-            top: 5672px;
-            left: 750px;
-            width: 421px;
-            height: 34px;
+           
             /* UI Properties */
             color: var(--unnamed-color-ffffff);
 
@@ -150,6 +134,7 @@
       </div>
     </div>
   </div>
+</footer>
 </template>
 
 <script>
@@ -252,11 +237,37 @@ export default {
     flex-wrap: wrap;
   }
 }
-
+.OurTitle{
+          font-size: 3.5vw;
+          margin-top: 0%;
+          color: #012a71;
+          font-family: Impact, Bold, sans-serif;
+          background-color: #eeeeee57;
+          align-items: center;
+          display: flex;
+          line-height: 7vw;
+          justify-content: center;
+}
 .bgclass {
   background-image: url("./../img/bgok.jpg");
   background-repeat: no-repeat;
   background-position: top left;
   background-size: cover;
+}
+.q-carousel__slide{
+  padding: 0;
+}
+@media (max-width: 940px) {
+
+    .OurTitle{
+
+        margin-top: -2%;
+        font-family: Impact, Bold, sans-serif;
+        font-size: 7VW ; 
+        line-height: 10vw;
+        background-color: #f5f5f570;
+    }
+
+
 }
 </style>

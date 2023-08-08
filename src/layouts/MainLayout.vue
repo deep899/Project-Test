@@ -8,37 +8,42 @@
       <q-header>
         <!-- bg-#66b6d2 -->
         <!-- linear-gradient(to right, #008dba, #012a71) -->
-        <q-toolbar id="toolbar" class="tooolbars" style="background-color: transparent; z-index: 50; margin-bottom: -100%; margin-top: 0%;">
+        <q-toolbar id="toolbar" class="tooolbars" style=" z-index: 50; margin-bottom: -100%; margin-top: 0%;">
           <q-toolbar-title>
             <a href="/" class="gt-xs">
-              <q-img scoped
+              <img scoped
               id="my-image"
                class="BgImages"
                 src="./../assets/img/Ib_logo.png"
-                style="border: 250px;  width: 250px; height: 100%; margin-left: 50px ;margin-top: 0.5%;"
-              ></q-img>
+                alt="./../../src/assets/img/logo_blue.png"
+                style=" width: 11vw; margin-left: 50px ;margin-top: 1%; margin-bottom: 0%;"
+              />
+              <img scoped
+              id="my-image"
+               class="BgImages"
+               
+                src="./../../src/assets/img/logo_blue.png"
+                alt=""
+                style="display: none; width: 11vw; margin-left: 50px ;margin-top: 1%; margin-bottom: 0%;"
+              />
             </a>
           </q-toolbar-title>
 
-          <div
-            class="gt-xs links"
-            v-for="(link, index) in essentialLinks"
-            :key="index"
-            v-ripple="{ color: 'yellow' }"
-          >
-            <router-link
-              style="
-              color: white; 
-              /* color: #012A71;  */
-              
-              margin-top: 50%;"
-              class="q-mr-lg primary text-h6 header-links links  text-weight-bold "
-              v-bind:to="link.link"
-              tag="button"
-              >{{ link.title }}</router-link
-            >
-          </div>
-
+          <div class="gt-xs links" v-for="(link, index) in essentialLinks" :key="index" v-ripple="{ color: 'yellow' }">
+  <router-link
+    class="q-mr-lg primary text-h11 header-links text-weight-bold"
+    :style="{ color: (scrollPosition === 0 ? (hoverIndex === index ? 'red' : '#012A71') : '#012A71') }"
+  
+    v-bind:to="link.link"
+    tag="button"
+    active-class="router-link-active"
+    @mouseover="hoverIndex = index"
+    @mouseout="hoverIndex = null"
+   
+  >
+    {{ link.title }}
+  </router-link>
+</div>
           <div class="lt-sm">
             <q-btn
               flat
@@ -74,6 +79,9 @@
 
 <script>
 import { defineComponent, ref } from "vue";
+import { useStore } from 'vuex';
+import { computed } from 'vue'; 
+
 import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
@@ -108,14 +116,29 @@ const linksList = [
     link: "contactus",
   },
 ];
-
 export default defineComponent({
   name: "MainLayout",
 
   components: {
     EssentialLink,
   },
+  data() {
+  return {
+    hoverIndex: null,
+    scrollPosition: 0,
 
+  };
+},
+
+
+watch: {
+  scrollPosition(newPosition) {
+    // Update the link color whenever the scroll position changes
+    this.$nextTick(() => {
+      this.hoverIndex = null;
+    });
+  },
+},
   setup() {
     const leftDrawerOpen = ref(false);
 
@@ -127,75 +150,101 @@ export default defineComponent({
       },
     };
   },
- mounted() {
-  const img = document.querySelector('#my-image');
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },computed: {
+    linkColor() {
+      const store = useStore();
+      return store.state.color1;
+    },
+    handleScroll() {
+      const store = useStore();
+      const img = document.querySelector('#my-image');
+      const toolbar = document.querySelector('.toolbars'); // Fixed typo
+      const links = document.querySelectorAll('.links > a');
 
-window.addEventListener('scroll', () => {
-  const threshold = 200; // Change this value to adjust when the image changes
+      return () => {
+        const scrollPosition = window.pageYOffset;
+        
+        if (window.innerWidth > 940) {
+          if (scrollPosition === 0) {
+            toolbar.style.backgroundColor = store.state.backGroundColor;
+            img.src = store.state.imageSrc; // Original logo image
+            toolbar.style.boxShadow = 'none';
+            links.forEach(link => {
+                    link.style.color = store.state.color1;
+                  });
+          } else {
+            toolbar.style.backgroundColor = 'white';
+            toolbar.style.boxShadow = '0px 3px 6px #2F508A';
+            img.src = `${window.location.origin}/img/logo_blue.ca47717c.png`; // New logo image
+            toolbar.style.color = '#012A71';
+            links.forEach(link => {
+              link.style.color = '#012A71';
+            });
+          }
+        } else {
+          toolbar.style.backgroundColor = 'white';
+          toolbar.style.boxShadow = '0px 3px 6px #2F508A';
+          img.src = `${window.location.origin}/img/logo_blue.ca47717c.png`; // New logo image
+          toolbar.style.color = '#012A71';
+          links.forEach(link => {
+            link.style.color = '#012A71';
+          });
+        }
+      };
+    },
+  },
 
-  if (window.scrollY > threshold) {
-    img.src = './../assets/img/new_image.png';
-  } else {
-    img.src = './../assets/img/Ib_logo.png';
+  mounted() {
+      
+    const store = useStore();
+    const img = document.querySelector('#my-image');
+    const toolbar = document.querySelector('.tooolbars'); // Typo: should be '.toolbars'
+    const links = document.querySelectorAll('.links > a');
+    links.forEach(link => {
+            link.style.color = "white";
+          });
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset;
+      const threshold = 200; // Change this value to adjust when the image changes
+
+      if (window.innerWidth > 940) {
+        if (scrollPosition === 0) {
+          // store.commit('setBackGroundColor', 'transparent');
+          toolbar.style.backgroundColor = store.state.backGroundColor;
+          // store.commit('setimageSrc', `${window.location.origin}/img/Ib_logo.446e007b.png`);
+          img.src = store.state.imageSrc; // Original logo image
+          toolbar.style.boxShadow = 'none';
+          links.forEach(link => {
+            link.style.color = store.state.color1;
+          });
+        } else {
+          toolbar.style.backgroundColor = 'white';
+          toolbar.style.boxShadow = '0px 3px 6px #2F508A';
+          img.src = `${window.location.origin}/img/logo_blue.ca47717c.png`; // New logo image
+          toolbar.style.color = '#012A71';
+          links.forEach(link => {
+            link.style.color = '#012A71';
+          });
+        }
+      } else {
+        toolbar.style.backgroundColor = 'white';
+        toolbar.style.boxShadow = '0px 3px 6px #2F508A';
+        img.src = `${window.location.origin}/img/logo_blue.ca47717c.png`; // New logo image
+        toolbar.style.color = '#012A71';
+        links.forEach(link => {
+          link.style.color = '#012A71';
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
   }
-});
-
-
-  var toolbar = document.querySelector('.tooolbars');
-  document.querySelectorAll('.links > a');
-  var links = document.querySelectorAll('.links > a');
-  window.addEventListener('scroll', function() {
-    // Get the current scroll position
-    var scrollPosition = window.pageYOffset;
-
-    // Check if the user is at the top of the page
-    if (scrollPosition === 0) {
-      toolbar.style.backgroundColor = "transparent";
-      toolbar.style.marginTop = 0;
-      links.forEach(link => {
-        link.style.color = 'white';
-      });
-    }
-
-    // Check if the user has scrolled down from the top
-    if (scrollPosition > 0) {
-      toolbar.style.backgroundColor = "white";
-      toolbar.style.marginTop = 0;
-      toolbar.style.color= "#012A71";
-      links.forEach(link => {
-        link.style.color = '#012A71';
-      });
-    }
-  });
-
-
-  // var toolbar = document.querySelector('.tooolbars');
-  // var links = document.querySelector('.links');
-  // window.addEventListener('scroll', function() {
-  //   // Get the current scroll position
-  //   var scrollPosition = window.pageYOffset;
-
-  //   // Check if the user is at the top of the page
-  //   if (scrollPosition === 0) {
-  //     toolbar.style.backgroundColor = "transparent";
-      
-     
-  //     toolbar.style.marginTop = 0;
-     
-      
-  //   }
-
-  //   // Check if the user has scrolled down from the top
-  //   if (scrollPosition > 0) {
-  //     toolbar.style.backgroundColor = "white";
-  //     toolbar.style.marginTop = 0;
-  //     toolbar.style.color= "blue";
-  //   }
-  // });
-}
-
 });
 
 
 
 </script>
+<style scoped>
+</style>

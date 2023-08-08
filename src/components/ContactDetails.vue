@@ -1,12 +1,12 @@
 <template>
-  <div class="q-pa-md col-md-4 col-xs-12">
+  <div class=" col-md-0 col-xs-12" style="">
     <h5 class="text-red" style="text-align: left;">Contact</h5>
     <div class="row">
       <div class="col-1">
         <q-icon name="location_on" class=" text-white q-icon--big"></q-icon>
       </div>  
-      <div class="col-11">
-        <p class="text-white name" style="font-size: 1.1rem;">408,Luxuria Business Hub,Nr Vesu,Surat,Gujarat</p>
+      <div class="col-11" style="">
+        <p class="text-white name" style="font-size: 1rem;">408,Luxuria Business Hub,Nr <br/> Vesu,Surat,Gujarat</p> <br/>
       </div>
     </div>
     <div class="row">
@@ -28,10 +28,10 @@
         <div class="inline">
           <div class="q-pa-md q-gutter-sm">
             <!-- here below is label  -->
-            <q-btn label="RRAISE A TICKET" style="/* UI Properties */
-                
+            <q-btn label="RAISE A TICKET" style="/* UI Properties */
+                width: 100%;
 text-align: left;
-font: normal normal 100 1rem/34px Nunito;
+font: normal normal 100 2vh/34px Nunito;
 letter-spacing: 0px;
 background-color: #FF2B00;
 color: #ffffff;
@@ -101,7 +101,7 @@ export default {
   margin-left: 10%;
   top: 5349px;
 left: 716px;
-width: 284px;
+
 height: 54px;
 /* UI Properties */
 color: var(--unnamed-color-ffffff);

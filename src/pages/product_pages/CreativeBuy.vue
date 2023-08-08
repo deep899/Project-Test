@@ -194,7 +194,6 @@
 </template>
 
       <script>
-      
 import { saveAs } from "file-saver";
 import products from "components/Products.vue";
 import carousel from "components/carousel.vue";
