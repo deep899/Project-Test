@@ -2,7 +2,7 @@
   <div class="maincontainer" style="width: 100%">
     <div class="container" style="">
       <div class="row" style="">
-        <div class="col-lg-7 col-md-12 col-sm-12 nubu" style="">
+        <div class="col-lg-7 col-md-7 col-sm-12 nubu" style="">
           <label
             @click="toggleForm"
             class="lableForm"
@@ -232,7 +232,7 @@
             @click="this.showForm2 = true"
             class="lableForm"
             style="line-height: 100%; font-size: 3vh"
-            >2. OFFER :
+            >2. OFFERS :
           </label>
           <button
             v-if="showForm2"
@@ -250,14 +250,70 @@
           </button>
 
           <div v-if="showForm2">
+           <div style="padding:2rem; border:1px solid #c5c5c5; margin-top:2%">
+             
+             
+            <div class="row p-5" v-if="this.discount" style="position: relative; z-index: 0; margin-bottom: 20px; padding-left: 15px; padding-right:15px ">
+                <div class="col-sm-6 p-5" style="position: relative; z-index: 1;  display: flex; align-items: center; justify-content: center; ">
+                  <span style="color: #ffffff; font-weight:500 normal ; font-size: 16.5vmin;">{{parseInt( this.calculateDiscountPercentage(this.productData.price , this.discount))}}%</span>
+                </div>
+                <div class="col-sm-6 p-5" style="position: relative; z-index: 1;  display: flex; flex-direction: column; align-items: center; justify-content: center; ">
+                  <span style="color: #ffffffde; font-size: 1.3rem; margin-bottom:2%">Your First Purchase. </span> <hr style="width: 70%; "  /> <span style="color: #ffffff;  font-size: 3rem;">Discount</span> 
+                </div>
+                  <img src="./../../assets/BackGround/per.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;" alt="">
+              
+              </div>
+
+              <span for="title" class="lableForm" style=" line-height: 2rem;  margin-top: 50px;">Enter Coupon Code</span>
+              <br/>
+              <input
+                      style=""
+                      placeholder="Enter Coupon Code"
+                      type="text"
+                      
+                      class="halfinput couponInput  form-control"
+                      v-model="couponSearch"
+                    />
+              <button @click="applyeCouponCode()" style="border: none; color:#ffffff ;  font-size: 1.2rem; font-weight: 500;background-color: #2f518a; padding: 0.8% 5%; margin-left: 5%;">
+                  APPLY
+              </button> 
+              
+              <div style="background-color: #E8F0FF; margin-top:5% ; padding-top: 1%; padding-bottom: 1%; padding-left: 3%; height: fit-content;">
+                    <span style="color: #2A4C86;">OR SELECTED AN OFFER ({{this.totalList }})</span>
+              </div>
+
+              <div class="outerDiv" style="">
+                                  <div class="ApplyCouponCodeContainer" v-for="(item) in couponlist " v-bind:key="item.id" >
+
+                                      <div class="parDiv">
+                                        <span>
+                                        {{ parseInt( this.calculateDiscountPercentage(this.productData.price , item.price)) }}%<br>OFF
+                                      </span>
+
+                                      </div>
+                                      <div class="container1">
+  <span class="title">IB Offers</span>
+  <button class="applyButton" @click="appliedCouponed(item.id)">APPLY</button>
+  <br>
+  <span class="couponCode">Coupon Code: "{{item.code}}"</span><br/>
+  <span class="couponDescription">Use this coupon code and get {{parseInt( this.calculateDiscountPercentage(this.productData.price , item.price))}}% off on the product.</span>
+</div>
+
+                                        </div>
+
+                                        
+                      </div>
+
+              
+
+            </div>
           
-            
           
           </div>
           <hr style="margin-top: 3%" />
         </div>
-        <div class="col-lg-5 nubu" style="">
-          <div class="innerContainer" style="padding: 0px 5%">
+        <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
+          <div class="innerContainer" style="">
             <div class="plancontainer">
               <span class="title12" style="">BILLING INFORMATION</span>
 
@@ -288,9 +344,9 @@
                   <div
                     class="disc"
                     style="float: right"
-                    v-if="this.productData.coupon_amount"
+                    v-if="this.Discount.discount"
                   >
-                    {{ this.productData.coupon_amount }}.00
+                    {{ this.Discount.discount }}.00
                   </div>
                   <div class="disc" style="float: right" v-else>00.0</div>
                 </div>
@@ -307,7 +363,7 @@
                   <div
                     class="disc"
                     style="float: right; color: #101010"
-                    v-if="this.productData.coupon_amount"
+                    v-if="this.Discount.discount"
                   >
                     {{ this.subTotal() }}.00
                   </div>
@@ -335,7 +391,10 @@
                   <div class="disc" style="color: #3d4141; float: left">
                     C-GST(9%)
                   </div>
-                  <div class="disc" style="float: right">
+                  <div  v-if="this.Discount.discount" class="disc" style="float: right">
+                    {{ this.calculateCGST(this.subTotal(), 9) }}
+                  </div>
+                  <div v-else class="disc" style="float: right">
                     {{ this.calculateCGST(this.productData.price, 9) }}
                   </div>
                 </div>
@@ -343,7 +402,10 @@
                   <div class="disc" style="color: #3d4141; float: left">
                     S-GST(9%)
                   </div>
-                  <div class="disc" style="float: right">
+                  <div  v-if="this.Discount.discount" class="disc" style="float: right">
+                    {{ this.calculateCGST(this.subTotal(), 9) }}
+                  </div>
+                  <div v-else class="disc" style="float: right">
                     {{ this.calculateCGST(this.productData.price, 9) }}
                   </div>
                 </div>
@@ -353,7 +415,7 @@
                 <div class="col-12" style="margin-top: 5%">
                   <div class="disc" style="float: left">Total Payment:</div>
                   <div class="disc" style="float: right">
-                    {{ this.totalAmount() }}
+                    {{ this.formatNumber(finalAmount1) }}.00
                   </div>
                 </div>
                 <div class="col-12" style="margin-top: 8%">
@@ -466,7 +528,7 @@
 <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
   <input type="hidden" name="key" v-model="mkey" size="64" />
   <input type="hidden" name="txnid" v-model="txnid" size="64" />
-  <input type="hidden"  name="amount" v-model="productData.price" size="64" />
+  <input type="hidden"  name="amount" v-model="finalAmount1" size="64" />
   <input type="hidden" name="productinfo" v-model="productData.name" size="64" />
   <input type="hidden" name="firstname" v-model="formData.firstname" size="64" />
   <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
@@ -506,9 +568,12 @@ export default {
       country: "101",
       state: " ",
       city: " ",
+      totalList:0,
       countries: [],
       states: [],
       cities: [],
+      couponlist:[],
+      Discount:[],
       payuUrl: "https://secure.payu.in/_payment",
       mkey: "nxpvv9VZ",
       saltKey: "3oFxUMtWG2",
@@ -518,8 +583,11 @@ export default {
       productData: {
         coupon_amount: 0,
       },
+      couponSearch:'',
       id: 0,
+      discount:0,
       showForm: false,
+      finalAmount1:0,
       showForm2: false,
       formData: {
         firstname : "",
@@ -540,6 +608,22 @@ export default {
     };
   },
   methods: {
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     makeid() {
       var text = "";
       var possible =
@@ -557,12 +641,14 @@ export default {
         console.log(res.data.data);
         alert(res.data.data.id);
         localStorage.setItem("userId" , res.data.data.id);
+        localStorage.setItem("prodId" , this.id);
+        localStorage.setItem("amount" ,this.finalAmount1);
         var data =
                   this.mkey +
                   "|" +
                   this.txnid +
                   "|" +
-                  this.productData.price +
+                  this.finalAmount1 +
                   "|" +
                   this.productData.name +
                   "|" +
@@ -597,6 +683,24 @@ export default {
       this.$store.commit("setCouponCode", this.couponCode);
       this.$store.commit("setProduct", this.productData.id);
     },
+    formatNumber(number) {
+      number = number.toString().replace(/\D/g, "");
+      let formattedNumber = "";
+      let commaCount = 0;
+
+      for (let i = number.length - 1; i >= 0; i--) {
+        formattedNumber = number[i] + formattedNumber;
+        commaCount++;
+
+        if (commaCount === 3 && i > 0) {
+          formattedNumber = "," + formattedNumber;
+          commaCount = 0;
+        }
+      }
+
+      return formattedNumber;
+    },
+
     getData() {
       axios
         .get("https://api.restroworld.com/api/countries?is_light=true")
@@ -662,23 +766,90 @@ export default {
 
       subTotal =
         parseFloat(this.productData.price) -
-        parseFloat(this.productData.coupon_amount);
+        parseFloat(this.Discount.discount);
 
       return subTotal;
+    },
+   calculateDiscountPercentage(originalPrice, discountedPrice) {
+            // Calculate the discount amount
+            const discountAmount = originalPrice - discountedPrice;
+
+            // Calculate the discount percentage
+            const discountPercentage = (discountAmount / originalPrice) * 100;
+           
+            // Return the discount percentage
+            return discountPercentage;
+          },
+            applyeCouponCode(){
+
+      axios.post('checkcoupen/'+this.id,
+      
+      {
+        code:this.couponSearch
+      }
+      ).then((res)=>{
+
+        console.log(res.data.data);
+        this.Discount = res.data.data ; 
+
+        this.finalAmount1 = parseFloat(this.Discount.discount) +
+        parseFloat(this.calculateCGST(this.Discount.discount, 9)) +
+        parseFloat(this.calculateCGST(this.Discount.discount, 9));
+
+
+      }).catch();
+
+
+
+    },
+    appliedCouponed(id){
+      
+      this.showPopup = false;
+      this.showPopup1 = true;
+      this.status = 0;
+      axios.get( `showcoupen?filter={"id":"${id}","is_published":"1"}`).then((res)=>{
+                        console.log("data3",res.data);
+                        
+                  this.couponSearch =  res.data.data.data[0].code;
+                  this.applyeCouponCode();
+              })
+  // Wait for the Vue next tick to ensure the popup is rendered
+  // this.couponCode = 'IBcoupon'
+      
     },
   },
   mounted() {
     this.makeid();
-    let id = this.$route.params.id;
+    this.id = this.$route.params.id;
 
     this.user_id = this.$route.params.user_id;
     this.getData();
     axios
-      .get(`/show/${id}`)
+      .get(`/show/${this.id}`)
       .then((res) => {
         this.productData = res.data.data;
+        // alert( this.productData.price);
+
+          const productPrice = parseFloat(this.productData.price);
+          const cgstAmount = parseFloat((this.productData.price * 9) / 100);
+          const sgstAmount = parseFloat((this.productData.price * 9) / 100);
+
+          const totalAmount = productPrice + cgstAmount + sgstAmount;
+
+          this.finalAmount1 = Math.ceil(totalAmount);
+        
       })
       .catch();
+
+    axios.get( `showcoupen?filter={"product":"${this.id}","is_published":"1"}`).then((res)=>{
+
+      console.log("Im here ", res.data.data.data[0].price)
+
+      this.couponlist = res.data.data.data ;
+      this.discount = res.data.data.data[0].price;
+      this.totalList = res.data.data.total;
+      
+    }).catch();  
     const store = useStore();
     store.commit("setBackGroundColor", "#ffffff");
     store.commit(
@@ -726,9 +897,16 @@ input {
 .halfinput {
   width: 95%;
 }
+.couponInput{
+  width: 50%;padding:0px; padding-left: 3%;padding-top: 1%;padding-bottom: 1%;
+}
+
 .container {
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 14%;
+  padding-right: 14%;
+}
+.innerContainer{
+  padding: 0px 8%;
 }
 .plancontainer {
   /* height: 485px; */
@@ -756,6 +934,74 @@ input {
   letter-spacing: 0px;
   color: #2f518a;
 }
+.couponDescription {
+  
+  text-align: left;
+  font: normal normal 600 2.3vmin Nunito;
+  letter-spacing: 0px;
+  color: #5E5E5E;
+}
+.couponCode {
+
+  text-align: left;
+  font: normal normal 600 2.8vmin Nunito;
+  letter-spacing: 0px;
+  line-height: 2vmin;
+  color: #2f518a;
+}
+.title {
+    text-align: left;
+    font: normal normal 600 1.2rem  Nunito;
+    letter-spacing: 0px;
+    color: #272727;
+
+  }
+  .container1 {
+    margin-left: 2%;
+    width: 100%;
+  }
+  .parDiv{
+  line-height: 1;
+background-color:#2f518a ;
+height:100%;
+padding: 10px;
+width: 88px;
+font-family: 'Merienda', cursive;;
+text-align: left;
+font-size: 2rem;
+letter-spacing: 0px;
+color: #ffffff;
+}
+.ApplyCouponCodeContainer {
+  height: 100px;
+  padding-bottom: 8px ;
+  padding-top: 8px ;
+  padding-left:8px;
+  padding: 8px;
+  position: relative;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+border-bottom: 1px solid #C5C5C5;
+margin-top: 3%;
+margin-bottom:2%;
+display: flex;
+  /* justify-content: space-between; */
+
+  /* align-items: center; */
+}
+.outerDiv::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+.applyButton {
+  float: right;
+  margin-top: 1%;
+  margin-right: 1%;
+  padding: 4px 5%;
+  border-color: #2f518a!important;
+  border: 1px solid;
+  background-color: #2f518a;
+  border-radius: 0px;
+  color: #ffffff;
+}
 /* Media query for screens with a width less than 940px */
 @media (max-width: 940px) {
 }
@@ -772,11 +1018,20 @@ input {
   .halfinput {
     width: 100%; /* Set a different width, such as 50% */
   }
-
+  .couponDescription {
+  
+  text-align: left;
+  font: normal normal 600 3vmin Nunito;
+  letter-spacing: 0px;
+  color: #5E5E5E;
+}
   .row {
     display: grid;
   }
 
+  .innerContainer{
+  padding: 0px 0%;
+  }
   .container {
     padding-left: 4%;
     padding-right: 4%;
@@ -784,6 +1039,9 @@ input {
   .nubu {
     margin-top: 9vh;
   }
+  .couponInput{
+  width: 60%;padding:0px; padding-left: 3%;padding-top: 1%;padding-bottom: 1%;
+}
 }
 
 .title12 {
