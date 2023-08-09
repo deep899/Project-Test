@@ -33,7 +33,7 @@
     </div>
 
     <div class="row rowcontainer" style="display: flex; width: 100%">
-      <div class="col-lg-7 col-md-12 col-sm-12 imgContain" style="">
+      <div class="col-lg-7 col-md-7 col-sm-12 imgContain" style="">
         <img
           :src="products.product_image"
           alt="Product Image"
@@ -41,12 +41,18 @@
           style=""
         />
       </div>
-      <div class="col-lg-5 col-md-12 col-sm-12" style="padding-left: 3%">
+      <div class="col-lg-5 col-md-5 col-sm-12" style="padding-left: 3%">
         <span class="name">{{ products.name }}</span>
         <p class="longDec" style="color: #707070">{{ products.short_desc}}</p>
         <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%;">
           Price :
-          <span style="font-size: 0.9em">
+          <span v-if="this.effectiveprice" style="font-size: 0.9em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(this.effectiveprice) }}.00/-</span
+          >
+          <span v-else style="font-size: 0.9em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
               >₹</span
             >
@@ -54,7 +60,7 @@
           >
         </span>
         &nbsp;  &nbsp;
-        <span class="cross" style="font-size: 1.5em; line-height: 1em">
+        <span v-if="this.effectiveprice" class="cross" style="font-size: 1.5em; line-height: 1em">
           <span style="font-size: 0.8em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
               >₹</span
@@ -186,6 +192,7 @@ export default {
       country: [],
       productPurchase:true,
       amount_pay: "999",
+      effectiveprice:0,
       products: [],
       email: "",
       mobile_no: "",
@@ -629,6 +636,7 @@ export default {
         .then((result) => {
           this.products = result.data.data;
           this.price = result.data.data.price;
+          this.effectiveprice = result.data.data.effective_price;
         }),
     ]).then(() => {
       this.getGstValye();

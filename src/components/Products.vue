@@ -176,7 +176,7 @@
               <p class="longDiscription" style="">{{ item.short_desc }}</p>
               <p class="price" style="">
                 Price : <span style="font-size: 1vw">₹</span>
-                {{ this.formatNumber(item.price) }}/-
+                {{   this.formatNumber(item.price) }}/-
               </p>
             </div>
           </div>

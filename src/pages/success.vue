@@ -128,8 +128,12 @@ export default {
   methods: {},
 
   mounted() {
-    this.id = localStorage.getItem('prod_ID');
-    this.user_id = localStorage.getItem('user_ID');
+    // localStorage.setItem("userId" , res.data.data.id);
+    //     localStorage.setItem("prodId" , this.id);
+    //     localStorage.setItem("amount" ,this.finalAmount1);
+
+    this.id = localStorage.getItem("prodId"); 
+    this.user_id = localStorage.getItem("userId"); 
     // this.cegst = this.$route.params.cgst;
     // this.segst = this.$route.params.sgst;
     // this.discount = this.$route.params.discount;
