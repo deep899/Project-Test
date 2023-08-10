@@ -134,6 +134,8 @@ export default {
 
     this.id = localStorage.getItem("prodId"); 
     this.user_id = localStorage.getItem("userId"); 
+      this.userpass = localStorage.getItem("userpass");
+
     // this.cegst = this.$route.params.cgst;
     // this.segst = this.$route.params.sgst;
     // this.discount = this.$route.params.discount;
@@ -152,6 +154,10 @@ export default {
         user_id: this.user_id,
         payment_status: "1",
         product_id: this.id,
+        password:this.userpass,
+        coupan_code:'FRIENDSS',
+        amount:'1'
+
       })
       .then((result) => {
         console.log(result.data);
