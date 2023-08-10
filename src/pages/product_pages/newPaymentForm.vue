@@ -123,6 +123,39 @@
                     v-model="formData.email"
                   />
                 </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="lableForm" for="emailPhoneNumber">website </label>
+                  <input
+                    style="width: 100%"
+                    placeholder="website Link"
+                    type="email"
+                    id="emailPhoneNumber"
+                    class="form-control"
+                    v-model="formData.website"
+                  />
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="lableForm" for="emailPhoneNumber">Address </label>
+                  <input
+                    style="width: 100%"
+                    placeholder="Address"
+                    type="email"
+                    id="emailPhoneNumber"
+                    class="form-control"
+                    v-model="formData.address"
+                  />
+                </div>
+                <div class="col-md-6 col-sm-12" v-if="this.id == 13">
+                  <label class="lableForm" for="emailPhoneNumber">password </label>
+                  <input
+                    style="width: 100%"
+                    placeholder="Password"
+                    type="email"
+                    id="emailPhoneNumber"
+                    class="form-control"
+                    v-model="formData.password"
+                  />
+                </div>
                 <div class="col-md-6 col-sm-12" v-if="this.id == 13">
                   <label class="lableForm" for="CompanyLogo"
                     >Company Logo</label
@@ -601,7 +634,7 @@
                 </div>
                 <!-- <q-dialog v-model="inception" >
                   <q-card style=" padding: 15px; width: 55vh; max-width: 100%;  display: flex;align-items: center;justify-content: center;flex-direction: column; "> -->
-                    <div class="loading-overlay" v-if="inception" >
+                    <div class="loading-overlay" @click.self="inception = false" v-if="inception" >
 
 <div class="overlay-content">
                       <span  v-if="login" class="lableForm" style="display: flex; align-items: center; justify-content: center; line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Welcome Back</span>
@@ -671,7 +704,7 @@
                 
                 </div>
                     </div>
-                    <button v-if="forgotpassword"  style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                    <button @click="forgot()" v-if="forgotpassword"  style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
                       Submit
                     </button>
 
@@ -722,24 +755,49 @@
                          <div class="loading-overlay" v-if="emailPopup" >
 
                             <div class="overlay-content">
-                              <div class="row">
+                              <div class="row" style="display: flex;">
                                 <div class="col-10">
-                                  <h1 style="font-size: 2rem;">Otp Verification</h1>
+                                  <span style="font-size: 2rem;">Otp Verification</span>
                                 </div>
                               <div class="col-2">
-                              <img src="./../../assets/BackGround/delete.png" @click="deletedd()"  style="   cursor: pointer; height: 5vh; width: 5vh;"/>
+                              <img src="./../../assets/BackGround/delete.png" @click="emailPopup = false"  style="float: right;   cursor: pointer; height: 5vh; width: 5vh;"/>
                               </div>
                             </div>                  
                                 <hr>
-
+                                <div class="row" >
+                       <div class="col-md-12 col-sm-12">
+                         <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
+                         <input
+                           placeholder="password "
+                           type="text"
+                           id="firstname "
+                           style="width: 100%;" 
+                           class="halfinput form-control"
+                           v-model="password1"
+                         />
+                       </div>
+                       <div style="margin-top: 22%;"></div>
+                       <div class="col-md-12 col-sm-12">
+                         <label class="lableForm" style="line-height: 2rem;" for="lastname ">Confirm New Password</label>
+                         <input
+                           style="width: 100%"
+                           placeholder="Password "
+                           type="text"
+                           id="lastname "
+                           class="form-control"
+                           v-model="confirmpassword"
+                         />
+                         </div>
+                         </div>
                                   <h4 v-if="titleShow" style="display: flex;align-items: center; justify-content: center;">Enter the otp you recived from email</h4>
-                              
+
                                   <div class="mb-3 mt-4" v-if="titleShow">
                                     <div class="otp-container">
                                             <input
                                               v-for="(digit, index) in otpDigits"
                                               :key="index"
                                               class="otp-input"
+
                                               type="text"
                                               maxlength="1"
                                               v-model="otpDigits[index]"
@@ -753,7 +811,7 @@
                                   <span v-if="InvalidOtp" style=" display:flex; align-items: center; justify-content: center; color:rgb(223, 68, 68); "> Invalid Otp !! </span>
                                   <div v-if="titleShow" class="" style="width: 100%; justify-content: center;display: flex;">
 
-                                      <button style="padding-left: 2rem; padding-right: 2rem;padding-top: 0.2rem; border-radius: 7px; background-color: #0AAFE3; border: none; color: #ffffff; margin-top: 5%; padding-bottom: 0.2rem;" @click ="VerifyOtps">submit</button>
+                                      <button style="padding-left: 2rem; padding-right: 2rem;padding-top: 0.2rem; border-radius: 7px; background-color: #2a4c86; border: none; color: #ffffff; margin-top: 5%; padding-bottom: 0.2rem;" @click ="VerifyOtps">submit</button>
 
                                   </div>
 
@@ -908,18 +966,21 @@ export default {
       states: [],
       cities: [],
       couponlist: [],
+      titleShow:true,
       Discount: [],
+      otpDigits: ['', '', '', '','', ''],
       username:'',
       password1:'',
       confirmpassword:'',
       login:true,
+      emailPopup:false,
       forgotpassword:false,
       reset:false,
       email1:'',
       payuUrl: "https://secure.payu.in/_payment",
       mkey: "nxpvv9VZ",
       saltKey: "3oFxUMtWG2",
-      surl: window.location.origin + "/success",
+      surl: window.location.origin + "/home/User/Success",
       furl: window.location.origin + "/",
       txnid: this.makeid(),
       productData: {
@@ -941,10 +1002,12 @@ export default {
         product: this.id,
         PhoneNumber: "",
         phoneno: "",
+        website:"",
+        company_logo:'',
         pincode: "",
         address: "none",
         country: "101",
-        company_logo: "",
+        company_logo:" ",
         state: " ",
         city: " ",
       },
@@ -952,7 +1015,57 @@ export default {
     };
   },
   methods: {
-    async loginUser() {
+    VerifyOtps(){
+
+        axios.post('otpverify',{
+          email:this.email1,
+    otp: this.otpDigits.join(''),
+    new_password:this.password1,
+  confirm_password:this.confirmpassword
+        }).then((res)=>{
+          console.log(res.data.data);
+          this.emailPopup = false;
+          alert("password is change");
+        }).catch();
+                
+             
+              },
+    handleKeyDown(index, event) {
+      // Handles navigation and deletion of digits based on key events
+      if (event.key === 'Backspace' && index > 0 && this.otpDigits[index] === '') {
+        // Move focus to the previous input on Backspace key press
+        this.$refs.otpInput[index - 1].focus();
+      } else if (event.key === 'Delete' && index < this.otpDigits.length - 1 && this.otpDigits[index] === '') {
+        // Move focus to the next input on Delete key press
+        this.$refs.otpInput[index + 1].focus();
+      }
+    },
+    handleInput(index) {
+      // Automatically moves focus to the next input upon entering a digit
+      if (index < this.otpDigits.length - 1 && this.otpDigits[index] !== '') {
+    this.$refs.otpInput[index + 1].focus();
+  }
+    },
+    handlePaste(event) {
+      event.preventDefault();
+  const pasteData = event.clipboardData.getData('text/plain');
+  const digits = pasteData.slice(0, 6).split('');
+  this.otpDigits = digits.concat(Array(6 - digits.length).fill(''));
+    },
+    forgot()
+      {
+        axios.post('forgotpassword',{email:this.email1}).then((res)=>{
+          
+            console.log(res.data.data);
+            this.inception = false;
+            this.emailPopup = true;
+
+        });
+
+
+      } ,
+      
+      async loginUser() {
      
       try {
         const response = await axios.post('login', {
@@ -961,7 +1074,8 @@ export default {
         });
 
         // Process the response as needed
-        console.log(response.data);
+        localStorage.setItem("token" , response.data.data.token);
+        this.$router.push('/CreativeBuy');
       } catch (error) {
         console.error('Error:', error);
       }
@@ -981,14 +1095,47 @@ export default {
       // Process the selected file as needed
     },
     PayNow() {
+      
+    
+
+const formData = new FormData();
+
+
+
+// Append the company_logo (image) field
+formData.append('company_logo', fileInput.files[0]);
+formData.append('firstname', this.formData.firstname);
+  formData.append('lastname', this.formData.lastname);
+  formData.append('businessName', this.formData.businessName);
+  formData.append('businessGst', this.formData.businessGst);
+  formData.append('salesmanName', this.formData.salesmanName);
+  formData.append('email', this.formData.email);
+  formData.append('product', this.id);
+  formData.append('PhoneNumber', this.formData.PhoneNumber);
+  formData.append('phoneno', this.formData.phoneno);
+  formData.append('website', this.formData.website);
+  formData.append('pincode', this.formData.pincode);
+  formData.append('address', this.formData.address);
+  formData.append('country', this.formData.country);
+  formData.append('state', this.formData.state);
+  formData.append('city', this.formData.city);
+ 
+
+  axios
+    .post(`payment/${this.productData.id}`, formData, {})
+    .then((res) => {
+      formData.append('user_id',  res.data.data.id);
+      formData.append('contact_number', this.formData.phoneno);
       axios
-        .post(`payment/${this.productData.id}`, this.formData, {})
-        .then((res) => {
+    .post(`creativedata`, formData).then((res)=>{
+      console.log(res.data);
+    });
           console.log(res.data.data);
           // alert(res.data.data.id);
           localStorage.setItem("userId", res.data.data.id);
           localStorage.setItem("prodId", this.id);
           localStorage.setItem("amount", this.finalAmount1);
+          localStorage.setItem("userpass", this.formData.password);
           var data =
             this.mkey +
             "|" +
@@ -1010,7 +1157,7 @@ export default {
           console.log("Here Is yourData", data);
 
           document.getElementById("hash").value = hash;
-          document.getElementById("paymentForm").submit();
+          // document.getElementById("paymentForm").submit();
         })
         .catch((e) => {
           this.errorForm = e.response.data.message;
@@ -1201,6 +1348,7 @@ export default {
       `${window.location.origin}/img/logo_blue.ca47717c.png`
     );
     store.commit("changeColor", "#012A71");
+    
 
     // alert("hellow im updated  ");
   },
@@ -1429,7 +1577,23 @@ input {
     padding-bottom: 1%;
   }
 }
+.otp-container {
+  display: flex;
+  justify-content: center;
+}
 
+.otp-input {
+  width: 55px;
+  height: 40px;
+  margin: 5px;
+  font-size: 1rem;
+  z-index: 50000;
+  text-align: center;
+  border: none;
+  color: #0AAFE3;
+  border-bottom: 2px solid #0AAFE3;
+  outline: none;
+}
 .title12 {
   text-align: left;
   text-decoration: underline;

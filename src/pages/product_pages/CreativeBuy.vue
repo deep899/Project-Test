@@ -160,40 +160,73 @@
 
   <!-- Logo Image  -->
 
-  <logoimageblack />
+ 
 
   <!-- Logo Image -->
 
   <!-- Link Mennu Contact Addreess -->
-  <div class="row bg-indigo-8 justify-evenly">
-    <!-- Infinit ABout -->
-    <infinityabout
-      lorem="Infinity Brains is an accredited IT Company, which is a venture of Redjinni Industries Pvt. & taking Projects from all over India, with The latest technologies & digitally Transforming all kind of business. We believe in building and Maintaining long term relationships With all our clients."
-    />
+  <footer>
+    <!-- Blacnk Background0-blue Start Here -->
+    <h3 class="" style="width: 100%; background-color: #446cb1">&nbsp;</h3>
+    <logoimageblack />
 
-    <!-- End Infinity About -->
+    <!-- Logo Image -->
 
-    <!-- COntact Details Start Here -->
+    <!-- Link Mennu Contact Addreess -->
+    <div class="q-pa-md bgclass">
+      <div
+        class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%"
+      >
+        <!-- Infinit ABout -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <infinityabout :lorem="lorem" />
+        </div>
+        <!-- End Infinity About -->
 
-    <contactdetail />
+        <!-- COntact Details Start Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <contactdetail />
+        </div>
+        <!-- Contact Details End here -->
 
-    <!-- Contact Details End here -->
-    <!-- Expert Service HEre -->
+        <!-- Expert Service HEre -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <expertservice />
+        </div>
+        <!-- Expert Service End HEre -->
 
-    <expertservice />
-    <!-- Expert Service End HEre -->
+        <!-- Quick links Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <quicklink />
+        </div>
+        <!-- Quick links End Here -->
+      </div>
 
-    <!-- Quick links Here -->
-    <quicklink />
-    <!-- Quick links End Here -->
+      <div class="row justify-center items-center text-white q-mt-lg">
+        <div class="col-auto text-center">
+          <p
+            style="
+              /* UI Properties */
+              color: var(--unnamed-color-ffffff);
 
-    <div class="text-center text-white q-mt-md">
-      <p>2023 copyright. All right Reserved</p>
+              font: normal normal 600 1.1rem/34px Nunito;
+              letter-spacing: 0px;
+              color: #ffffff;
+              opacity: 1;
+            "
+          >
+            2023 copyright. All right Reserved
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
+  </footer>
 </template>
 
       <script>
+      import { useStore } from "vuex";
+
 import { saveAs } from "file-saver";
 import products from "components/Products.vue";
 import carousel from "components/carousel.vue";
@@ -203,7 +236,7 @@ import infinityabout from "components/InfinityAbout.vue";
 import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
-import axios from "axios";
+import axios from "./../../axios";
 import { createCanvas } from "canvas";
 
 import { ref } from "vue";
@@ -370,20 +403,26 @@ export default {
       this.loading = false;
     },
     Submitedkey() {
-      let keyvalue = document.getElementById("iban").value;
-
+     
       axios
         .post(
-          "https://api.infinitybrains.com/public/api/checkkey/" + keyvalue
-          // "U1E43IdtZ0kBCYzv"
+          "creativedata"
         )
         .then((result) => {
+          console.log(result.data);
           this.alerted = false;
-          window.scrollTo(0, 50);
-          this.logoImageUrl = result.data.data.company_logo;
+         
+          this.logoImageUrl =  result.data.data.company_logo;
           this.text11 = result.data.data.address;
           this.text22 = result.data.data.contact_number;
           this.text33 = result.data.data.website;
+
+          if(!this.logoImageUrl){
+
+            this.logoImageUrl = window.location.origin +'/img/Ib_logo.446e007b.png'
+
+          }
+        
 
           if (this.text11 == null) {
             this.text1 = " ";
@@ -605,14 +644,24 @@ export default {
   },
 
   mounted() {
-    this.alerted = true;
-
+    if(!localStorage.getItem('token')){
+        this.$router.push('/');
+    }
+    // this.alerted = true;
+    const store = useStore();
+    store.commit("setBackGroundColor", "#ffffff");
+    store.commit(
+      "setimageSrc",
+      `${window.location.origin}/img/logo_blue.ca47717c.png`
+    );
+    store.commit("changeColor", "#012A71");
     // axios
     //   .get("https://api.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
     //   .then((result) => {
     //     this.creative1 = result.data.data;
     //   });
-    this.allcreativesDownloaded();
+    this.Submitedkey();
+        this.allcreativesDownloaded();
   },
 };
 </script>
@@ -822,5 +871,11 @@ select {
   text-align: center;
   width: 80%;
 }
+
+.bgclass {
+  background-image: url("./../../img/bgok.jpg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
 </style>
-qa
