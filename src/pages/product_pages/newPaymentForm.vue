@@ -30,10 +30,19 @@
               style="width: 100%; border: 1px solid #c5c5c5"
             >
               <!-- <span v-if="this.errorForm" sty>{{ this.errorForm }}</span> -->
-              <form style="padding: 1.5rem;">
+              <form style="padding: 1.5rem">
                 <span
-                style=" display: flex;align-items: center; justify-content: center; font-size: 1.2rem; color: rgb(255, 4, 4);   width: 100%;"  >{{ this.errorForm }}</span>
-              
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                    color: rgb(255, 4, 4);
+                    width: 100%;
+                  "
+                  >{{ this.errorForm }}</span
+                >
+
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
                     <label class="lableForm" for="firstname ">First Name</label>
@@ -43,7 +52,7 @@
                       type="text"
                       id="firstname "
                       class="halfinput form-control"
-                      v-model="formData.firstname "
+                      v-model="formData.firstname"
                     />
                   </div>
                   <div class="col-md-6 col-sm-12">
@@ -54,7 +63,7 @@
                       type="text"
                       id="lastname "
                       class="form-control"
-                      v-model="formData.lastname "
+                      v-model="formData.lastname"
                     />
                   </div>
                 </div>
@@ -91,11 +100,11 @@
                 <div class="row">
                   <div class="col-md-12">
                     <label class="lableForm" for="salesmanName"
-                      >Salesman Name</label
+                      >Salesman Code</label
                     >
                     <input
                       style="width: 100%"
-                      placeholder="Salesman Name"
+                      placeholder="Salesman Code"
                       type="text"
                       id="salesmanName"
                       class="form-control"
@@ -112,6 +121,17 @@
                     id="emailPhoneNumber"
                     class="form-control"
                     v-model="formData.email"
+                  />
+                </div>
+                <div class="col-md-6 col-sm-12" v-if="this.id == 13">
+                  <label class="lableForm" for="CompanyLogo"
+                    >Company Logo</label
+                  >
+                  <input
+                    type="file"
+                    id="fileInput"
+                    style="width: 100%"
+                    @change="handleFileChange"
                   />
                 </div>
                 <div class="col-md-6 col-sm-12">
@@ -250,65 +270,173 @@
           </button>
 
           <div v-if="showForm2">
-           <div style="padding:2rem; border:1px solid #c5c5c5; margin-top:2%">
-             
-             
-            <div class="row p-5" v-if="this.discount" style="position: relative; z-index: 0; margin-bottom: 20px; padding-left: 15px; padding-right:15px ">
-                <div class="col-sm-6 p-5" style="position: relative; z-index: 1;  display: flex; align-items: center; justify-content: center; ">
-                  <span style="color: #ffffff; font-weight:500 normal ; font-size: 16.5vmin;">{{parseInt( this.calculateDiscountPercentage(this.productData.price , this.discount))}}%</span>
+            <div
+              style="padding: 2rem; border: 1px solid #c5c5c5; margin-top: 2%"
+            >
+              <div
+                class="row p-5"
+                v-if="this.discount"
+                style="
+                  position: relative;
+                  z-index: 0;
+                  margin-bottom: 20px;
+                  padding-left: 15px;
+                  padding-right: 15px;
+                "
+              >
+                <div
+                  class="col-sm-6 p-5"
+                  style="
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: #ffffff;
+                      font-weight: 500 normal;
+                      font-size: 16.5vmin;
+                    "
+                    >{{
+                      parseInt(
+                        this.calculateDiscountPercentage(
+                          this.productData.price,
+                          this.discount
+                        )
+                      )
+                    }}%</span
+                  >
                 </div>
-                <div class="col-sm-6 p-5" style="position: relative; z-index: 1;  display: flex; flex-direction: column; align-items: center; justify-content: center; ">
-                  <span style="color: #ffffffde; font-size: 1.3rem; margin-bottom:2%">Your First Purchase. </span> <hr style="width: 70%; "  /> <span style="color: #ffffff;  font-size: 3rem;">Discount</span> 
+                <div
+                  class="col-sm-6 p-5"
+                  style="
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <span
+                    style="
+                      color: #ffffffde;
+                      font-size: 1.3rem;
+                      margin-bottom: 2%;
+                    "
+                    >Your First Purchase.
+                  </span>
+                  <hr style="width: 70%" />
+                  <span style="color: #ffffff; font-size: 3rem">Discount</span>
                 </div>
-                  <img src="./../../assets/BackGround/per.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;" alt="">
-              
+                <img
+                  src="./../../assets/BackGround/per.png"
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    z-index: 0;
+                  "
+                  alt=""
+                />
               </div>
 
-              <span for="title" class="lableForm" style=" line-height: 2rem;  margin-top: 50px;">Enter Coupon Code</span>
-              <br/>
+              <span
+                for="title"
+                class="lableForm"
+                style="line-height: 2rem; margin-top: 50px"
+                >Enter Coupon Code</span
+              >
+              <br />
               <input
-                      style=""
-                      placeholder="Enter Coupon Code"
-                      type="text"
-                      
-                      class="halfinput couponInput  form-control"
-                      v-model="couponSearch"
-                    />
-              <button @click="applyeCouponCode()" style="border: none; color:#ffffff ;  font-size: 1.2rem; font-weight: 500;background-color: #2f518a; padding: 0.8% 5%; margin-left: 5%;">
-                  APPLY
-              </button> 
-              
-              <div style="background-color: #E8F0FF; margin-top:5% ; padding-top: 1%; padding-bottom: 1%; padding-left: 3%; height: fit-content;">
-                    <span style="color: #2A4C86;">OR SELECTED AN OFFER ({{this.totalList }})</span>
+                style=""
+                placeholder="Enter Coupon Code"
+                type="text"
+                class="halfinput couponInput form-control"
+                v-model="couponSearch"
+              />
+              <button
+                @click="applyeCouponCode()"
+                style="
+                  border: none;
+                  color: #ffffff;
+                  cursor: pointer;
+                  font-size: 1.2rem;
+                  font-weight: 500;
+                  background-color: #2f518a;
+                  padding: 0.8% 5%;
+                  margin-left: 5%;
+                "
+              >
+                APPLY
+              </button>
+
+              <div
+                style="
+                  background-color: #e8f0ff;
+                  margin-top: 5%;
+                  padding-top: 1%;
+                  padding-bottom: 1%;
+                  padding-left: 3%;
+                  height: fit-content;
+                "
+              >
+                <span style="color: #2a4c86"
+                  >OR SELECTED AN OFFER ({{ this.totalList }})</span
+                >
               </div>
 
               <div class="outerDiv" style="">
-                                  <div class="ApplyCouponCodeContainer" v-for="(item) in couponlist " v-bind:key="item.id" >
-
-                                      <div class="parDiv">
-                                        <span>
-                                        {{ parseInt( this.calculateDiscountPercentage(this.productData.price , item.price)) }}%<br>OFF
-                                      </span>
-
-                                      </div>
-                                      <div class="container1">
-  <span class="title">IB Offers</span>
-  <button class="applyButton" @click="appliedCouponed(item.id)">APPLY</button>
-  <br>
-  <span class="couponCode">Coupon Code: "{{item.code}}"</span><br/>
-  <span class="couponDescription">Use this coupon code and get {{parseInt( this.calculateDiscountPercentage(this.productData.price , item.price))}}% off on the product.</span>
-</div>
-
-                                        </div>
-
-                                        
-                      </div>
-
-              
-
+                <div
+                  class="ApplyCouponCodeContainer"
+                  v-for="item in couponlist"
+                  v-bind:key="item.id"
+                >
+                  <div class="parDiv">
+                    <span>
+                      {{
+                        parseInt(
+                          this.calculateDiscountPercentage(
+                            this.productData.price,
+                            item.price
+                          )
+                        )
+                      }}%<br />OFF
+                    </span>
+                  </div>
+                  <div class="container1">
+                    <span class="title">IB Offers</span>
+                    <button
+                      class="applyButton"
+                      @click="appliedCouponed(item.id)"
+                    >
+                      APPLY
+                    </button>
+                    <br />
+                    <span class="couponCode"
+                      >Coupon Code: "{{ item.code }}"</span
+                    ><br />
+                    <span class="couponDescription"
+                      >Use this coupon code and get
+                      {{
+                        parseInt(
+                          this.calculateDiscountPercentage(
+                            this.productData.price,
+                            item.price
+                          )
+                        )
+                      }}% off on the product.</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
-          
-          
           </div>
           <hr style="margin-top: 3%" />
         </div>
@@ -391,7 +519,11 @@
                   <div class="disc" style="color: #3d4141; float: left">
                     C-GST(9%)
                   </div>
-                  <div  v-if="this.Discount.discount" class="disc" style="float: right">
+                  <div
+                    v-if="this.Discount.discount"
+                    class="disc"
+                    style="float: right"
+                  >
                     {{ this.calculateCGST(this.subTotal(), 9) }}
                   </div>
                   <div v-else class="disc" style="float: right">
@@ -402,7 +534,11 @@
                   <div class="disc" style="color: #3d4141; float: left">
                     S-GST(9%)
                   </div>
-                  <div  v-if="this.Discount.discount" class="disc" style="float: right">
+                  <div
+                    v-if="this.Discount.discount"
+                    class="disc"
+                    style="float: right"
+                  >
                     {{ this.calculateCGST(this.subTotal(), 9) }}
                   </div>
                   <div v-else class="disc" style="float: right">
@@ -414,8 +550,15 @@
                 </div>
                 <div class="col-12" style="margin-top: 5%">
                   <div class="disc" style="float: left">Total Payment:</div>
-                  <div class="disc" style="float: right">
-                    {{ this.formatNumber(finalAmount1) }}.00
+                  <div
+                    class="disc"
+                    v-if="!isNaN(parseInt(finalAmount1))"
+                    style="float: right"
+                  >
+                    {{ parseInt(finalAmount1) }}.00
+                  </div>
+                  <div class="disc" v-else style="float: right">
+                    {{ finalAmount1 }}
                   </div>
                 </div>
                 <div class="col-12" style="margin-top: 8%">
@@ -440,7 +583,7 @@
                   <button
                     v-if="13 == this.$route.params.id"
                     class="PaynowButton"
-                    @click="Login()"
+                    @click="inception = true"
                     style="
                       margin-top: 5%;
                       background-color: transparent;
@@ -456,89 +599,272 @@
                     ALREADY PURCHASED ?
                   </button>
                 </div>
+                <!-- <q-dialog v-model="inception" >
+                  <q-card style=" padding: 15px; width: 55vh; max-width: 100%;  display: flex;align-items: center;justify-content: center;flex-direction: column; "> -->
+                    <div class="loading-overlay" v-if="inception" >
+
+<div class="overlay-content">
+                      <span  v-if="login" class="lableForm" style="display: flex; align-items: center; justify-content: center; line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Welcome Back</span>
+                         
+                    <div class="form">
+                      <span  v-if="login" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Sign in to Continue</span> 
+
+
+                      <div class="row" v-if="login" >
+                  <div class="col-md-12 col-sm-12">
+                    <label class="lableForm" style="line-height: 2rem;" for="firstname ">User Name</label>
+                    <input
+                      placeholder="User Name "
+                      type="text"
+                      id="firstname "
+                      style="width: 100%;" 
+                      class="halfinput form-control"
+                      v-model="email1"
+                    />
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <label class="lableForm" style="line-height: 2rem;" for="lastname ">Password</label>
+                    <input
+                      style="width: 100%"
+                      placeholder="Password "
+                      type="password"
+                      id="lastname "
+                      class="form-control"
+                      v-model="password1"
+                    />
+                  </div>
+
+                  
+                
+                </div>
+                    </div>
+                    <button  @click="loginUser()" v-if="login" style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                      Submit
+                    </button>
+
+                    <a   v-if="login" @click="forgotpassword = true; login = false" style="display: flex; align-items: center; justify-content: center; margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                     Forgot Your Password ? 
+                    </a>
+
+                    
+                    <span v-if="forgotpassword"  class="lableForm" style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Forgot Password</span>
+                         
+                    <div v-if="forgotpassword" class="form">
+                      <span   class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Enter Your email for Reset Your password</span> 
+
+
+                      <div class="row"  >
+                  <div class="col-md-12 col-sm-12">
+                    <label class="lableForm" style="line-height: 2rem;" for="firstname ">Register Email</label>
+                    <input
+                      placeholder="Enter Register Email"
+                      type="text"
+                      id="firstname "
+                      style="width: 100%;" 
+                      class="halfinput form-control"
+                      v-model="email1"
+                    />
+                  </div>
+                 
+
+                  
+                
+                </div>
+                    </div>
+                    <button v-if="forgotpassword"  style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                      Submit
+                    </button>
+
+                    <a  v-if="forgotpassword"  @click="forgotpassword = false; login = true"  style="margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                     Back To Login 
+                    </a>
+
+                    <span  v-if="reset" class="lableForm" style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Reset Password</span>
+                         
+                         <div class="form">
+                           <span  v-if="reset" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Set a new password</span> 
+     
+     
+                           <div class="row" v-if="reset" >
+                       <div class="col-md-12 col-sm-12">
+                         <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
+                         <input
+                           placeholder="password "
+                           type="text"
+                           id="firstname "
+                           style="width: 100%;" 
+                           class="halfinput form-control"
+                           v-model="password1"
+                         />
+                       </div>
+                       <div style="margin-top: 22%;"></div>
+                       <div class="col-md-12 col-sm-12">
+                         <label class="lableForm" style="line-height: 2rem;" for="lastname ">Confirm New Password</label>
+                         <input
+                           style="width: 100%"
+                           placeholder="Password "
+                           type="text"
+                           id="lastname "
+                           class="form-control"
+                           v-model="confirmpassword"
+                         />
+                       </div>
+     
+                       
+                     
+                     </div>
+                         </div>
+                         <button  v-if="reset" style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                           Submit
+                         </button>
+     
+                        
+                         <div class="loading-overlay" v-if="emailPopup" >
+
+                            <div class="overlay-content">
+                              <div class="row">
+                                <div class="col-10">
+                                  <h1 style="font-size: 2rem;">Otp Verification</h1>
+                                </div>
+                              <div class="col-2">
+                              <img src="./../../assets/BackGround/delete.png" @click="deletedd()"  style="   cursor: pointer; height: 5vh; width: 5vh;"/>
+                              </div>
+                            </div>                  
+                                <hr>
+
+                                  <h4 v-if="titleShow" style="display: flex;align-items: center; justify-content: center;">Enter the otp you recived from email</h4>
+                              
+                                  <div class="mb-3 mt-4" v-if="titleShow">
+                                    <div class="otp-container">
+                                            <input
+                                              v-for="(digit, index) in otpDigits"
+                                              :key="index"
+                                              class="otp-input"
+                                              type="text"
+                                              maxlength="1"
+                                              v-model="otpDigits[index]"
+                                              @keydown="handleKeyDown(index, $event)"
+                                              @input="handleInput(index)"
+                                              @paste="handlePaste($event)"
+                                              ref="otpInput"
+                                            />      
+                                          </div>
+                                  </div>
+                                  <span v-if="InvalidOtp" style=" display:flex; align-items: center; justify-content: center; color:rgb(223, 68, 68); "> Invalid Otp !! </span>
+                                  <div v-if="titleShow" class="" style="width: 100%; justify-content: center;display: flex;">
+
+                                      <button style="padding-left: 2rem; padding-right: 2rem;padding-top: 0.2rem; border-radius: 7px; background-color: #0AAFE3; border: none; color: #ffffff; margin-top: 5%; padding-bottom: 0.2rem;" @click ="VerifyOtps">submit</button>
+
+                                  </div>
+
+                                  <div v-if="correct"  class="sucessgif" style="margin: 0 auto; ">
+
+                                      <img style="mix-blend-mode: darken; height: 10rem;  filter: brightness(1.5);" src="./../../assets/BackGround/truee.gif"/>
+                                  </div>
+
+                            </div>
+                            </div>
+                         
+
+
+                </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-  
-
-<!-- Work In Progress End Here -->
-<footer>
-<!-- Blacnk Background0-blue Start Here -->
-<h3 class="" style="width: 100%; background-color: #446cb1;">&nbsp;</h3>
-<logoimageblack />
-
-<!-- Logo Image -->
-
-<!-- Link Mennu Contact Addreess -->
-<div class="q-pa-md bgclass">
-  <div
-    class="row justify-between items-start q-gutter-md q-mb-md"
-    style="margin: 0 auto; max-width: 100%; width: 90%"
-  >
-    <!-- Infinit ABout -->
-    <div class=" col-sm-6   col-md-4 col-lg-2"   >
-      <infinityabout :lorem="lorem" />
-    </div>
-    <!-- End Infinity About -->
-
-    <!-- COntact Details Start Here -->
-    <div class=" col-sm-6   col-md-4 col-lg-2">
-      <contactdetail />
-    </div>
-    <!-- Contact Details End here -->
-
-    <!-- Expert Service HEre -->
-    <div class=" col-sm-6   col-md-4 col-lg-2"   >
-      <expertservice />
-    </div>
-    <!-- Expert Service End HEre -->
-
-    <!-- Quick links Here -->
-    <div class=" col-sm-6   col-md-4 col-lg-2"    >
-      <quicklink />
-    </div>
-    <!-- Quick links End Here -->
   </div>
 
-  <div class="row justify-center items-center text-white q-mt-lg">
-    <div class="col-auto text-center">
-      <p
-        style="
-         
-          /* UI Properties */
-          color: var(--unnamed-color-ffffff);
+  <!-- Work In Progress End Here -->
+  <footer>
+    <!-- Blacnk Background0-blue Start Here -->
+    <h3 class="" style="width: 100%; background-color: #446cb1">&nbsp;</h3>
+    <logoimageblack />
 
-          font: normal normal 600 1.1rem/34px Nunito;
-          letter-spacing: 0px;
-          color: #ffffff;
-          opacity: 1;
-        "
+    <!-- Logo Image -->
+
+    <!-- Link Mennu Contact Addreess -->
+    <div class="q-pa-md bgclass">
+      <div
+        class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%"
       >
-        2022 copyright. All right Reserved
-      </p>
-    </div>
-  </div>
-</div>
-</footer>
+        <!-- Infinit ABout -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <infinityabout :lorem="lorem" />
+        </div>
+        <!-- End Infinity About -->
 
-<form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
-  <input type="hidden" name="key" v-model="mkey" size="64" />
-  <input type="hidden" name="txnid" v-model="txnid" size="64" />
-  <input type="hidden"  name="amount" v-model="finalAmount1" size="64" />
-  <input type="hidden" name="productinfo" v-model="productData.name" size="64" />
-  <input type="hidden" name="firstname" v-model="formData.firstname" size="64" />
-  <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
-  <input type="hidden" name="email" v-model="formData.email" size="64" />
-  <input type="hidden" name="phone" v-model="formData.PhoneNumber" size="64" />
-  <!-- <input type="hidden" name="lastname" v-model="lastName" size="64" /> -->
-  <input type="hidden" name="surl" v-model="surl" />
-  <input type="hidden" name="furl" v-model="furl" />
-  <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
-</form>
+        <!-- COntact Details Start Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <contactdetail />
+        </div>
+        <!-- Contact Details End here -->
+
+        <!-- Expert Service HEre -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <expertservice />
+        </div>
+        <!-- Expert Service End HEre -->
+
+        <!-- Quick links Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <quicklink />
+        </div>
+        <!-- Quick links End Here -->
+      </div>
+
+      <div class="row justify-center items-center text-white q-mt-lg">
+        <div class="col-auto text-center">
+          <p
+            style="
+              /* UI Properties */
+              color: var(--unnamed-color-ffffff);
+
+              font: normal normal 600 1.1rem/34px Nunito;
+              letter-spacing: 0px;
+              color: #ffffff;
+              opacity: 1;
+            "
+          >
+            2023 copyright. All right Reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
+    <input type="hidden" name="key" v-model="mkey" size="64" />
+    <input type="hidden" name="txnid" v-model="txnid" size="64" />
+    <input type="hidden" name="amount" v-model="finalAmount1" size="64" />
+    <input
+      type="hidden"
+      name="productinfo"
+      v-model="productData.name"
+      size="64"
+    />
+    <input
+      type="hidden"
+      name="firstname"
+      v-model="formData.firstname"
+      size="64"
+    />
+    <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
+    <input type="hidden" name="email" v-model="formData.email" size="64" />
+    <input
+      type="hidden"
+      name="phone"
+      v-model="formData.PhoneNumber"
+      size="64"
+    />
+    <!-- <input type="hidden" name="lastname" v-model="lastName" size="64" /> -->
+    <input type="hidden" name="surl" v-model="surl" />
+    <input type="hidden" name="furl" v-model="furl" />
+    <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
+  </form>
 </template>
 <script>
 import { useStore } from "vuex";
@@ -563,17 +889,33 @@ export default {
     expertservice,
     quicklink,
   },
+  setup() {
+  
+    return {
+     
+      inception: ref(true),
+
+    }
+  },
   data() {
     return {
       country: "101",
+      inception: ref(true),
       state: " ",
       city: " ",
-      totalList:0,
+      totalList: 0,
       countries: [],
       states: [],
       cities: [],
-      couponlist:[],
-      Discount:[],
+      couponlist: [],
+      Discount: [],
+      username:'',
+      password1:'',
+      confirmpassword:'',
+      login:true,
+      forgotpassword:false,
+      reset:false,
+      email1:'',
       payuUrl: "https://secure.payu.in/_payment",
       mkey: "nxpvv9VZ",
       saltKey: "3oFxUMtWG2",
@@ -583,46 +925,47 @@ export default {
       productData: {
         coupon_amount: 0,
       },
-      couponSearch:'',
+      couponSearch: "",
       id: 0,
-      discount:0,
+      discount: 0,
       showForm: false,
-      finalAmount1:0,
+      finalAmount1: 0,
       showForm2: false,
       formData: {
-        firstname : "",
-        lastname : "",
+        firstname: "",
+        lastname: "",
         businessName: "",
         businessGst: "",
         salesmanName: "",
         email: "",
+        product: this.id,
         PhoneNumber: "",
         phoneno: "",
         pincode: "",
-        address:"none",
+        address: "none",
         country: "101",
+        company_logo: "",
         state: " ",
         city: " ",
       },
-      errorForm:``
+      errorForm: ``,
     };
   },
   methods: {
+    async loginUser() {
+     
+      try {
+        const response = await axios.post('login', {
+          email: this.email1,
+          password: this.password1,
+        });
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Process the response as needed
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
 
     makeid() {
       var text = "";
@@ -633,52 +976,57 @@ export default {
 
       return text;
     },
+    handleFileChange(event) {
+      this.formData.company_logo = event.target.files[0];
+      // Process the selected file as needed
+    },
     PayNow() {
+      axios
+        .post(`payment/${this.productData.id}`, this.formData, {})
+        .then((res) => {
+          console.log(res.data.data);
+          // alert(res.data.data.id);
+          localStorage.setItem("userId", res.data.data.id);
+          localStorage.setItem("prodId", this.id);
+          localStorage.setItem("amount", this.finalAmount1);
+          var data =
+            this.mkey +
+            "|" +
+            this.txnid +
+            "|" +
+            this.finalAmount1 +
+            "|" +
+            this.productData.name +
+            "|" +
+            this.formData.firstname +
+            "|" +
+            this.formData.email +
+            "|||||||||||";
+          var sha512 = require("js-sha512");
+          var salt = "3oFxUMtWG2";
+          var hash = sha512(data + salt);
 
-      axios.post(`payment/${this.productData.id}` , this.formData ,{
-      } ).then((res)=>{
+          console.log(hash);
+          console.log("Here Is yourData", data);
 
-        console.log(res.data.data);
-        alert(res.data.data.id);
-        localStorage.setItem("userId" , res.data.data.id);
-        localStorage.setItem("prodId" , this.id);
-        localStorage.setItem("amount" ,this.finalAmount1);
-        var data =
-                  this.mkey +
-                  "|" +
-                  this.txnid +
-                  "|" +
-                  this.finalAmount1 +
-                  "|" +
-                  this.productData.name +
-                  "|" +
-                  this.formData.firstname +
-                  "|" +
-                  this.formData.email +
-                  "|||||||||||";
-                var sha512 = require("js-sha512");
-                var salt = "3oFxUMtWG2";
-                var hash = sha512(data + salt);
-
-                console.log(hash);
-                console.log("Here Is yourData",data);
-
-                document.getElementById("hash").value = hash;
-                document.getElementById("paymentForm").submit();
-
-      }).catch(e =>{
-
-
-          this.errorForm = e.response.data.message ; 
-          this.showForm = true ; 
-
-      });
-
+          document.getElementById("hash").value = hash;
+          // document.getElementById("paymentForm").submit();
+        })
+        .catch((e) => {
+          this.errorForm = e.response.data.message;
+          this.showForm = true;
+        });
 
       this.$store.commit("setUserId", 21);
-      this.$store.commit("setSGST", this.calculateCGST(this.productData.price, 9));
-      this.$store.commit("setCGST", this.calculateCGST(this.productData.price, 9));
-      this.$store.commit("setTotalAmount",this.totalAmount());
+      this.$store.commit(
+        "setSGST",
+        this.calculateCGST(this.productData.price, 9)
+      );
+      this.$store.commit(
+        "setCGST",
+        this.calculateCGST(this.productData.price, 9)
+      );
+      this.$store.commit("setTotalAmount", this.totalAmount());
       this.$store.commit("setDiscount", this.productData.coupon_amount);
       this.$store.commit("setCouponCode", this.couponCode);
       this.$store.commit("setProduct", this.productData.id);
@@ -765,57 +1113,53 @@ export default {
       let subTotal = 0;
 
       subTotal =
-        parseFloat(this.productData.price) -
-        parseFloat(this.Discount.discount);
+        parseFloat(this.productData.price) - parseFloat(this.Discount.discount);
 
       return subTotal;
     },
-   calculateDiscountPercentage(originalPrice, discountedPrice) {
-            // Calculate the discount amount
-            const discountAmount = originalPrice - discountedPrice;
+    calculateDiscountPercentage(originalPrice, discountedPrice) {
+      // Calculate the discount amount
+      const discountAmount = originalPrice - discountedPrice;
 
-            // Calculate the discount percentage
-            const discountPercentage = (discountAmount / originalPrice) * 100;
-           
-            // Return the discount percentage
-            return discountPercentage;
-          },
-            applyeCouponCode(){
+      // Calculate the discount percentage
+      const discountPercentage = (discountAmount / originalPrice) * 100;
 
-      axios.post('checkcoupen/'+this.id,
-      
-      {
-        code:this.couponSearch
-      }
-      ).then((res)=>{
-
-        console.log(res.data.data);
-        this.Discount = res.data.data ; 
-
-        this.finalAmount1 = parseFloat(this.Discount.discount) +
-        parseFloat(this.calculateCGST(this.Discount.discount, 9)) +
-        parseFloat(this.calculateCGST(this.Discount.discount, 9));
-
-
-      }).catch();
-
-
-
+      // Return the discount percentage
+      return discountPercentage;
     },
-    appliedCouponed(id){
-      
+    applyeCouponCode() {
+      axios
+        .post(
+          "checkcoupen/" + this.id,
+
+          {
+            code: this.couponSearch,
+          }
+        )
+        .then((res) => {
+          console.log(res.data.data);
+          this.Discount = res.data.data;
+          this.finalAmount1 =
+            parseFloat(this.subTotal()) +
+            parseFloat(Math.ceil(this.calculateCGST(this.subTotal(), 9))) +
+            parseFloat(Math.ceil(this.calculateCGST(this.subTotal(), 9)));
+        })
+        .catch();
+    },
+    appliedCouponed(id) {
       this.showPopup = false;
       this.showPopup1 = true;
       this.status = 0;
-      axios.get( `showcoupen?filter={"id":"${id}","is_published":"1"}`).then((res)=>{
-                        console.log("data3",res.data);
-                        
-                  this.couponSearch =  res.data.data.data[0].code;
-                  this.applyeCouponCode();
-              })
-  // Wait for the Vue next tick to ensure the popup is rendered
-  // this.couponCode = 'IBcoupon'
-      
+      axios
+        .get(`showcoupen?filter={"id":"${id}","is_published":"1"}`)
+        .then((res) => {
+          console.log("data3", res.data);
+
+          this.couponSearch = res.data.data.data[0].code;
+          this.applyeCouponCode();
+        });
+      // Wait for the Vue next tick to ensure the popup is rendered
+      // this.couponCode = 'IBcoupon'
     },
   },
   mounted() {
@@ -830,26 +1174,26 @@ export default {
         this.productData = res.data.data;
         // alert( this.productData.price);
 
-          const productPrice = parseFloat(this.productData.price);
-          const cgstAmount = parseFloat((this.productData.price * 9) / 100);
-          const sgstAmount = parseFloat((this.productData.price * 9) / 100);
+        const productPrice = parseFloat(this.productData.price);
+        const cgstAmount = parseFloat((this.productData.price * 9) / 100);
+        const sgstAmount = parseFloat((this.productData.price * 9) / 100);
 
-          const totalAmount = productPrice + cgstAmount + sgstAmount;
+        const totalAmount = productPrice + cgstAmount + sgstAmount;
 
-          this.finalAmount1 = Math.ceil(totalAmount);
-        
+        this.finalAmount1 = Math.ceil(totalAmount);
       })
       .catch();
 
-    axios.get( `showcoupen?filter={"product":"${this.id}","is_published":"1"}`).then((res)=>{
+    axios
+      .get(`showcoupen?filter={"product":"${this.id}","is_published":"1"}`)
+      .then((res) => {
+        console.log("Im here ", res.data.data.data[0].price);
 
-      console.log("Im here ", res.data.data.data[0].price)
-
-      this.couponlist = res.data.data.data ;
-      this.discount = res.data.data.data[0].price;
-      this.totalList = res.data.data.total;
-      
-    }).catch();  
+        this.couponlist = res.data.data.data;
+        this.discount = res.data.data.data[0].price;
+        this.totalList = res.data.data.total;
+      })
+      .catch();
     const store = useStore();
     store.commit("setBackGroundColor", "#ffffff");
     store.commit(
@@ -897,15 +1241,19 @@ input {
 .halfinput {
   width: 95%;
 }
-.couponInput{
-  width: 50%;padding:0px; padding-left: 3%;padding-top: 1%;padding-bottom: 1%;
+.couponInput {
+  width: 50%;
+  padding: 0px;
+  padding-left: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .container {
   padding-left: 14%;
   padding-right: 14%;
 }
-.innerContainer{
+.innerContainer {
   padding: 0px 8%;
 }
 .plancontainer {
@@ -935,14 +1283,12 @@ input {
   color: #2f518a;
 }
 .couponDescription {
-  
   text-align: left;
   font: normal normal 600 2.3vmin Nunito;
   letter-spacing: 0px;
-  color: #5E5E5E;
+  color: #5e5e5e;
 }
 .couponCode {
-
   text-align: left;
   font: normal normal 600 2.8vmin Nunito;
   letter-spacing: 0px;
@@ -950,40 +1296,39 @@ input {
   color: #2f518a;
 }
 .title {
-    text-align: left;
-    font: normal normal 600 1.2rem  Nunito;
-    letter-spacing: 0px;
-    color: #272727;
-
-  }
-  .container1 {
-    margin-left: 2%;
-    width: 100%;
-  }
-  .parDiv{
+  text-align: left;
+  font: normal normal 600 1.2rem Nunito;
+  letter-spacing: 0px;
+  color: #272727;
+}
+.container1 {
+  margin-left: 2%;
+  width: 100%;
+}
+.parDiv {
   line-height: 1;
-background-color:#2f518a ;
-height:100%;
-padding: 10px;
-width: 88px;
-font-family: 'Merienda', cursive;;
-text-align: left;
-font-size: 2rem;
-letter-spacing: 0px;
-color: #ffffff;
+  background-color: #2f518a;
+  height: 100%;
+  padding: 10px;
+  width: 88px;
+  font-family: "Merienda", cursive;
+  text-align: left;
+  font-size: 2rem;
+  letter-spacing: 0px;
+  color: #ffffff;
 }
 .ApplyCouponCodeContainer {
   height: 100px;
-  padding-bottom: 8px ;
-  padding-top: 8px ;
-  padding-left:8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-left: 8px;
   padding: 8px;
   position: relative;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-border-bottom: 1px solid #C5C5C5;
-margin-top: 3%;
-margin-bottom:2%;
-display: flex;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-bottom: 1px solid #c5c5c5;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  display: flex;
   /* justify-content: space-between; */
 
   /* align-items: center; */
@@ -991,13 +1336,51 @@ display: flex;
 .outerDiv::-webkit-scrollbar {
   display: none; /* Hide the scrollbar */
 }
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1; /* Start with 0 opacity to make it invisible initially */
+ 
+  transition: opacity 0.3s ease-in-out; /* Add transition property for opacity */
+}
+.overlay-content
+{
+
+  width: 70vh;
+  padding: 22px;
+  max-width: 500px;
+  /* height: 50%; */
+  max-height: fit-content;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   /* Align items to the left */
+  background-color: #ffffff;
+  /* padding: 20px; */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
 .applyButton {
   float: right;
   margin-top: 1%;
   margin-right: 1%;
   padding: 4px 5%;
-  border-color: #2f518a!important;
+  border-color: #2f518a !important;
   border: 1px solid;
+  cursor: pointer;
   background-color: #2f518a;
   border-radius: 0px;
   color: #ffffff;
@@ -1019,18 +1402,17 @@ display: flex;
     width: 100%; /* Set a different width, such as 50% */
   }
   .couponDescription {
-  
-  text-align: left;
-  font: normal normal 600 3vmin Nunito;
-  letter-spacing: 0px;
-  color: #5E5E5E;
-}
+    text-align: left;
+    font: normal normal 600 3vmin Nunito;
+    letter-spacing: 0px;
+    color: #5e5e5e;
+  }
   .row {
     display: grid;
   }
 
-  .innerContainer{
-  padding: 0px 0%;
+  .innerContainer {
+    padding: 0px 0%;
   }
   .container {
     padding-left: 4%;
@@ -1039,9 +1421,13 @@ display: flex;
   .nubu {
     margin-top: 9vh;
   }
-  .couponInput{
-  width: 60%;padding:0px; padding-left: 3%;padding-top: 1%;padding-bottom: 1%;
-}
+  .couponInput {
+    width: 60%;
+    padding: 0px;
+    padding-left: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
 }
 
 .title12 {

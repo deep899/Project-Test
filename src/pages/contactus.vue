@@ -101,7 +101,7 @@
             opacity: 1;
           "
         >
-          2022 copyright. All right Reserved
+          2023 copyright. All right Reserved
         </p>
       </div>
     </div>

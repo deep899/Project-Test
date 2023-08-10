@@ -1,22 +1,12 @@
 <template>
   <!-- Slider Carousel -->
   <carousel />
-  <br/>
+  <br />
   <!-- Carousel End Here -->
-  <span
-        class="OurTitle"
-        style="
-          
-          /* border: solid; */
-        "
-      >
+  <span class="OurTitle" style="/* border: solid; */"> OUR PRODUCT </span>
 
-        OUR PRODUCT
-      </span>
-    
   <!-- OUR PRODUTCS -->
   <div v-show="showProducts">
-
     <products />
   </div>
   <!-- <div class="container">
@@ -63,78 +53,70 @@
       justify-content: center;
     "
   >
-  <span
-        class="OurTitle"
-        style="
-          width: 100%;
-          /* border: solid; */
-        "
-      >
-
+    <span class="OurTitle" style="width: 100%; /* border: solid; */">
       OUR WORK IN PROGRESS
-      </span>
+    </span>
   </div>
   <workInprogress />
 
   <!-- Work In Progress End Here -->
   <footer>
-  <!-- Blacnk Background0-blue Start Here -->
- <h3 class="" style="width: 100%; background-color: #446cb1;">&nbsp;</h3>
-  <logoimageblack />
+    <!-- Blacnk Background0-blue Start Here -->
+    <h3 class="" style="width: 100%; background-color: #446cb1">&nbsp;</h3>
+    <logoimageblack />
 
-  <!-- Logo Image -->
+    <!-- Logo Image -->
 
-  <!-- Link Mennu Contact Addreess -->
-  <div class="q-pa-md bgclass">
-    <div
-      class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 100%; width: 90%"
-    >
-      <!-- Infinit ABout -->
-      <div class=" col-sm-6   col-md-4 col-lg-2"   >
-        <infinityabout :lorem="lorem" />
+    <!-- Link Mennu Contact Addreess -->
+    <div class="q-pa-md bgclass">
+      <div
+        class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%"
+      >
+        <!-- Infinit ABout -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <infinityabout :lorem="lorem" />
+        </div>
+        <!-- End Infinity About -->
+
+        <!-- COntact Details Start Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <contactdetail />
+        </div>
+        <!-- Contact Details End here -->
+
+        <!-- Expert Service HEre -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <expertservice />
+        </div>
+        <!-- Expert Service End HEre -->
+
+        <!-- Quick links Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <quicklink />
+        </div>
+        <!-- Quick links End Here -->
       </div>
-      <!-- End Infinity About -->
 
-      <!-- COntact Details Start Here -->
-      <div class=" col-sm-6   col-md-4 col-lg-2">
-        <contactdetail />
-      </div>
-      <!-- Contact Details End here -->
+      <div class="row justify-center items-center text-white q-mt-lg">
+        <div class="col-auto text-center">
+          <p
+            style="
+              /* UI Properties */
+              color: var(--unnamed-color-ffffff);
 
-      <!-- Expert Service HEre -->
-      <div class=" col-sm-6   col-md-4 col-lg-2"   >
-        <expertservice />
+              font: normal normal 600 1.1rem/34px Nunito;
+              letter-spacing: 0px;
+              color: #ffffff;
+              opacity: 1;
+            "
+          >
+            2023 copyright. All right Reserved
+          </p>
+        </div>
       </div>
-      <!-- Expert Service End HEre -->
-
-      <!-- Quick links Here -->
-      <div class=" col-sm-6   col-md-4 col-lg-2"    >
-        <quicklink />
-      </div>
-      <!-- Quick links End Here -->
     </div>
-
-    <div class="row justify-center items-center text-white q-mt-lg">
-      <div class="col-auto text-center">
-        <p
-          style="
-           
-            /* UI Properties */
-            color: var(--unnamed-color-ffffff);
-
-            font: normal normal 600 1.1rem/34px Nunito;
-            letter-spacing: 0px;
-            color: #ffffff;
-            opacity: 1;
-          "
-        >
-          2022 copyright. All right Reserved
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 </template>
 
 <script>
@@ -237,16 +219,16 @@ export default {
     flex-wrap: wrap;
   }
 }
-.OurTitle{
-          font-size: 3.5vw;
-          margin-top: 0%;
-          color: #012a71;
-          font-family: Impact, Bold, sans-serif;
-          background-color: #eeeeee57;
-          align-items: center;
-          display: flex;
-          line-height: 7vw;
-          justify-content: center;
+.OurTitle {
+  font-size: 3.5vw;
+  margin-top: 0%;
+  color: #012a71;
+  font-family: Impact, Bold, sans-serif;
+  background-color: #eeeeee57;
+  align-items: center;
+  display: flex;
+  line-height: 7vw;
+  justify-content: center;
 }
 .bgclass {
   background-image: url("./../img/bgok.jpg");
@@ -254,20 +236,16 @@ export default {
   background-position: top left;
   background-size: cover;
 }
-.q-carousel__slide{
+.q-carousel__slide {
   padding: 0;
 }
 @media (max-width: 940px) {
-
-    .OurTitle{
-
-        margin-top: -2%;
-        font-family: Impact, Bold, sans-serif;
-        font-size: 7VW ; 
-        line-height: 10vw;
-        background-color: #f5f5f570;
-    }
-
-
+  .OurTitle {
+    margin-top: -2%;
+    font-family: Impact, Bold, sans-serif;
+    font-size: 7vw;
+    line-height: 10vw;
+    background-color: #f5f5f570;
+  }
 }
 </style>
