@@ -64,7 +64,7 @@
     <!-- Quick links End Here -->
 
     <div class="text-center text-white q-mt-md">
-      <p>2022 copyright. All right Reserved</p>
+      <p>2023 copyright. All right Reserved</p>
     </div>
   </div>
 </template>

@@ -72,6 +72,7 @@
           <div
             class="col-md-6 col-sm-12 col-lg-6"
             style="
+             object-fit: contain;
               align-items: center;
               display: flex;
               justify-content: center;
@@ -92,26 +93,73 @@
                 {{ item.name }}
               </span>
 
-              <p class="longDiscription" style="">{{ item.short_desc }}</p>
-              <p class="price" style="">
-                Price : <span style="font-size: 1vw">₹</span>
-                {{ this.formatNumber(item.price) }}/-
+              <p class="longDiscription" style=" object-fit: contain; ">{{ item.short_desc }}</p>
+              <p class="price " style="">
+                Price : 
+                <!-- <span style="font-size: 1vw;object-fit: contain; margin-bottom: 2%;">₹</span>
+                         {{ this.formatNumber(item.price) }}/- -->
+                         <span v-if="item.effective_price" style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.effective_price) }}.00/-</span
+          >
+          <span v-else style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          > &nbsp; &nbsp;
+        <span
+          v-if="item.effective_price"
+          class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
+          <span style="font-size: 0.7em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          >
+        </span>
               </p>
             </div>
           </div>
         </div>
 
-        <div class="row" v-if="index % 2 !== 0">
+        <div class="row" v-if="index % 2 !== 0 " >
           <div class="col-md-6 col-sm-12 col-lg-6 secondDiv" style="">
-            <div style="width: 80%; height: 30.8vh; padding-left: 0.2%">
+            <div style="width: 80%;  padding-left: 0.2%">
               <span class="nameSecond nameProduct" style="">
                 {{ item.name }}
               </span>
 
               <p class="longDiscription" style="">{{ item.short_desc }}</p>
               <p class="price" style="">
-                Price : <span style="font-size: 1vw">₹</span>
-                {{ this.formatNumber(item.price) }}/-
+                Price :        <span v-if="item.effective_price" style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.effective_price) }}.00/-</span
+          >
+          <span v-else style="font-size: 1em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          > &nbsp; &nbsp;
+        <span
+          v-if="item.effective_price"
+          class="cross"
+          style="font-size: 1.2em; line-height: 1em"
+        >
+          <span style="font-size: 0.8em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          >
+        </span>
               </p>
             </div>
           </div>
@@ -168,15 +216,37 @@
           </div>
 
           <div class="col-md-6 col-sm-12 col-lg-6 secondDiv" style="">
-            <div style="width: 80%; height: 30.8vh; padding-left: 0.2%">
+            <div style="width: 80%;  padding-left: 0.2%">
               <span class="nameSecond nameProduct" style="">
                 {{ item.name }}
               </span>
 
               <p class="longDiscription" style="">{{ item.short_desc }}</p>
               <p class="price" style="">
-                Price : <span style="font-size: 1vw">₹</span>
-                {{   this.formatNumber(item.price) }}/-
+                Price :        <span v-if="item.effective_price" style="font-size: 0.9em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.effective_price) }}.00/-</span
+          >
+          <span v-else style="font-size: 0.9em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          > &nbsp; &nbsp;
+        <span
+          v-if="item.effective_price"
+          class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
+          <span style="font-size: 0.8em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          >
+        </span>
               </p>
             </div>
           </div>
@@ -410,5 +480,28 @@ export default {
     font-weight: 900 bolder;
     margin-top: -1.5%;
   }
+}
+
+.cross {
+  position: relative;
+  display: inline-block;
+}
+.cross::before,
+.cross::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.cross::before {
+  border-bottom: 2px solid red;
+  -webkit-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+}
+.cross::after {
+  border-bottom: 2px solid red;
+  -webkit-transform: skewY(10deg);
+  transform: skewY(10deg);
 }
 </style>

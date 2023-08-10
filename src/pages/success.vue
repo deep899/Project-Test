@@ -140,12 +140,12 @@ export default {
     // this.amount = this.$route.params.amount_pay;
     console.log("hello", this.cgst, this.amount);
 
-    this.subscribe = JSON.parse(localStorage.getItem("copondetails"));
-    if (this.subscribe) {
-      this.coupon_code = this.text;
-    } else {
-      this.coupon_code = "";
-    }
+    // this.subscribe = JSON.parse(localStorage.getItem("copondetails"));
+    // if (this.subscribe) {
+    //   this.coupon_code = this.text;
+    // } else {
+    //   this.coupon_code = "";
+    // }
 
     axios
       .post("paymentstatusupdate", {

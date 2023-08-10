@@ -1,6 +1,6 @@
 
 <template>
-  <div v-if="productPurchase" >
+  <div v-if="productPurchase">
     <div class="maincontainer containerActuall">
       <div style="position: relative; width: 100%">
         <img
@@ -43,8 +43,8 @@
       </div>
       <div class="col-lg-5 col-md-5 col-sm-12" style="padding-left: 3%">
         <span class="name">{{ products.name }}</span>
-        <p class="longDec" style="color: #707070">{{ products.short_desc}}</p>
-        <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%;">
+        <p class="longDec" style="color: #707070">{{ products.short_desc }}</p>
+        <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%">
           Price :
           <span v-if="this.effectiveprice" style="font-size: 0.9em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
@@ -59,8 +59,12 @@
             {{ this.formatNumber(this.price) }}.00/-</span
           >
         </span>
-        &nbsp;  &nbsp;
-        <span v-if="this.effectiveprice" class="cross" style="font-size: 1.5em; line-height: 1em">
+        &nbsp; &nbsp;
+        <span
+          v-if="this.effectiveprice"
+          class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
           <span style="font-size: 0.8em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
               >₹</span
@@ -68,17 +72,39 @@
             {{ this.formatNumber(this.price) }}.00/-</span
           >
         </span>
-        <br/>
-        <button style="font-size: 1.3rem; padding: 0.5vh 2vw;  cursor: pointer; background-color: #2f518a; color: #ffffff; border: none;  margin-top: 2%;" @click="this.$router.push(`/paymentForm/${products.id}`);">Buy Now</button>
+        <br />
+        <button
+          style="
+            font-size: 1.3rem;
+            padding: 0.5vh 2vw;
+            cursor: pointer;
+            background-color: #2f518a;
+            color: #ffffff;
+            border: none;
+            margin-top: 2%;
+          "
+          @click="this.$router.push(`/paymentForm/${products.id}`)"
+        >
+          Buy Now
+        </button>
       </div>
     </div>
 
-    <div class="logdiscriptionblog" style=" background-color: #f1f1f169; margin-top: 10%; margin-bottom: 10%;  display: flex;align-items: center; justify-content: center; ">
-      <p class=" textLong " style="background-color: transparent; ">
-      {{ products.desc }}
+    <div
+      class="logdiscriptionblog"
+      style="
+        background-color: #f1f1f169;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p class="textLong" style="background-color: transparent">
+        {{ products.desc }}
       </p>
     </div>
-    
   </div>
   <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
     <input type="hidden" name="key" v-model="mkey" size="64" />
@@ -94,64 +120,63 @@
     <input type="hidden" name="furl" v-model="furl" />
     <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
   </form>
-   <footer>
-  <!-- Blacnk Background0-blue Start Here -->
- <h3 class="" style="width: 100%; background-color: #446cb1;">&nbsp;</h3>
-  <logoimageblack />
+  <footer>
+    <!-- Blacnk Background0-blue Start Here -->
+    <h3 class="" style="width: 100%; background-color: #446cb1">&nbsp;</h3>
+    <logoimageblack />
 
-  <!-- Logo Image -->
+    <!-- Logo Image -->
 
-  <!-- Link Mennu Contact Addreess -->
-  <div class="q-pa-md bgclass">
-    <div
-      class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 100%; width: 90%"
-    >
-      <!-- Infinit ABout -->
-      <div class=" col-sm-6   col-md-4 col-lg-2"   >
-        <infinityabout :lorem="lorem" />
+    <!-- Link Mennu Contact Addreess -->
+    <div class="q-pa-md bgclass">
+      <div
+        class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%"
+      >
+        <!-- Infinit ABout -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <infinityabout :lorem="lorem" />
+        </div>
+        <!-- End Infinity About -->
+
+        <!-- COntact Details Start Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <contactdetail />
+        </div>
+        <!-- Contact Details End here -->
+
+        <!-- Expert Service HEre -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <expertservice />
+        </div>
+        <!-- Expert Service End HEre -->
+
+        <!-- Quick links Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <quicklink />
+        </div>
+        <!-- Quick links End Here -->
       </div>
-      <!-- End Infinity About -->
 
-      <!-- COntact Details Start Here -->
-      <div class=" col-sm-6   col-md-4 col-lg-2">
-        <contactdetail />
-      </div>
-      <!-- Contact Details End here -->
+      <div class="row justify-center items-center text-white q-mt-lg">
+        <div class="col-auto text-center">
+          <p
+            style="
+              /* UI Properties */
+              color: var(--unnamed-color-ffffff);
 
-      <!-- Expert Service HEre -->
-      <div class=" col-sm-6   col-md-4 col-lg-2"   >
-        <expertservice />
+              font: normal normal 600 1.1rem/34px Nunito;
+              letter-spacing: 0px;
+              color: #ffffff;
+              opacity: 1;
+            "
+          >
+            2023 copyright. All right Reserved
+          </p>
+        </div>
       </div>
-      <!-- Expert Service End HEre -->
-
-      <!-- Quick links Here -->
-      <div class=" col-sm-6   col-md-4 col-lg-2"    >
-        <quicklink />
-      </div>
-      <!-- Quick links End Here -->
     </div>
-
-    <div class="row justify-center items-center text-white q-mt-lg">
-      <div class="col-auto text-center">
-        <p
-          style="
-           
-            /* UI Properties */
-            color: var(--unnamed-color-ffffff);
-
-            font: normal normal 600 1.1rem/34px Nunito;
-            letter-spacing: 0px;
-            color: #ffffff;
-            opacity: 1;
-          "
-        >
-          2022 copyright. All right Reserved
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 </template>
 
 <script>
@@ -190,9 +215,9 @@ export default {
       state: [],
       city: [],
       country: [],
-      productPurchase:true,
+      productPurchase: true,
       amount_pay: "999",
-      effectiveprice:0,
+      effectiveprice: 0,
       products: [],
       email: "",
       mobile_no: "",
@@ -657,10 +682,11 @@ export default {
   /* */
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-.textLong{
-
-  width: 80%; font-size: 1.3rem; margin-top: 1%;  text-align: center;
-
+.textLong {
+  width: 80%;
+  font-size: 1.3rem;
+  margin-top: 1%;
+  text-align: center;
 }
 .bgclass {
   background-image: url("./../../img/bgok.jpg");
@@ -730,33 +756,36 @@ export default {
     align-items: center;
     margin-top: 2%;
     width: 100%;
-    
   }
-  .textLong{
-
-    width: 90%; font-size: 1.3rem;   margin-top: 1%;  text-align: center;
-
-}
+  .textLong {
+    width: 90%;
+    font-size: 1.3rem;
+    margin-top: 1%;
+    text-align: center;
+  }
 }
 .cross {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
-.cross::before, .cross::after {
-    content: '';
-    width: 100%;
-    position: absolute;
-    right: 0;
-    top: 50%;
+.cross::before,
+.cross::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 .cross::before {
-    border-bottom: 2px solid red;
-    -webkit-transform: skewY(-10deg);
-    transform: skewY(-10deg);
+  border-bottom: 2px solid red;
+  -webkit-transform: skewY(-10deg);
+  transform: skewY(-10deg);
 }
 .cross::after {
-    border-bottom: 2px solid red;
-    -webkit-transform: skewY(10deg);
-    transform: skewY(10deg);
+  border-bottom: 2px solid red;
+  -webkit-transform: skewY(10deg);
+  transform: skewY(10deg);
 }
+
+
 </style>
