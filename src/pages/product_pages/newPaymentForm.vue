@@ -1010,7 +1010,7 @@ export default {
           console.log("Here Is yourData", data);
 
           document.getElementById("hash").value = hash;
-          // document.getElementById("paymentForm").submit();
+          document.getElementById("paymentForm").submit();
         })
         .catch((e) => {
           this.errorForm = e.response.data.message;
