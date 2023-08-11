@@ -1265,14 +1265,10 @@ formData.append('firstname', this.formData.firstname);
       return subTotal;
     },
     calculateDiscountPercentage(originalPrice, discountedPrice) {
-      // Calculate the discount amount
-      const discountAmount = originalPrice - discountedPrice;
+      // console.log("thow ",originalPrice , discountedPrice);
+            const percentageOff = (discountedPrice / originalPrice) * 100;
 
-      // Calculate the discount percentage
-      const discountPercentage = (discountAmount / originalPrice) * 100;
-
-      // Return the discount percentage
-      return discountPercentage;
+      return percentageOff.toFixed(2);
     },
     applyeCouponCode() {
       axios
