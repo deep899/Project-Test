@@ -583,15 +583,8 @@
                 </div>
                 <div class="col-12" style="margin-top: 5%">
                   <div class="disc" style="float: left">Total Payment:</div>
-                  <div
-                    class="disc"
-                    v-if="!isNaN(parseInt(finalAmount1))"
-                    style="float: right"
-                  >
-                    {{ parseInt(finalAmount1) }}.00
-                  </div>
-                  <div class="disc" v-else style="float: right">
-                    {{ finalAmount1 }}
+                  <div class="disc"  style="float: right">
+                    {{ parseFloat(finalAmount1)}}
                   </div>
                 </div>
                 <div class="col-12" style="margin-top: 8%">
@@ -1282,10 +1275,8 @@ formData.append('firstname', this.formData.firstname);
         .then((res) => {
           console.log(res.data.data);
           this.Discount = res.data.data;
-          this.finalAmount1 =
-            parseFloat(this.subTotal()) +
-            parseFloat(Math.ceil(this.calculateCGST(this.subTotal(), 9))) +
-            parseFloat(Math.ceil(this.calculateCGST(this.subTotal(), 9)));
+          this.finalAmount1 = this.calculateCGST(this.subTotal(), 9) * 2 + this.subTotal();
+          
         })
         .catch();
     },
