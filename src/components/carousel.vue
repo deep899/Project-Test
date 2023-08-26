@@ -1,37 +1,133 @@
 <template>
   <div class="">
     <q-carousel
+    class="carousel"
       ref="carousel"
       animated
       v-model="slide"
       infinite
       :autoplay="autoplay"
-      height="100vh"
-      style= "  width: 100%;  
+      
+      style= "width: 100%;  
     
       "
     > 
      
-      <q-carousel-slide
-        :name="1"
-        img-src="./../assets/img/Slider11.jpg"
-        class="carousel"
-      >
-      <!-- <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); text-align: left;font: normal normal normal 4.5rem/146px Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Versatile Innovators</h4> -->
-      <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); text-align: left;font: normal normal normal 4.5rem/146px Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Versatile Innovators</h4>
-      <h3 style="max-width: 100%; max-height: 100%; height: fit-content; color: var(--unnamed-color-ffffff); text-align: center; font: normal normal 600 35px/47px Nunito; letter-spacing: 0px; width: 80%; color: #FFFFFF; text-shadow: 0px 3px 6px #00000070; margin-left: 20vh; opacity: 1; margin-top: -10vh;">
-          We deliver Websites, Mobile apps, Hybrid apps, Software, Digital Marketing, SEO, etc.
-           Services to global businesses, with 100% project delivery success and also complete digital transformation. Our Experts have the skills of the latest technology in every field & keep updating them regularly
-        </h3> 
-       </q-carousel-slide>
-       <q-carousel-slide
+    <q-carousel-slide
+      :name="1"
+      img-src="./../assets/BackGround/bg1.jpg"
+      class="carousel"
+    >
+    
+      <div class="caption-container">
+        <img style="position: absolute;" class="bottom-Ft"  src="./../assets/BackGround/bgBk.png" />
+        <img class="top-Fit" style=" " src="./../assets/BackGround/bgBk.png" />
+        <span class="bgText t1" style="">     INFINITYBRAINS</span>
+        <span class="carousel-title">VERSATILE INNOVATORS</span>
+        <div class="titleDes">
+        <span class="carousel-description">
+          We deliver Websites, Mobile apps, Hybrid apps, Software, Digital
+          Marketing, SEO, etc.<br/> Services to global businesses, with 100%
+          project delivery success and also complete digital transformation.<br/> 
+          Our Experts have the skills of the latest technology in every field
+          & keep updating them regularly
+        </span>
+        
+      </div>
+      <span class="bgText t2">INFINITYBRAINS</span>
+      </div>
+    </q-carousel-slide>
+    <q-carousel-slide
+      :name="2"
+      img-src="./../assets/BackGround/bg2.png"
+      class="carousel"
+    >
+    
+      <div class="caption-container">
+        <img style="position: absolute;" class="bottom-Ft"  src="./../assets/BackGround/bgBk.png" />
+        <img class="top-Fit" style=" " src="./../assets/BackGround/bgBk.png" />
+        <span class="bgText t1" style="">     INFINITYBRAINS</span>
+        <span class="carousel-title">DIGITAL TRANSFORMATION</span>
+        <div class="titleDes">
+        <span class="carousel-description" style="font-size: 1.7vw;">
+          We Provide Technology Transformation, Improving Customer experience by being client-centric, Change management & experience; Strategic & analytical consulting & Cul Talent & leadership. We help you capitalize on opportunities to drive profitable growth, rethink organizational structure and reap the potential of information.
+      
+        </span>
+        
+      </div>
+      <span class="bgText t2">INFINITYBRAINS</span>
+      </div>
+    </q-carousel-slide>
+    <q-carousel-slide
+      :name="3"
+      img-src="./../assets/BackGround/bg2.png"
+      class="carousel"
+    >
+    
+      <div class="caption-container">
+        <img style="position: absolute;" class="bottom-Ft"  src="./../assets/BackGround/bgBk.png" />
+        <img class="top-Fit" style=" " src="./../assets/BackGround/bgBk.png" />
+        <span class="bgText t1" style="">     INFINITYBRAINS</span>
+        <span class="carousel-title" style="margin-bottom: 1%;">WHY INFINITY BRAINS</span>
+        <div class="titleDes">
+        <span class="carousel-description" style="font-size: 1.6vw;">
+          Customer Focused Projects, Convincing Projects that are 100% as the customer wants. The venture of a Well Reputed & Popular Business for 7 years; hence having experience and Trust among the clients & looking to maintain long term goals with our clients. We are all rounders; providing services like SEO friendly Websites, with latest technologies, applications in android, flutter & IOS; and also all kinds of marketing for that    </span>
+        
+      </div>
+      <span class="bgText t2">INFINITYBRAINS</span>
+      </div>
+    </q-carousel-slide>
+    <!-- <q-carousel-slide
+      :name="2"
+      img-src="./../assets/BackGround/bg1.jpg"
+      class="carousel"
+    >
+    
+      <div class="caption-container">
+        <span class="bgText t1" style="">INFINITYBRAINS</span>
+        <span class="carousel-title">Digital Transformation</span>
+        <div class="titleDes">
+        <span class="carousel-description">
+          We deliver Websites, Mobile apps, Hybrid apps, Software, Digital
+          Marketing, SEO, etc.<br/> Services to global businesses, with 100%
+          project delivery success and also complete digital transformation.<br/> 
+          Our Experts have the skills of the latest technology in every field
+          & keep updating them regularly
+        </span>
+        
+      </div>
+      <span class="bgText t2">INFINITYBRAINS</span>
+      </div>
+    </q-carousel-slide>
+    <q-carousel-slide
+      :name="3"
+      img-src="./../assets/BackGround/bg1.jpg"
+      class="carousel"
+    >
+    
+      <div class="caption-container">
+        <span class="bgText t1" style="">INFINITYBRAINS</span>
+        <span class="carousel-title">VERSATILE INNOVATORS</span>
+        <div class="titleDes">
+        <span class="carousel-description">
+          We deliver Websites, Mobile apps, Hybrid apps, Software, Digital
+          Marketing, SEO, etc.<br/> Services to global businesses, with 100%
+          project delivery success and also complete digital transformation.<br/> 
+          Our Experts have the skills of the latest technology in every field
+          & keep updating them regularly
+        </span>
+        
+      </div>
+      <span class="bgText t2">INFINITYBRAINS</span>
+      </div>
+    </q-carousel-slide> -->
+       <!-- <q-carousel-slide
         :name="2"
         img-src="./../img/Loading2.png"
         class="carousel"
       >
-      <!-- <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); text-align: left;font: normal normal normal 4.5rem/146px Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Versatile Innovators</h4> -->
-      <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); text-align: left;font: normal normal normal 4.5rem/146px Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Digital Transformation</h4>
-      <h3 style="max-width: 100%; max-height: 100%; height: fit-content; color: var(--unnamed-color-ffffff); text-align: center; font: normal normal 600 35px/47px Nunito; letter-spacing: 0px; width: 80%; color: #FFFFFF; text-shadow: 0px 3px 6px #00000070; margin-left: 20vh; opacity: 1; margin-top: -10vh;">
+      <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); font: 8vmin Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Digital Transformation</h4>
+      <h3 style="max-width: 100%; max-height: 100%; height: fit-content; color: var(--unnamed-color-ffffff); text-align: center; font:  600  2vw  Nunito; letter-spacing: 0px; width: 80%; color: #FFFFFF; text-shadow: 0px 3px 6px #00000070; margin-left: 20vh; opacity: 1; margin-top: -10vh;">
         We Provide Technology Transformation, Improving Customer experience by being client-centric, Change management & experience; Strategic & analytical consulting & Cul Talent & leadership. We help you capitalize on opportunities to drive profitable growth, rethink organizational structure and reap the potential of information.
         </h3> 
        </q-carousel-slide>
@@ -40,12 +136,11 @@
         img-src="./../img/slidees3.jpg"
         class="carousel"
       >
-      <!-- <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); text-align: left;font: normal normal normal 4.5rem/146px Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Versatile Innovators</h4> -->
-      <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); text-align: left;font: normal normal normal 4.5rem/146px Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Why Infinity Brains</h4>
-      <h3 style="max-width: 100%; max-height: 100%; height: fit-content; color: var(--unnamed-color-ffffff); text-align: center; font: normal normal 600 2vw/47px Nunito; letter-spacing: 0px; width: 80%; color: #FFFFFF; text-shadow: 0px 3px 6px #00000070; margin-left: 20vh; opacity: 1; margin-top: -10vh;">
+     <h4 style="max-width: 100%; max-height: 100%; align-items: center; margin-top: 25vh; font-size: 8rem; color: var(--unnamed-color-ffffff); font: 10vmin Impact;letter-spacing: 0px;color: #FFFFFF;text-shadow: 0px 3px 6px #0000007D;  justify-content: center; display: flex;">Why Infinity Brains</h4>
+      <h3 style="max-width: 100%; max-height: 100%; height: fit-content; color: var(--unnamed-color-ffffff); text-align: center; font: 600 2vw  Nunito; letter-spacing: 0px; width: 80%; color: #FFFFFF; text-shadow: 0px 3px 6px #00000070; margin-left: 20vh; opacity: 1; margin-top: -10vh;">
         Customer Focused Projects, Convincing Projects that are 100% as the customer wants. The venture of a Well Reputed & Popular Business for 7 years; hence having experience and Trust among the clients & looking to maintain long term goals with our clients. We are all rounders; providing services like SEO friendly Websites, with latest technologies, applications in android, flutter & IOS; and also all kinds of marketing for that
         </h3> 
-       </q-carousel-slide>
+       </q-carousel-slide> -->
 <!-- 
       <q-carousel-slide
         :name="2"
@@ -67,7 +162,7 @@
   
     <q-btn
       class=""
-      style="  color: whitesmoke;  margin-top: -5%; margin-left: 1%;   height: fit-content; width: 1vh; border-radius: 100px ;   "
+      style="  color: whitesmoke;  margin-top: -10vh;   margin-left: 1%;   height: fit-content; width: 1vh; border-radius: 100px ;   "
       icon="chevron_left"
       @click="prev()"
     ></q-btn>
@@ -76,7 +171,7 @@
 
     <q-btn
       class=""
-      style="  color: whitesmoke;  margin-top: -5%; margin-left: 0.5%;  height: fit-content; width: 1vh; border-radius: 100px;   "
+      style="  color: whitesmoke; margin-top: -10vh;    margin-left: 0.5%;  height: fit-content; width: 1vh; border-radius: 100px;   "
       icon="chevron_right"
       @click="next()"
     >
@@ -88,11 +183,11 @@
       icon=""
       @click="scrolldown()"
     > -->
-    <div style="border:solid ; margin-top: -5%; margin-left: 100vh; " @click="Downslide()" >
-      <div class="chevron"></div>
+    <!-- <div style="border:solid ; margin-top: -5%; margin-left: 100vh; " @click="Downslide()" > -->
+      <!-- <div class="chevron"></div>
   <div class="chevron"></div>
   <div class="chevron"></div> 
-</div>
+</div> -->
   <!-- </q-btn> -->
 
     <!-- </div> -->
@@ -132,19 +227,19 @@ export default {
 
 <style lang="css" scoped>
 
+.carousel{
+  height: 100vh;
+}
 
 .custom-buttons {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
+  left: 0;
   width: 100%;
 }
 
 .custom-button {
   color: white;
-  font-size: 24px;
+  font-size: 2vw;
   opacity: 0.8;
   transition: opacity 0.2s;
 }
@@ -155,10 +250,9 @@ export default {
 
 .chevron {
   position: absolute;
-  width: 28px;
-  height: 8px;
-  opacity: 0;
-  transform: scale3d(0.5, 0.5, 0.5);
+  bottom: -10%;
+  left: 0;
+  width: 100%;
   animation: move 3s ease-out infinite;
 }
 
@@ -228,4 +322,123 @@ export default {
     opacity: 1;
   }
 }
+
+
+
+.caption-container{
+  height: 100%;
+   
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.carousel-title {
+  align-items: center;
+    text-align: center;
+    font:6vw/146px Impact;
+   z-index: 1;
+  line-height: 6vw;
+  margin-bottom:1% ;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  text-shadow: 0px 3px 6px #0000007D;
+  justify-content: center;
+  display: flex;
+}
+.titleDes{
+  width: 100%;
+   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-description {
+   z-index: 1;
+  height: fit-content;
+  text-align: center;
+  font: 500 1.8vw Nunito; 
+  /* here responsive font height must be set on responsive manner  */
+  letter-spacing: 0px;
+  justify-content: center;
+  width: 90%;
+  color: #FFFFFF;
+  text-shadow: 0px 3px 6px #00000070;
+}
+.bgText{
+  color: #FFFFFF;
+  width: 100%;
+  font:8vw/146px Impact;
+   
+  line-height: 8vw;
+}
+.t1{
+  /* margin-right: 0 auto; */
+  text-align: right;
+  margin-bottom: 5%;
+  opacity: 0.1;
+}
+.t2{
+  /* margin-right: 0 auto; */
+  text-align: left;
+  margin-top: 5%;
+  opacity: 0.1;
+}
+.top-Fit{
+  opacity: 0.2;
+    top: 0;
+    left: 6vh;
+    width: 19.5vw;
+    z-index: 0;
+
+    position: absolute; 
+}
+.bottom-Ft{
+  opacity: 0.2;
+    
+    bottom: 0;
+    right: 0;
+    width: 41.5vh;
+    z-index: 0; 
+
+    position: absolute;
+}
+@media (max-width: 960px) {
+
+      .carousel{
+        height: 30vh;
+      }
+      .carousel-description{
+
+        font:1.8vw Nunito; 
+        width: 100%;
+      }
+      .top-Fit{
+  opacity: 0.2;
+    top: 0;
+    left: 0;
+    width: 27vw;
+    z-index: 0;
+    position: absolute; 
+   
+
+}
+      .bottom-Ft{
+  opacity: 0.2;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    width: 27vw;
+    z-index: 0; 
+    position: absolute;
+}
+
+
+}
+
+
 </style>

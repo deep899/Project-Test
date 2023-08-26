@@ -1,432 +1,111 @@
-<!-- This Page Text element use as a CoupenCode Text = CoupenCode -->
+
 <template>
-  <!-- Slider Carousel -->
-
-  <!-- Carousel End Here -->
-  <!-- OUR PRODUTCS -->
-
-  <!-- OUR PRODUCTS END HERE -->
-
-  <!-- WORK IN PROGRESS START HERE -->
-
-  <!-- Work In Progress End Here -->
-
-  <!-- Blacnk Background0-blue Start Here -->
-  <div class="mainContainer">
-    <!-- =======================main product section===================================== -->
-    <div class="product">
-      <!-- =======================main product Image section===================================== -->
-      <div class="img">
-        <img :src="products.product_image" style="width: 35rem" />
-      </div>
-      <!-- =======================main product Side part section===================================== -->
-      <div class="sidePart">
-        <div class="name">{{ products.name }}</div>
-        <div class="info">
-          {{ products.short_desc }}<br />
-          <!-- <q-rating v-model="ratingModel" size="2em"  color="purple" disable /> -->
-        </div>
-        <div class="btn">Price : ₹ {{ products.price }}.00<br /></div>
-        <div class="q-pa-md q-gutter-sm">
-          <q-btn label="Buy me" color="primary" @click="inception = true" />
-
-          <q-dialog v-model="inception">
-            <q-card>
-              <q-card-section>
-                <div class="text-h6">
-                  Buy Now
-                  <p
-                    style="
-                      float: right;
-                      font-size: 70%;
-                      margin-right: 5%;
-                      color: red;
-                    "
-                  >
-                    {{ this.MainErrorOfForm }}
-                  </p>
-                </div>
-              </q-card-section>
-
-              <q-card-section class="q-pt-none">
-                <q-card-section
-                  style="max-height: 50vh; text-align: -webkit-center"
-                  class="scroll"
-                >
-                  <div class="q-pa-md" style="max-width: 400px">
-                    <q-form
-                      class="q-gutter-md"
-                      @submit.prevent="SelectPaymentGatewayoption()"
-                    >
-                      <q-input
-                        filled
-                        v-model="first_name"
-                        label="First name *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        v-model="last_name"
-                        label="Last name *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        v-model="BusinessName"
-                        label="Business Name "
-                      />
-                      <q-input
-                        filled
-                        v-model="BusinessGstNumber"
-                        label="Business Gst Number"
-                      />
-                      <q-input
-                        filled
-                        v-model="SalesManName"
-                        label="SalesMan Name"
-                      />
-                      <q-input
-                        filled
-                        v-model="email"
-                        label="Email *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type Email',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        type="text"
-                        maxlength="10"
-                        v-model="mobile_no"
-                        label="Phone no *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) ||
-                            'Please type Phone Number',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        v-model="address"
-                        label="Address *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-
-                      <select
-                        style="width: 95%; height: 48px; font-size: 1rem"
-                        class="form-select"
-                        aria-required="true"
-                        aria-invalid="false"
-                        v-model="country_id"
-                        @change="getState()"
-                        required
-                      >
-                        <option value="" disabled selected>Country</option>
-                        <option
-                          v-for="country in list"
-                          :value="country.id"
-                          v-bind:key="country.id"
-                        >
-                          {{ country.name }}
-                        </option>
-                      </select>
-
-                      <select
-                        style="width: 95%; height: 48px; font-size: 1rem"
-                        class="form-select"
-                        aria-required="true"
-                        aria-invalid="false"
-                        v-model="state_id"
-                        @change="getCity()"
-                        required
-                      >
-                        <option value="" disabled selected>State</option>
-                        <option
-                          v-for="item in state"
-                          :value="item.id"
-                          v-bind:key="item.id"
-                        >
-                          {{ item.name }}
-                        </option>
-                      </select>
-
-                      <select
-                        style="width: 95%; height: 48px; font-size: 1rem"
-                        class="form-select"
-                        aria-required="true"
-                        aria-invalid="false"
-                        v-model="city_id"
-                        required
-                      >
-                        <option value="" disabled selected>City</option>
-                        <option
-                          v-for="item in city"
-                          :value="item.id"
-                          v-bind:key="item.id"
-                        >
-                          {{ item.name }}
-                        </option>
-                      </select>
-
-                      <q-input
-                        filled
-                        v-model="pincode"
-                        label="Pincode *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        v-model="CoupyCode"
-                        label-color="black"
-                      />
-                      <!-- <q-btn filled @click="coupyCodeed()">Copy Code</q-btn> -->
-                      <!-- <q-btn filled style="" @click="triggerPositive()">Copy Code</q-btn> -->
-
-                      <q-btn
-                        color="primary"
-                        label="Copy Code"
-                        style="width: 95%"
-                        @click="triggerPositive()"
-                      />
-                      <br />
-
-                      <!-- {{ this.selectedCoupen }} -->
-                      <div
-                        v-if="selectedCoupen"
-                        :style="couponCodeSuccessColorCopy"
-                      >
-                        {{ this.selectedCoupen }}
-                      </div>
-
-                      <!-- <select style="
-                                                                width: 95%;
-                                                                height: 48px;
-                                                                  font-size: 1rem;
-                                                                " class="form-select" aria-required="true" aria-invalid="false" id="optionsOfcode" required>
-
-                                            <option value="" disabled selected>Promocode</option>
-                                            <option v-for="item in optionse" :value="item.code" v-bind:key="item.id">
-                                                {{ item.code }}
-                                            </option>
-                                        </select> -->
-                      <q-input
-                        filled
-                        v-model="CouponCode"
-                        label="Coupon Code "
-                        style=""
-                      />
-
-                      <q-btn
-                        color="primary"
-                        style="width: 95%"
-                        label="Apply"
-                        @click="getDiscount()"
-                      />
-                      <br />
-
-                      <div
-                        v-if="couponCodeSuccess"
-                        id="bannerMsg"
-                        :style="couponCodeSuccessColor"
-                      >
-                        {{ couponCodeSuccess }}
-                      </div>
-                      <q-input
-                        filled
-                        disable
-                        :v-bind="price"
-                        v-model="final_amount"
-                        label="Price : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        :v-bind="price"
-                        v-model="sgst"
-                        label="SGST : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        :v-bind="price"
-                        v-model="cgst"
-                        label="CGST : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        :v-bind="price"
-                        v-model="discount"
-                        label="Total Discount : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        :v-bind="price"
-                        v-model="amount_pay"
-                        label="Total Amount : "
-                        label-color="black"
-                      />
-                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
-                        <img
-                          style="width: 100px"
-                          :src="razorpayIconUrl"
-                          alt="Razor Pay"
-                        />
-                        <!-- <i class="fab fa-razorpay"></i> -->
-                      </q-radio>
-                      <q-radio v-model="selectedPaymentMethod" val="payumoney">
-                        <img
-                          style="width: 100px"
-                          :src="payumoneyIconUrl"
-                          alt="PayUmoney"
-                        />
-                        <!-- <i class="fa fa-payumoney"></i> -->
-                      </q-radio>
-                      <div>
-                        <!-- <div>
-                            <a
-                              style="
-                                width: 135px;
-                                background-color: #1065b7;
-                                text-align: center;
-                                font-weight: 800;
-                                padding: 11px 0px;
-                                color: white;
-                                font-size: 12px;
-                                display: inline-block;
-                                text-decoration: none;
-                              "
-                              href="https://pmny.in/6IvNFycHSNew"
-                            >
-                              Buy Now
-                            </a>
-                          </div> -->
-                      </div>
-                    </q-form>
-                  </div>
-                </q-card-section>
-              </q-card-section>
-
-              <q-card-actions align="right" class="text-primary">
-                <!-- <q-btn
-                      flat
-                      label="Pay now"
-                      @click="
-                        secondDialog = true;
-                        sendData();
-                      "
-                    /> -->
-                <q-btn
-                  type="submit"
-                  class="btn shadow-none btn-primary fw-500 font-xss text-primary-500 w-100 mb-2"
-                  v-on:click="SelectPaymentGatewayoption()"
-                >
-                  {{ paynowbtn ? "Processing..." : "Pay Now" }}
-                </q-btn>
-
-                <q-btn flat label="Close" v-close-popup />
-              </q-card-actions>
-            </q-card>
-          </q-dialog>
-
-          <!-- <q-dialog v-model="secondDialog" persistent transition-show="scale" transition-hide="scale">
-                    <q-card class="bg-teal text-white" style="width: 300px">
-                        <q-card-section>
-                            <form class="p-1 m-4 mb-0 text-center d-block form-group" @submit.prevent="sendData">
-                                <div class="justify-content-center align-items-center mt-4">
-                                    <button type="submit" class="
-                            btn
-                            shadow-none
-                            btn-primary
-                            fw-500
-                            font-xss
-                            text-light-500
-                            p-1
-                          " @click="confirmBuy()">
-
-                                        {{ loading ? "Processing..." : "Verify" }}
-
-                                    </button>
-
-                                </div>
-                            </form>
-
-                        </q-card-section>
-
-                        <q-card-actions align="right" class="bg-white text-teal">
-                            <q-btn flat label="OK" v-close-popup />
-                        </q-card-actions>
-                    </q-card>
-                </q-dialog> -->
+  <div v-if="productPurchase">
+    <div class="maincontainer containerActuall">
+      <div style="position: relative; width: 100%">
+        <img
+          src="./../../../src/assets/BackGround/pur1.png"
+          alt="Image description"
+          style="width: 100%; margin-top: 0%"
+        />
+        <div
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            color: white;
+            padding: 5px 10px;
+          "
+        >
+          <span class="tt1">Build, Test, and Deploy with Confidence</span><br />
+          <span class="tt2"
+            >We deliver Websites, Mobile Apps, Hybrid Apps, Software, Digital
+            Marketing, and more.</span
+          ><br />
         </div>
       </div>
     </div>
-    <!-- =======================discription section===================================== -->
-    <div class="desc">{{ products.desc }}</div>
-    <!-- <img src="../../img/Scroll Group 8.jpg" /> -->
-    <!-- =======================demo image section===================================== -->
-    <div class="demo"></div>
-  </div>
-  <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
-  <!-- Blacnk Background0-blue End Here -->
 
-  <!-- Logo Image  -->
+    <div class="row rowcontainer" style="display: flex; width: 100%">
+      <div class="col-lg-7 col-md-7 col-sm-12 imgContain" style="">
+        <img
+          :src="products.product_image"
+          alt="Product Image"
+          class="prodPur"
+          style=""
+        />
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-12" style="padding-left: 3%">
+        <span class="name">{{ products.name }}</span>
+        <p class="longDec" style="color: #707070">{{ products.short_desc }}</p>
+        <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%">
+          Price :
+          <span v-if="this.effectiveprice" style="font-size: 0.9em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(this.effectiveprice) }}.00/-</span
+          >
+          <span v-else style="font-size: 0.9em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(this.price) }}.00/-</span
+          >
+        </span>
+        &nbsp; &nbsp;
+        <span
+          v-if="this.effectiveprice"
+          class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
+          <span style="font-size: 0.8em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(this.price) }}.00/-</span
+          >
+        </span>
+        <br />
+        <button
+          style="
+            font-size: 1.3rem;
+            padding: 0.5vh 2vw;
+            cursor: pointer;
+            background-color: #2f518a;
+            color: #ffffff;
+            border: none;
+            margin-top: 2%;
+          "
+          @click="this.$router.push(`/paymentForm/${products.id}`)"
+        >
+          Buy Now
+        </button>
+      </div>
+    </div>
 
-  <logoimageblack />
-
-  <!-- Logo Image -->
-
-  <!-- Link Mennu Contact Addreess -->
-  <div class="row bg-indigo-8 justify-evenly">
-    <!-- Infinit ABout -->
-    <infinityabout :lorem="lorem" />
-
-    <!-- End Infinity About -->
-
-    <!-- COntact Details Start Here -->
-
-    <contactdetail />
-
-    <!-- Contact Details End here -->
-    <!-- Expert Service HEre -->
-
-    <expertservice />
-    <!-- Expert Service End HEre -->
-
-    <!-- Quick links Here -->
-    <quicklink />
-    <!-- Quick links End Here -->
-
-    <div class="text-center text-white q-mt-md">
-      <p>2022 copyright. All right Reserved</p>
+    <div
+      class="logdiscriptionblog"
+      style="
+        background-color: #f1f1f169;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p class="textLong" style="background-color: transparent">
+        {{ products.desc }}
+      </p>
     </div>
   </div>
-  <!-- PayU money payment form=============================================================================================== -->
   <form method="POST" class="pl-5 pr-5" id="paymentForm" :action="payuUrl">
     <input type="hidden" name="key" v-model="mkey" size="64" />
     <input type="hidden" name="txnid" v-model="txnid" size="64" />
@@ -441,10 +120,67 @@
     <input type="hidden" name="furl" v-model="furl" />
     <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
   </form>
+  <footer>
+    <!-- Blacnk Background0-blue Start Here -->
+    <h3 class="" style="width: 100%; background-color: #446cb1">&nbsp;</h3>
+    <logoimageblack />
+
+    <!-- Logo Image -->
+
+    <!-- Link Mennu Contact Addreess -->
+    <div class="q-pa-md bgclass">
+      <div
+        class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%"
+      >
+        <!-- Infinit ABout -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <infinityabout :lorem="lorem" />
+        </div>
+        <!-- End Infinity About -->
+
+        <!-- COntact Details Start Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <contactdetail />
+        </div>
+        <!-- Contact Details End here -->
+
+        <!-- Expert Service HEre -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <expertservice />
+        </div>
+        <!-- Expert Service End HEre -->
+
+        <!-- Quick links Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <quicklink />
+        </div>
+        <!-- Quick links End Here -->
+      </div>
+
+      <div class="row justify-center items-center text-white q-mt-lg">
+        <div class="col-auto text-center">
+          <p
+            style="
+              /* UI Properties */
+              color: var(--unnamed-color-ffffff);
+
+              font: normal normal 600 1.1rem/34px Nunito;
+              letter-spacing: 0px;
+              color: #ffffff;
+              opacity: 1;
+            "
+          >
+            2023 copyright. All right Reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
-// import { defineComponent } from 'vue'
+import { useStore } from "vuex";
 import { ref, watch } from "vue";
 import products from "components/Products.vue";
 import carousel from "components/carousel.vue";
@@ -455,9 +191,6 @@ import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "axios";
-// import { QDialog } from 'quasar/components/dialog'
-
-// import productDetails from "src/components/DetailsOfProduct.vue";
 export default {
   name: "hrms",
 
@@ -474,6 +207,7 @@ export default {
   },
   data() {
     return {
+      price: 0,
       showProducts: true,
       id: "",
       disable: false,
@@ -481,7 +215,9 @@ export default {
       state: [],
       city: [],
       country: [],
+      productPurchase: true,
       amount_pay: "999",
+      effectiveprice: 0,
       products: [],
       email: "",
       mobile_no: "",
@@ -588,6 +324,23 @@ export default {
     };
   },
   methods: {
+    formatNumber(number) {
+      number = number.toString().replace(/\D/g, "");
+      let formattedNumber = "";
+      let commaCount = 0;
+
+      for (let i = number.length - 1; i >= 0; i--) {
+        formattedNumber = number[i] + formattedNumber;
+        commaCount++;
+
+        if (commaCount === 3 && i > 0) {
+          formattedNumber = "," + formattedNumber;
+          commaCount = 0;
+        }
+      }
+
+      return formattedNumber;
+    },
     triggerPositive() {
       navigator.clipboard.writeText(this.CoupyCode);
       if (this.CoupyCode) {
@@ -598,7 +351,8 @@ export default {
     },
 
     SelectPaymentGatewayoption() {
-      if (this.selectedPaymentMethod == "razorpay") {
+      // if (this.selectedPaymentMethod == "razorpay") {
+      if ("nonvalue" == "razorpay") {
         this.rezorpayed();
       } else {
         this.BuyConfirmation();
@@ -620,7 +374,7 @@ export default {
           this.signature = response.razorpay_signature;
           axios
             .post(
-              "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
+              "https://api.infinitybrains.com/public/api/payment/" + this.id,
               {
                 email: this.email,
                 firstname: this.first_name,
@@ -651,7 +405,7 @@ export default {
             this.usersidN = localStorage.getItem("UserDetails");
             axios
               .post(
-                "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
+                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
                 {
                   user_id: this.usersidN,
                   payment_status: "1",
@@ -689,20 +443,17 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/payment/" + this.id,
-          {
-            email: this.email,
-            firstname: this.first_name,
-            lastname: this.last_name,
-            phoneno: this.mobile_no,
-            address: this.address,
-            country: this.country_id,
-            state: this.state_id,
-            city: this.city_id,
-            pincode: this.pincode,
-          }
-        )
+        .post("https://api.infinitybrains.com/public/api/payment/" + this.id, {
+          email: this.email,
+          firstname: this.first_name,
+          lastname: this.last_name,
+          phoneno: this.mobile_no,
+          address: this.address,
+          country: this.country_id,
+          state: this.state_id,
+          city: this.city_id,
+          pincode: this.pincode,
+        })
         .then((res) => {
           console.log(res);
           this.paynowbtn = false;
@@ -739,7 +490,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showpayment_product_details/" +
+          "https://api.infinitybrains.com/public/api/showpayment_product_details/" +
             this.id
         )
         .then((result) => {
@@ -756,7 +507,7 @@ export default {
     getDiscount() {
       axios
         .post(
-          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + this.id,
+          "https://api.infinitybrains.com/public/api/checkcoupen/" + this.id,
           {
             code: this.CouponCode,
           }
@@ -815,7 +566,7 @@ export default {
     },
     // getList() {
     //     axios
-    //         .get("https://uatapi.infinitybrains.com/public/api/show/9")
+    //         .get("https://api.infinitybrains.com/public/api/show/9")
     //         .then((result) => {
     //             this.products = result.data.data;
     //             console.warn(result.data.data);
@@ -825,7 +576,7 @@ export default {
     // async sendData() {
     //     this.paynowbtn = true;
     //     await axios
-    //         .post('https://uatapi.infinitybrains.com/public/api/payment/' + this.id, {
+    //         .post('https://api.infinitybrains.com/public/api/payment/' + this.id, {
     //             email: this.email,
     //             firstname: this.first_name,
     //             lastname: this.last_name,
@@ -880,8 +631,15 @@ export default {
     },
   },
   mounted() {
+    const store = useStore();
+    store.commit("setBackGroundColor", "#ffffff");
+    store.commit(
+      "setimageSrc",
+      `${window.location.origin}/img/logo_blue.ca47717c.png`
+    );
+    store.commit("changeColor", "#012A71");
+
     // Always start the page at the top
-    window.scrollTo(0, 0);
 
     this.id = this.$route.params.id;
     console.log("name", this.id);
@@ -889,7 +647,7 @@ export default {
     Promise.all([
       axios
         .get(
-          'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+          'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
             this.id +
             '"}'
         )
@@ -899,88 +657,135 @@ export default {
           this.optionse = response.data.data.data;
         }),
       axios
-        .get("https://uatapi.infinitybrains.com/public/api/show/" + this.id)
+        .get("https://api.infinitybrains.com/public/api/show/" + this.id)
         .then((result) => {
           this.products = result.data.data;
+          this.price = result.data.data.price;
+          this.effectiveprice = result.data.data.effective_price;
         }),
     ]).then(() => {
       this.getGstValye();
       this.getData();
       this.makeid();
-
-      window.scrollTo(0, 50);
     });
   },
 };
 </script>
 
-<style>
-.headingtag {
-  text-align: center;
-}
-
-.mainContainer {
-  display: grid;
-  grid-template-rows: 20% 1fr 1fr 1fr;
-  row-gap: 50px;
-}
-
-/* <!-- =======================main product section===================================== --> */
-.product {
-  grid-row: 2/3;
-  display: grid;
-  grid-template-columns: 10% 1fr 1fr 10%;
-}
-
-.img {
-  grid-column: 2/3;
-}
-
-.sidePart {
-  grid-column: 3/4;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  row-gap: 10px;
-}
-
-.info {
-  grid-row: 2/3;
-  color: dimgray;
-  font-size: 18px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.btn {
-  font-size: 18px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  grid-row: 3/4;
-}
-
-/* <!-- =======================discription section===================================== --> */
-.desc {
-  grid-row: 3/4;
-  margin-top: 35px;
-  text-align: center;
-  width: 70%;
-  margin-left: 15%;
-  font-size: 18px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* display: flex;
-      justify-items: center;
-      align-items: center; */
-}
-
-/* <!-- =======================demo image section===================================== --> */
-.demo {
-  grid-row: 4/5;
-}
-
+<style scoped>
+/* new css here start 23 */
 .name {
   color: #2f518a;
-  font-size: 35px;
+  font-size: 7vh;
   text-transform: uppercase;
-
-  grid-row: 1/2;
+  /* line-height: 7.2vh; */
+  /* */
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+.textLong {
+  width: 80%;
+  font-size: 1.3rem;
+  margin-top: 1%;
+  text-align: center;
+}
+.bgclass {
+  background-image: url("./../../img/bgok.jpg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
+.containerActuall {
+  margin-top: 5%;
+}
+.tt1 {
+  font-size: 3vw;
+}
+.tt2 {
+  font-size: 2vw;
+}
+.prodPur {
+  object-fit: contain;
+
+  height: 50.4vh;
+  width: 110%;
+  justify-content: flex-end;
+}
+.rowcontainer {
+  margin-top: 12%;
+}
+.longDec {
+  font-size: 1.4vmax;
+  margin-top: 2%;
+  width: 80%;
+}
+@media (max-width: 940px) {
+  .containerActuall {
+    margin-top: 10%;
+  }
+  .tt1 {
+    font-size: 4vw;
+    line-height: 1vw;
+  }
+  .tt2 {
+    font-size: 2.4vw;
+    line-height: 1vw;
+  }
+  .name {
+    font-size: 10vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .prodPur {
+    height: 30vh;
+    width: 80%;
+  }
+
+  .container {
+    height: 50%;
+  }
+  .imgContain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .longDec {
+    font-size: 2.5vh;
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    width: 100%;
+  }
+  .textLong {
+    width: 90%;
+    font-size: 1.3rem;
+    margin-top: 1%;
+    text-align: center;
+  }
+}
+.cross {
+  position: relative;
+  display: inline-block;
+}
+.cross::before,
+.cross::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.cross::before {
+  border-bottom: 2px solid red;
+  -webkit-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+}
+.cross::after {
+  border-bottom: 2px solid red;
+  -webkit-transform: skewY(10deg);
+  transform: skewY(10deg);
+}
+
+
 </style>

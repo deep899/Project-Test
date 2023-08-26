@@ -22,7 +22,7 @@ module.exports = configure(function (ctx) {
     devServer: {
       proxy: {
         "/api": {
-          target: "https://uatapi.infinitybrains.com",
+          target: "https://api.infinitybrains.com",
           changeOrigin: true,
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -39,7 +39,10 @@ module.exports = configure(function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-webpack/boot-files
-    boot: ["axios", { path: "sweetalert", server: false }],
+    boot: [
+      "vuex", // Add your new boot file here
+      // Other boot files, if any...
+    ],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
     css: ["app.css"],
@@ -92,7 +95,7 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-devServer
     devServer: {
-      // proxy: 'https://uatapi.infinitybrains.com/public/storage/creatives/',
+      // proxy: 'https://api.infinitybrains.com/public/storage/creatives/',
       server: {
         type: "http",
       },

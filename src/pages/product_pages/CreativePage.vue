@@ -249,6 +249,19 @@
                       </select> -->
                       <q-input
                         filled
+                        disable
+                        v-model="CoupyCode"
+                        label-color="black"
+                      />
+                      <q-btn
+                        color="primary"
+                        label="Copy Code"
+                        style="width: 95%"
+                        @click="triggerPositive()"
+                      />
+                      <br />
+                      <q-input
+                        filled
                         v-model="CouponCode"
                         label="Coupon Code "
                         style=""
@@ -262,6 +275,14 @@
                         label="Apply"
                         @click="getDiscount()"
                       />
+
+                      <div
+                        v-if="couponCodeSuccess"
+                        id="bannerMsg"
+                        :style="couponCodeSuccessColor"
+                      >
+                        {{ couponCodeSuccess }}
+                      </div>
                       <q-input
                         filled
                         disable
@@ -297,13 +318,13 @@
                         label="Total Amount : "
                         label-color="black"
                       />
-                      <q-radio v-model="selectedPaymentMethod" val="razorpay">
+                      <!-- <q-radio v-model="selectedPaymentMethod" val="razorpay">
                         <img
                           style="width: 100px"
                           :src="razorpayIconUrl"
                           alt="Razor Pay"
                         />
-                        <!-- <i class="fab fa-razorpay"></i> -->
+                       
                       </q-radio>
                       <q-radio v-model="selectedPaymentMethod" val="payumoney">
                         <img
@@ -311,8 +332,8 @@
                           :src="payumoneyIconUrl"
                           alt="PayUmoney"
                         />
-                        <!-- <i class="fa fa-payumoney"></i> -->
-                      </q-radio>
+                     
+                      </q-radio> -->
                       <div>
                         <!-- <div>
                             <a
@@ -504,7 +525,10 @@
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
   </div>
-  <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
+  <div
+    style="background-color: #2f518a"
+    class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
+  ></div>
   <!-- Blacnk Background0-blue End Here -->
 
   <!-- Logo Image  -->
@@ -514,28 +538,56 @@
   <!-- Logo Image -->
 
   <!-- Link Mennu Contact Addreess -->
-  <div class="row bg-indigo-8 justify-evenly">
-    <!-- Infinit ABout -->
-    <infinityabout :lorem="lorem" />
+  <div class="q-pa-md bgclass">
+    <div
+      class="row justify-between items-start q-gutter-md q-mb-md"
+      style="margin: 0 auto; max-width: 1920px; width: 84%"
+    >
+      <!-- Infinit ABout -->
+      <div class="col-md-6 col-lg-2">
+        <infinityabout :lorem="lorem" />
+      </div>
+      <!-- End Infinity About -->
 
-    <!-- End Infinity About -->
+      <!-- COntact Details Start Here -->
+      <div class="col-md-6 col-lg-2">
+        <contactdetail />
+      </div>
+      <!-- Contact Details End here -->
 
-    <!-- COntact Details Start Here -->
+      <!-- Expert Service HEre -->
+      <div class="col-md-6 col-lg-2">
+        <expertservice />
+      </div>
+      <!-- Expert Service End HEre -->
 
-    <contactdetail />
+      <!-- Quick links Here -->
+      <div class="col-md-6 col-lg-2">
+        <quicklink />
+      </div>
+      <!-- Quick links End Here -->
+    </div>
 
-    <!-- Contact Details End here -->
-    <!-- Expert Service HEre -->
+    <div class="row justify-center items-center text-white q-mt-lg">
+      <div class="col-auto text-center">
+        <p
+          style="
+            top: 5672px;
+            left: 750px;
+            width: 421px;
+            height: 34px;
+            /* UI Properties */
+            color: var(--unnamed-color-ffffff);
 
-    <expertservice />
-    <!-- Expert Service End HEre -->
-
-    <!-- Quick links Here -->
-    <quicklink />
-    <!-- Quick links End Here -->
-
-    <div class="text-center text-white q-mt-md">
-      <p>2022 copyright. All right Reserved</p>
+            font: normal normal 600 1.1rem/34px Nunito;
+            letter-spacing: 0px;
+            color: #ffffff;
+            opacity: 1;
+          "
+        >
+          2023 copyright. All right Reserved
+        </p>
+      </div>
     </div>
   </div>
   <!-- PayU money payment form=============================================================================================== -->
@@ -619,6 +671,7 @@ export default {
       MainErrorOfForm: "",
       coupon_codePrice: "",
       couponCodeSuccess: "",
+
       selectedPaymentMethod: null,
       razorpayIconUrl: "https://entrackr.com/storage/2023/02/Razorpay.jpg",
       payumoneyIconUrl:
@@ -637,6 +690,20 @@ export default {
 
   Detailsunted() {
     this.showProducts = true;
+  },
+  computed: {
+    couponCodeSuccessColor() {
+      return {
+        color: this.couponCodeSuccess.startsWith(
+          "Coupon code applied successfully"
+        )
+          ? "green"
+          : "red",
+      };
+    },
+    couponCodeSuccessColorCopy() {
+      return { color: "green" };
+    },
   },
 
   setup() {
@@ -683,10 +750,19 @@ export default {
     };
   },
   methods: {
+    triggerPositive() {
+      navigator.clipboard.writeText(this.CoupyCode);
+      if (this.CoupyCode) {
+        this.selectedCoupen = "Code is Copy !!";
+      } else {
+        alert("Something went Wrong");
+      }
+    },
     SelectPaymentGatewayoption() {
-      if (this.selectedPaymentMethod == "razorpay") {
+      // if (this.selectedPaymentMethod == "razorpay") {
+      if ("nonvalue" == "razorpay") {
         axios
-          .post("https://uatapi.infinitybrains.com/public/api/payment/" + 13, {
+          .post("https://api.infinitybrains.com/public/api/payment/" + 13, {
             email: this.email,
             firstname: this.first_name,
             lastname: this.last_name,
@@ -744,7 +820,7 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post("https://uatapi.infinitybrains.com/public/api/payment/13", {
+        .post("https://api.infinitybrains.com/public/api/payment/13", {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
@@ -771,7 +847,7 @@ export default {
           formDatas.append("user_id", user_id);
           axios
             .post(
-              "https://uatapi.infinitybrains.com/public/api/creativedata",
+              "https://api.infinitybrains.com/public/api/creativedata",
               formDatas,
               {}
             )
@@ -813,7 +889,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://uatapi.infinitybrains.com/public/api/showpayment_product_details/13"
+          "https://api.infinitybrains.com/public/api/showpayment_product_details/13"
         )
         .then((result) => {
           this.Gst = result.data.data;
@@ -833,16 +909,13 @@ export default {
       // let naming = document.getElementsByClassName("CoupenIsHere").value;
       // console.log(naming);
       axios
-        .post(
-          "https://uatapi.infinitybrains.com/public/api/checkcoupen/" + 13,
-          {
-            code: this.CouponCode,
-          }
-        )
+        .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
+          code: this.CouponCode,
+        })
         .then((result) => {
           this.couponCodeSuccess = result.data.message;
           this.Dis = result.data.data;
-          console.log(this.Dis);
+          console.log(this.couponCodeSuccess);
           this.final_amount = this.Dis.price;
           this.sgst = this.Dis.sgst;
           this.cgst = this.Dis.cgst;
@@ -890,7 +963,7 @@ export default {
     },
     getList() {
       axios
-        .get("https://uatapi.infinitybrains.com/public/api/showproduct/13")
+        .get("https://api.infinitybrains.com/public/api/showproduct/13")
         .then((result) => {
           this.products = result.data.data;
           console.warn(result.data.data);
@@ -944,7 +1017,7 @@ export default {
             this.usersidN = localStorage.getItem("UserDetails");
             axios
               .post(
-                "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
+                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
                 {
                   user_id: this.usersidN,
                   payment_status: "1",
@@ -986,7 +1059,7 @@ export default {
 
     // this.BeforeMountedApplyeCoupenCode();
     axios
-      .post("https://uatapi.infinitybrains.com/public/api/checkcoupen/" + 13, {
+      .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
         code: "Festival Creatives",
       })
       .then((result) => {
@@ -997,17 +1070,18 @@ export default {
     console.log("name", this.id);
     axios
       .get(
-        'https://uatapi.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+        'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
           13 +
           '"}'
       )
       .then((response) => {
         // handle success
         console.log("helooooooooooo", response.data.data.data[0].code);
+        this.CoupyCode = response.data.data.data[0].code;
         this.optionse = response.data.data.data;
       });
     axios
-      .get("https://uatapi.infinitybrains.com/public/api/show/13")
+      .get("https://api.infinitybrains.com/public/api/show/13")
       .then((result) => {
         this.products = result.data.data;
       });
@@ -1231,5 +1305,23 @@ input#img-6:checked ~ .carousel-dots label#img-dot-6 {
 
 input:checked + .slide-container .nav label {
   display: block;
+}
+
+@media (min-width: 768px) {
+  .row.justify-between {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 767px) {
+  .row.justify-between {
+    flex-wrap: wrap;
+  }
+}
+
+.bgclass {
+  background-image: url("./../../img/bgok.jpg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
 }
 </style>

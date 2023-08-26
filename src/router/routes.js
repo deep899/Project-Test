@@ -32,14 +32,15 @@ const routes = [
         path:"/:id",name:"AddToProduct",
         component:() => import("pages/product_pages/AddToProduct"),
       },
-      {
-        path:"/13",name:"CreativePage",
-        component:() => import("pages/product_pages/CreativePage.vue"),
-      }
-      ,
+      
+      
       {
         path:"/AfterBuyCreative",name:"AfterBuyCreative",
         component:() => import("pages/product_pages/AfterBuyCreative.vue"),
+      },
+      {
+        path:"/paymentForm/:id",name:"paymentForm",
+        component:() => import("pages/product_pages/newPaymentForm.vue"),
       },
       {
         path:"/CreativeBuy",name:"CreativeBuy",
@@ -53,6 +54,10 @@ const routes = [
       {
         path: "home/User/Success",name: "success",
         component: () => import("pages/success.vue"),
+      },
+      {
+        path: "/deletionPolicy",name: "deletionPolicy",
+        component: () => import("./../deletionPolicy.vue"),
       },
     ],
   },

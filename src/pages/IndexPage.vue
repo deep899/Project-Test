@@ -1,18 +1,12 @@
 <template>
   <!-- Slider Carousel -->
   <carousel />
+  <br />
   <!-- Carousel End Here -->
+  <span class="OurTitle" style="/* border: solid; */"> OUR PRODUCT </span>
+
   <!-- OUR PRODUTCS -->
-  <div v-show="showProducts" >
-  
-    <div class="headingtag text-center" style="background-color: rgb(252,252,250) ;  height: 10vh; display: flex; align-items: center; justify-content: center;">
-      <h4
-        class="nameProduct "
-        style="font-size: 3.5rem; margin-top: 15%;  color: #012A71; align-items: center; display: flex; justify-content: center; "
-      >
-        OUR PRODUCT
-      </h4>
-    </div>
+  <div v-show="showProducts">
     <products />
   </div>
   <!-- <div class="container">
@@ -48,60 +42,81 @@
     </h4>
   </div> -->
 
-
-    <div class="headingtag text-center" style="background-color:rgb(252,252,250);  background: #FCFCFC 0% 0% no-repeat padding-box; height: 10vh; display: flex; align-items: center; justify-content: center;">
-      <h4
-        class="nameProduct "
-        style="font-size: 3.5rem;  color: #012A71; align-items: center; display: flex; justify-content: center; "
-      >
+  <div
+    class="headingtag text-center"
+    style="
+      background-color: rgb(252, 252, 250);
+      background: #fcfcfc 0% 0% no-repeat padding-box;
+      height: 10vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <span class="OurTitle" style="width: 100%; /* border: solid; */">
       OUR WORK IN PROGRESS
-      </h4>
-    </div>
+    </span>
+  </div>
   <workInprogress />
 
   <!-- Work In Progress End Here -->
+  <footer>
+    <!-- Blacnk Background0-blue Start Here -->
+    <h3 class="" style="width: 100%; background-color: #446cb1">&nbsp;</h3>
+    <logoimageblack />
 
-  <!-- Blacnk Background0-blue Start Here -->
+    <!-- Logo Image -->
 
-  <div class="" style="background-color: #2F518A; height: 15%;">&nbsp; <br/> &nbsp; </div>
-  <!-- Blacnk Background0-blue End Here -->
+    <!-- Link Mennu Contact Addreess -->
+    <div class="q-pa-md bgclass">
+      <div
+        class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%"
+      >
+        <!-- Infinit ABout -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <infinityabout :lorem="lorem" />
+        </div>
+        <!-- End Infinity About -->
 
-  <!-- Logo Image  -->
+        <!-- COntact Details Start Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <contactdetail />
+        </div>
+        <!-- Contact Details End here -->
 
-  <logoimageblack />
+        <!-- Expert Service HEre -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <expertservice />
+        </div>
+        <!-- Expert Service End HEre -->
 
-  <!-- Logo Image -->
+        <!-- Quick links Here -->
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <quicklink />
+        </div>
+        <!-- Quick links End Here -->
+      </div>
 
-  <!-- Link Mennu Contact Addreess -->
-  <div style="background-image: url('.././img/bgok.jpg'); z-index: 0; max-height: 50vh;">
-    <img src=".././img/bgok.jpg" style="height: 60vh; width: 100%; max-height: 100%; "   alt="">
-  <div class="row justify-evenly" style=" background-color:#2F518A ;max-height: fit-content;  margin-top: -60vh; z-index: 1;">
-    
-    <!-- Infinit ABout -->
-    <infinityabout :lorem="lorem" />
+      <div class="row justify-center items-center text-white q-mt-lg">
+        <div class="col-auto text-center">
+          <p
+            style="
+              /* UI Properties */
+              color: var(--unnamed-color-ffffff);
 
-    <!-- End Infinity About -->
-
-    <!-- COntact Details Start Here -->
-
-    <contactdetail />
-
-    <!-- Contact Details End here -->
-    <!-- Expert Service HEre -->
-
-    <expertservice />
-    <!-- Expert Service End HEre -->
-
-    <!-- Quick links Here -->
-    <quicklink />
-    <!-- Quick links End Here -->
-
-    <div class="text-center text-white q-mt-md">
-      <p>2022 copyright. All right Reserved</p>
+              font: normal normal 600 1.1rem/34px Nunito;
+              letter-spacing: 0px;
+              color: #ffffff;
+              opacity: 1;
+            "
+          >
+            2023 copyright. All right Reserved
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-
-</div>
+  </footer>
 </template>
 
 <script>
@@ -177,24 +192,60 @@ export default {
         "We work  with a variety of industries and global corporations, which is why our Portfolio consists of social media apps, digital marketing sites, and more! As a professional and dynamic company, we aim to provide excellent service to all our clients. A recent project we completed is a Digital Marketing website that contains everything a business website often longs for!Redesigning a website or creating your own app for your product everything will be done personalized. We value honesty, impartiality, and candor, with our partners, and our valuable customers. Life is too short to bother; Let’s have fun and learn. We do our best to be proud of our work!",
     };
   },
- 
 };
 </script>
 <style>
-
 .headingtag {
   text-align: center;
 }
 
-.namine{
+.namine {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-.nameProduct{
-
-  color:  #012A71; color:  #012A71; font-family: Impact, Bold, sans-serif; 
+.nameProduct {
+  color: #012a71;
+  color: #012a71;
+  font-family: Impact, Bold, sans-serif;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-
 }
 
-
+@media (min-width: 768px) {
+  .row.justify-between {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 767px) {
+  .row.justify-between {
+    flex-wrap: wrap;
+  }
+}
+.OurTitle {
+  font-size: 3.5vw;
+  margin-top: 0%;
+  color: #012a71;
+  font-family: Impact, Bold, sans-serif;
+  background-color: #eeeeee57;
+  align-items: center;
+  display: flex;
+  line-height: 7vw;
+  justify-content: center;
+}
+.bgclass {
+  background-image: url("./../img/bgok.jpg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
+.q-carousel__slide {
+  padding: 0;
+}
+@media (max-width: 940px) {
+  .OurTitle {
+    margin-top: -2%;
+    font-family: Impact, Bold, sans-serif;
+    font-size: 7vw;
+    line-height: 10vw;
+    background-color: #f5f5f570;
+  }
+}
 </style>

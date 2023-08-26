@@ -107,7 +107,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from "./../axios";
 export default {
   Name: "success",
   data() {
@@ -128,34 +128,37 @@ export default {
   methods: {},
 
   mounted() {
-    this.id = this.$route.params.id;
-    this.user_id = this.$route.params.user_id;
-    this.cegst = this.$route.params.cgst;
-    this.segst = this.$route.params.sgst;
-    this.discount = this.$route.params.discount;
-    this.amount = this.$route.params.amount_pay;
+    // localStorage.setItem("userId" , res.data.data.id);
+    //     localStorage.setItem("prodId" , this.id);
+    //     localStorage.setItem("amount" ,this.finalAmount1);
+
+    this.id = localStorage.getItem("prodId"); 
+    this.user_id = localStorage.getItem("userId"); 
+      this.userpass = localStorage.getItem("userpass");
+
+    // this.cegst = this.$route.params.cgst;
+    // this.segst = this.$route.params.sgst;
+    // this.discount = this.$route.params.discount;
+    // this.amount = this.$route.params.amount_pay;
     console.log("hello", this.cgst, this.amount);
 
-    this.subscribe = JSON.parse(localStorage.getItem("copondetails"));
-    if (this.subscribe) {
-      this.coupon_code = this.text;
-    } else {
-      this.coupon_code = "";
-    }
+    // this.subscribe = JSON.parse(localStorage.getItem("copondetails"));
+    // if (this.subscribe) {
+    //   this.coupon_code = this.text;
+    // } else {
+    //   this.coupon_code = "";
+    // }
 
     axios
-      .post(
-        "https://uatapi.infinitybrains.com/public/api/paymentstatusupdate",
-        {
-          user_id: this.user_id,
-          payment_status: "1",
-          product_id: this.id,
-          cgst: this.cegst,
-          sgst: this.sgst,
-          discount: this.discount,
-          amount: this.amount,
-        }
-      )
+      .post("paymentstatusupdate", {
+        user_id: this.user_id,
+        payment_status: "1",
+        product_id: this.id,
+        password:this.userpass,
+        coupan_code:'FRIENDSS',
+        amount:'1'
+
+      })
       .then((result) => {
         console.log(result.data);
       });

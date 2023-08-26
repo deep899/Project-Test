@@ -85,12 +85,12 @@ export default {
           message: "Submitted",
         });
 
-        // let resultfinal = await axios.post("https://uatapi.infinitybrains.com/public/api/show");
+        // let resultfinal = await axios.post("https://api.infinitybrains.com/public/api/show");
         // this.listdef = resultfinal.data.data;
         // console.log("hello frind this new webasite ");
 
-        //https://uatapi.infinitybrains.com/public/api/
-        //  axios.post("https://uatapi.infinitybrains.com/public/api/contactdetails",this.post).then((result)=>{
+        //https://api.infinitybrains.com/public/api/
+        //  axios.post("https://api.infinitybrains.com/public/api/contactdetails",this.post).then((result)=>{
 
         //     console.warn("newlog",result);
 
@@ -98,7 +98,7 @@ export default {
 
         axios
           .post(
-            "https://uatapi.infinitybrains.com/public/api/contactdetails",
+            "https://api.infinitybrains.com/public/api/contactdetails",
             this.post
           )
           .then((res) => {
