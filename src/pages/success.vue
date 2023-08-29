@@ -156,7 +156,7 @@ export default {
         product_id: this.id,
         password:this.userpass,
         coupan_code:'FRIENDSS',
-        amount:'1'
+        amount:'1.18'
 
       })
       .then((result) => {

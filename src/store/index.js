@@ -25,6 +25,16 @@ const store = createStore({
 
    },
   mutations: {
+    setEmail(state , newEmail){
+
+        state.email = newEmail;
+
+    },
+    setPassword(state , newPassword){
+
+      state.password = newPassword;
+
+    },
     setMessage(state, newMessage) {
       state.message = newMessage;
     },
