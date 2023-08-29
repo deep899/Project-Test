@@ -1068,9 +1068,10 @@ export default {
 
         // Process the response as needed
         localStorage.setItem("token" , response.data.data.token);
+        this.$router.push('/CreativeBuy');
         this.$store.commit("setEmail", this.email1);
         this.$store.commit("setPassword", this.password1);
-        this.$router.push('/CreativeBuy');
+        
       } catch (error) {
         console.error('Error:', error);
       }
