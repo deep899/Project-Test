@@ -1073,6 +1073,7 @@ export default {
         this.$store.commit("setPassword", this.password1);
         
       } catch (error) {
+        
         console.error('Error:', error);
       }
     },

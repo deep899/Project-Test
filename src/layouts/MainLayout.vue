@@ -197,7 +197,7 @@ watch: {
   },
 
   mounted() {
-      
+        
     const store = useStore();
     const img = document.querySelector('#my-image');
     const toolbar = document.querySelector('.tooolbars'); // Typo: should be '.toolbars'
@@ -240,6 +240,10 @@ watch: {
     };
 
     window.addEventListener('scroll', handleScroll);
+
+
+
+    
   }
 });
 
