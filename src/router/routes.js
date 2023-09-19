@@ -54,6 +54,10 @@ const routes = [
         path: "/deletionPolicy",name: "deletionPolicy",
         component: () => import("./../deletionPolicy.vue"),
       },
+      // {
+      //   path: "/sitemap",name: "sitemap",
+      //   component: () => import("./../../public/Sitemap.xml"),
+      // },
     ],
   },
 
