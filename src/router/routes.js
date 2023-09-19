@@ -1,4 +1,11 @@
+const subdomain = window.location.hostname.split('.');
+    console.log('hello' ,subdomain[0]);
+    
+
 const routes = [
+  
+  
+  
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
