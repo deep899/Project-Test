@@ -8,7 +8,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
 
 <url>
-  <loc>https://infinitybrains.com/</loc>
+  <loc>https://www.infinitybrains.com/</loc>
   <lastmod>2023-08-29T12:52:04+00:00</lastmod>
 </url>
 </urlset> 
@@ -18,7 +18,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://infinitybrains.com/</loc>
+    <loc>https://www.infinitybrains.com/</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -26,7 +26,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Services Page -->
   <url>
-    <loc>https://infinitybrains.com/Services</loc>
+    <loc>https://www.infinitybrains.com/Services</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -34,7 +34,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Contact Us Page -->
   <url>
-    <loc>https://infinitybrains.com/contactus</loc>
+    <loc>https://www.infinitybrains.com/contactus</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -42,7 +42,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- About Us Page -->
   <url>
-    <loc>https://infinitybrains.com/aboutus</loc>
+    <loc>https://www.infinitybrains.com/aboutus</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -50,7 +50,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Portfolio Page -->
   <url>
-    <loc>https://infinitybrains.com/portfolio</loc>
+    <loc>https://www.infinitybrains.com/portfolio</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +58,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Career Page -->
   <url>
-    <loc>https://infinitybrains.com/career</loc>
+    <loc>https://www.infinitybrains.com/career</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -66,7 +66,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Privacy Page -->
   <url>
-    <loc>https://infinitybrains.com/IbsfPrivacy</loc>
+    <loc>https://www.infinitybrains.com/IbsfPrivacy</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -74,7 +74,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- AddToProduct Page -->
   <url>
-    <loc>https://infinitybrains.com/:id</loc>
+    <loc>https://www.infinitybrains.com/:id</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -82,7 +82,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- AfterBuyCreative Page -->
   <url>
-    <loc>https://infinitybrains.com/AfterBuyCreative</loc>
+    <loc>https://www.infinitybrains.com/AfterBuyCreative</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -90,7 +90,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- PaymentForm Page -->
   <url>
-    <loc>https://infinitybrains.com/paymentForm/:id</loc>
+    <loc>https://www.infinitybrains.com/paymentForm/:id</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -98,7 +98,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- CreativeBuy Page -->
   <url>
-    <loc>https://infinitybrains.com/CreativeBuy</loc>
+    <loc>https://www.infinitybrains.com/CreativeBuy</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -106,7 +106,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Download Logo Image Page -->
   <url>
-    <loc>https://infinitybrains.com/downloadImg</loc>
+    <loc>https://www.infinitybrains.com/downloadImg</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -114,7 +114,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Success Page -->
   <url>
-    <loc>https://infinitybrains.com/home/User/Success</loc>
+    <loc>https://www.infinitybrains.com/home/User/Success</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -122,7 +122,7 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
 
   <!-- Deletion Policy Page -->
   <url>
-    <loc>https://infinitybrains.com/deletionPolicy</loc>
+    <loc>https://www.infinitybrains.com/deletionPolicy</loc>
     <lastmod>2023-09-19T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
