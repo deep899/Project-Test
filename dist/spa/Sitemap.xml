@@ -1,19 +1,3 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-created with Free Online Sitemap Generator www.xml-sitemaps.com 
-
-
-<url>
-  <loc>https://www.infinitybrains.com/</loc>
-  <lastmod>2023-08-29T12:52:04+00:00</lastmod>
-</url>
-</urlset> 
--->
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
@@ -56,75 +40,6 @@ created with Free Online Sitemap Generator www.xml-sitemaps.com
     <priority>0.6</priority>
   </url>
 
-  <!-- Career Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/career</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <!-- More URLs... -->
 
-  <!-- Privacy Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/IbsfPrivacy</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- AddToProduct Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/:id</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- AfterBuyCreative Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/AfterBuyCreative</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- PaymentForm Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/paymentForm/:id</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- CreativeBuy Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/CreativeBuy</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Download Logo Image Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/downloadImg</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Success Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/home/User/Success</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Deletion Policy Page -->
-  <url>
-    <loc>https://www.infinitybrains.com/deletionPolicy</loc>
-    <lastmod>2023-09-19T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 </urlset>
