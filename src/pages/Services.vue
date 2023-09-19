@@ -108,6 +108,17 @@ export default {
     hybriddev,
     uiux,
   },
+
+  mounted(){
+    // console.clear();\
+    const subdomain = window.location.hostname.split('.');
+    console.log('hello' ,subdomain[0]);
+
+
+
+
+
+  }
 };
 </script>
 <style>
