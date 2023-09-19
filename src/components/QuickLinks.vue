@@ -20,11 +20,11 @@
   </router-link>
 </div>
 
-<div class="" style="width: 100%;   text-align: left; display: inline-block;">
+<!-- <div class="" style="width: 100%;   text-align: left; display: inline-block;">
   <router-link to="/career">
     <q-btn flat rounded color="white" style="font-size: 0.83rem;" class="q-mr-5" label="Career" />
   </router-link>
-</div>
+</div> -->
 
 <div class="" style="width: 100%;   text-align: left; display: inline-block;">
   <router-link to="/aboutus">

@@ -100,11 +100,11 @@ const linksList = [
     icon: "chat",
     link: "portfolio",
   },
-  {
-    title: "CAREER",
-    icon: "record_voice_over",
-    link: "career",
-  },
+  // {
+  //   title: "CAREER",
+  //   icon: "record_voice_over",
+  //   link: "career",
+  // },
   {
     title: "ABOUT",
     icon: "rss_feed",
