@@ -26,6 +26,16 @@ const routes = [
 
         path:"/:id",name:"AddToProduct",
         component:() => import("pages/product_pages/AddToProduct"),
+        meta: {
+          title: 'Product Page', // Set the title for SEO
+          metaTags: [
+            {
+              name: 'Infinitybrains Product',
+              content: 'This Products are company own product user can purchase and buy or shell this product by the vendor ',
+            },
+            // Add more meta tags as needed for SEO
+          ],
+        },
       },
       
       
