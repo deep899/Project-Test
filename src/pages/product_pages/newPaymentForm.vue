@@ -1180,6 +1180,9 @@ formData.append('firstname', this.formData.firstname);
         this.calculateCGST(this.productData.price, 9)
       );
       
+
+
+      
       this.$store.commit(
         "setCGST",
         this.calculateCGST(this.productData.price, 9)
