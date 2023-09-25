@@ -93,25 +93,38 @@
                 {{ item.name }}
               </span>
 
-              <p class="longDiscription" style=" object-fit: contain; ">{{ item.short_desc }}</p>
+              <p class="longDiscription" style=" object-fit: contain; ">{{ item.short_desc }} <br/>  <span style="font-size: 1rem; font-weight: bolder;"  v-if="item.id == 8 || item.id == 9">Up to 10 employees after that 50 RS. Per employee per month.</span> </p>
               <p class="price " style="">
                 Price : 
                 <!-- <span style="font-size: 1vw;object-fit: contain; margin-bottom: 2%;">₹</span>
                          {{ this.formatNumber(item.price) }}/- -->
-                         <span v-if="item.effective_price" style="font-size: 1em">
+              <span v-if="item.id == 8 || item.id == 9 ">
+                
+                <span  style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+6000.00/-</span
+          >
+              </span>      
+              <span v-else>
+                <span v-if="item.effective_price " style="font-size: 1em">
             <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
               >₹</span
             >
             {{ this.formatNumber(item.effective_price) }}.00/-</span
           >
           <span v-else style="font-size: 1em">
-            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
-              >₹</span
-            >
+            <span v-if="item.id > 9" style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span>
             {{ this.formatNumber(item.price) }}.00/-</span
-          > &nbsp; &nbsp;
+          >
+              </span>
+
+
+            &nbsp; &nbsp;
         <span
-          v-if="item.effective_price"
+          v-if="!item.id == 8 && !item.id == 9 "
           class="cross"
           style="font-size: 1.5em; line-height: 1em"
         >
@@ -121,6 +134,17 @@
             >
             {{ this.formatNumber(item.price) }}.00/-</span
           >
+        </span>
+        <span v-else class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
+          <span v-if="item.id > 9 "  style="font-size: 0.7em">
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          >
+
         </span>
               </p>
             </div>
@@ -134,31 +158,55 @@
                 {{ item.name }}
               </span>
 
-              <p class="longDiscription" style="">{{ item.short_desc }}</p>
+              <p class="longDiscription" style="">{{ item.short_desc }}  <br/>  <span style="font-size: 1rem; font-weight: bolder;"  v-if="item.id == 8 || item.id == 9">Up to 10 employees after that 50 RS. Per employee per month.</span> </p>
               <p class="price" style="">
-                Price :        <span v-if="item.effective_price" style="font-size: 1em">
+                Price :        <span v-if="item.id == 8 || item.id == 9 ">
+                
+                <span  style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+6000.00/-</span
+          >
+              </span>      
+              <span v-else>
+                <span v-if="item.effective_price" style="font-size: 1em">
             <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
               >₹</span
             >
             {{ this.formatNumber(item.effective_price) }}.00/-</span
           >
           <span v-else style="font-size: 1em">
-            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
-              >₹</span
-            >
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span>
             {{ this.formatNumber(item.price) }}.00/-</span
-          > &nbsp; &nbsp;
+          >
+              </span>
+
+
+            &nbsp; &nbsp;
         <span
-          v-if="item.effective_price"
+          v-if="!item.id == 8 && !item.id == 9 "
           class="cross"
-          style="font-size: 1.2em; line-height: 1em"
+          style="font-size: 1.5em; line-height: 1em"
         >
-          <span style="font-size: 0.8em">
+          <span style="font-size: 0.7em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
               >₹</span
             >
             {{ this.formatNumber(item.price) }}.00/-</span
           >
+        </span>
+        <span v-else class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
+          <span  v-if="item.id > 9" style="font-size: 0.7em">
+            <span  style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          >
+
         </span>
               </p>
             </div>
@@ -221,31 +269,55 @@
                 {{ item.name }}
               </span>
 
-              <p class="longDiscription" style="">{{ item.short_desc }}</p>
+              <p class="longDiscription" style="">{{ item.short_desc }}  <br/>  <span style="font-size: 1rem; font-weight: bolder;"  v-if="item.id == 8 || item.id == 9">Up to 10 employees after that 50 RS. Per employee per month.</span> </p>
               <p class="price" style="">
-                Price :        <span v-if="item.effective_price" style="font-size: 0.9em">
-            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+                Price :        <span v-if="item.id == 8 || item.id == 9 ">
+                
+                <span  style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+6000.00/-</span
+          >
+              </span>      
+              <span v-else>
+                <span v-if="item.effective_price" style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
               >₹</span
             >
             {{ this.formatNumber(item.effective_price) }}.00/-</span
           >
-          <span v-else style="font-size: 0.9em">
-            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
-              >₹</span
-            >
+          <span v-else style="font-size: 1em">
+            <span style="font-size: 1em; margin-top: -20%; line-height: 1%"
+              >₹</span>
             {{ this.formatNumber(item.price) }}.00/-</span
-          > &nbsp; &nbsp;
+          >
+              </span>
+
+
+            &nbsp; &nbsp;
         <span
-          v-if="item.effective_price"
+          v-if="!item.id == 8 && !item.id == 9 "
           class="cross"
           style="font-size: 1.5em; line-height: 1em"
         >
-          <span style="font-size: 0.8em">
+          <span style="font-size: 0.7em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
               >₹</span
             >
             {{ this.formatNumber(item.price) }}.00/-</span
           >
+        </span>
+        <span v-else class="cross"
+          style="font-size: 1.5em; line-height: 1em"
+        >
+          <span  v-if="item.id > 9" style="font-size: 0.7em">
+            <span  style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
+              >₹</span
+            >
+            {{ this.formatNumber(item.price) }}.00/-</span
+          >
+
         </span>
               </p>
             </div>
@@ -423,7 +495,7 @@ export default {
   justify-content: end;
 }
 .longDiscription {
-  width: 80%;
+  width:95%;
   margin-top: 4.5%;
   font-size: 1.2vw;
 

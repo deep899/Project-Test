@@ -28,8 +28,21 @@ module.exports = configure(function (ctx) {
             "Access-Control-Allow-Origin": "*",
           },
         },
-      },
+      }
+
+     
+
+
     },
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      'example.com',
+      'myapp.local',
+      '192.168.1.1', 
+      ] 
+    , 
+
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
     supportTS: false,
 

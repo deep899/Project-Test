@@ -24,7 +24,7 @@
             Close
           </button>
 
-          <div v-if="showForm" style="margin-top: 2%">
+          <div v-if="showForm" style="margin-top: 2%" ref="scrollableDiv" >
             <div
               class="form-container formcontainer"
               style="width: 100%; border: 1px solid #c5c5c5"
@@ -1069,7 +1069,11 @@ export default {
         // Process the response as needed
         localStorage.setItem("token" , response.data.data.token);
         this.$router.push('/CreativeBuy');
+        this.$store.commit("setEmail", this.email1);
+        this.$store.commit("setPassword", this.password1);
+        
       } catch (error) {
+        
         console.error('Error:', error);
       }
     },
@@ -1122,13 +1126,10 @@ formData.append('firstname', this.formData.firstname);
       axios
     .post(`creativedata`, formData).then((res)=>{
       console.log(res.data);
-    });
-          console.log(res.data.data);
+
+      console.log(res.data.data);
           // alert(res.data.data.id);
-          localStorage.setItem("userId", res.data.data.id);
-          localStorage.setItem("prodId", this.id);
-          localStorage.setItem("amount", this.finalAmount1);
-          localStorage.setItem("userpass", this.formData.password);
+        
           var data =
             this.mkey +
             "|" +
@@ -1150,11 +1151,27 @@ formData.append('firstname', this.formData.firstname);
           console.log("Here Is yourData", data);
 
           document.getElementById("hash").value = hash;
-          document.getElementById("paymentForm").submit();
+           document.getElementById("paymentForm").submit();
+
+
+
+    }).catch((e)=>{
+
+      this.errorForm = e.response.data.message;
+          this.showForm = true;
+          window.scrollTo(0, 50);
+
+    });
+    localStorage.setItem("userId", res.data.data.id);
+          localStorage.setItem("prodId", this.id);
+          localStorage.setItem("amount", this.finalAmount1);
+          localStorage.setItem("userpass", this.formData.password);
         })
         .catch((e) => {
           this.errorForm = e.response.data.message;
           this.showForm = true;
+          window.scrollTo(0, 50);
+
         });
 
       this.$store.commit("setUserId", 21);
@@ -1162,6 +1179,7 @@ formData.append('firstname', this.formData.firstname);
         "setSGST",
         this.calculateCGST(this.productData.price, 9)
       );
+      
       this.$store.commit(
         "setCGST",
         this.calculateCGST(this.productData.price, 9)

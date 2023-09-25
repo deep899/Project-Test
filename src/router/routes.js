@@ -1,4 +1,11 @@
+const subdomain = window.location.hostname.split('.');
+    console.log('hello' ,subdomain[0]);
+    
+
 const routes = [
+  
+  
+  
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
@@ -10,18 +17,6 @@ const routes = [
       { path: "/aboutus", name: "aboutus",  component: () => import("pages/aboutus.vue") },
       { path: "/portfolio",name: "portfolio", component: () => import("pages/portfolio.vue") },
       { path: "/career",name: "career", component: () => import("pages/careerpage.vue") },
-      // {
-      //   path: "/festivalCreative",name: "festivalCreative",
-      //   component: () => import("pages/product_pages/festivalCreative.vue"),
-      // },
-      // {
-      //   path: "/HRMS",name: "hrms",
-      //   component: () => import("pages/product_pages/hrms.vue"),
-      // },
-      // {
-      //   path: "/Salesforce",name: "IBsalesforce",
-      //   component: () => import("pages/product_pages/IBsalesforce.vue"),
-      // },
       {
 
         path:"/IbsfPrivacy",name:"privacy1",
@@ -31,6 +26,16 @@ const routes = [
 
         path:"/:id",name:"AddToProduct",
         component:() => import("pages/product_pages/AddToProduct"),
+        meta: {
+          title: 'Product Page', // Set the title for SEO
+          metaTags: [
+            {
+              name: 'Infinitybrains Product',
+              content: 'This Products are company own product user can purchase and buy or shell this product by the vendor ',
+            },
+            // Add more meta tags as needed for SEO
+          ],
+        },
       },
       
       
@@ -59,6 +64,10 @@ const routes = [
         path: "/deletionPolicy",name: "deletionPolicy",
         component: () => import("./../deletionPolicy.vue"),
       },
+      // {
+      //   path: "/sitemap",name: "sitemap",
+      //   component: () => import("./../../public/Sitemap.xml"),
+      // },
     ],
   },
 

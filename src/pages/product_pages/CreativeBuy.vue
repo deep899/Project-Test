@@ -12,6 +12,36 @@
   <div v-if="loading" class="loading-overlay">
     <q-spinner-gears color="white" size="80px" />
   </div>
+  <div
+      class="navlik"
+      style="
+      
+        position: fixed;
+        z-index: 5;
+        padding: 1%;
+        background-color: #ffffff;
+        color: #000000;
+        width: fit-content;
+        right: 0;
+      "
+    >
+      <button style="background-color: transparent;border: none;" @click="toggleOptions" v-if="!showOptions"><i class="fa fa-cog" style="color: #2f518a; font-size: 2rem; " aria-hidden="true"></i></button>
+      <button style="background-color: transparent; color:red ;  border: none;" @click="toggleOptions" v-else>Close</button>
+      <label  v-if="showOptions" >  <br/>Select at least one:</label>
+      <div class="row" v-for="(option, index) in options" :key="option">
+        <input
+          type="checkbox"
+          @change="optionselected1"
+          :id="option"
+          :value="option"
+          v-model="selectedOptions"
+          :disabled="shouldDisableCheckbox(index)"
+          v-show="showOptions"
+        />
+        <label :for="option" v-show="showOptions">{{ option }}</label>
+      </div>
+    </div>
+
   <div class="text-center titlee name">Creatives</div>
   <div class="row browse">
     <div v-if="showButton">
@@ -238,8 +268,9 @@ import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
 import axios from "./../../axios";
 import { createCanvas } from "canvas";
-
+// import { useStore } from "vuex";
 import { ref } from "vue";
+import { store } from 'quasar/wrappers';
 export default {
   name: "CreativeBuy",
   components: {
@@ -260,7 +291,9 @@ export default {
       //   logoUrl:"https://images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
       showButton: true,
       searchText: "",
-
+      options: ["Address", "PhoneNumber", "Website"],
+      selectedOptions: ["Address"],
+      showOptions: false,
       searchValue: "",
       creative1: [],
       id: "",
@@ -318,6 +351,16 @@ export default {
   },
 
   methods: {
+     optionselected1(){
+   
+   
+    },
+    shouldDisableCheckbox(index) {
+      // return this.selectedOptions.length === 1 || this.selectedOptions.includes(this.options[index]);
+    },
+    toggleOptions() {
+      this.showOptions = !this.showOptions;
+    },
     redirect() {
       this.$router.push("/other-page");
     },
@@ -384,7 +427,7 @@ export default {
       var x2 = canvas.width / 2;
       var x3 = (canvas.width * 3.5) / 4;
       var y1 = canvas.height - 25;
-
+        this.checkboxcalling();
       // Fill text at each position
       ctx.fillText(this.text1, x1, y1);
       ctx.fillText(this.text2, x2, y1);
@@ -402,8 +445,35 @@ export default {
       document.body.removeChild(link);
       this.loading = false;
     },
+    checkboxcalling(){
+      axios.post('login',{
+            email:this.email,
+            password:this.password
+          }).then(async (result)=>{
+            console.log(result.data);
+            this.logoImageUrl = await result.data.data.company_logo;
+          this.text1 = await " Address :" + result.data.data.address;
+          this.text2 = await "+91" +result.data.data.contact_number;
+          this.text3 = await result.data.data.website;
+          }).catch((error)=>{
+          });
+      const isNameSelected = this.selectedOptions.includes("Address");
+            const isEmailSelected = this.selectedOptions.includes("PhoneNumber");
+            const isAddressSelected = this.selectedOptions.includes("Website");
+            if(!isNameSelected){
+              this.text1 =  " " ;
+            }
+            if (!isEmailSelected) {
+              this.text2 =  " ";
+                } 
+                if(!isAddressSelected){
+                  this.text3 =  " ";
+                }
+    },
     Submitedkey() {
-     
+      const store = useStore();
+      this.email = store.state.email;
+      this.password= store.state.password;
       axios
         .post(
           "creativedata"
@@ -411,11 +481,19 @@ export default {
         .then((result) => {
           console.log(result.data);
           this.alerted = false;
+          axios.post('login',{
+            email:store.state.email,
+            password:store.state.password
+          }).then(async (result)=>{
+            console.log(result.data);
+            this.logoImageUrl = await result.data.data.company_logo;
+          this.text1 = await " Address :" + result.data.data.address;
+          this.text2 = await "+91" +result.data.data.contact_number;
+          this.text3 = await result.data.data.website;
+          }).catch((error)=>{
+
+          });
          
-          this.logoImageUrl =  result.data.data.company_logo;
-          this.text11 = result.data.data.address;
-          this.text22 = result.data.data.contact_number;
-          this.text33 = result.data.data.website;
 
           if(!this.logoImageUrl){
 
@@ -424,21 +502,21 @@ export default {
           }
         
 
-          if (this.text11 == null) {
-            this.text1 = " ";
-          } else {
-            this.text1 = " Address :" + result.data.data.address;
-          }
-          if (this.text22 == null) {
-            this.text2 = " ";
-          } else {
-            this.text2 = "PhNo. :" + result.data.data.contact_number;
-          }
-          if (this.text33 == null) {
-            this.text3 = " ";
-          } else {
-            this.text3 = "Website :" + result.data.data.website;
-          }
+          // if (this.text11 == null) {
+          //   this.text1 = " ";
+          // } else {
+          //   this.text1 = " Address :" + result.data.data.address;
+          // }
+          // if (this.text22 == null) {
+          //   this.text2 = " ";
+          // } else {
+          //   this.text2 = "PhNo. :" + result.data.data.contact_number;
+          // }
+          // if (this.text33 == null) {
+          //   this.text3 = " ";
+          // } else {
+          //   this.text3 = "Website :" + result.data.data.website;
+          // }
 
           axios
             .get(
@@ -535,7 +613,7 @@ export default {
 
       // add text in image
       // Set font and text alignment
-      ctx.font = "20px Arial";
+      ctx.font = "20px Open sans";
       ctx.textAlign = "center";
 
       // Set positions for each text
@@ -544,6 +622,7 @@ export default {
       var x3 = (canvas.width * 3.5) / 4;
       var y1 = canvas.height - 25;
 
+      
       // Fill text at each position
       ctx.fillText(this.text1, x1, y1);
       ctx.fillText(this.text2, x2, y1);
@@ -877,5 +956,13 @@ select {
   background-repeat: no-repeat;
   background-position: top left;
   background-size: cover;
+}
+
+@media (max-width:960px) {
+
+  .navlik{
+    background-color: rgb(148, 148, 148) !important;
+  }
+  
 }
 </style>

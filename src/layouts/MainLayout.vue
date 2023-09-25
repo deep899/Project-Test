@@ -100,11 +100,11 @@ const linksList = [
     icon: "chat",
     link: "portfolio",
   },
-  {
-    title: "CAREER",
-    icon: "record_voice_over",
-    link: "career",
-  },
+  // {
+  //   title: "CAREER",
+  //   icon: "record_voice_over",
+  //   link: "career",
+  // },
   {
     title: "ABOUT",
     icon: "rss_feed",
@@ -197,7 +197,7 @@ watch: {
   },
 
   mounted() {
-      
+        
     const store = useStore();
     const img = document.querySelector('#my-image');
     const toolbar = document.querySelector('.tooolbars'); // Typo: should be '.toolbars'
@@ -240,6 +240,10 @@ watch: {
     };
 
     window.addEventListener('scroll', handleScroll);
+
+
+
+    
   }
 });
 

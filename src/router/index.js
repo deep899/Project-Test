@@ -11,6 +11,7 @@ import routes from './routes'
  * with the Router instance.
  */
 
+
 export default route(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
@@ -18,6 +19,7 @@ export default route(function (/* { store, ssrContext } */) {
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
+    
     routes,
 
     // Leave this as is and make changes in quasar.conf.js instead!
