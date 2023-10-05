@@ -2,104 +2,106 @@
   <div>
     <Home />
   </div>
-  <div class="mainContainer">
-    <div class="container bgImgContainer" :style="{ backgroundImage: 'url(' + backgroundImageUrl + ')' }">
-    </div>
-
-    <!-- Icons for different screen sizes -->
-    <!-- Icons for different screen sizes -->
-    <div class="screen-icons">
-      <button @click="setScreenSize('laptop')">
-        <font-awesome-icon :icon="['fas', 'laptop']" />
-      </button>
-      <button @click="setScreenSize('tablet')">
-        <font-awesome-icon :icon="['fas', 'tablet-alt']" />
-      </button>
-      <button @click="setScreenSize('phone')">
-        <font-awesome-icon :icon="['fas', 'mobile-alt']" />
-      </button>
-    </div>
-
-    <div class="grid-container">
-      <!-- Left Side: Color Picker and Image Uploader -->
-      <div class="left-side" :style="{ width: responsiveLeftWidth }">
-        <!-- Image Uploader -->
-        <div class="upload-image-container">
-          <h6 class="heading-6">Upload Company Logo</h6>
-          <label class="upload-image">
-            <div class="upload-icon">
-              <img src="./../Theme1/10_Min_assets/img/download.png" alt="download.png" srcset="">
-            </div>
-            <p>Drag and drop file here</p>
-            <input type="file" @change="handleImageUpload" accept="image/*" />
-          </label>
-        </div>
-
-        <!-- Display the selected image -->
-        <!-- Color Picker -->
-        <div class="color-picker-images">
-          <h6 class="heading-6">Selecte Theme</h6>
-          <div class="color-picker-row">
-            <img :src="colorImg1" alt="Selected Color" />
-            <img :src="colorImg2" alt="Selected Color" />
-            <img :src="colorImg3" alt="Selected Color" />
-            <img :src="colorImg4" alt="Selected Color" />
-            <img :src="colorImg5" alt="Selected Color" />
-            <img :src="colorImg6" alt="Selected Color" />
-          </div>
-          <div class="color-picker-row">
-            <img :src="colorImg7" alt="Selected Color" />
-            <img :src="colorImg8" alt="Selected Color" />
-            <img :src="colorImg9" alt="Selected Color" />
-            <img :src="colorImg10" alt="Selected Color" />
-            <img :src="colorImg11" alt="Selected Color" />
-            <img :src="colorImg12" alt="Selected Color" />
-          </div>
-        </div>
-
-        <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
-
+  <div>
+    <div class="mainContainer">
+      <div class="container bgImgContainer" :style="{ backgroundImage: 'url(' + backgroundImageUrl + ')' }">
       </div>
 
-      <!-- Right Side: Card Display -->
-      <div class="right-side">
-        <div :style="{ width: responsiveRightWidth }">
-          <!-- Display content based on screen size -->
-          <div class="card" v-if="selectedScreenSize === 'laptop'">
-            <!-- <p>Laptop Content</p> -->
-            <div class="card-content">
-              <div class="scrollable-content">
-                <!-- Render the component directly -->
-                <component :is="themeComponent" />
+      <!-- Icons for different screen sizes -->
+      <!-- Icons for different screen sizes -->
+      <div class="screen-icons">
+        <button @click="setScreenSize('laptop')">
+          <font-awesome-icon :icon="['fas', 'laptop']" />
+        </button>
+        <button @click="setScreenSize('tablet')">
+          <font-awesome-icon :icon="['fas', 'tablet-alt']" />
+        </button>
+        <button @click="setScreenSize('phone')">
+          <font-awesome-icon :icon="['fas', 'mobile-alt']" />
+        </button>
+      </div>
+
+      <div class="grid-container">
+        <!-- Left Side: Color Picker and Image Uploader -->
+        <div class="left-side" :style="{ width: responsiveLeftWidth }">
+          <!-- Image Uploader -->
+          <div class="upload-image-container">
+            <h6 class="heading-6">Upload Company Logo</h6>
+            <label class="upload-image">
+              <div class="upload-icon">
+                <img src="./../Theme1/10_Min_assets/img/download.png" alt="download.png" srcset="">
               </div>
+              <p>Drag and drop file here</p>
+              <input type="file" @change="handleImageUpload" accept="image/*" />
+            </label>
+          </div>
+
+          <!-- Display the selected image -->
+          <!-- Color Picker -->
+          <div class="color-picker-images">
+            <h6 class="heading-6">Selecte Theme</h6>
+            <div class="color-picker-row">
+              <img :src="colorImg1" alt="Selected Color" />
+              <img :src="colorImg2" alt="Selected Color" />
+              <img :src="colorImg3" alt="Selected Color" />
+              <img :src="colorImg4" alt="Selected Color" />
+              <img :src="colorImg5" alt="Selected Color" />
+              <img :src="colorImg6" alt="Selected Color" />
+            </div>
+            <div class="color-picker-row">
+              <img :src="colorImg7" alt="Selected Color" />
+              <img :src="colorImg8" alt="Selected Color" />
+              <img :src="colorImg9" alt="Selected Color" />
+              <img :src="colorImg10" alt="Selected Color" />
+              <img :src="colorImg11" alt="Selected Color" />
+              <img :src="colorImg12" alt="Selected Color" />
             </div>
           </div>
-          <div class="card" v-else-if="selectedScreenSize === 'tablet'">
-            <!-- <p>Tablet Content</p> -->
-            <div class="card-content">
-              <div class="scrollable-content">
-                <!-- Render the component directly -->
-                <component :is="themeComponent" />
+
+          <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
+
+        </div>
+
+        <!-- Right Side: Card Display -->
+        <div class="right-side">
+          <div :style="{ width: responsiveRightWidth }">
+            <!-- Display content based on screen size -->
+            <div class="card" v-if="selectedScreenSize === 'laptop'">
+              <!-- <p>Laptop Content</p> -->
+              <div class="card-content">
+                <div class="scrollable-content">
+                  <!-- Render the component directly -->
+                  <component :is="themeComponent" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card" v-else>
-            <!-- <p>Mobile Content</p> -->
-            <div class="card-content">
-              <div class="scrollable-content">
-                <!-- Render the component directly -->
-                <component :is="themeComponent" />
+            <div class="card" v-else-if="selectedScreenSize === 'tablet'">
+              <!-- <p>Tablet Content</p> -->
+              <div class="card-content">
+                <div class="scrollable-content">
+                  <!-- Render the component directly -->
+                  <component :is="themeComponent" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card">
+            <div class="card" v-else>
+              <!-- <p>Mobile Content</p> -->
+              <div class="card-content">
+                <div class="scrollable-content">
+                  <!-- Render the component directly -->
+                  <component :is="themeComponent" />
+                </div>
+              </div>
+            </div>
+            <!-- <div class="card">
             <img :src="selectedImage" alt="Selected Image" />
-          </div>
-          <div class="card">
+          </div> -->
+            <!-- <div class="card">
             <img :src="themefirstimg" alt="Selected Image" />
           </div>
           <div class="card">
             <img :src="themefirstimg" alt="Selected Image" />
+          </div> -->
           </div>
         </div>
       </div>
