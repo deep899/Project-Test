@@ -20,9 +20,6 @@ const store = createStore({
     busgstNumber:'',
     email:'',
     password:'',
-    
-
-
    },
   mutations: {
     setEmail(state , newEmail){
