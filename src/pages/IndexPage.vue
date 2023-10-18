@@ -25,7 +25,7 @@
 
 
         </div>
-      
+
       </div>
 
   </div> -->
@@ -42,17 +42,14 @@
     </h4>
   </div> -->
 
-  <div
-    class="headingtag text-center"
-    style="
+  <div class="headingtag text-center" style="
       background-color: rgb(252, 252, 250);
       background: #fcfcfc 0% 0% no-repeat padding-box;
       height: 10vh;
       display: flex;
       align-items: center;
       justify-content: center;
-    "
-  >
+    ">
     <span class="OurTitle" style="width: 100%; /* border: solid; */">
       OUR WORK IN PROGRESS
     </span>
@@ -69,10 +66,8 @@
 
     <!-- Link Mennu Contact Addreess -->
     <div class="q-pa-md bgclass">
-      <div
-        class="row justify-between items-start q-gutter-md q-mb-md"
-        style="margin: 0 auto; max-width: 100%; width: 90%"
-      >
+      <div class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%">
         <!-- Infinit ABout -->
         <div class="col-sm-6 col-md-4 col-lg-2">
           <infinityabout :lorem="lorem" />
@@ -100,8 +95,7 @@
 
       <div class="row justify-center items-center text-white q-mt-lg">
         <div class="col-auto text-center">
-          <p
-            style="
+          <p style="
               /* UI Properties */
               color: var(--unnamed-color-ffffff);
 
@@ -109,8 +103,7 @@
               letter-spacing: 0px;
               color: #ffffff;
               opacity: 1;
-            "
-          >
+            ">
             2023 copyright. All right Reserved
           </p>
         </div>
@@ -202,6 +195,7 @@ export default {
 .namine {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+
 .nameProduct {
   color: #012a71;
   color: #012a71;
@@ -214,11 +208,13 @@ export default {
     justify-content: space-between;
   }
 }
+
 @media (max-width: 767px) {
   .row.justify-between {
     flex-wrap: wrap;
   }
 }
+
 .OurTitle {
   font-size: 3.5vw;
   margin-top: 0%;
@@ -230,15 +226,18 @@ export default {
   line-height: 7vw;
   justify-content: center;
 }
+
 .bgclass {
   background-image: url("./../img/bgok.jpg");
   background-repeat: no-repeat;
   background-position: top left;
   background-size: cover;
 }
+
 .q-carousel__slide {
   padding: 0;
 }
+
 @media (max-width: 940px) {
   .OurTitle {
     margin-top: -2%;
