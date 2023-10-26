@@ -17,7 +17,9 @@
         <td>Qualification</td>
         <td>{{ item.vacancy }}</td>
         <td>{{ item.description }}</td>
-        <td><PopUp /></td>
+        <td>
+          <PopUp />
+        </td>
       </tr>
     </table>
   </div>
@@ -40,7 +42,7 @@ export default {
   setup() {},
   async mounted() {
     let result = await axios.get(
-      "https://api.infinitybrains.com/public/api/showvacancy"
+      "https://uatbackend.infinitybrains.com/public/api/showvacancy"
     );
     console.warn(result.data.data);
     this.list = result.data.data;
@@ -69,6 +71,7 @@ thead tr th {
   position: sticky;
   z-index: 1;
 }
+
 thead tr:first-child th {
   top: 0;
 }
@@ -77,5 +80,4 @@ thead tr:first-child th {
 .q-table--loading thead tr:last-child th {
   /* height of all previous header rows */
   top: 48px;
-}
-</style>
+}</style>

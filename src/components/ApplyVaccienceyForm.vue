@@ -9,38 +9,13 @@
       </text>
     </div>
     <div class="mainFrm">
-      <input
-        type="text"
-        placeholder="First name"
-        class="fn"
-        v-model="firstname"
-      />
-      <input
-        type="text"
-        placeholder="Last name"
-        class="ln"
-        v-model="lastname"
-      />
+      <input type="text" placeholder="First name" class="fn" v-model="firstname" />
+      <input type="text" placeholder="Last name" class="ln" v-model="lastname" />
       <input type="text" placeholder="Email" class="eml" v-model="email" />
-      <input
-        type="text"
-        placeholder="Location"
-        class="lct"
-        v-model="location"
-      />
-      <input
-        type="text"
-        placeholder="Contact Number"
-        class="cn"
-        v-model="phoneno"
-      />
+      <input type="text" placeholder="Location" class="lct" v-model="location" />
+      <input type="text" placeholder="Contact Number" class="cn" v-model="phoneno" />
       <input type="text" placeholder="Address" class="add" v-model="Address" />
-      <input
-        type="text"
-        placeholder="Experiance"
-        class="exp"
-        v-model="Experiance"
-      />
+      <input type="text" placeholder="Experiance" class="exp" v-model="Experiance" />
       <input type="file" @change="onFileSelected" />
       <!-- <input
         type="file"
@@ -72,7 +47,7 @@ export default {
   methods: {
     async applyVacciencey() {
       let result = await axios.post(
-        "https://api.infinitybrains.com/public/api/candidateform/2",
+        "https://uatbackend.infinitybrains.com/public/api/candidateform/2",
         {
           firstname: this.firstname,
           lastname: this.lastname,
@@ -128,6 +103,7 @@ export default {
   /* margin-top: 1.25rem; */
   text-align: center;
 }
+
 .mainCard {
   display: grid;
   margin: 0;

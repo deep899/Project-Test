@@ -116,6 +116,7 @@ export default {
   /* background-image: url(./../Theme1/10\ Min_assets/img/wave.png); */
   background-position: bottom;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .headin-2 {

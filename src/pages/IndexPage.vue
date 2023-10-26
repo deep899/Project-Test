@@ -1,9 +1,11 @@
 <template>
   <!-- Slider Carousel -->
   <carousel />
-  <br />
+
+
+
   <!-- Carousel End Here -->
-  <span class="OurTitle" style="/* border: solid; */"> OUR PRODUCT </span>
+  <span class="OurTitle" style="margin-top: 0%;"> OUR PRODUCT </span>
 
   <!-- OUR PRODUTCS -->
   <div v-show="showProducts">
@@ -216,14 +218,12 @@ export default {
 }
 
 .OurTitle {
-  font-size: 3.5vw;
-  margin-top: 0%;
+  font-weight: 900;
+  font-size: 2.5em;
   color: #012a71;
-  font-family: Impact, Bold, sans-serif;
-  background-color: #eeeeee57;
   align-items: center;
   display: flex;
-  line-height: 7vw;
+  /* line-height: 7vw; */
   justify-content: center;
 }
 
