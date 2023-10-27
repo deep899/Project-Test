@@ -4,7 +4,7 @@ import { createStore } from 'vuex';
 const store = createStore({
   state: {
     message: "Hello, From Vuex",
-    backGroundColor:"transparent",
+    backGroundColor:"white",
     imageSrc:`${window.location.origin}/img/Ib_logo.446e007b.png`,
     color1:'#012A71',
     userId:0,
@@ -20,9 +20,6 @@ const store = createStore({
     busgstNumber:'',
     email:'',
     password:'',
-    
-
-
    },
   mutations: {
     setEmail(state , newEmail){

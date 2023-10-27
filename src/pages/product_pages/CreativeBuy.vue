@@ -1,20 +1,13 @@
 
 <template>
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
   <link src="https://unpkg.com/vue@2" />
   <!-- <img  style=" width: 10rem; margin-top: 80%; opacity: 0.5;" src="../../img/ScrollGroup7.png" /> -->
   <div v-if="loading" class="loading-overlay">
     <q-spinner-gears color="white" size="80px" />
   </div>
-  <div
-      class="navlik"
-      style="
+  <div class="navlik" style="
       
         position: fixed;
         z-index: 5;
@@ -23,63 +16,36 @@
         color: #000000;
         width: fit-content;
         right: 0;
-      "
-    >
-      <button style="background-color: transparent;border: none;" @click="toggleOptions" v-if="!showOptions"><i class="fa fa-cog" style="color: #2f518a; font-size: 2rem; " aria-hidden="true"></i></button>
-      <button style="background-color: transparent; color:red ;  border: none;" @click="toggleOptions" v-else>Close</button>
-      <label  v-if="showOptions" >  <br/>Select at least one:</label>
-      <div class="row" v-for="(option, index) in options" :key="option">
-        <input
-          type="checkbox"
-          @change="optionselected1"
-          :id="option"
-          :value="option"
-          v-model="selectedOptions"
-          :disabled="shouldDisableCheckbox(index)"
-          v-show="showOptions"
-        />
-        <label :for="option" v-show="showOptions">{{ option }}</label>
-      </div>
+      ">
+    <button style="background-color: transparent;border: none;" @click="toggleOptions" v-if="!showOptions"><i
+        class="fa fa-cog" style="color: #2f518a; font-size: 2rem; " aria-hidden="true"></i></button>
+    <button style="background-color: transparent; color:red ;  border: none;" @click="toggleOptions" v-else>Close</button>
+    <label v-if="showOptions"> <br />Select at least one:</label>
+    <div class="row" v-for="(option, index) in options" :key="option">
+      <input type="checkbox" @change="optionselected1" :id="option" :value="option" v-model="selectedOptions"
+        :disabled="shouldDisableCheckbox(index)" v-show="showOptions" />
+      <label :for="option" v-show="showOptions">{{ option }}</label>
     </div>
+  </div>
 
   <div class="text-center titlee name">Creatives</div>
   <div class="row browse">
     <div v-if="showButton">
-      <q-btn
-        style="width: 12rem"
-        @click="showSearchbar"
-        class="btnall"
-        outline
-        color="primary"
-        ><i class="fa-solid fa-magnifying-glass"></i> &nbsp;&nbsp;&nbsp; SEARCH
+      <q-btn style="width: 12rem" @click="showSearchbar" class="btnall" outline color="primary"><i
+          class="fa-solid fa-magnifying-glass"></i> &nbsp;&nbsp;&nbsp; SEARCH
       </q-btn>
     </div>
 
     <div v-else>
-      <input
-        type="text"
-        style="margin-top: 1%"
-        v-model="searchText"
-        placeholder="Search Creative"
-        class="quasar-searchbar"
-        @change="ginventext()"
-      />
-      <q-btn
-        outline
-        color="primary"
-        style="margin-top: -2.3rem; margin-right: 5%; float: right"
-        @click="ginventext()"
-        ><i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" style="margin-top: 1%" v-model="searchText" placeholder="Search Creative"
+        class="quasar-searchbar" @change="ginventext()" />
+      <q-btn outline color="primary" style="margin-top: -2.3rem; margin-right: 5%; float: right" @click="ginventext()"><i
+          class="fa-solid fa-magnifying-glass"></i>
       </q-btn>
     </div>
 
-    <q-btn
-      @click="DownloadAllCreative()"
-      style="width: 12rem"
-      class="btnall"
-      outline
-      color="primary"
-      ><i class="fa fa-download"></i> &nbsp;&nbsp;&nbsp; Download All
+    <q-btn @click="DownloadAllCreative()" style="width: 12rem" class="btnall" outline color="primary"><i
+        class="fa fa-download"></i> &nbsp;&nbsp;&nbsp; Download All
     </q-btn>
   </div>
 
@@ -87,27 +53,15 @@
     <q-card class="cardd">
       <div class="Keyproduct">
         <center>
-          <img
-            style="margin-top: 5rem; margin-bottom: 5%; width: 14rem"
-            src="../../img/IB_KEY/keyy.svg"
-          />
+          <img style="margin-top: 5rem; margin-bottom: 5%; width: 14rem" src="../../img/IB_KEY/keyy.svg" />
           <p class="typep">
             "Please enter the 16-digit Key Provided in your purchase
             confirmation email to activate your Digital Services."
           </p>
-          <input
-            id="iban"
-            required
-            minlength="32"
-            placeholder="Enter Your Key"
-            maxlength="32"
-            type="text"
-            name="iban"
-            @click="spacing()"
-          />
+          <input id="iban" required minlength="32" placeholder="Enter Your Key" maxlength="32" type="text" name="iban"
+            @click="spacing()" />
           <br />
-          <q-btn
-            style="
+          <q-btn style="
               width: 25rem;
               max-width: 100%;
 
@@ -115,9 +69,7 @@
               background-color: #2f518a;
               color: white;
               font-size: 1.2rem;
-            "
-            @click="Submitedkey()"
-          >
+            " @click="Submitedkey()">
             SUBMIT
           </q-btn>
         </center>
@@ -125,22 +77,14 @@
     </q-card>
   </q-dialog>
   <div class="row headers">
-    <div
-      class="postimg text-center flex"
-      v-for="item in creative1"
-      v-bind:key="item.id"
-    >
+    <div class="postimg text-center flex" v-for="item in creative1" v-bind:key="item.id">
       <!-- <h4 style="margin-left: 50%; margin-top: 40%; z-index: 5;">hello</h4> -->
       <h4 class="imgclassUper1 text-center" style="color: white">
         {{ item.name }}
       </h4>
       <div class="imgclassUper">
-        <Button
-          style="background-color: white; color: black"
-          class="btn innerbutton"
-          @click="ShereUrl(item.id)"
-          ><i class="fa fa-download"></i> &nbsp; Download</Button
-        >
+        <Button style="background-color: white; color: black" class="btn innerbutton" @click="ShereUrl(item.id)"><i
+            class="fa fa-download"></i> &nbsp; Download</Button>
       </div>
 
       <div class="imgclass" style="margin-left: 0%; z-index: 0">
@@ -151,46 +95,26 @@
     <!-- {{ this.canvas }} -->
   </div>
   <div class="row browse load" id="load1">
-    <q-btn
-      style="width: 12rem"
-      class="btnall"
-      id="loadmoreCreative"
-      :loading="loading[0]"
-      outline
-      color="primary"
-      @click="loadmore()"
-    >
+    <q-btn style="width: 12rem" class="btnall" id="loadmoreCreative" :loading="loading[0]" outline color="primary"
+      @click="loadmore()">
       LOAD MORE CREATIVE
     </q-btn>
   </div>
 
   <!-- HereIsDownloadImageLogo -->
-  <img
-    v-html="userProvidedHtml"
-    id="main-image"
-    style="visibility: hidden; display: none"
-    :src="mainImageUrl"
-    crossorigin="anonymous"
-  />
-  <img
-    id="logo-image"
-    style="visibility: hidden; display: none"
-    :src="logoImageUrl"
-    crossorigin="anonymous"
-  />
+  <img v-html="userProvidedHtml" id="main-image" style="visibility: hidden; display: none" :src="mainImageUrl"
+    crossorigin="anonymous" />
+  <img id="logo-image" style="visibility: hidden; display: none" :src="logoImageUrl" crossorigin="anonymous" />
   <canvas id="canvas" style="visibility: hidden; display: none"></canvas>
 
   <!-- HereIsDownloadImageLogo -->
 
-  <div
-    style="background-color: #2f518a"
-    class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
-  ></div>
+  <div style="background-color: #2f518a" class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
   <!-- Blacnk Background0-blue End Here -->
 
   <!-- Logo Image  -->
 
- 
+
 
   <!-- Logo Image -->
 
@@ -204,10 +128,8 @@
 
     <!-- Link Mennu Contact Addreess -->
     <div class="q-pa-md bgclass">
-      <div
-        class="row justify-between items-start q-gutter-md q-mb-md"
-        style="margin: 0 auto; max-width: 100%; width: 90%"
-      >
+      <div class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%">
         <!-- Infinit ABout -->
         <div class="col-sm-6 col-md-4 col-lg-2">
           <infinityabout :lorem="lorem" />
@@ -235,8 +157,7 @@
 
       <div class="row justify-center items-center text-white q-mt-lg">
         <div class="col-auto text-center">
-          <p
-            style="
+          <p style="
               /* UI Properties */
               color: var(--unnamed-color-ffffff);
 
@@ -244,8 +165,7 @@
               letter-spacing: 0px;
               color: #ffffff;
               opacity: 1;
-            "
-          >
+            ">
             2023 copyright. All right Reserved
           </p>
         </div>
@@ -254,8 +174,8 @@
   </footer>
 </template>
 
-      <script>
-      import { useStore } from "vuex";
+<script>
+import { useStore } from "vuex";
 
 import { saveAs } from "file-saver";
 import products from "components/Products.vue";
@@ -351,9 +271,9 @@ export default {
   },
 
   methods: {
-     optionselected1(){
-   
-   
+    optionselected1() {
+
+
     },
     shouldDisableCheckbox(index) {
       // return this.selectedOptions.length === 1 || this.selectedOptions.includes(this.options[index]);
@@ -379,7 +299,7 @@ export default {
     async ShereUrl(id) {
       this.loading = true;
       await axios
-        .get("https://api.infinitybrains.com/public/api/showcreative/" + id)
+        .get("https://uatbackend.infinitybrains.com/public/api/showcreative/" + id)
         .then((result) => {
           this.mainImageUrl =
             result.data.data.creative + "?not-from-cache-please";
@@ -427,7 +347,7 @@ export default {
       var x2 = canvas.width / 2;
       var x3 = (canvas.width * 3.5) / 4;
       var y1 = canvas.height - 25;
-        this.checkboxcalling();
+      this.checkboxcalling();
       // Fill text at each position
       ctx.fillText(this.text1, x1, y1);
       ctx.fillText(this.text2, x2, y1);
@@ -445,35 +365,35 @@ export default {
       document.body.removeChild(link);
       this.loading = false;
     },
-    checkboxcalling(){
-      axios.post('login',{
-            email:this.email,
-            password:this.password
-          }).then(async (result)=>{
-            console.log(result.data);
-            this.logoImageUrl = await result.data.data.company_logo;
-          this.text1 = await " Address :" + result.data.data.address;
-          this.text2 = await "+91" +result.data.data.contact_number;
-          this.text3 = await result.data.data.website;
-          }).catch((error)=>{
-          });
+    checkboxcalling() {
+      axios.post('login', {
+        email: this.email,
+        password: this.password
+      }).then(async (result) => {
+        console.log(result.data);
+        this.logoImageUrl = await result.data.data.company_logo;
+        this.text1 = await " Address :" + result.data.data.address;
+        this.text2 = await "+91" + result.data.data.contact_number;
+        this.text3 = await result.data.data.website;
+      }).catch((error) => {
+      });
       const isNameSelected = this.selectedOptions.includes("Address");
-            const isEmailSelected = this.selectedOptions.includes("PhoneNumber");
-            const isAddressSelected = this.selectedOptions.includes("Website");
-            if(!isNameSelected){
-              this.text1 =  " " ;
-            }
-            if (!isEmailSelected) {
-              this.text2 =  " ";
-                } 
-                if(!isAddressSelected){
-                  this.text3 =  " ";
-                }
+      const isEmailSelected = this.selectedOptions.includes("PhoneNumber");
+      const isAddressSelected = this.selectedOptions.includes("Website");
+      if (!isNameSelected) {
+        this.text1 = " ";
+      }
+      if (!isEmailSelected) {
+        this.text2 = " ";
+      }
+      if (!isAddressSelected) {
+        this.text3 = " ";
+      }
     },
     Submitedkey() {
       const store = useStore();
       this.email = store.state.email;
-      this.password= store.state.password;
+      this.password = store.state.password;
       axios
         .post(
           "creativedata"
@@ -481,26 +401,26 @@ export default {
         .then((result) => {
           console.log(result.data);
           this.alerted = false;
-          axios.post('login',{
-            email:store.state.email,
-            password:store.state.password
-          }).then(async (result)=>{
+          axios.post('login', {
+            email: store.state.email,
+            password: store.state.password
+          }).then(async (result) => {
             console.log(result.data);
             this.logoImageUrl = await result.data.data.company_logo;
-          this.text1 = await " Address :" + result.data.data.address;
-          this.text2 = await "+91" +result.data.data.contact_number;
-          this.text3 = await result.data.data.website;
-          }).catch((error)=>{
+            this.text1 = await " Address :" + result.data.data.address;
+            this.text2 = await "+91" + result.data.data.contact_number;
+            this.text3 = await result.data.data.website;
+          }).catch((error) => {
 
           });
-         
 
-          if(!this.logoImageUrl){
 
-            this.logoImageUrl = window.location.origin +'/img/Ib_logo.446e007b.png'
+          if (!this.logoImageUrl) {
+
+            this.logoImageUrl = window.location.origin + '/img/Ib_logo.446e007b.png'
 
           }
-        
+
 
           // if (this.text11 == null) {
           //   this.text1 = " ";
@@ -520,7 +440,7 @@ export default {
 
           axios
             .get(
-              'https://api.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc&filter={"status":"1"}'
+              'https://uatbackend.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc&filter={"status":"1"}'
             )
             .then((result) => {
               this.creative1 = result.data.data;
@@ -547,7 +467,7 @@ export default {
       alert(lesthenCreativeId);
       for (let i = this.mainid; i >= lesthenCreativeId; i--) {
         axios
-          .get("https://api.infinitybrains.com/public/api/showcreative/" + i)
+          .get("https://uatbackend.infinitybrains.com/public/api/showcreative/" + i)
           .then((result) => {
             // console.log(result.data.data.creative);
             this.mainImageUrl1 =
@@ -622,7 +542,7 @@ export default {
       var x3 = (canvas.width * 3.5) / 4;
       var y1 = canvas.height - 25;
 
-      
+
       // Fill text at each position
       ctx.fillText(this.text1, x1, y1);
       ctx.fillText(this.text2, x2, y1);
@@ -650,9 +570,9 @@ export default {
 
       axios
         .get(
-          "https://api.infinitybrains.com/public/api/showcreatives?per_page=" +
-            pages +
-            '&page=1&sort=id&order_by=desc&filter={"status":"1"}'
+          "https://uatbackend.infinitybrains.com/public/api/showcreatives?per_page=" +
+          pages +
+          '&page=1&sort=id&order_by=desc&filter={"status":"1"}'
         )
         .then((result) => {
           this.creative1 = result.data.data;
@@ -660,14 +580,14 @@ export default {
       if (pages == 40) {
         axios
           .get(
-            'https://api.infinitybrains.com/public/api/showcreatives?per_page=500&page=1&page=1&sort=id&order_by=desc&filter={"status":"1"}'
+            'https://uatbackend.infinitybrains.com/public/api/showcreatives?per_page=500&page=1&page=1&sort=id&order_by=desc&filter={"status":"1"}'
           )
           .then((result) => {
             this.creative1 = result.data.data;
           });
       }
     },
-    //    axios.get("https://api.infinitybrains.com/public/api/showcreatives").;
+    //    axios.get("https://uatbackend.infinitybrains.com/public/api/showcreatives").;
     //   //console.warn(result.data.data);
     //   // this.listdef1 = resultfinal1.data.data;
     //   //this.creative1 = resultfinal1.data.data;
@@ -680,8 +600,8 @@ export default {
 
       axios
         .get(
-          "https://api.infinitybrains.com/public/api/showcreatives?search=" +
-            this.searchText
+          "https://uatbackend.infinitybrains.com/public/api/showcreatives?search=" +
+          this.searchText
         )
         .then((result) => {
           console.log("this searchbar", result.data.data);
@@ -704,7 +624,7 @@ export default {
     //   axios(
     //     {
     //       url:
-    //         "https://api.infinitybrains.com/public/api/Download-creative/" +
+    //         "https://uatbackend.infinitybrains.com/public/api/Download-creative/" +
     //         idx,
     //       method: "POST",
 
@@ -723,8 +643,8 @@ export default {
   },
 
   mounted() {
-    if(!localStorage.getItem('token')){
-        this.$router.push('/');
+    if (!localStorage.getItem('token')) {
+      this.$router.push('/');
     }
     // this.alerted = true;
     const store = useStore();
@@ -735,17 +655,17 @@ export default {
     );
     store.commit("changeColor", "#012A71");
     // axios
-    //   .get("https://api.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
+    //   .get("https://uatbackend.infinitybrains.com/public/api/showcreatives?sort=id&order_by=desc")
     //   .then((result) => {
     //     this.creative1 = result.data.data;
     //   });
     this.Submitedkey();
-        this.allcreativesDownloaded();
+    this.allcreativesDownloaded();
   },
 };
 </script>
 
-      <style>
+<style>
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -758,6 +678,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .quasar-searchbar {
   width: 45rem;
   padding: 10px;
@@ -843,6 +764,7 @@ select {
   transition: 2sec ease;
   flex-direction: row;
 }
+
 .imgclassUper1 {
   position: absolute;
 
@@ -864,11 +786,13 @@ select {
   opacity: 1;
   transition: 2sec ease;
 }
+
 .postimg:hover .imgclassUper1 {
   margin-left: 8vh;
   opacity: 1;
   transition: 2sec ease;
 }
+
 .postimg:hover .imgclassUper button {
   opacity: 1;
   transition: 2sec ease;
@@ -960,9 +884,9 @@ select {
 
 @media (max-width:960px) {
 
-  .navlik{
+  .navlik {
     background-color: rgb(148, 148, 148) !important;
   }
-  
+
 }
 </style>

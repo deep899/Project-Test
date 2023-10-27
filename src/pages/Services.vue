@@ -1,13 +1,15 @@
 <template>
   <ServiceBanner />
   <serviceofcompanyabout />
-  <ServiceSection />
-  <contentwriting />
-  <seo />
+  <!-- <ServiceSection /> -->
   <webdev />
   <appdev />
   <hybriddev />
   <uiux />
+  <contentwriting />
+  <seo />
+  <ServiceSection />
+  
 
   <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md"></div>
   <logoimageblack />

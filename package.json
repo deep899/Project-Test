@@ -10,6 +10,9 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "@quasar/cli": "^2.0.0",
     "@quasar/extras": "^1.16.2",
     "ajv": "^8.12.0",
@@ -17,7 +20,7 @@
     "babel-loader": "^9.1.2",
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
-    "canvas": "^2.11.0",
+    "canvas": "^2.11.2",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "cros": "^1.0.1",
@@ -33,7 +36,7 @@
     "merge-images": "^2.0.0",
     "payumoney": "^1.0.1",
     "payumoney-node": "^2.0.1",
-    "quasar": "^2.11.7",
+    "quasar": "^2.13.0",
     "razorpay": "^2.8.6",
     "sharp": "^0.32.0",
     "sweetalert": "^2.1.2",
@@ -52,8 +55,8 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
     "@quasar/app-webpack": "^3.0.0",
-    "eslint": "^8.10.0",
-    "eslint-config-standard": "^16.0.2",
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^6.0.0",

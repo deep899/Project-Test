@@ -3,13 +3,9 @@
   <div v-if="productPurchase">
     <div class="maincontainer containerActuall">
       <div style="position: relative; width: 100%">
-        <img
-          src="./../../../src/assets/BackGround/pur1.png"
-          alt="Image description"
-          style="width: 100%; margin-top: 0%"
-        />
-        <div
-          style="
+        <img src="./../../../src/assets/BackGround/pur1.png" alt="Image description"
+          style="width: 100%; margin-top: 0%" />
+        <div style="
             position: absolute;
             top: 50%;
             left: 50%;
@@ -21,25 +17,17 @@
             width: 100%;
             color: white;
             padding: 5px 10px;
-          "
-        >
+          ">
           <span class="tt1">Build, Test, and Deploy with Confidence</span><br />
-          <span class="tt2"
-            >We deliver Websites, Mobile Apps, Hybrid Apps, Software, Digital
-            Marketing, and more.</span
-          ><br />
+          <span class="tt2">We deliver Websites, Mobile Apps, Hybrid Apps, Software, Digital
+            Marketing, and more.</span><br />
         </div>
       </div>
     </div>
 
     <div class="row rowcontainer" style="display: flex; width: 100%">
       <div class="col-lg-7 col-md-7 col-sm-12 imgContain" style="">
-        <img
-          :src="products.product_image"
-          alt="Product Image"
-          class="prodPur"
-          style=""
-        />
+        <img :src="products.product_image" alt="Product Image" class="prodPur" style="" />
       </div>
       <div class="col-lg-5 col-md-5 col-sm-12" style="padding-left: 3%">
         <span class="name">{{ products.name }}</span>
@@ -47,34 +35,20 @@
         <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%">
           Price :
           <span v-if="this.effectiveprice" style="font-size: 0.9em">
-            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
-              >₹</span
-            >
-            {{ this.formatNumber(this.effectiveprice) }}.00/-</span
-          >
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%">₹</span>
+            {{ this.formatNumber(this.effectiveprice) }}.00/-</span>
           <span v-else style="font-size: 0.9em">
-            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
-              >₹</span
-            >
-            {{ this.formatNumber(this.price) }}.00/-</span
-          >
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%">₹</span>
+            {{ this.formatNumber(this.price) }}.00/-</span>
         </span>
         &nbsp; &nbsp;
-        <span
-          v-if="this.effectiveprice"
-          class="cross"
-          style="font-size: 1.5em; line-height: 1em"
-        >
+        <span v-if="this.effectiveprice" class="cross" style="font-size: 1.5em; line-height: 1em">
           <span style="font-size: 0.8em">
-            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%"
-              >₹</span
-            >
-            {{ this.formatNumber(this.price) }}.00/-</span
-          >
+            <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%">₹</span>
+            {{ this.formatNumber(this.price) }}.00/-</span>
         </span>
         <br />
-        <button
-          style="
+        <button style="
             font-size: 1.3rem;
             padding: 0.5vh 2vw;
             cursor: pointer;
@@ -82,25 +56,20 @@
             color: #ffffff;
             border: none;
             margin-top: 2%;
-          "
-          @click="this.$router.push(`/paymentForm/${products.id}`)"
-        >
+          " @click="this.$router.push(`/paymentForm/${products.id}`)">
           Buy Now
         </button>
       </div>
     </div>
 
-    <div
-      class="logdiscriptionblog"
-      style="
+    <div class="logdiscriptionblog" style="
         background-color: #f1f1f169;
         margin-top: 10%;
         margin-bottom: 10%;
         display: flex;
         align-items: center;
         justify-content: center;
-      "
-    >
+      ">
       <p class="textLong" style="background-color: transparent">
         {{ products.desc }}
       </p>
@@ -129,10 +98,8 @@
 
     <!-- Link Mennu Contact Addreess -->
     <div class="q-pa-md bgclass">
-      <div
-        class="row justify-between items-start q-gutter-md q-mb-md"
-        style="margin: 0 auto; max-width: 100%; width: 90%"
-      >
+      <div class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%">
         <!-- Infinit ABout -->
         <div class="col-sm-6 col-md-4 col-lg-2">
           <infinityabout :lorem="lorem" />
@@ -160,8 +127,7 @@
 
       <div class="row justify-center items-center text-white q-mt-lg">
         <div class="col-auto text-center">
-          <p
-            style="
+          <p style="
               /* UI Properties */
               color: var(--unnamed-color-ffffff);
 
@@ -169,8 +135,7 @@
               letter-spacing: 0px;
               color: #ffffff;
               opacity: 1;
-            "
-          >
+            ">
             2023 copyright. All right Reserved
           </p>
         </div>
@@ -190,7 +155,7 @@ import infinityabout from "components/InfinityAbout.vue";
 import contactdetail from "components/ContactDetails.vue";
 import expertservice from "components/ExpertService.vue";
 import quicklink from "components/QuickLinks.vue";
-import axios from "axios";
+import axios from "./../../axios";
 export default {
   name: "hrms",
 
@@ -374,7 +339,7 @@ export default {
           this.signature = response.razorpay_signature;
           axios
             .post(
-              "https://api.infinitybrains.com/public/api/payment/" + this.id,
+              " payment/" + this.id,
               {
                 email: this.email,
                 firstname: this.first_name,
@@ -405,7 +370,7 @@ export default {
             this.usersidN = localStorage.getItem("UserDetails");
             axios
               .post(
-                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
+                " paymentstatusupdate",
                 {
                   user_id: this.usersidN,
                   payment_status: "1",
@@ -443,7 +408,7 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post("https://api.infinitybrains.com/public/api/payment/" + this.id, {
+        .post(" payment/" + this.id, {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
@@ -490,7 +455,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://api.infinitybrains.com/public/api/showpayment_product_details/" +
+          "showpayment_product_details/" +
             this.id
         )
         .then((result) => {
@@ -507,7 +472,7 @@ export default {
     getDiscount() {
       axios
         .post(
-          "https://api.infinitybrains.com/public/api/checkcoupen/" + this.id,
+          " checkcoupen/" + this.id,
           {
             code: this.CouponCode,
           }
@@ -566,7 +531,7 @@ export default {
     },
     // getList() {
     //     axios
-    //         .get("https://api.infinitybrains.com/public/api/show/9")
+    //         .get(" show/9")
     //         .then((result) => {
     //             this.products = result.data.data;
     //             console.warn(result.data.data);
@@ -576,7 +541,7 @@ export default {
     // async sendData() {
     //     this.paynowbtn = true;
     //     await axios
-    //         .post('https://api.infinitybrains.com/public/api/payment/' + this.id, {
+    //         .post(' payment/' + this.id, {
     //             email: this.email,
     //             firstname: this.first_name,
     //             lastname: this.last_name,
@@ -647,7 +612,7 @@ export default {
     Promise.all([
       axios
         .get(
-          'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+          'showcoupen?filter={"product":"' +
             this.id +
             '"}'
         )
@@ -657,7 +622,7 @@ export default {
           this.optionse = response.data.data.data;
         }),
       axios
-        .get("https://api.infinitybrains.com/public/api/show/" + this.id)
+        .get("show/" + this.id)
         .then((result) => {
           this.products = result.data.data;
           this.price = result.data.data.price;
@@ -682,27 +647,33 @@ export default {
   /* */
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+
 .textLong {
   width: 80%;
   font-size: 1.3rem;
   margin-top: 1%;
   text-align: center;
 }
+
 .bgclass {
   background-image: url("./../../img/bgok.jpg");
   background-repeat: no-repeat;
   background-position: top left;
   background-size: cover;
 }
+
 .containerActuall {
-  margin-top: 5%;
+  margin-top: 0%;
 }
+
 .tt1 {
   font-size: 3vw;
 }
+
 .tt2 {
   font-size: 2vw;
 }
+
 .prodPur {
   object-fit: contain;
 
@@ -710,26 +681,32 @@ export default {
   width: 110%;
   justify-content: flex-end;
 }
+
 .rowcontainer {
   margin-top: 12%;
 }
+
 .longDec {
   font-size: 1.4vmax;
   margin-top: 2%;
   width: 80%;
 }
+
 @media (max-width: 940px) {
   .containerActuall {
     margin-top: 10%;
   }
+
   .tt1 {
     font-size: 4vw;
     line-height: 1vw;
   }
+
   .tt2 {
     font-size: 2.4vw;
     line-height: 1vw;
   }
+
   .name {
     font-size: 10vw;
 
@@ -737,6 +714,7 @@ export default {
     align-items: center;
     justify-content: center;
   }
+
   .prodPur {
     height: 30vh;
     width: 80%;
@@ -745,11 +723,13 @@ export default {
   .container {
     height: 50%;
   }
+
   .imgContain {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .longDec {
     font-size: 2.5vh;
     display: flex;
@@ -757,6 +737,7 @@ export default {
     margin-top: 2%;
     width: 100%;
   }
+
   .textLong {
     width: 90%;
     font-size: 1.3rem;
@@ -764,10 +745,12 @@ export default {
     text-align: center;
   }
 }
+
 .cross {
   position: relative;
   display: inline-block;
 }
+
 .cross::before,
 .cross::after {
   content: "";
@@ -776,16 +759,16 @@ export default {
   right: 0;
   top: 50%;
 }
+
 .cross::before {
   border-bottom: 2px solid red;
   -webkit-transform: skewY(-10deg);
   transform: skewY(-10deg);
 }
+
 .cross::after {
   border-bottom: 2px solid red;
   -webkit-transform: skewY(10deg);
   transform: skewY(10deg);
 }
-
-
 </style>
