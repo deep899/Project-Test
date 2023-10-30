@@ -27,7 +27,7 @@
 // import axios from 'axios'; // Import Axios
 
 import Home from './Home.vue';
-
+import { mapState } from 'vuex';
 export default {
   data() {
     return {
@@ -35,19 +35,32 @@ export default {
       pageSubtitle: 'Make your websites/App in 10 Minutes',
       domainNameHeading: 'First Let\'s Give Your Domain Name',
       domainNameLabel: 'Enter your Domain name',
-      domainNamePlaceholder: 'yourdomain.infinitybrain.com',
+      domainNamePlaceholder: 'Domain name',
       continueButtonLabel: 'Continue',
       domainName: '',
 
       backgroundImageUrl: require('./../../src/Theme1/10_Min_assets/img/wave.png'), // Set the background image dynamically
     };
   },
+  computed: {
+    ...mapState(['domainName']), // Use mapState to map the state property to a local property
+  },
   methods: {
+
     continueToCategories() {
       if (!this.domainName) {
+
         // Show an alert to enter the business name
         alert('Please enter your Domain name.');
         return; // Don't proceed further
+      }
+      else{
+          
+            
+            this.$store.commit('setdomainName', this.domainName);
+            // console.log("cdjsxk",this.$store.getters.getDomainName);
+            this.$router.push({ name: 'selectyourtype' });
+
       }
       // Make an HTTP POST request to your backend to store the domain name
       // axios.post('http://localhost:3300/api/storeDomainInfo', { domainName: this.domainName })
@@ -61,7 +74,7 @@ export default {
       // Use this.domainName to access the entered domain name
       // You can also perform any data validation here before navigation
 
-      this.$router.push({ name: 'selectyourtype' });
+      
 
     },
     // fetchBusinessName() {
