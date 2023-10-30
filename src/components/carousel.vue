@@ -45,7 +45,7 @@
       
 
       <router-link to="/">
-      <img src="./../assets/new2023-background/it_matlab_ib.jpg"
+      <img src="./../assets/new2023-background/it_matlab_ib.png"
       style="width:100%;  "
        alt="">
        </router-link>
@@ -57,7 +57,7 @@
     >
 
       <router-link to="/10M_website/page">
-      <img src="./../assets/new2023-background/10mint.jpg"
+      <img src="./../assets/new2023-background/10mint.png"
       style="width:100%;  "
        alt="">
        </router-link>

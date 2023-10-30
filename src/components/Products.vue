@@ -15,12 +15,24 @@
             </div>
             <div class="col-8" style="padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ item.name }} </span>
               <br />
+
               <p class="prodDis">{{ item.short_desc }}</p>
-              <div style="margin-top: 5%;"> <span class="prodAmount"
+              <div  v-if="index == 2" style="margin-top: 12%; "> <span class="prodAmount"
+                  style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">
+                    {{ this.formatNumber(item.price) }}
+                  </span>
+                
+                
+                </div>
+                <div  v-else style="margin-top: 5%; "> <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
-                    this.formatNumber(item.price) }}</span> <br /><span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span></div>
+                    this.formatNumber(5999) }}</span>
+                     <br /><span class="smallDis">Up to 10 employees after that 50
+                  RS. Per employee per month.</span>
+                </div>
             </div>
+           
+           
           </div>
         </div>
       
@@ -42,10 +54,34 @@
         <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ reversedProductList[0].name }} </span>
               <br />
               <p class="prodDis">{{ reversedProductList[0].short_desc }}</p>
-              <div style="margin-top: 5%;"> <span class="prodAmount"
+              <div style="margin-top: 3%;">
+                <div class="row">
+                  <div class="col-6">
+                    <span class="prodAmount"
+                  style="text-shadow: 1px 0 0 #012a71;">Price
+                  </span> <br/>
+                    <span class="prodAmount">{{
+                    this.formatNumber(24999) }}</span>
+                    <br />
+                  </div>
+                  <div class="col-6">
+
+                    <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
-                    this.formatNumber(reversedProductList[0].price) }}</span> <br /><span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span></div>
+                    this.formatNumber(9999) }}</span> 
+
+
+                     
+
+
+                  </div>
+                 
+                  <span class="smallDis">Up to 10 employees after that 50
+                  RS. Per employee per month.</span>
+                </div>
+               
+                  <br />
+                </div>
             </div>
       
       
@@ -69,10 +105,23 @@
         <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ reversedProductList[1].name }}</span>
               <br />
               <p class="prodDis">{{ reversedProductList[1].short_desc }}</p>
-              <div style="margin-top: 5%;"> <span class="prodAmount"
-                  style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
-                    this.formatNumber(reversedProductList[1].price) }}</span> <br /><span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span></div>
+              
+              <div class="col-6" style="margin-top: 5%;"> 
+                <span class="prodAmount"
+                  style="text-shadow: 1px 0 0 #012a71;">Price
+                  </span>
+                  <br />
+                  <span class="prodAmount">{{
+                    this.formatNumber(reversedProductList[1].price) }}</span>
+                    
+                    
+                    
+                    
+                    <br /><span class="smallDis">Up to 10 employees after that 50
+                  RS. Per employee per month.</span>
+
+
+                </div>
             </div>
       
       
@@ -105,11 +154,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-
       </div>
     </div>
   </div>

@@ -29,13 +29,11 @@
       </div> -->
 
       <div style="width: 100%;">
-        <table>
-          <tr v-for="(row, rowIndex) in grid" :key="rowIndex" class="category-row">
-            <td v-for="(cell, cellIndex) in row" :key="cellIndex" class="category-cell">
-              <input type="radio" v-model="selectedCategory" :value="cell.id" :id="cell.id"
-                @change="radioChanged(cell)" />
-              <label :for="cell.id" class="custom-checkbox">{{ cell.label }}</label>
-            </td>
+        <table style="margin-bottom: 5%;">
+          <tr style="border: 2px solid black;" v-for="(row, rowIndex) in grid" :key="rowIndex" class="category-cell">
+            <input type="radio" v-model="selectedCategory" :value="row.id" :id="row.id"
+                @change="radioChanged(row)" />
+              <label :for="row.id" class="custom-checkbox">{{ row.name }}</label>
           </tr>
         </table>
       </div>
@@ -48,6 +46,7 @@
 
 <script>
 import Home from './Home.vue';
+import axios from './../axios'
 
 export default {
   data() {
@@ -84,6 +83,7 @@ export default {
     continueToCategories() {
       if (this.selectedCategory) {
         // Use Vue Router to navigate to the "categories" route with the selected category
+        this.$store.commit('setCategory_id', this.selectedCategory);
         this.$router.push({ name: 'pickdesign' }); // add after the name, params: { category: this.selectedCategory }
       }
       else {
@@ -91,6 +91,23 @@ export default {
         alert('Please select a category before continuing.');
       }
     },
+  },
+  mounted(){
+
+    axios.get('admin/catagories').then((res)=>{
+
+      console.log(res.data.data);
+      this.grid = res.data.data
+
+    }).catch((error)=>{
+
+
+      alert(error.response.data.message)
+
+
+    });
+
+
   },
   components: { Home, }
 };
@@ -286,7 +303,7 @@ input[type="radio"]:checked+label.custom-checkbox::before {
   .category-cell {
     width: calc(100%);
     /* Display 2 columns with some spacing between them */
-    margin-bottom: 10px;
+    
     /* Add vertical spacing between rows */
   }
 }

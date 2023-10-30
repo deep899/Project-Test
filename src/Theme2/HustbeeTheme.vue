@@ -1,5 +1,5 @@
 <template>
-  <h1>Hustbee vue file</h1>
+  <!-- <h1>Hustbee vue file</h1> -->
   <img class="img" src="./../Theme1/10_Min_assets/img/banaerOfPreviewSites.png" alt="" srcset="">
 </template>
 <style>

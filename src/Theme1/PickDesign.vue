@@ -50,6 +50,7 @@
 
 <script>
 import Home from './Home.vue';
+import axios from './../axios'
 
 export default {
   data() {
@@ -131,7 +132,16 @@ export default {
     },
   },
 
+    mounted(){
 
+      axios.get('admin/subcatagories/19').then((res)=>{
+
+        console.log(res.data.data);
+
+
+      }).catch();
+
+  },
   methods: {
     handleButtonClick(buttonNumber) {
       // Handle button click events here
