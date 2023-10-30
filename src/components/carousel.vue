@@ -13,7 +13,7 @@
       "
     > 
      
-    <q-carousel-slide
+    <!-- <q-carousel-slide
       :name="1"
       img-src="./../assets/BackGround/bg1.jpg"
       class="carousel"
@@ -36,8 +36,90 @@
       </div>
       <span class="bgText t2">INFINITYBRAINS</span>
       </div>
+    </q-carousel-slide> -->
+    <q-carousel-slide
+      :name="1"
+     class="carousel"
+    >
+
+      
+
+      <router-link to="/">
+      <img src="./../assets/new2023-background/it_matlab_ib.png"
+      style="width:100%;  "
+       alt="">
+       </router-link>
+
     </q-carousel-slide>
     <q-carousel-slide
+      :name="2"
+     class="carousel"
+    >
+
+      <router-link to="/10M_website/page">
+      <img src="./../assets/new2023-background/10mint.png"
+      style="width:100%;  "
+       alt="">
+       </router-link>
+
+    </q-carousel-slide>
+    <q-carousel-slide
+      :name="3"
+     class="carousel"
+    >
+
+      <router-link to="/14">
+      <img src="./../assets/new2023-background/ib_delight.jpg"
+      style="width:100%;max-width: 100;  "
+       alt="">
+       </router-link>
+
+    </q-carousel-slide>
+    <q-carousel-slide
+      :name="4"
+     class="carousel"
+    > <router-link to="/8">
+      <img src="./../assets/new2023-background/ibhrms_1.jpg"
+      style="width:100%;max-width: 100;"
+       alt="">
+      </router-link>
+
+    </q-carousel-slide>
+    <q-carousel-slide
+      :name="5"
+     class="carousel"
+    >
+
+      <router-link to="/9">
+      <img src="./../assets/new2023-background/ibsf_10.jpg"
+      style="width:100%;  max-width: 100; "
+       alt="">
+       </router-link>
+
+    </q-carousel-slide>
+
+    <q-carousel-slide
+      :name="6"
+     class="carousel"
+    >
+
+      <router-link to="/15">
+      <img src="./../assets/new2023-background/consu.jpg"
+      style="width:100%;  "
+       alt="">
+       </router-link>
+
+    </q-carousel-slide>
+
+
+
+
+
+
+
+
+
+    <!-- <q-carousel-slide
       :name="2"
       img-src="./../assets/BackGround/bg2.png"
       class="carousel"
@@ -76,7 +158,7 @@
       </div>
       <span class="bgText t2">INFINITYBRAINS</span>
       </div>
-    </q-carousel-slide>
+    </q-carousel-slide> -->
     <!-- <q-carousel-slide
       :name="2"
       img-src="./../assets/BackGround/bg1.jpg"
@@ -159,7 +241,7 @@
      
     </q-carousel>
     <!-- <div class="custom-buttons"> -->
-  
+<!--   
     <q-btn
       class=""
       style="  color: whitesmoke;  margin-top: -10vh;   margin-left: 1%;   height: fit-content; width: 1vh; border-radius: 100px ;   "
@@ -175,7 +257,7 @@
       icon="chevron_right"
       @click="next()"
     >
-    </q-btn>
+    </q-btn> -->
 
     <!-- <q-btn
       class=""
@@ -228,8 +310,17 @@ export default {
 <style lang="css" scoped>
 
 .carousel{
-  height: 100vh;
+  height: 85vh;
 }
+.carousel router-link img::-webkit-scrollbar{
+    display: none;
+  }
+
+  .carousel::-webkit-scrollbar{
+    display: none;
+  }
+
+
 
 .custom-buttons {
   bottom: 0;
@@ -340,8 +431,10 @@ export default {
 .carousel-title {
   align-items: center;
     text-align: center;
-    font:6vw/146px Impact;
+    font:5vw/146px Impact;
+    position:absolute;
    z-index: 1;
+   
   line-height: 6vw;
   margin-bottom:1% ;
   letter-spacing: 0px;
@@ -410,7 +503,10 @@ export default {
 @media (max-width: 960px) {
 
       .carousel{
-        height: 30vh;
+        height: 50vh;
+      }
+      .carousel img{
+        height:70%;
       }
       .carousel-description{
 

@@ -30,25 +30,16 @@
         <div class="btn" style="text-decoration: line-through">
           Price : ₹ {{ products.price }}.00<br />
         </div>
-        <div
-          class=""
-          style="
+        <div class="" style="
             font-size: 18px;
             font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-          "
-        >
+          ">
           Price : ₹ {{ this.coupon_codePrice }}.00<br />
         </div>
         <div class="q-pa-md q-gutter-sm">
           <q-btn label="Buy me" color="primary" @click="inception = true" />
           <router-link to="/CreativeBuy">
-            <q-btn
-              style="margin-top: 1%"
-              label="ALREADY PURCHESED ?"
-              outline
-              color="primary"
-              @click=""
-            />
+            <q-btn style="margin-top: 1%" label="ALREADY PURCHESED ?" outline color="primary" @click="" />
           </router-link>
           <div style="margin-top: 15%"></div>
 
@@ -57,179 +48,84 @@
               <q-card-section>
                 <div class="text-h6">
                   Buy Now
-                  <p
-                    style="
+                  <p style="
                       float: right;
                       font-size: 70%;
                       margin-right: 5%;
                       color: red;
-                    "
-                  >
+                    ">
                     {{ this.MainErrorOfForm }}
                   </p>
                 </div>
               </q-card-section>
 
               <q-card-section class="q-pt-none">
-                <q-card-section
-                  style="max-height: 50vh; text-align: -webkit-center"
-                  class="scroll"
-                >
+                <q-card-section style="max-height: 50vh; text-align: -webkit-center" class="scroll">
                   <div class="q-pa-md" style="max-width: 400px">
-                    <q-form
-                      class="q-gutter-md"
-                      @submit.prevent="SelectPaymentGatewayoption()"
-                    >
-                      <q-input
-                        filled
-                        v-model="first_name"
-                        label="First name *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        v-model="last_name"
-                        label="Last name *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
+                    <q-form class="q-gutter-md" @submit.prevent="SelectPaymentGatewayoption()">
+                      <q-input filled v-model="first_name" label="First name *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
+                      <q-input filled v-model="last_name" label="Last name *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
                       <q-input filled v-model="B_Name" label="Business Name " />
-                      <q-input
-                        filled
-                        v-model="B_Gst_N"
-                        label="Business Gst Number "
-                      />
-                      <q-input
-                        filled
-                        v-model="S_Name"
-                        label="SalesManager Name "
-                      />
+                      <q-input filled v-model="B_Gst_N" label="Business Gst Number " />
+                      <q-input filled v-model="S_Name" label="SalesManager Name " />
 
-                      <q-input
-                        filled
-                        v-model="email"
-                        label="Email *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        maxlength="10"
-                        v-model="mobile_no"
-                        label="Phone no *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        v-model="address"
-                        label="Address *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
-                      <q-input
-                        filled
-                        v-model="Website"
-                        label="Web Site *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
+                      <q-input filled v-model="email" label="Email *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
+                      <q-input filled maxlength="10" v-model="mobile_no" label="Phone no *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
+                      <q-input filled v-model="address" label="Address *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
+                      <q-input filled v-model="Website" label="Web Site *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
 
-                      <q-file
-                        filled
-                        v-model="CompanyImage"
-                        label="Company Logo"
-                      >
+                      <q-file filled v-model="CompanyImage" label="Company Logo">
                         <template v-slot:prepend>
                           <q-icon name="cloud_upload" />
                         </template>
                       </q-file>
 
-                      <select
-                        style="width: 95%; height: 48px; font-size: 1rem"
-                        class="form-select"
-                        aria-required="true"
-                        aria-invalid="false"
-                        v-model="country_id"
-                        @change="getState()"
-                        required
-                      >
+                      <select style="width: 95%; height: 48px; font-size: 1rem" class="form-select" aria-required="true"
+                        aria-invalid="false" v-model="country_id" @change="getState()" required>
                         <option value="" disabled selected>Country</option>
-                        <option
-                          v-for="country in list"
-                          :value="country.id"
-                          v-bind:key="country.id"
-                        >
+                        <option v-for="country in list" :value="country.id" v-bind:key="country.id">
                           {{ country.name }}
                         </option>
                       </select>
 
-                      <select
-                        style="width: 95%; height: 48px; font-size: 1rem"
-                        class="form-select"
-                        aria-required="true"
-                        aria-invalid="false"
-                        v-model="state_id"
-                        @change="getCity()"
-                        required
-                      >
+                      <select style="width: 95%; height: 48px; font-size: 1rem" class="form-select" aria-required="true"
+                        aria-invalid="false" v-model="state_id" @change="getCity()" required>
                         <option value="" disabled selected>State</option>
-                        <option
-                          v-for="item in state"
-                          :value="item.id"
-                          v-bind:key="item.id"
-                        >
+                        <option v-for="item in state" :value="item.id" v-bind:key="item.id">
                           {{ item.name }}
                         </option>
                       </select>
 
-                      <select
-                        style="width: 95%; height: 48px; font-size: 1rem"
-                        class="form-select"
-                        aria-required="true"
-                        aria-invalid="false"
-                        v-model="city_id"
-                        required
-                      >
+                      <select style="width: 95%; height: 48px; font-size: 1rem" class="form-select" aria-required="true"
+                        aria-invalid="false" v-model="city_id" required>
                         <option value="" disabled selected>City</option>
-                        <option
-                          v-for="item in city"
-                          :value="item.id"
-                          v-bind:key="item.id"
-                        >
+                        <option v-for="item in city" :value="item.id" v-bind:key="item.id">
                           {{ item.name }}
                         </option>
                       </select>
 
-                      <q-input
-                        filled
-                        v-model="pincode"
-                        label="Pincode *"
-                        lazy-rules
-                        :rules="[
-                          (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                        ]"
-                      />
+                      <q-input filled v-model="pincode" label="Pincode *" lazy-rules :rules="[
+                        (val) =>
+                          (val && val.length > 0) || 'Please type something',
+                      ]" />
                       <!-- <select
                         style="width: 95%; height: 48px; font-size: 1rem"
                         class="form-select"
@@ -247,77 +143,23 @@
                           {{ item.code }}
                         </option>
                       </select> -->
-                      <q-input
-                        filled
-                        disable
-                        v-model="CoupyCode"
-                        label-color="black"
-                      />
-                      <q-btn
-                        color="primary"
-                        label="Copy Code"
-                        style="width: 95%"
-                        @click="triggerPositive()"
-                      />
+                      <q-input filled disable v-model="CoupyCode" label-color="black" />
+                      <q-btn color="primary" label="Copy Code" style="width: 95%" @click="triggerPositive()" />
                       <br />
-                      <q-input
-                        filled
-                        v-model="CouponCode"
-                        label="Coupon Code "
-                        style=""
-                      />
+                      <q-input filled v-model="CouponCode" label="Coupon Code " style="" />
                       <q-banner color="green" v-if="couponCodeSuccess">
                         {{ couponCodeSuccess }}
                       </q-banner>
-                      <q-btn
-                        color="primary"
-                        style="width: 95%"
-                        label="Apply"
-                        @click="getDiscount()"
-                      />
+                      <q-btn color="primary" style="width: 95%" label="Apply" @click="getDiscount()" />
 
-                      <div
-                        v-if="couponCodeSuccess"
-                        id="bannerMsg"
-                        :style="couponCodeSuccessColor"
-                      >
+                      <div v-if="couponCodeSuccess" id="bannerMsg" :style="couponCodeSuccessColor">
                         {{ couponCodeSuccess }}
                       </div>
-                      <q-input
-                        filled
-                        disable
-                        v-model="final_amount"
-                        label="Price : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        v-model="sgst"
-                        label="SGST : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        v-model="cgst"
-                        label="CGST : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        v-model="discount"
-                        label="Total Discount : "
-                        label-color="black"
-                      />
-                      <q-input
-                        filled
-                        disable
-                        v-model="amount_pay"
-                        label="Total Amount : "
-                        label-color="black"
-                      />
+                      <q-input filled disable v-model="final_amount" label="Price : " label-color="black" />
+                      <q-input filled disable v-model="sgst" label="SGST : " label-color="black" />
+                      <q-input filled disable v-model="cgst" label="CGST : " label-color="black" />
+                      <q-input filled disable v-model="discount" label="Total Discount : " label-color="black" />
+                      <q-input filled disable v-model="amount_pay" label="Total Amount : " label-color="black" />
                       <!-- <q-radio v-model="selectedPaymentMethod" val="razorpay">
                         <img
                           style="width: 100px"
@@ -368,11 +210,7 @@
                         sendData();
                       "
                     /> -->
-                <q-btn
-                  type="submit"
-                  class="btn shadow-none"
-                  v-on:click="SelectPaymentGatewayoption()"
-                >
+                <q-btn type="submit" class="btn shadow-none" v-on:click="SelectPaymentGatewayoption()">
                   {{ paynowbtn ? "Processing..." : "Pay Now" }}
                 </q-btn>
 
@@ -459,8 +297,7 @@
               <li class="slide-container">
                 <div class="slide-image">
                   <img
-                    src="https://ib-bucketlive.s3.ap-south-1.amazonaws.com/public/creatives/nxZUmMnBz8VZEPSWCAOuByhQHY5Yhq.jpg"
-                  />
+                    src="https://ib-bucketlive.s3.ap-south-1.amazonaws.com/public/creatives/nxZUmMnBz8VZEPSWCAOuByhQHY5Yhq.jpg" />
                 </div>
                 <div class="carousel-controls">
                   <label for="img-3" class="prev-slide">
@@ -475,8 +312,7 @@
               <li class="slide-container">
                 <div class="slide-image">
                   <img
-                    src="https://ib-bucketlive.s3.ap-south-1.amazonaws.com/public/creatives/YXGK1qfN6C936tygonpyMuWwvreBkJ.jpg"
-                  />
+                    src="https://ib-bucketlive.s3.ap-south-1.amazonaws.com/public/creatives/YXGK1qfN6C936tygonpyMuWwvreBkJ.jpg" />
                 </div>
                 <div class="carousel-controls">
                   <label for="img-1" class="prev-slide">
@@ -492,11 +328,7 @@
               <li class="slide-container">
                 <div class="slide-image">
                   <div>
-                    <q-btn
-                      label="Buy Creative"
-                      color="primary"
-                      @click="inception = true"
-                    />
+                    <q-btn label="Buy Creative" color="primary" @click="inception = true" />
                   </div>
                 </div>
                 <div class="carousel-controls">
@@ -525,10 +357,7 @@
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
   </div>
-  <div
-    style="background-color: #2f518a"
-    class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
-  ></div>
+  <div style="background-color: #2f518a" class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
   <!-- Blacnk Background0-blue End Here -->
 
   <!-- Logo Image  -->
@@ -539,10 +368,8 @@
 
   <!-- Link Mennu Contact Addreess -->
   <div class="q-pa-md bgclass">
-    <div
-      class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 1920px; width: 84%"
-    >
+    <div class="row justify-between items-start q-gutter-md q-mb-md"
+      style="margin: 0 auto; max-width: 1920px; width: 84%">
       <!-- Infinit ABout -->
       <div class="col-md-6 col-lg-2">
         <infinityabout :lorem="lorem" />
@@ -570,8 +397,7 @@
 
     <div class="row justify-center items-center text-white q-mt-lg">
       <div class="col-auto text-center">
-        <p
-          style="
+        <p style="
             top: 5672px;
             left: 750px;
             width: 421px;
@@ -583,8 +409,7 @@
             letter-spacing: 0px;
             color: #ffffff;
             opacity: 1;
-          "
-        >
+          ">
           2023 copyright. All right Reserved
         </p>
       </div>
@@ -762,7 +587,7 @@ export default {
       // if (this.selectedPaymentMethod == "razorpay") {
       if ("nonvalue" == "razorpay") {
         axios
-          .post("https://api.infinitybrains.com/public/api/payment/" + 13, {
+          .post("https://uatbackend.infinitybrains.com/public/api/payment/" + 13, {
             email: this.email,
             firstname: this.first_name,
             lastname: this.last_name,
@@ -820,7 +645,7 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post("https://api.infinitybrains.com/public/api/payment/13", {
+        .post("https://uatbackend.infinitybrains.com/public/api/payment/13", {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
@@ -847,7 +672,7 @@ export default {
           formDatas.append("user_id", user_id);
           axios
             .post(
-              "https://api.infinitybrains.com/public/api/creativedata",
+              "https://uatbackend.infinitybrains.com/public/api/creativedata",
               formDatas,
               {}
             )
@@ -889,7 +714,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://api.infinitybrains.com/public/api/showpayment_product_details/13"
+          "https://uatbackend.infinitybrains.com/public/api/showpayment_product_details/13"
         )
         .then((result) => {
           this.Gst = result.data.data;
@@ -909,7 +734,7 @@ export default {
       // let naming = document.getElementsByClassName("CoupenIsHere").value;
       // console.log(naming);
       axios
-        .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
+        .post("https://uatbackend.infinitybrains.com/public/api/checkcoupen/" + 13, {
           code: this.CouponCode,
         })
         .then((result) => {
@@ -932,7 +757,7 @@ export default {
       axios
         .get(
           "https://api.restroworld.com/api/states_of_country?is_light=1" +
-            this.country_id,
+          this.country_id,
           {
             params: {
               country_id: this.country_id,
@@ -950,7 +775,7 @@ export default {
       axios
         .get(
           "https://api.restroworld.com/api/cities_of_state?is_light=1" +
-            this.state_id,
+          this.state_id,
           {
             params: {
               state_id: this.state_id,
@@ -963,7 +788,7 @@ export default {
     },
     getList() {
       axios
-        .get("https://api.infinitybrains.com/public/api/showproduct/13")
+        .get("https://uatbackend.infinitybrains.com/public/api/showproduct/13")
         .then((result) => {
           this.products = result.data.data;
           console.warn(result.data.data);
@@ -1017,7 +842,7 @@ export default {
             this.usersidN = localStorage.getItem("UserDetails");
             axios
               .post(
-                "https://api.infinitybrains.com/public/api/paymentstatusupdate",
+                "https://uatbackend.infinitybrains.com/public/api/paymentstatusupdate",
                 {
                   user_id: this.usersidN,
                   payment_status: "1",
@@ -1059,7 +884,7 @@ export default {
 
     // this.BeforeMountedApplyeCoupenCode();
     axios
-      .post("https://api.infinitybrains.com/public/api/checkcoupen/" + 13, {
+      .post("https://uatbackend.infinitybrains.com/public/api/checkcoupen/" + 13, {
         code: "Festival Creatives",
       })
       .then((result) => {
@@ -1070,9 +895,9 @@ export default {
     console.log("name", this.id);
     axios
       .get(
-        'https://api.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
-          13 +
-          '"}'
+        'https://uatbackend.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+        13 +
+        '"}'
       )
       .then((response) => {
         // handle success
@@ -1081,7 +906,7 @@ export default {
         this.optionse = response.data.data.data;
       });
     axios
-      .get("https://api.infinitybrains.com/public/api/show/13")
+      .get("https://uatbackend.infinitybrains.com/public/api/show/13")
       .then((result) => {
         this.products = result.data.data;
       });
@@ -1244,7 +1069,7 @@ ul.slides input {
   cursor: pointer;
 }
 
-.slide-image:hover + .carousel-controls label {
+.slide-image:hover+.carousel-controls label {
   opacity: 0.5;
 }
 
@@ -1284,26 +1109,26 @@ ul.slides input {
   margin-bottom: 0px;
 }
 
-input:checked + .slide-container .slide-image {
+input:checked+.slide-container .slide-image {
   opacity: 1;
   transform: scale(1);
   transition: opacity 1s ease-in-out;
 }
 
-input:checked + .slide-container .carousel-controls label {
+input:checked+.slide-container .carousel-controls label {
   display: block;
 }
 
-input#img-1:checked ~ .carousel-dots label#img-dot-1,
-input#img-2:checked ~ .carousel-dots label#img-dot-2,
-input#img-3:checked ~ .carousel-dots label#img-dot-3,
-input#img-4:checked ~ .carousel-dots label#img-dot-4,
-input#img-5:checked ~ .carousel-dots label#img-dot-5,
-input#img-6:checked ~ .carousel-dots label#img-dot-6 {
+input#img-1:checked~.carousel-dots label#img-dot-1,
+input#img-2:checked~.carousel-dots label#img-dot-2,
+input#img-3:checked~.carousel-dots label#img-dot-3,
+input#img-4:checked~.carousel-dots label#img-dot-4,
+input#img-5:checked~.carousel-dots label#img-dot-5,
+input#img-6:checked~.carousel-dots label#img-dot-6 {
   opacity: 1;
 }
 
-input:checked + .slide-container .nav label {
+input:checked+.slide-container .nav label {
   display: block;
 }
 
@@ -1312,6 +1137,7 @@ input:checked + .slide-container .nav label {
     justify-content: space-between;
   }
 }
+
 @media (max-width: 767px) {
   .row.justify-between {
     flex-wrap: wrap;

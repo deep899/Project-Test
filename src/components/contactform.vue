@@ -1,53 +1,21 @@
 <template>
   <div class="contactusform q-pa-md" style="max-width: 400px; margin: auto">
-    <q-form
-      @submit="onSubmit"
-      @reset="onReset"
-      name="myForm"
-      class="q-gutter-md"
-      method="post"
-    >
-      <q-input
-        filled
-        v-model="post.name"
-        label="Full Name"
-        hint="Name and surname"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      />
-      <q-input
-        filled
-        v-model="post.email"
-        label="Enter Your Email address*"
-        lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please Type Your Email',
-          (val) => isValidEmail(val) || 'Please type Valid email address',
-        ]"
-        hint="Enter valid email"
-      ></q-input>
+    <q-form @submit="onSubmit" @reset="onReset" name="myForm" class="q-gutter-md" method="post">
+      <q-input filled v-model="post.name" label="Full Name" hint="Name and surname" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']" />
+      <q-input filled v-model="post.email" label="Enter Your Email address*" lazy-rules :rules="[
+                (val) => (val !== null && val !== '') || 'Please Type Your Email',
+                (val) => isValidEmail(val) || 'Please type Valid email address',
+              ]" hint="Enter valid email"></q-input>
 
-      <q-input
-        filled
-        v-model="post.age"
-        label="Queries"
-        hint="Post your Queries/Questions"
-        lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your queries',
-          (val) => isValidQuery(val) || 'Please type Valid  Query',
-        ]"
-      />
+      <q-input filled v-model="post.age" label="Queries" hint="Post your Queries/Questions" lazy-rules :rules="[
+                (val) => (val !== null && val !== '') || 'Please type your queries',
+                (val) => isValidQuery(val) || 'Please type Valid  Query',
+              ]" />
 
       <div>
         <q-btn label="Submit" type="submit" color="primary" />
-        <q-btn
-          label="Reset"
-          type="reset"
-          color="primary"
-          flat
-          class="q-ml-sm"
-        />
+        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
   </div>
@@ -85,12 +53,12 @@ export default {
           message: "Submitted",
         });
 
-        // let resultfinal = await axios.post("https://api.infinitybrains.com/public/api/show");
+        // let resultfinal = await axios.post("https://uatbackend.infinitybrains.com/public/api/show");
         // this.listdef = resultfinal.data.data;
         // console.log("hello frind this new webasite ");
 
-        //https://api.infinitybrains.com/public/api/
-        //  axios.post("https://api.infinitybrains.com/public/api/contactdetails",this.post).then((result)=>{
+        //https://uatbackend.infinitybrains.com/public/api/
+        //  axios.post("https://uatbackend.infinitybrains.com/public/api/contactdetails",this.post).then((result)=>{
 
         //     console.warn("newlog",result);
 
@@ -98,7 +66,7 @@ export default {
 
         axios
           .post(
-            "https://api.infinitybrains.com/public/api/contactdetails",
+            "https://uatbackend.infinitybrains.com/public/api/contactdetails",
             this.post
           )
           .then((res) => {

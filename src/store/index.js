@@ -4,7 +4,7 @@ import { createStore } from 'vuex';
 const store = createStore({
   state: {
     message: "Hello, From Vuex",
-    backGroundColor:"transparent",
+    backGroundColor:"white",
     imageSrc:`${window.location.origin}/img/Ib_logo.446e007b.png`,
     color1:'#012A71',
     userId:0,
@@ -20,11 +20,22 @@ const store = createStore({
     busgstNumber:'',
     email:'',
     password:'',
-    
-
+    domainName:'',
+    category_id:'',
 
    },
   mutations: {
+    setCategory_id(state , newCategory_id){
+
+          state.category_id = newCategory_id ;
+
+    },
+    setdomainName(state ,newdomainName){
+
+        state.domainName = newdomainName;
+
+    },
+
     setEmail(state , newEmail){
 
         state.email = newEmail;
@@ -72,7 +83,11 @@ const store = createStore({
       
   },
   actions: {},
-  getters: {}
+  getters: {
+
+    getDomainName: (state) => state.domainName,
+
+  }
 });
 
 export default store;
