@@ -22,9 +22,14 @@ const store = createStore({
     password:'',
     domainName:'',
     category_id:'',
-
+    magaswala_color:'',
    },
   mutations: {
+    setMagaswalaColor(state , newMagaswalaColor){
+
+        state.magaswala_color = newMagaswalaColor
+
+    },
     setCategory_id(state , newCategory_id){
 
           state.category_id = newCategory_id ;

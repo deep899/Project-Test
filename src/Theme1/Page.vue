@@ -61,7 +61,7 @@ export default {
       //   });
 
       // You can also perform any data validation here before navigation when remove axsio the enable this line
-
+        localStorage.setItem('b_name' ,this.businessName)
       this.$router.push({ name: 'categories' });
     },
 

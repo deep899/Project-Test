@@ -2,14 +2,15 @@
   <div class="main-Container1" style="margin-top: 0%">
     <div v-if="container1" class="container container1" style="width: 100%; margin-top: 5%;">
       <div class="row w-100">
-        <div v-for="(item, index) in listdef" :key="item.id"
-          style=" margin-bottom: 5%;"
+        <div v-for="(item, index) in listdef" :key="item.id" style=" margin-bottom: 5%;"
           class="maincontainers prodImg col-6 col-sm-12 col-md-6 col-xss-12 w-100   ">
-          <div class="row " v-if="item.name !=='consultant' && item.name !=='Make Your Website App In 10 Minutes' "  style="">
+          <div class="row " v-if="item.name !== 'consultant' && item.name !== 'Make Your Website App In 10 Minutes'"
+            style="">
             <div class="col-4 imgcontainer " style="">
               <router-link :to="item.id">
                 <!-- <img src="./../assets/new2023-background/HPH.jpg" alt=""> -->
-                <img  :src="item.product_image" alt="">
+                <img v-if="item.product_image" :src="item.product_image" alt="product image">
+                <!-- <img else src="./../assets/" alt="product image"> -->
               </router-link>
 
             </div>
@@ -17,119 +18,119 @@
               <br />
 
               <p class="prodDis">{{ item.short_desc }}</p>
-              <div  v-if="index == 2" style="margin-top: 12%; "> <span class="prodAmount"
+              <div v-if="index == 2" style="margin-top: 12%; "> <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">
-                    {{ this.formatNumber(item.price) }}
-                  </span>
-                
-                
-                </div>
-                <div  v-else style="margin-top: 5%; "> <span class="prodAmount"
+                  {{ this.formatNumber(item.price) }}
+                </span>
+
+
+              </div>
+              <div v-else style="margin-top: 5%; "> <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
                     this.formatNumber(5999) }}</span>
-                     <br /><span class="smallDis">Up to 10 employees after that 50
+                <br /><span class="smallDis">Up to 10 employees after that 50
                   RS. Per employee per month.</span>
-                </div>
+              </div>
             </div>
-           
-           
+
+
           </div>
         </div>
-      
+
 
       </div>
       <div class="row">
 
-        <div  class="1 col-6">
-      <div class="row" style="display: flex;align-items: center;justify-content: center;" >
-        
-        <div class="col-8" style="padding-right: 5%;   display: flex; align-items: center;justify-content: center;">
-          <router-link :to="reversedProductList[0].id">
-               
-          <img :src="reversedProductList[0].product_image" alt="">
-          </router-link>
-        </div>
-        </div>
-        <div class="row" style="display: flex;align-items: center;justify-content: center;">
-        <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ reversedProductList[0].name }} </span>
+        <div class="1 col-6">
+          <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+            <div class="col-8" style="padding-right: 5%;   display: flex; align-items: center;justify-content: center;">
+              <router-link to="/10M_website/page">
+
+                <img :src="reversedProductList[0].product_image" alt="">
+              </router-link>
+            </div>
+          </div>
+          <div class="row" style="display: flex;align-items: center;justify-content: center;">
+            <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{
+              reversedProductList[0].name }} </span>
               <br />
               <p class="prodDis">{{ reversedProductList[0].short_desc }}</p>
               <div style="margin-top: 3%;">
                 <div class="row">
                   <div class="col-6">
-                    <span class="prodAmount"
-                  style="text-shadow: 1px 0 0 #012a71;">Price
-                  </span> <br/>
+                    <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
+                    </span> <br />
                     <span class="prodAmount">{{
-                    this.formatNumber(24999) }}</span>
+                      this.formatNumber(24999) }}</span>
                     <br />
                   </div>
                   <div class="col-6">
 
-                    <span class="prodAmount"
-                  style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
-                    this.formatNumber(9999) }}</span> 
+                    <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span
+                      class="prodAmount">{{
+                        this.formatNumber(9999) }}</span>
 
 
-                     
+
 
 
                   </div>
-                 
-                  <span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span>
+
+                  <!-- <span class="smallDis">Up to 10 employees after that 50
+                    RS. Per employee per month.</span> -->
                 </div>
-               
-                  <br />
-                </div>
+
+                <br />
+              </div>
             </div>
-      
-      
-      
-      </div>
-      </div>
 
 
-      
-      <div  class="2  col-6" style="margin-bottom: 5%;"  >
-      <div class="row" style="display: flex;align-items: center;justify-content: center;" >
-        
-        <div class="col-8" style="padding-right: 5%;   display: flex; align-items: center;justify-content: center;">
-          <router-link :to="reversedProductList[1].id">
-          
-          <img :src="reversedProductList[1].product_image" alt="">
-          </router-link>
+
+          </div>
         </div>
-        </div>
-        <div class="row" style="display: flex;align-items: center;justify-content: center;">
-        <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ reversedProductList[1].name }}</span>
+
+
+
+        <div class="2  col-6" style="margin-bottom: 5%;">
+          <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+            <div class="col-8" style="padding-right: 5%;   display: flex; align-items: center;justify-content: center;">
+              <router-link :to="reversedProductList[1].id">
+
+                <img :src="reversedProductList[1].product_image" alt="">
+              </router-link>
+            </div>
+          </div>
+          <div class="row" style="display: flex;align-items: center;justify-content: center;">
+            <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{
+              reversedProductList[1].name }}</span>
               <br />
               <p class="prodDis">{{ reversedProductList[1].short_desc }}</p>
-              
-              <div class="col-6" style="margin-top: 5%;"> 
-                <span class="prodAmount"
-                  style="text-shadow: 1px 0 0 #012a71;">Price
-                  </span>
-                  <br />
-                  <span class="prodAmount">{{
-                    this.formatNumber(reversedProductList[1].price) }}</span>
-                    
-                    
-                    
-                    
-                    <br /><span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span>
+
+              <div class="col-6" style="margin-top: 5%;">
+                <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
+                </span>
+                <br />
+                <span class="prodAmount">{{
+                  this.formatNumber(reversedProductList[1].price) }}</span>
 
 
-                </div>
+
+
+                <!-- <br /><span class="smallDis">Up to 10 employees after that 50
+                  RS. Per employee per month.</span> -->
+
+
+              </div>
             </div>
-      
-      
-      
-      </div>
-      </div>
 
-    </div>
+
+
+          </div>
+        </div>
+
+      </div>
 
     </div>
     <div v-else class="container container2" style="width: 100%; margin-bottom: 30%">
@@ -140,16 +141,16 @@
           <div class="row " style="">
             <div class="col-12" style="display: flex;align-items: center;justify-content: center;">
               <router-link :to="item.id">
-              <img
-                :src="item.product_image" alt="">
+                <img :src="item.product_image" alt="">
               </router-link>
-              </div>
+            </div>
             <div class="col-12" style="padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ item.name }} </span>
               <br />
               <p class="prodDis">{{ item.short_desc }}</p>
               <div style="margin-top: 5%;"> <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">₹ 5,999.00/-</span>
-                <br /><span class="smallDis">Up to 10 employees after that 50 RS. Per employee per month.</span>
+                <br />
+                <span class="smallDis">Up to 10 employees after that 50 RS. Per employee per month.</span>
               </div>
             </div>
           </div>
@@ -219,7 +220,7 @@ export default {
   methods: {
     async getProductList() {
       const resultfinal = await axios.get(
-        "https://api.infinitybrains.com/api/showproduct"
+        "https://uatinfinitybackend.infinitybrains.com/api/showproduct"
       );
       this.listdef = resultfinal.data.data;
     },
@@ -468,22 +469,27 @@ export default {
 
 
 }
-.imgcontainer{
+
+.imgcontainer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.prodImg{
+
+.prodImg {
   display: flex;
 }
 
-  .prodImg:last-child ,.imgcontainer:last-child {
+.prodImg:last-child,
+.imgcontainer:last-child {
 
   display: none;
   margin-bottom: 0%;
 
 }
+
 @media only screen and (max-width: 320px) {
+
   .prodImg:last-child,
   .imgcontainer:last-child {
     /* Override the previous styles for iPhone SE */
@@ -491,6 +497,4 @@ export default {
     display: flex !important;
   }
 }
-
-
 </style>

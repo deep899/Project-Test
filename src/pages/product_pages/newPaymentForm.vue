@@ -24,8 +24,11 @@
             Close
           </button>
 
-          <div v-if="showForm" style="margin-top: 2%" ref="scrollableDiv" >
-            <div class="form-container formcontainer" style="width: 100%; border: 1px solid #c5c5c5">
+          <div v-if="showForm" style="margin-top: 2%">
+            <div
+              class="form-container formcontainer"
+              style="width: 100%; border: 1px solid #c5c5c5"
+            >
               <!-- <span v-if="this.errorForm" sty>{{ this.errorForm }}</span> -->
               <form style="padding: 1.5rem">
                 <span
@@ -276,7 +279,6 @@
               </form>
             </div>
           </div>
-          
           <hr style="margin-top: 3%" />
           <div style="margin-top: 3%"></div>
           <label
@@ -473,6 +475,12 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
           <div class="innerContainer" style="">
+            <div v-if="this.id == 17" class="row" style="margin-bottom: 5%; padding: 10px; border: 1px solid rgb(173, 173, 173);">
+              <div class="col-6" @click="website" :style="{backgroundColor: activeTab === 'web' ? '#2f518a' : 'gray'}" style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">Web-Site</div>
+              <hr style="border: none; border-left: 1px solid #ffffff; height: 25px; margin: 0 10px;" />
+              <div class="col-5" :style="{backgroundColor: activeTab === 'app' ? '#2f518a' : 'gray' }" @click="phone" style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">Application</div>
+            </div>
+
             <div class="plancontainer">
               <span class="title12" style="">BILLING INFORMATION</span>
 
@@ -629,9 +637,9 @@
 
 <div class="overlay-content">
                       <span  v-if="login" class="lableForm" style="display: flex; align-items: center; justify-content: center; line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Welcome Back</span>
-
+                         
                     <div class="form">
-                      <span  v-if="login" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Sign in to Continue</span>
+                      <span  v-if="login" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Sign in to Continue</span> 
 
 
                       <div class="row" v-if="login" >
@@ -641,7 +649,7 @@
                       placeholder="User Name "
                       type="text"
                       id="firstname "
-                      style="width: 100%;"
+                      style="width: 100%;" 
                       class="halfinput form-control"
                       v-model="email1"
                     />
@@ -658,8 +666,8 @@
                     />
                   </div>
 
-
-
+                  
+                
                 </div>
                     </div>
                     <button  @click="loginUser()" v-if="login" style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
@@ -667,14 +675,14 @@
                     </button>
 
                     <a   v-if="login" @click="forgotpassword = true; login = false" style="display: flex; align-items: center; justify-content: center; margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
-                     Forgot Your Password ?
+                     Forgot Your Password ? 
                     </a>
 
-
+                    
                     <span v-if="forgotpassword"  class="lableForm" style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Forgot Password</span>
-
+                         
                     <div v-if="forgotpassword" class="form">
-                      <span   class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Enter Your email for Reset Your password</span>
+                      <span   class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Enter Your email for Reset Your password</span> 
 
 
                       <div class="row"  >
@@ -684,15 +692,15 @@
                       placeholder="Enter Register Email"
                       type="text"
                       id="firstname "
-                      style="width: 100%;"
+                      style="width: 100%;" 
                       class="halfinput form-control"
                       v-model="email1"
                     />
                   </div>
+                 
 
-
-
-
+                  
+                
                 </div>
                     </div>
                     <button @click="forgot()" v-if="forgotpassword"  style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
@@ -700,15 +708,15 @@
                     </button>
 
                     <a  v-if="forgotpassword"  @click="forgotpassword = false; login = true"  style="margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
-                     Back To Login
+                     Back To Login 
                     </a>
 
                     <span  v-if="reset" class="lableForm" style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Reset Password</span>
-
+                         
                          <div class="form">
-                           <span  v-if="reset" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Set a new password</span>
-
-
+                           <span  v-if="reset" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Set a new password</span> 
+     
+     
                            <div class="row" v-if="reset" >
                        <div class="col-md-12 col-sm-12">
                          <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
@@ -716,7 +724,7 @@
                            placeholder="password "
                            type="text"
                            id="firstname "
-                           style="width: 100%;"
+                           style="width: 100%;" 
                            class="halfinput form-control"
                            v-model="password1"
                          />
@@ -733,16 +741,16 @@
                            v-model="confirmpassword"
                          />
                        </div>
-
-
-
+     
+                       
+                     
                      </div>
                          </div>
                          <button  v-if="reset" style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
                            Submit
                          </button>
-
-
+     
+                        
                          <div class="loading-overlay" v-if="emailPopup" >
 
                             <div class="overlay-content">
@@ -753,7 +761,7 @@
                               <div class="col-2">
                               <img src="./../../assets/BackGround/delete.png" @click="emailPopup = false"  style="float: right;   cursor: pointer; height: 5vh; width: 5vh;"/>
                               </div>
-                            </div>
+                            </div>                  
                                 <hr>
                                 <div class="row" >
                        <div class="col-md-12 col-sm-12">
@@ -762,7 +770,7 @@
                            placeholder="password "
                            type="text"
                            id="firstname "
-                           style="width: 100%;"
+                           style="width: 100%;" 
                            class="halfinput form-control"
                            v-model="password1"
                          />
@@ -796,7 +804,7 @@
                                               @input="handleInput(index)"
                                               @paste="handlePaste($event)"
                                               ref="otpInput"
-                                            />
+                                            />      
                                           </div>
                                   </div>
                                   <span v-if="InvalidOtp" style=" display:flex; align-items: center; justify-content: center; color:rgb(223, 68, 68); "> Invalid Otp !! </span>
@@ -813,7 +821,7 @@
 
                             </div>
                             </div>
-
+                         
 
 
                 </div>
@@ -915,7 +923,6 @@
     <input type="hidden" name="hash" id="hash" v-model="hash" size="64" />
   </form>
 </template>
-
 <script>
 import { useStore } from "vuex";
 import axios from "./../../axios";
@@ -940,9 +947,9 @@ export default {
     quicklink,
   },
   setup() {
-
+  
     return {
-
+     
       inception: ref(false),
 
     }
@@ -1004,9 +1011,45 @@ export default {
         city: " ",
       },
       errorForm: ``,
+      activeTab:'web'
     };
   },
   methods: {
+
+    website(){
+      this.activeTab = 'web';
+      this.productData = {
+                  name: "Make Your Website  10 Minutes",
+                  price: "9999",
+                  product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
+                  product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
+                };
+                const productPrice = parseFloat(this.productData.price);
+        const cgstAmount = parseFloat((this.productData.price * 9) / 100);
+        const sgstAmount = parseFloat((this.productData.price * 9) / 100);
+
+        const totalAmount = productPrice + cgstAmount + sgstAmount;
+
+        this.finalAmount1 = Math.ceil(totalAmount);
+    },
+    phone(){
+      this.activeTab = 'app';
+
+      this.productData = {
+                  name: "Make Your App In 10 Minutes",
+                  price: "24999",
+                  product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
+                  product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
+                };
+                const productPrice = parseFloat(this.productData.price);
+        const cgstAmount = parseFloat((this.productData.price * 9) / 100);
+        const sgstAmount = parseFloat((this.productData.price * 9) / 100);
+
+        const totalAmount = productPrice + cgstAmount + sgstAmount;
+
+        this.finalAmount1 = Math.ceil(totalAmount);
+    },
+
     VerifyOtps(){
 
         axios.post('otpverify',{
@@ -1019,8 +1062,8 @@ export default {
           this.emailPopup = false;
           alert("password is change");
         }).catch();
-
-
+                
+             
               },
     handleKeyDown(index, event) {
       // Handles navigation and deletion of digits based on key events
@@ -1047,7 +1090,7 @@ export default {
     forgot()
       {
         axios.post('forgotpassword',{email:this.email1}).then((res)=>{
-
+          
             console.log(res.data.data);
             this.inception = false;
             this.emailPopup = true;
@@ -1056,9 +1099,9 @@ export default {
 
 
       } ,
-
+      
       async loginUser() {
-
+     
       try {
         const response = await axios.post('login', {
           email: this.email1,
@@ -1070,9 +1113,9 @@ export default {
         this.$router.push('/CreativeBuy');
         this.$store.commit("setEmail", this.email1);
         this.$store.commit("setPassword", this.password1);
-
+        
       } catch (error) {
-
+        
         console.error('Error:', error);
       }
     },
@@ -1091,15 +1134,18 @@ export default {
       // Process the selected file as needed
     },
     PayNow() {
-
-
+      
+    
 
 const formData = new FormData();
 
 
 
 // Append the company_logo (image) field
-formData.append('company_logo', fileInput.files[0]);
+      if(this.id == 13){
+        formData.append('company_logo', fileInput.files[0]);
+      }
+   
 formData.append('firstname', this.formData.firstname);
   formData.append('lastname', this.formData.lastname);
   formData.append('businessName', this.formData.businessName);
@@ -1115,20 +1161,32 @@ formData.append('firstname', this.formData.firstname);
   formData.append('country', this.formData.country);
   formData.append('state', this.formData.state);
   formData.append('city', this.formData.city);
+ if(this.productData.id){
+
+  formData.append('domain_name', localStorage.getItem('domainname'));
+      formData.append('color_select', localStorage.getItem('color'));
+      formData.append('sub_category', localStorage.getItem('subcategories_id'));
+      formData.append('category', localStorage.getItem('categories_id'));
 
 
-  axios
-    .post(`payment/${this.productData.id}`, formData, {})
+ } 
+
+  if(this.productData.id  == 17 ){
+
+    axios.post(`add_addthemestore`, formData, {})
     .then((res) => {
       formData.append('user_id',  res.data.data.id);
       formData.append('contact_number', this.formData.phoneno);
       axios
     .post(`creativedata`, formData).then((res)=>{
       console.log(res.data);
-
-      console.log(res.data.data);
+    });
+          console.log(res.data.data);
           // alert(res.data.data.id);
-
+          localStorage.setItem("userId", res.data.data.id);
+          localStorage.setItem("prodId", this.id);
+          localStorage.setItem("amount", this.finalAmount1);
+          localStorage.setItem("userpass", this.formData.password);
           var data =
             this.mkey +
             "|" +
@@ -1150,27 +1208,57 @@ formData.append('firstname', this.formData.firstname);
           console.log("Here Is yourData", data);
 
           document.getElementById("hash").value = hash;
-           document.getElementById("paymentForm").submit();
-
-
-
-    }).catch((e)=>{
-
-      this.errorForm = e.response.data.message;
-          this.showForm = true;
-          window.scrollTo(0, 50);
-
-    });
-    localStorage.setItem("userId", res.data.data.id);
-          localStorage.setItem("prodId", this.id);
-          localStorage.setItem("amount", this.finalAmount1);
-          localStorage.setItem("userpass", this.formData.password);
+          document.getElementById("paymentForm").submit();
         })
         .catch((e) => {
           this.errorForm = e.response.data.message;
           this.showForm = true;
-          window.scrollTo(0, 50);
+        });
 
+      
+  }
+
+  axios
+    .post(`payment/${this.productData.id}`, formData, {})
+    .then((res) => {
+      formData.append('user_id',  res.data.data.id);
+      formData.append('contact_number', this.formData.phoneno);
+      axios
+    .post(`creativedata`, formData).then((res)=>{
+      console.log(res.data);
+    });
+          console.log(res.data.data);
+          // alert(res.data.data.id);
+          localStorage.setItem("userId", res.data.data.id);
+          localStorage.setItem("prodId", this.id);
+          localStorage.setItem("amount", this.finalAmount1);
+          localStorage.setItem("userpass", this.formData.password);
+          var data =
+            this.mkey +
+            "|" +
+            this.txnid +
+            "|" +
+            this.finalAmount1 +
+            "|" +
+            this.productData.name +
+            "|" +
+            this.formData.firstname +
+            "|" +
+            this.formData.email +
+            "|||||||||||";
+          var sha512 = require("js-sha512");
+          var salt = "3oFxUMtWG2";
+          var hash = sha512(data + salt);
+
+          console.log(hash);
+          console.log("Here Is yourData", data);
+
+          document.getElementById("hash").value = hash;
+          document.getElementById("paymentForm").submit();
+        })
+        .catch((e) => {
+          this.errorForm = e.response.data.message;
+          this.showForm = true;
         });
 
       this.$store.commit("setUserId", 21);
@@ -1178,7 +1266,6 @@ formData.append('firstname', this.formData.firstname);
         "setSGST",
         this.calculateCGST(this.productData.price, 9)
       );
-
       this.$store.commit(
         "setCGST",
         this.calculateCGST(this.productData.price, 9)
@@ -1293,7 +1380,7 @@ formData.append('firstname', this.formData.firstname);
           console.log(res.data.data);
           this.Discount = res.data.data;
           this.finalAmount1 = this.calculateCGST(this.subTotal(), 9) * 2 + this.subTotal();
-
+          
         })
         .catch();
     },
@@ -1314,6 +1401,11 @@ formData.append('firstname', this.formData.firstname);
     },
   },
   mounted() {
+    this.formData.domainname =  localStorage.getItem('domainname');
+    this.formData.color =  localStorage.getItem('color');
+    this.formData.subcategories_id =  localStorage.getItem('subcategories_id');
+    this.formData.categories_id =  localStorage.getItem('categories_id');
+    this.formData.businessName =  localStorage.getItem('b_name');
     this.makeid();
     this.id = this.$route.params.id;
 
@@ -1322,7 +1414,21 @@ formData.append('firstname', this.formData.firstname);
     axios
       .get(`/show/${this.id}`)
       .then((res) => {
-        this.productData = res.data.data;
+        if(this.id == 17 ){
+
+          this.productData = {
+                  name: "Make Your Website In 10 Minutes",
+                  price: "9999",
+                  product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
+                  product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
+                };
+
+        }else{
+
+            this.productData = res.data.data;
+
+        }
+        
         // alert( this.productData.price);
 
         const productPrice = parseFloat(this.productData.price);
@@ -1352,13 +1458,12 @@ formData.append('firstname', this.formData.firstname);
       `${window.location.origin}/img/logo_blue.ca47717c.png`
     );
     store.commit("changeColor", "#012A71");
-
+    
 
     // alert("hellow im updated  ");
   },
 };
 </script>
-
 <style scoped>
 .lableForm {
   text-align: left;
@@ -1502,7 +1607,7 @@ input {
   justify-content: center;
   align-items: center;
   opacity: 1; /* Start with 0 opacity to make it invisible initially */
-
+ 
   transition: opacity 0.3s ease-in-out; /* Add transition property for opacity */
 }
 .overlay-content

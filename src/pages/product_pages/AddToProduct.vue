@@ -56,9 +56,10 @@
             color: #ffffff;
             border: none;
             margin-top: 2%;
-          " @click="this.$router.push(`/paymentForm/${products.id}`)">
+          " @click="redirectUrl"    >
           Buy Now
         </button>
+        <!-- @click="this.$router.push(`/paymentForm/${products.id}`)" -->
       </div>
     </div>
 
@@ -289,6 +290,29 @@ export default {
     };
   },
   methods: {
+
+    redirectUrl(){
+        // alert(this.id);
+        let url = null ;
+
+        if(this.id == 8){
+          window.location.href = 'https://ibhrms.com/buy'
+        }
+        else if(this.id == 9){
+          window.location.href= 'https://ibsales.infinitybrains.com/buy'
+        }
+        else if(this.id == 9){
+          window.location.href = 'https://ibsales.infinitybrains.com/buy'
+        }
+        else if(this.id == 14){
+          window.location.href = 'https://app.ibdelight.in/buy'
+        }else{
+          url = this.id
+        }
+
+        return this.$router.push(`/paymentForm/${url}`);
+    },
+
     formatNumber(number) {
       number = number.toString().replace(/\D/g, "");
       let formattedNumber = "";

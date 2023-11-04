@@ -60,6 +60,7 @@ export default {
             this.$store.commit('setdomainName', this.domainName);
             // console.log("cdjsxk",this.$store.getters.getDomainName);
             this.$router.push({ name: 'selectyourtype' });
+            localStorage.setItem('domainname' , this.domainName );
 
       }
       // Make an HTTP POST request to your backend to store the domain name
