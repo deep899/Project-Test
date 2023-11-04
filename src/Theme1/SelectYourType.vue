@@ -28,18 +28,34 @@
 
       </div> -->
 
-      <div style="width: 100%;">
+      <!-- <div style="width: 100%;">
         <table style="margin-bottom: 5%;">
-          <tr style="border: 2px solid black;" v-for="(row, rowIndex) in grid" :key="rowIndex" class="category-cell">
+          <tr v-for="(row, rowIndex) in grid" :key="rowIndex" >
+          <td style="border: 2px solid rgb(210, 210, 210);" >
             <input type="radio" v-model="selectedCategory" :value="row.id" :id="row.id"
                 @change="radioChanged(row)" />
               <label :for="row.id" class="custom-checkbox">{{ row.name }}</label>
-          </tr>
+          </td>
+        </tr>
         </table>
-      </div>
+      </div> -->
+
+      <div>
+        <table>
+  <tr >
+    <td v-for="(row, rowIndex) in grid" :key="rowIndex" style="width: 30vh; margin-bottom: 010%;">
+      <input type="radio" style="" v-model="selectedCategory" :value="row.id" :id="row.id" @change="radioChanged(row)" />
+      <label :for="row.id" class="custom-checkbox">{{ row.name }}</label>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 
-      <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
+
+     <router-link :to="'/10M_website/pickdesign/'+ selectedCategory"  class="btnContinue"  >{{ continueButtonLabel }}</router-link>
+   
     </div>
   </div>
 </template>
@@ -73,7 +89,7 @@ export default {
       selectedCategory: null,
     };
   },
-
+  
   methods: {
     radioChanged(cell) {
       // Handle radio button change here
@@ -81,10 +97,13 @@ export default {
     },
     // Function to navigate to the categories route when the "Continue" button is clicked
     continueToCategories() {
+
+
       if (this.selectedCategory) {
         // Use Vue Router to navigate to the "categories" route with the selected category
         this.$store.commit('setCategory_id', this.selectedCategory);
-        this.$router.push({ name: 'pickdesign' }); // add after the name, params: { category: this.selectedCategory }
+        localStorage.setItem('category_id' ,this.selectedCategory);
+        this.$router.push({ name: 'pickdesign',params: { category: this.selectedCategory } }); // add after the name, params: { category: this.selectedCategory }
       }
       else {
         // Show an error message or alert if no category is selected
@@ -94,7 +113,7 @@ export default {
   },
   mounted(){
 
-    axios.get('admin/catagories').then((res)=>{
+    axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/catagories').then((res)=>{
 
       console.log(res.data.data);
       this.grid = res.data.data

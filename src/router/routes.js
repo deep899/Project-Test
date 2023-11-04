@@ -4,7 +4,7 @@ console.log('hello', subdomain[0]);
 const newSubdomain = 'gaurav'; // Define your custom subdomain here
 // Check if the current subdomain is equal to your custom subdomain
 
-if (subdomain[0] !== newSubdomain) {
+if (subdomain[0] == localStorage.getItem('domainname')) {
   // Replace the subdomain with your custom subdomain
   subdomain[0] = newSubdomain;
   // alert("hell");
@@ -134,7 +134,7 @@ const routes1 = [
     // props: true, // Allows passing route params as props to the component
   },
   {
-    path: "/10M_website/pickdesign",
+    path: "/10M_website/pickdesign/:id",
     name: "pickdesign",
     component: () => import("./../Theme1/PickDesign"),
   },
@@ -145,9 +145,20 @@ const routes1 = [
     props: true,
   },
   {
-    path: "/10M_website/paymentscreen",
+    path: "/10M_website/previewalltheme/paymentscreen/:id",
     name: "paymentscreen",
-    component: () => import("./../Theme1/PaymentScreen"),
+    component: () => import("pages/product_pages/newPaymentForm.vue"),
+  },
+  
+  {
+    path: "/Magaswala",
+    name: "theam2",
+    component: () => import("./../../src/Theme2/Magaswala.vue"),
+  },
+  {
+    path: "/textile",
+    name: "theam2",
+    component: () => import("./../../src/Theme2/Textile.vue"),
   },
 ];
 

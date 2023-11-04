@@ -153,7 +153,16 @@
 
         <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
           <div class="innerContainer" style="">
+            <div class="row" style=" margin-bottom: 5%; padding:10px;background-color: #2f518a;color: white; "> 
+                <div class="col-6" @click="website()" style="cursor: pointer;  display: flex;align-items: center;justify-content: center;" >WEB-Site</div><hr style=" border: none; /* Remove the default horizontal line */
+  border-left: 1px solid #ffffff; /* Add a 1px solid black left border */
+  height: 25px; /* Set the desired height of the vertical line */
+  margin: 0 10px;"/>
+                <div class="col-5" @click="phone1()" style="cursor: pointer;  display: flex;align-items: center;justify-content: center;">Application </div>
+              </div>
             <div class="plancontainer">
+              
+
               <span class="title12" style="">BILLING INFORMATION</span>
 
               <div class="row">
@@ -168,9 +177,9 @@
 
                 <hr style="width: 100%; border: 1px solid #7070709d" />
 
-                <div class="col-12" style="margin-top: 4%">
+                <!-- <div class="col-12" style="margin-top: 4%">
                   <div style="border: 1px dashed #707070; opacity: 1;,   "></div>
-                </div>
+                </div> -->
 
                 <div class="col-12" style="margin-top: 2%">
                   <div class="disc" style="float: left; color: #101010">
@@ -180,7 +189,7 @@
                     {{ this.subTotal() }}.00
                   </div>
                   <div class="disc" style="float: right; color: #101010" v-else>
-                    {{ this.productData.price }}.00
+                    {{ this.price }}.00
                   </div>
                 </div>
 
@@ -192,7 +201,7 @@
                     {{ this.calculateCGST(this.subTotal(), 9) }}
                   </div>
                   <div v-else class="disc" style="float: right">
-                    {{ this.calculateCGST(this.productData.price, 9) }}
+                    {{ this.calculateCGST(this.price, 9) }}
                   </div>
                 </div>
 
@@ -204,7 +213,7 @@
                     {{ this.calculateCGST(this.subTotal(), 9) }}
                   </div>
                   <div v-else class="disc" style="float: right">
-                    {{ this.calculateCGST(this.productData.price, 9) }}
+                    {{ this.calculateCGST(this.price, 9) }}
                   </div>
                 </div>
                 <div class="col-12" style="margin-top: 5%">
@@ -214,7 +223,7 @@
                 <div class="col-12" style="margin-top: 5%">
                   <div class="disc" style="float: left">Total Payment:</div>
                   <div class="disc" style="float: right">
-                    {{ parseFloat(finalAmount1) }}
+                    {{ this.total_amount }}
                   </div>
                 </div>
                 <div class="col-12" style="margin-top: 8%">
@@ -300,6 +309,7 @@ export default {
       state: " ",
       city: " ",
       totalList: 0,
+      price:0,
       countries: [],
       states: [],
       cities: [],
@@ -353,6 +363,21 @@ export default {
     };
   },
   methods: {
+    website(){
+
+      this.productData.price = 24999;
+
+      this.price = 24999;
+    
+
+    },
+    
+    phone1(){
+      
+     this.price = 9999
+
+    },
+
     VerifyOtps() {
 
       axios.post('otpverify', {
@@ -664,6 +689,14 @@ export default {
 
     this.user_id = this.$route.params.user_id;
     this.getData();
+    this.price = 24999;
+   
+    let productPrice = parseFloat(this.productData.price);
+        let cgstAmount = parseFloat((this.price * 9) / 100);
+        let sgstAmount = parseFloat((this.price * 9) / 100);
+        this.total_price = this.price   + cgstAmount + sgstAmount;
+       
+    this.total_amount = this.price + cgstAmount + sgstAmount;
     axios
       .get(`/show/${this.id}`)
       .then((res) => {

@@ -19,16 +19,16 @@
 
       <!-- Displayed Cards -->
       <div class="card-container">
-        <div v-for="(card, index) in visibleCards" :key="index" class="card card-small-mobile"
-          @click="handleCardClick(card.themeName)">
+        <div v-for="(card, index) in cardData" :key="index" class="card card-small-mobile"
+          @click="handleCardClick(card.sub_category_name ,card.subcategories_id )">
           <div class="card-item-img">
             <!-- Update the image source -->
-            <img :src="require(`./../../src/Theme1/10_Min_assets/img/${card.image}`)" alt="Card Image"
+            <img :src="card.subcategories_template" alt="Card Image"
               class="card-image" />
           </div>
           <div class="card-item-heading">
             <!-- Display the card heading -->
-            <h5>{{ card.heading }}</h5>
+            <h5>{{ card.sub_category_name }}</h5>
           </div>
         </div>
       </div>
@@ -66,58 +66,16 @@ export default {
         { id: 7, label: "Art & Design" },
         { id: 8, label: "Restaurant" },
       ],
-
-      cardData: [
-        {
-          image: "card1.png",
-          heading: "Miyani's Electronics",
-          themeName: 'MiyaniElectronicsTheme',
-        },
-        {
-          image: "card2.png",
-          heading: "Hustbee",
-          themeName: 'HustbeeTheme',
-        },
-        {
-          image: "card3.png",
-          heading: "Ecshop",
-          themeName: 'EcshopTheme',
-        },
-        {
-          image: "card1.png",
-          heading: "Miyani's Electronics",
-          themeName: 'MiyaniElectronicsTheme',
-        },
-        {
-          image: "card2.png",
-          heading: "Hustbee",
-          themeName: 'HustbeeTheme',
-        },
-        {
-          image: "card3.png",
-          heading: "Ecshop",
-          themeName: 'EcshopTheme',
-        },
-        {
-          image: "card1.png",
-          heading: "Miyani's Electronics",
-          themeName: 'MiyaniElectronicsTheme',
-        },
-        {
-          image: "card2.png",
-          heading: "Hustbee",
-          themeName: 'HustbeeTheme',
-        },
-        {
-          image: "card3.png",
-          heading: "Ecshop",
-          themeName: 'EcshopTheme',
-        },
-      ],
+      category_id:0,
+      cardData: [],
       // Add the following properties for pagination
       currentPage: 0, // Track the current page
       pageSize: 9, // Number of cards per page
     };
+  },
+  created() {
+    // Access the category data passed from the previous page
+    this.category_id = this.$route.params.category_id;
   },
   computed: {
     // Add a computed property for the total number of pages
@@ -134,9 +92,11 @@ export default {
 
     mounted(){
 
-      axios.get('admin/subcatagories/19').then((res)=>{
+      axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/subcatagories/'+this.$route.params.id).then((res)=>{
 
-        console.log(res.data.data);
+        console.log(res.data.data.subcategories);
+
+        this.cardData = res.data.data.subcategories
 
 
       }).catch();
@@ -162,8 +122,11 @@ export default {
         this.currentPage--;
       }
     },
-    handleCardClick(themeName) {
-
+    handleCardClick(themeName ,id) {
+      localStorage.setItem('subcategory_name', themeName);
+      localStorage.setItem('subcategories_id', id);
+      localStorage.setItem('categories_id', this.$route.params.id);
+      
       // Now you have the themeNumber, and you can use it as needed
       console.log(`Card with  ${themeName} clicked.`);
 

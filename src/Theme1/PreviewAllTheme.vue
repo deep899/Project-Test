@@ -25,7 +25,7 @@
         <!-- Left Side: Color Picker and Image Uploader -->
         <div class="left-side" :style="{ width: responsiveLeftWidth }">
           <!-- Image Uploader -->
-          <div class="upload-image-container">
+          <!-- <div class="upload-image-container">
             <h6 class="heading-6">Upload Company Logo</h6>
             <label class="upload-image">
               <div class="upload-icon">
@@ -34,15 +34,39 @@
               <p>Drag and drop file here</p>
               <input type="file" @change="handleImageUpload" accept="image/*" />
             </label>
-          </div>
+          </div> -->
 
           <!-- Display the selected image -->
           <!-- Color Picker -->
           <div class="color-picker-images">
             <h6 class="heading-6">Selecte Theme</h6>
-            <div class="color-picker-row">
+            <div>
+              <div class="color-selector">
+                    <label
+                      v-for="(color, index) in colorArray"
+                      :key="index"
+                      :style="{ backgroundColor: color.colorselect, padding: '1.2vh', paddingLeft: '2vh', paddingRight: '2vh' }"
+                    >
+                      <input
+                        type="radio"
+                        :id="'color' + index"
+                        v-model="selectedColor"
+                        @change="colorChange(color.colorselect)"
+                        :value="color"
+                      />
+                    </label>
+                  </div>
+
+                <!-- <div class="selected-color">
+                  Selected Color: <span :style="{ backgroundColor: selectedColor }"></span>
+                </div> -->
+              </div>
+              </div>
+            <!-- <div class="color-picker-row">
               <img :src="colorImg1" alt="Selected Color" />
-              <img :src="colorImg2" alt="Selected Color" />
+
+              <label for=""  style="background-color: black; padding: 1.2vh; padding-left: 2.5vh;">&nbsp;</label> -->
+              <!-- <img :src="colorImg2" alt="Selected Color" />
               <img :src="colorImg3" alt="Selected Color" />
               <img :src="colorImg4" alt="Selected Color" />
               <img :src="colorImg5" alt="Selected Color" />
@@ -54,9 +78,9 @@
               <img :src="colorImg9" alt="Selected Color" />
               <img :src="colorImg10" alt="Selected Color" />
               <img :src="colorImg11" alt="Selected Color" />
-              <img :src="colorImg12" alt="Selected Color" />
-            </div>
-          </div>
+              <img :src="colorImg12" alt="Selected Color" /> -->
+            <!-- </div>
+          </div> -->
 
           <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
 
@@ -113,7 +137,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faMobileAlt, faTabletAlt, faLaptop } from '@fortawesome/free-solid-svg-icons';
-
+import axios from './../axios'
 import Home from './Home.vue';
 
 library.add(faMobileAlt, faTabletAlt, faLaptop);
@@ -132,6 +156,8 @@ export default {
       backgroundImageUrl: require('./../../src/Theme1/10_Min_assets/img/wave2.png'), // Set the background image dynamically
       selectedColor: '#ffffff', // Store the selected color
       selectedImage: null,
+      colorArray: ['black', 'red', 'blue', 'green', 'orange'],
+      selectedColor: '',
       UploadImage: require('./../../src/Theme1/10_Min_assets/img/download.png'),
       colorImg1: require('./../../src/Theme1/10_Min_assets/img/01 (1).png'),
       colorImg2: require('./../../src/Theme1/10_Min_assets/img/01 (2).png'),
@@ -176,6 +202,15 @@ export default {
   },
 
   methods: {
+
+    colorChange(color){
+
+      // alert(color);
+      localStorage.setItem('color', color);
+      this.$store.commit('setMagaswalaColor' ,color);
+
+    },
+
     // Handle image upload and set the selectedImage data property
     handleImageUpload(event) {
       const file = event.target.files[0];
@@ -195,7 +230,7 @@ export default {
 
     continueToCategories() {
 
-      this.$router.push({ name: 'paymentscreen' });
+      this.$router.push('/10M_website/previewalltheme/paymentscreen/17');
     },
   },
 
@@ -205,10 +240,19 @@ export default {
     // this.loadThemeContent(themeName);
     try {
       const themeName = this.$route.params.themeName;
+      // localStorage.setItem('theme_name' , themeName  );
       // Dynamically import the theme component based on the themeName
       const themeModule = await import(`./../../src/Theme2/${themeName}.vue`);
       // Set the imported component as a data property
       this.themeComponent = themeModule.default;
+
+      axios.get('https://uatinfinitybackend.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=19&subcatagories_id=25').then((res)=>{
+
+        this.colorArray = res.data.colorData;
+        console.log(res.data.colorData);
+
+      })
+
     } catch (error) {
       // Handle errors (e.g., theme not found)
       console.error(`Error loading theme: ${error}`);
@@ -411,5 +455,17 @@ export default {
 .card img {
   max-width: 100%;
   height: auto;
+}
+
+.color-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected-color span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
 }
 </style>
