@@ -3,206 +3,107 @@
     <div class="container" style="">
       <div class="row" style="">
         <div class="col-lg-7 col-md-7 col-sm-12 nubu" style="">
-          <label
-            @click="toggleForm"
-            class="lableForm"
-            style="line-height: 100%; font-size: 3vh"
-            >1. FILL THE DETAILS :</label
-          >
-          <button
-            @click="toggleForm"
-            v-if="showForm"
-            style="
+          <label @click="toggleForm" class="lableForm" style="line-height: 100%; font-size: 3vh">1. FILL THE DETAILS
+            :</label>
+          <button @click="toggleForm" v-if="showForm" style="
               font-size: 1rem;
               background-color: transparent;
               color: red;
               border: none;
               cursor: pointer;
               float: right;
-            "
-          >
+            ">
             Close
           </button>
 
           <div v-if="showForm" style="margin-top: 2%">
-            <div
-              class="form-container formcontainer"
-              style="width: 100%; border: 1px solid #c5c5c5"
-            >
+            <div class="form-container formcontainer" style="width: 100%; border: 1px solid #c5c5c5">
               <!-- <span v-if="this.errorForm" sty>{{ this.errorForm }}</span> -->
               <form style="padding: 1.5rem">
-                <span
-                  style="
+                <span style="
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     font-size: 1.2rem;
                     color: rgb(255, 4, 4);
                     width: 100%;
-                  "
-                  >{{ this.errorForm }}</span
-                >
+                  ">{{ this.errorForm }}</span>
 
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
                     <label class="lableForm" for="firstname ">First Name</label>
-                    <input
-                      style=""
-                      placeholder="firstname "
-                      type="text"
-                      id="firstname "
-                      class="halfinput form-control"
-                      v-model="formData.firstname"
-                    />
+                    <input style="" placeholder="firstname " type="text" id="firstname " class="halfinput form-control"
+                      v-model="formData.firstname" />
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <label class="lableForm" for="lastname ">Last Name</label>
-                    <input
-                      style="width: 100%"
-                      placeholder="lastname "
-                      type="text"
-                      id="lastname "
-                      class="form-control"
-                      v-model="formData.lastname"
-                    />
+                    <input style="width: 100%" placeholder="lastname " type="text" id="lastname " class="form-control"
+                      v-model="formData.lastname" />
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-12">
-                    <label class="lableForm" for="businessName"
-                      >Business Name</label
-                    >
-                    <input
-                      style="width: 100%"
-                      placeholder="BusinessName"
-                      type="text"
-                      id="businessName"
-                      class="form-control"
-                      v-model="formData.businessName"
-                    />
+                    <label class="lableForm" for="businessName">Business Name</label>
+                    <input style="width: 100%" placeholder="BusinessName" type="text" id="businessName"
+                      class="form-control" v-model="formData.businessName" />
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                  <label class="lableForm" for="businessGst"
-                    >Business GST Number</label
-                  >
-                  <input
-                    style="width: 100%"
-                    placeholder="Business GST Number"
-                    type="text"
-                    id="businessGst"
-                    class="form-control"
-                    v-model="formData.businessGst"
-                  />
+                  <label class="lableForm" for="businessGst">Business GST Number</label>
+                  <input style="width: 100%" placeholder="Business GST Number" type="text" id="businessGst"
+                    class="form-control" v-model="formData.businessGst" />
                 </div>
 
                 <div class="row">
                   <div class="col-md-12">
-                    <label class="lableForm" for="salesmanName"
-                      >Salesman Code</label
-                    >
-                    <input
-                      style="width: 100%"
-                      placeholder="Salesman Code"
-                      type="text"
-                      id="salesmanName"
-                      class="form-control"
-                      v-model="formData.salesmanName"
-                    />
+                    <label class="lableForm" for="salesmanName">Salesman Code</label>
+                    <input style="width: 100%" placeholder="Salesman Code" type="text" id="salesmanName"
+                      class="form-control" v-model="formData.salesmanName" />
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <label class="lableForm" for="emailPhoneNumber">Email </label>
-                  <input
-                    style="width: 100%"
-                    placeholder="Email"
-                    type="email"
-                    id="emailPhoneNumber"
-                    class="form-control"
-                    v-model="formData.email"
-                  />
+                  <input style="width: 100%" placeholder="Email" type="email" id="emailPhoneNumber" class="form-control"
+                    v-model="formData.email" />
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <label class="lableForm" for="emailPhoneNumber">website </label>
-                  <input
-                    style="width: 100%"
-                    placeholder="website Link"
-                    type="email"
-                    id="emailPhoneNumber"
-                    class="form-control"
-                    v-model="formData.website"
-                  />
+                  <input style="width: 100%" placeholder="website Link" type="email" id="emailPhoneNumber"
+                    class="form-control" v-model="formData.website" />
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <label class="lableForm" for="emailPhoneNumber">Address </label>
-                  <input
-                    style="width: 100%"
-                    placeholder="Address"
-                    type="email"
-                    id="emailPhoneNumber"
-                    class="form-control"
-                    v-model="formData.address"
-                  />
+                  <input style="width: 100%" placeholder="Address" type="email" id="emailPhoneNumber" class="form-control"
+                    v-model="formData.address" />
                 </div>
                 <div class="col-md-6 col-sm-12" v-if="this.id == 13">
                   <label class="lableForm" for="emailPhoneNumber">password </label>
-                  <input
-                    style="width: 100%"
-                    placeholder="Password"
-                    type="email"
-                    id="emailPhoneNumber"
-                    class="form-control"
-                    v-model="formData.password"
-                  />
+                  <input style="width: 100%" placeholder="Password" type="email" id="emailPhoneNumber"
+                    class="form-control" v-model="formData.password" />
                 </div>
                 <div class="col-md-6 col-sm-12" v-if="this.id == 13">
-                  <label class="lableForm" for="CompanyLogo"
-                    >Company Logo</label
-                  >
-                  <input
-                    type="file"
-                    id="fileInput"
-                    style="width: 100%"
-                    @change="handleFileChange"
-                  />
+                  <label class="lableForm" for="CompanyLogo">Company Logo</label>
+                  <input type="file" id="fileInput" style="width: 100%" @change="handleFileChange" />
                 </div>
                 <div class="col-md-6 col-sm-12">
-                  <label class="lableForm" for="phone Number"
-                    >Phone Number
+                  <label class="lableForm" for="phone Number">Phone Number
                   </label>
-                  <input
-                    style="width: 100%"
-                    placeholder="Phone Number"
-                    type="text"
-                    id="emailPhoneNumber"
-                    class="form-control"
-                    v-model="formData.phoneno"
-                  />
+                  <input style="width: 100%" placeholder="Phone Number" type="text" id="emailPhoneNumber"
+                    class="form-control" v-model="formData.phoneno" />
                 </div>
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
                     <label for="country" class="lableForm">Country</label>
                     <div class="select-wrapper">
-                      <select
-                        id="country"
-                        class="form-control halfinput"
-                        style="
+                      <select id="country" class="form-control halfinput" style="
                           padding-top: 2%;
                           padding-bottom: 2%;
                           font-size: 1rem;
-                        "
-                        v-model="formData.country"
-                        @change="getState()"
-                        required
-                      >
+                        " v-model="formData.country" @change="getState()" required>
                         <option value="">Select Country</option>
 
-                        <option
-                          v-for="country in countries"
-                          :key="country.id"
-                          :value="country.id"
-                        >
+                        <option v-for="country in countries" :key="country.id" :value="country.id">
                           {{ country.name }}
                         </option>
                       </select>
@@ -211,26 +112,15 @@
 
                   <div class="col-md-6 col-sm-12">
                     <label for="state" class="lableForm">State</label>
-                    <select
-                      id="state"
-                      class="form-control"
-                      style="
+                    <select id="state" class="form-control" style="
                         width: 100%;
                         padding-top: 2%;
                         padding-bottom: 2%;
                         font-size: 1rem;
-                      "
-                      v-model="formData.state"
-                      @change="getCity()"
-                      required
-                    >
+                      " v-model="formData.state" @change="getCity()" required>
                       <option value="">Select State</option>
 
-                      <option
-                        v-for="state in states"
-                        :key="state.id"
-                        :value="state.id"
-                      >
+                      <option v-for="state in states" :key="state.id" :value="state.id">
                         {{ state.name }}
                       </option>
                     </select>
@@ -240,22 +130,13 @@
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
                     <label for="city" class="lableForm">City</label>
-                    <select
-                      id="city"
-                      style="
+                    <select id="city" style="
                         padding-top: 2%;
                         padding-bottom: 2%;
                         font-size: 1rem;
-                      "
-                      class="form-control halfinput"
-                      v-model="this.formData.city"
-                    >
+                      " class="form-control halfinput" v-model="this.formData.city">
                       <option value="" selected>Select City</option>
-                      <option
-                        v-for="city in cities"
-                        :key="city.id"
-                        :value="city.id"
-                      >
+                      <option v-for="city in cities" :key="city.id" :value="city.id">
                         {{ city.name }}
                       </option>
                     </select>
@@ -263,16 +144,9 @@
 
                   <div class="col-md-6 col-sm-12">
                     <div class="col-md-6 col-sm-12">
-                      <label class="lableForm" for="pincode">Pincode</label
-                      ><br />
-                      <input
-                        style="width: 100%"
-                        placeholder="Pincode"
-                        type="text"
-                        id="pincode"
-                        class="form-control"
-                        v-model="formData.pincode"
-                      />
+                      <label class="lableForm" for="pincode">Pincode</label><br />
+                      <input style="width: 100%" placeholder="Pincode" type="text" id="pincode" class="form-control"
+                        v-model="formData.pincode" />
                     </div>
                   </div>
                 </div>
@@ -281,93 +155,66 @@
           </div>
           <hr style="margin-top: 3%" />
           <div style="margin-top: 3%"></div>
-          <label
-            @click="this.showForm2 = true"
-            class="lableForm"
-            style="line-height: 100%; font-size: 3vh"
-            >2. OFFERS :
+          <label @click="this.showForm2 = true" class="lableForm" style="line-height: 100%; font-size: 3vh">2. OFFERS :
           </label>
-          <button
-            v-if="showForm2"
-            @click="this.showForm2 = false"
-            style="
+          <button v-if="showForm2" @click="this.showForm2 = false" style="
               font-size: 1rem;
               background-color: transparent;
               color: red;
               border: none;
               cursor: pointer;
               float: right;
-            "
-          >
+            ">
             Close
           </button>
 
           <div v-if="showForm2">
-            <div
-              style="padding: 2rem; border: 1px solid #c5c5c5; margin-top: 2%"
-            >
-              <div
-                class="row p-5"
-                v-if="this.discount"
-                style="
+            <div style="padding: 2rem; border: 1px solid #c5c5c5; margin-top: 2%">
+              <div class="row p-5" v-if="this.discount" style="
                   position: relative;
                   z-index: 0;
                   margin-bottom: 20px;
                   padding-left: 15px;
                   padding-right: 15px;
-                "
-              >
-                <div
-                  class="col-sm-6 p-5"
-                  style="
+                ">
+                <div class="col-sm-6 p-5" style="
                     position: relative;
                     z-index: 1;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                  "
-                >
-                  <span
-                    style="
+                  ">
+                  <span style="
                       color: #ffffff;
                       font-weight: 500 normal;
                       font-size: 16.5vmin;
-                    "
-                    >{{
+                    ">{{
                       parseInt(
                         this.calculateDiscountPercentage(
                           this.productData.price,
                           this.discount
                         )
                       )
-                    }}%</span
-                  >
+                    }}%</span>
                 </div>
-                <div
-                  class="col-sm-6 p-5"
-                  style="
+                <div class="col-sm-6 p-5" style="
                     position: relative;
                     z-index: 1;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                  "
-                >
-                  <span
-                    style="
+                  ">
+                  <span style="
                       color: #ffffffde;
                       font-size: 1.3rem;
                       margin-bottom: 2%;
-                    "
-                    >Your First Purchase.
+                    ">Your First Purchase.
                   </span>
                   <hr style="width: 70%" />
                   <span style="color: #ffffff; font-size: 3rem">Discount</span>
                 </div>
-                <img
-                  src="./../../assets/BackGround/per.png"
-                  style="
+                <img src="./../../assets/BackGround/per.png" style="
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -375,28 +222,14 @@
                     height: 100%;
                     object-fit: cover;
                     z-index: 0;
-                  "
-                  alt=""
-                />
+                  " alt="" />
               </div>
 
-              <span
-                for="title"
-                class="lableForm"
-                style="line-height: 2rem; margin-top: 50px"
-                >Enter Coupon Code</span
-              >
+              <span for="title" class="lableForm" style="line-height: 2rem; margin-top: 50px">Enter Coupon Code</span>
               <br />
-              <input
-                style=""
-                placeholder="Enter Coupon Code"
-                type="text"
-                class="halfinput couponInput form-control"
-                v-model="couponSearch"
-              />
-              <button
-                @click="applyeCouponCode()"
-                style="
+              <input style="" placeholder="Enter Coupon Code" type="text" class="halfinput couponInput form-control"
+                v-model="couponSearch" />
+              <button @click="applyeCouponCode()" style="
                   border: none;
                   color: #ffffff;
                   cursor: pointer;
@@ -405,32 +238,23 @@
                   background-color: #2f518a;
                   padding: 0.8% 5%;
                   margin-left: 5%;
-                "
-              >
+                ">
                 APPLY
               </button>
 
-              <div
-                style="
+              <div style="
                   background-color: #e8f0ff;
                   margin-top: 5%;
                   padding-top: 1%;
                   padding-bottom: 1%;
                   padding-left: 3%;
                   height: fit-content;
-                "
-              >
-                <span style="color: #2a4c86"
-                  >OR SELECTED AN OFFER ({{ this.totalList }})</span
-                >
+                ">
+                <span style="color: #2a4c86">OR SELECTED AN OFFER ({{ this.totalList }})</span>
               </div>
 
               <div class="outerDiv" style="">
-                <div
-                  class="ApplyCouponCodeContainer"
-                  v-for="item in couponlist"
-                  v-bind:key="item.id"
-                >
+                <div class="ApplyCouponCodeContainer" v-for="item in couponlist" v-bind:key="item.id">
                   <div class="parDiv">
                     <span>
                       {{
@@ -445,18 +269,12 @@
                   </div>
                   <div class="container1">
                     <span class="title">IB Offers</span>
-                    <button
-                      class="applyButton"
-                      @click="appliedCouponed(item.id)"
-                    >
+                    <button class="applyButton" @click="appliedCouponed(item.id)">
                       APPLY
                     </button>
                     <br />
-                    <span class="couponCode"
-                      >Coupon Code: "{{ item.code }}"</span
-                    ><br />
-                    <span class="couponDescription"
-                      >Use this coupon code and get
+                    <span class="couponCode">Coupon Code: "{{ item.code }}"</span><br />
+                    <span class="couponDescription">Use this coupon code and get
                       {{
                         parseInt(
                           this.calculateDiscountPercentage(
@@ -464,8 +282,7 @@
                             item.price
                           )
                         )
-                      }}% off on the product.</span
-                    >
+                      }}% off on the product.</span>
                   </div>
                 </div>
               </div>
@@ -475,10 +292,15 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
           <div class="innerContainer" style="">
-            <div v-if="this.id == 17" class="row" style="margin-bottom: 5%; padding: 10px; border: 1px solid rgb(173, 173, 173);">
-              <div class="col-6" @click="website" :style="{backgroundColor: activeTab === 'web' ? '#2f518a' : 'gray'}" style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">Web-Site</div>
+            <div v-if="this.id == 17 ||  this.id == 6 " class="row"
+              style="margin-bottom: 5%; padding: 10px; border: 1px solid rgb(173, 173, 173);">
+              <div class="col-6" @click="website" :style="{ backgroundColor: activeTab === 'web' ? '#2f518a' : 'gray' }"
+                style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                Web-Site</div>
               <hr style="border: none; border-left: 1px solid #ffffff; height: 25px; margin: 0 10px;" />
-              <div class="col-5" :style="{backgroundColor: activeTab === 'app' ? '#2f518a' : 'gray' }" @click="phone" style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">Application</div>
+              <div class="col-5" :style="{ backgroundColor: activeTab === 'app' ? '#2f518a' : 'gray' }" @click="phone"
+                style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                Application</div>
             </div>
 
             <div class="plancontainer">
@@ -508,30 +330,20 @@
                   <div class="disc" style="float: left; color: #3d4141">
                     Coupon Discount
                   </div>
-                  <div
-                    class="disc"
-                    style="float: right"
-                    v-if="this.Discount.discount"
-                  >
+                  <div class="disc" style="float: right" v-if="this.Discount.discount">
                     {{ this.Discount.discount }}.00
                   </div>
                   <div class="disc" style="float: right" v-else>00.0</div>
                 </div>
                 <div class="col-12" style="margin-top: 4%">
-                  <div
-                    style="border: 1px dashed #707070; opacity: 1;,   "
-                  ></div>
+                  <div style="border: 1px dashed #707070; opacity: 1;,   "></div>
                 </div>
 
                 <div class="col-12" style="margin-top: 2%">
                   <div class="disc" style="float: left; color: #101010">
                     Sub Total
                   </div>
-                  <div
-                    class="disc"
-                    style="float: right; color: #101010"
-                    v-if="this.Discount.discount"
-                  >
+                  <div class="disc" style="float: right; color: #101010" v-if="this.Discount.discount">
                     {{ this.subTotal() }}.00
                   </div>
                   <div class="disc" style="float: right; color: #101010" v-else>
@@ -540,15 +352,12 @@
                 </div>
 
                 <div class="col-12" style="margin-top: 2%">
-                  <div
-                    class=""
-                    style="
+                  <div class="" style="
                       font-size: 2.5vh;
                       text-decoration: underline;
                       float: left;
                       color: #101010;
-                    "
-                  >
+                    ">
                     Gst:
                   </div>
                   <!-- <div class="disc" style="float: right; color: #101010;">{{ this.formatNumber(this.PaymentDetails.Grossamount) }}.00</div> -->
@@ -558,11 +367,7 @@
                   <div class="disc" style="color: #3d4141; float: left">
                     C-GST(9%)
                   </div>
-                  <div
-                    v-if="this.Discount.discount"
-                    class="disc"
-                    style="float: right"
-                  >
+                  <div v-if="this.Discount.discount" class="disc" style="float: right">
                     {{ this.calculateCGST(this.subTotal(), 9) }}
                   </div>
                   <div v-else class="disc" style="float: right">
@@ -573,11 +378,7 @@
                   <div class="disc" style="color: #3d4141; float: left">
                     S-GST(9%)
                   </div>
-                  <div
-                    v-if="this.Discount.discount"
-                    class="disc"
-                    style="float: right"
-                  >
+                  <div v-if="this.Discount.discount" class="disc" style="float: right">
                     {{ this.calculateCGST(this.subTotal(), 9) }}
                   </div>
                   <div v-else class="disc" style="float: right">
@@ -589,17 +390,13 @@
                 </div>
                 <div class="col-12" style="margin-top: 5%">
                   <div class="disc" style="float: left">Total Payment:</div>
-                  <div class="disc"  style="float: right">
-                    {{ parseFloat(finalAmount1)}}
+                  <div class="disc" style="float: right">
+                    {{ parseFloat(finalAmount1) }}
                   </div>
                 </div>
                 <div class="col-12" style="margin-top: 8%">
-                  <button
-                    class="PaynowButton"
-                    :class="{ disabled: PaynowVisible }"
-                    :disabled="PaynowVisible"
-                    @click="PayNow()"
-                    style="
+                  <button class="PaynowButton" :class="{ disabled: PaynowVisible }" :disabled="PaynowVisible"
+                    @click="PayNow()" style="
                       background-color: #2f518a;
                       color: #ffffff;
                       border: transparent;
@@ -608,15 +405,10 @@
                       padding-bottom: 10px;
                       width: 100%;
                       font-weight: 600;
-                    "
-                  >
+                    ">
                     PAY NOW
                   </button>
-                  <button
-                    v-if="13 == this.$route.params.id"
-                    class="PaynowButton"
-                    @click="inception = true"
-                    style="
+                  <button v-if="13 == this.$route.params.id" class="PaynowButton" @click="inception = true" style="
                       margin-top: 5%;
                       background-color: transparent;
                       color: #2f518a;
@@ -626,205 +418,177 @@
                       padding-bottom: 10px;
                       width: 100%;
                       font-weight: 600;
-                    "
-                  >
+                    ">
                     ALREADY PURCHASED ?
                   </button>
                 </div>
                 <!-- <q-dialog v-model="inception" >
                   <q-card style=" padding: 15px; width: 55vh; max-width: 100%;  display: flex;align-items: center;justify-content: center;flex-direction: column; "> -->
-                    <div class="loading-overlay" @click.self="inception = false" v-if="inception" >
+                <div class="loading-overlay" @click.self="inception = false" v-if="inception">
 
-<div class="overlay-content">
-                      <span  v-if="login" class="lableForm" style="display: flex; align-items: center; justify-content: center; line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Welcome Back</span>
-                         
+                  <div class="overlay-content">
+                    <span v-if="login" class="lableForm"
+                      style="display: flex; align-items: center; justify-content: center; line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;">Welcome
+                      Back</span>
+
                     <div class="form">
-                      <span  v-if="login" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Sign in to Continue</span> 
+                      <span v-if="login" class="lableForm"
+                        style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;">Sign
+                        in to Continue</span>
 
 
-                      <div class="row" v-if="login" >
-                  <div class="col-md-12 col-sm-12">
-                    <label class="lableForm" style="line-height: 2rem;" for="firstname ">User Name</label>
-                    <input
-                      placeholder="User Name "
-                      type="text"
-                      id="firstname "
-                      style="width: 100%;" 
-                      class="halfinput form-control"
-                      v-model="email1"
-                    />
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                    <label class="lableForm" style="line-height: 2rem;" for="lastname ">Password</label>
-                    <input
-                      style="width: 100%"
-                      placeholder="Password "
-                      type="password"
-                      id="lastname "
-                      class="form-control"
-                      v-model="password1"
-                    />
-                  </div>
+                      <div class="row" v-if="login">
+                        <div class="col-md-12 col-sm-12">
+                          <label class="lableForm" style="line-height: 2rem;" for="firstname ">User Name</label>
+                          <input placeholder="User Name " type="text" id="firstname " style="width: 100%;"
+                            class="halfinput form-control" v-model="email1" />
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                          <label class="lableForm" style="line-height: 2rem;" for="lastname ">Password</label>
+                          <input style="width: 100%" placeholder="Password " type="password" id="lastname "
+                            class="form-control" v-model="password1" />
+                        </div>
 
-                  
-                
-                </div>
+
+
+                      </div>
                     </div>
-                    <button  @click="loginUser()" v-if="login" style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                    <button @click="loginUser()" v-if="login"
+                      style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
                       Submit
                     </button>
 
-                    <a   v-if="login" @click="forgotpassword = true; login = false" style="display: flex; align-items: center; justify-content: center; margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
-                     Forgot Your Password ? 
+                    <a v-if="login" @click="forgotpassword = true; login = false"
+                      style="display: flex; align-items: center; justify-content: center; margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                      Forgot Your Password ?
                     </a>
 
-                    
-                    <span v-if="forgotpassword"  class="lableForm" style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Forgot Password</span>
-                         
+
+                    <span v-if="forgotpassword" class="lableForm"
+                      style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;">Forgot
+                      Password</span>
+
                     <div v-if="forgotpassword" class="form">
-                      <span   class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Enter Your email for Reset Your password</span> 
+                      <span class="lableForm"
+                        style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;">Enter
+                        Your email for Reset Your password</span>
 
 
-                      <div class="row"  >
-                  <div class="col-md-12 col-sm-12">
-                    <label class="lableForm" style="line-height: 2rem;" for="firstname ">Register Email</label>
-                    <input
-                      placeholder="Enter Register Email"
-                      type="text"
-                      id="firstname "
-                      style="width: 100%;" 
-                      class="halfinput form-control"
-                      v-model="email1"
-                    />
-                  </div>
-                 
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                          <label class="lableForm" style="line-height: 2rem;" for="firstname ">Register Email</label>
+                          <input placeholder="Enter Register Email" type="text" id="firstname " style="width: 100%;"
+                            class="halfinput form-control" v-model="email1" />
+                        </div>
 
-                  
-                
-                </div>
+
+
+
+                      </div>
                     </div>
-                    <button @click="forgot()" v-if="forgotpassword"  style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                    <button @click="forgot()" v-if="forgotpassword"
+                      style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
                       Submit
                     </button>
 
-                    <a  v-if="forgotpassword"  @click="forgotpassword = false; login = true"  style="margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
-                     Back To Login 
+                    <a v-if="forgotpassword" @click="forgotpassword = false; login = true"
+                      style="margin-top:2% ;  padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #ffffffff; color:#2a4c86; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                      Back To Login
                     </a>
 
-                    <span  v-if="reset" class="lableForm" style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;"  >Reset Password</span>
-                         
-                         <div class="form">
-                           <span  v-if="reset" class="lableForm" style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;" >Set a new password</span> 
-     
-     
-                           <div class="row" v-if="reset" >
-                       <div class="col-md-12 col-sm-12">
-                         <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
-                         <input
-                           placeholder="password "
-                           type="text"
-                           id="firstname "
-                           style="width: 100%;" 
-                           class="halfinput form-control"
-                           v-model="password1"
-                         />
-                       </div>
-                       <div style="margin-top: 22%;"></div>
-                       <div class="col-md-12 col-sm-12">
-                         <label class="lableForm" style="line-height: 2rem;" for="lastname ">Confirm New Password</label>
-                         <input
-                           style="width: 100%"
-                           placeholder="Password "
-                           type="text"
-                           id="lastname "
-                           class="form-control"
-                           v-model="confirmpassword"
-                         />
-                       </div>
-     
-                       
-                     
-                     </div>
-                         </div>
-                         <button  v-if="reset" style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
-                           Submit
-                         </button>
-     
-                        
-                         <div class="loading-overlay" v-if="emailPopup" >
+                    <span v-if="reset" class="lableForm"
+                      style=" line-height: 2rem;  font-size: 2rem;  font-weight:900  bolder normal normal;font-family: Opan Sans ,sans-serif;">Reset
+                      Password</span>
 
-                            <div class="overlay-content">
-                              <div class="row" style="display: flex;">
-                                <div class="col-10">
-                                  <span style="font-size: 2rem;">Otp Verification</span>
-                                </div>
-                              <div class="col-2">
-                              <img src="./../../assets/BackGround/delete.png" @click="emailPopup = false"  style="float: right;   cursor: pointer; height: 5vh; width: 5vh;"/>
-                              </div>
-                            </div>                  
-                                <hr>
-                                <div class="row" >
-                       <div class="col-md-12 col-sm-12">
-                         <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
-                         <input
-                           placeholder="password "
-                           type="text"
-                           id="firstname "
-                           style="width: 100%;" 
-                           class="halfinput form-control"
-                           v-model="password1"
-                         />
-                       </div>
-                       <div style="margin-top: 22%;"></div>
-                       <div class="col-md-12 col-sm-12">
-                         <label class="lableForm" style="line-height: 2rem;" for="lastname ">Confirm New Password</label>
-                         <input
-                           style="width: 100%"
-                           placeholder="Password "
-                           type="text"
-                           id="lastname "
-                           class="form-control"
-                           v-model="confirmpassword"
-                         />
-                         </div>
-                         </div>
-                                  <h4 v-if="titleShow" style="display: flex;align-items: center; justify-content: center;">Enter the otp you recived from email</h4>
-
-                                  <div class="mb-3 mt-4" v-if="titleShow">
-                                    <div class="otp-container">
-                                            <input
-                                              v-for="(digit, index) in otpDigits"
-                                              :key="index"
-                                              class="otp-input"
-
-                                              type="text"
-                                              maxlength="1"
-                                              v-model="otpDigits[index]"
-                                              @keydown="handleKeyDown(index, $event)"
-                                              @input="handleInput(index)"
-                                              @paste="handlePaste($event)"
-                                              ref="otpInput"
-                                            />      
-                                          </div>
-                                  </div>
-                                  <span v-if="InvalidOtp" style=" display:flex; align-items: center; justify-content: center; color:rgb(223, 68, 68); "> Invalid Otp !! </span>
-                                  <div v-if="titleShow" class="" style="width: 100%; justify-content: center;display: flex;">
-
-                                      <button style="padding-left: 2rem; padding-right: 2rem;padding-top: 0.2rem; border-radius: 7px; background-color: #2a4c86; border: none; color: #ffffff; margin-top: 5%; padding-bottom: 0.2rem;" @click ="VerifyOtps">submit</button>
-
-                                  </div>
-
-                                  <div v-if="correct"  class="sucessgif" style="margin: 0 auto; ">
-
-                                      <img style="mix-blend-mode: darken; height: 10rem;  filter: brightness(1.5);" src="./../../assets/BackGround/truee.gif"/>
-                                  </div>
-
-                            </div>
-                            </div>
-                         
+                    <div class="form">
+                      <span v-if="reset" class="lableForm"
+                        style=" display: flex; align-items: center; justify-content: center; line-height: 0.9rem;  font-size: 1rem; color:#707070;   font-weight:900 bolder normal normal;font-family: Opan Sans ,sans-serif;">Set
+                        a new password</span>
 
 
-                </div>
+                      <div class="row" v-if="reset">
+                        <div class="col-md-12 col-sm-12">
+                          <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
+                          <input placeholder="password " type="text" id="firstname " style="width: 100%;"
+                            class="halfinput form-control" v-model="password1" />
+                        </div>
+                        <div style="margin-top: 22%;"></div>
+                        <div class="col-md-12 col-sm-12">
+                          <label class="lableForm" style="line-height: 2rem;" for="lastname ">Confirm New Password</label>
+                          <input style="width: 100%" placeholder="Password " type="text" id="lastname "
+                            class="form-control" v-model="confirmpassword" />
+                        </div>
+
+
+
+                      </div>
+                    </div>
+                    <button v-if="reset"
+                      style="margin-top:5% ; padding:1% 6%; font-size: 1rem; font-weight: 600 bolder; background-color: #2a4c86; color:#ffffff ; border:none ;  border display:flex; align-items: center; justify-content: center;">
+                      Submit
+                    </button>
+
+
+                    <div class="loading-overlay" v-if="emailPopup">
+
+                      <div class="overlay-content">
+                        <div class="row" style="display: flex;">
+                          <div class="col-10">
+                            <span style="font-size: 2rem;">Otp Verification</span>
+                          </div>
+                          <div class="col-2">
+                            <img src="./../../assets/BackGround/delete.png" @click="emailPopup = false"
+                              style="float: right;   cursor: pointer; height: 5vh; width: 5vh;" />
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12">
+                            <label class="lableForm" style="line-height: 2rem;" for="firstname ">New Password</label>
+                            <input placeholder="password " type="text" id="firstname " style="width: 100%;"
+                              class="halfinput form-control" v-model="password1" />
+                          </div>
+                          <div style="margin-top: 22%;"></div>
+                          <div class="col-md-12 col-sm-12">
+                            <label class="lableForm" style="line-height: 2rem;" for="lastname ">Confirm New
+                              Password</label>
+                            <input style="width: 100%" placeholder="Password " type="text" id="lastname "
+                              class="form-control" v-model="confirmpassword" />
+                          </div>
+                        </div>
+                        <h4 v-if="titleShow" style="display: flex;align-items: center; justify-content: center;">Enter the
+                          otp you recived from email</h4>
+
+                        <div class="mb-3 mt-4" v-if="titleShow">
+                          <div class="otp-container">
+                            <input v-for="(digit, index) in otpDigits" :key="index" class="otp-input" type="text"
+                              maxlength="1" v-model="otpDigits[index]" @keydown="handleKeyDown(index, $event)"
+                              @input="handleInput(index)" @paste="handlePaste($event)" ref="otpInput" />
+                          </div>
+                        </div>
+                        <span v-if="InvalidOtp"
+                          style=" display:flex; align-items: center; justify-content: center; color:rgb(223, 68, 68); ">
+                          Invalid Otp !! </span>
+                        <div v-if="titleShow" class="" style="width: 100%; justify-content: center;display: flex;">
+
+                          <button
+                            style="padding-left: 2rem; padding-right: 2rem;padding-top: 0.2rem; border-radius: 7px; background-color: #2a4c86; border: none; color: #ffffff; margin-top: 5%; padding-bottom: 0.2rem;"
+                            @click="VerifyOtps">submit</button>
+
+                        </div>
+
+                        <div v-if="correct" class="sucessgif" style="margin: 0 auto; ">
+
+                          <img style="mix-blend-mode: darken; height: 10rem;  filter: brightness(1.5);"
+                            src="./../../assets/BackGround/truee.gif" />
+                        </div>
+
+                      </div>
+                    </div>
+
+
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -844,10 +608,8 @@
 
     <!-- Link Mennu Contact Addreess -->
     <div class="q-pa-md bgclass">
-      <div
-        class="row justify-between items-start q-gutter-md q-mb-md"
-        style="margin: 0 auto; max-width: 100%; width: 90%"
-      >
+      <div class="row justify-between items-start q-gutter-md q-mb-md"
+        style="margin: 0 auto; max-width: 100%; width: 90%">
         <!-- Infinit ABout -->
         <div class="col-sm-6 col-md-4 col-lg-2">
           <infinityabout :lorem="lorem" />
@@ -875,8 +637,7 @@
 
       <div class="row justify-center items-center text-white q-mt-lg">
         <div class="col-auto text-center">
-          <p
-            style="
+          <p style="
               /* UI Properties */
               color: var(--unnamed-color-ffffff);
 
@@ -884,8 +645,7 @@
               letter-spacing: 0px;
               color: #ffffff;
               opacity: 1;
-            "
-          >
+            ">
             2023 copyright. All right Reserved
           </p>
         </div>
@@ -897,26 +657,11 @@
     <input type="hidden" name="key" v-model="mkey" size="64" />
     <input type="hidden" name="txnid" v-model="txnid" size="64" />
     <input type="hidden" name="amount" v-model="finalAmount1" size="64" />
-    <input
-      type="hidden"
-      name="productinfo"
-      v-model="productData.name"
-      size="64"
-    />
-    <input
-      type="hidden"
-      name="firstname"
-      v-model="formData.firstname"
-      size="64"
-    />
+    <input type="hidden" name="productinfo" v-model="productData.name" size="64" />
+    <input type="hidden" name="firstname" v-model="formData.firstname" size="64" />
     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
     <input type="hidden" name="email" v-model="formData.email" size="64" />
-    <input
-      type="hidden"
-      name="phone"
-      v-model="formData.PhoneNumber"
-      size="64"
-    />
+    <input type="hidden" name="phone" v-model="formData.PhoneNumber" size="64" />
     <!-- <input type="hidden" name="lastname" v-model="lastName" size="64" /> -->
     <input type="hidden" name="surl" v-model="surl" />
     <input type="hidden" name="furl" v-model="furl" />
@@ -947,9 +692,9 @@ export default {
     quicklink,
   },
   setup() {
-  
+
     return {
-     
+
       inception: ref(false),
 
     }
@@ -965,17 +710,17 @@ export default {
       states: [],
       cities: [],
       couponlist: [],
-      titleShow:true,
+      titleShow: true,
       Discount: [],
-      otpDigits: ['', '', '', '','', ''],
-      username:'',
-      password1:'',
-      confirmpassword:'',
-      login:true,
-      emailPopup:false,
-      forgotpassword:false,
-      reset:false,
-      email1:'',
+      otpDigits: ['', '', '', '', '', ''],
+      username: '',
+      password1: '',
+      confirmpassword: '',
+      login: true,
+      emailPopup: false,
+      forgotpassword: false,
+      reset: false,
+      email1: '',
       payuUrl: "https://secure.payu.in/_payment",
       mkey: "nxpvv9VZ",
       saltKey: "3oFxUMtWG2",
@@ -1001,70 +746,72 @@ export default {
         product: this.id,
         PhoneNumber: "",
         phoneno: "",
-        website:"",
-        company_logo:'',
+        website: "",
+        company_logo: '',
         pincode: "",
         address: "none",
         country: "101",
-        company_logo:" ",
+        company_logo: " ",
         state: " ",
         city: " ",
       },
       errorForm: ``,
-      activeTab:'web'
+      activeTab: 'web'
     };
   },
   methods: {
 
-    website(){
+    website() {
       this.activeTab = 'web';
       this.productData = {
-                  name: "Make Your Website  10 Minutes",
-                  price: "9999",
-                  product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
-                  product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
-                };
-                const productPrice = parseFloat(this.productData.price);
-        const cgstAmount = parseFloat((this.productData.price * 9) / 100);
-        const sgstAmount = parseFloat((this.productData.price * 9) / 100);
+        id: 17,
+        name: "Make Your Website  10 Minutes",
+        price: "9999",
+        product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
+        product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
+      };
+      const productPrice = parseFloat(this.productData.price);
+      const cgstAmount = parseFloat((this.productData.price * 9) / 100);
+      const sgstAmount = parseFloat((this.productData.price * 9) / 100);
 
-        const totalAmount = productPrice + cgstAmount + sgstAmount;
+      const totalAmount = productPrice + cgstAmount + sgstAmount;
 
-        this.finalAmount1 = Math.ceil(totalAmount);
+      this.finalAmount1 = Math.ceil(totalAmount);
     },
-    phone(){
+    phone() {
       this.activeTab = 'app';
 
       this.productData = {
-                  name: "Make Your App In 10 Minutes",
-                  price: "24999",
-                  product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
-                  product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
-                };
-                const productPrice = parseFloat(this.productData.price);
-        const cgstAmount = parseFloat((this.productData.price * 9) / 100);
-        const sgstAmount = parseFloat((this.productData.price * 9) / 100);
+        id: 17,
+        name: "Make Your App In 10 Minutes",
+        price: "24999",
+        product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
+        product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
+      };
+      const productPrice = parseFloat(this.productData.price);
+      const cgstAmount = parseFloat((this.productData.price * 9) / 100);
+      const sgstAmount = parseFloat((this.productData.price * 9) / 100);
 
-        const totalAmount = productPrice + cgstAmount + sgstAmount;
+      const totalAmount = productPrice + cgstAmount + sgstAmount;
 
-        this.finalAmount1 = Math.ceil(totalAmount);
+      this.finalAmount1 = Math.ceil(totalAmount);
     },
 
-    VerifyOtps(){
+    VerifyOtps() {
 
-        axios.post('otpverify',{
-          email:this.email1,
-    otp: this.otpDigits.join(''),
-    new_password:this.password1,
-  confirm_password:this.confirmpassword
-        }).then((res)=>{
-          console.log(res.data.data);
-          this.emailPopup = false;
-          alert("password is change");
-        }).catch();
-                
-             
-              },
+      axios.post('otpverify', {
+        email: this.email1,
+        otp: this.otpDigits.join(''),
+        new_password: this.password1,
+        confirm_password: this.confirmpassword
+      }).then((res) => {
+        console.log(res.data.data);
+        this.emailPopup = false;
+        alert("password is change");
+      }).catch();
+
+
+    },
     handleKeyDown(index, event) {
       // Handles navigation and deletion of digits based on key events
       if (event.key === 'Backspace' && index > 0 && this.otpDigits[index] === '') {
@@ -1078,30 +825,29 @@ export default {
     handleInput(index) {
       // Automatically moves focus to the next input upon entering a digit
       if (index < this.otpDigits.length - 1 && this.otpDigits[index] !== '') {
-    this.$refs.otpInput[index + 1].focus();
-  }
+        this.$refs.otpInput[index + 1].focus();
+      }
     },
     handlePaste(event) {
       event.preventDefault();
-  const pasteData = event.clipboardData.getData('text/plain');
-  const digits = pasteData.slice(0, 6).split('');
-  this.otpDigits = digits.concat(Array(6 - digits.length).fill(''));
+      const pasteData = event.clipboardData.getData('text/plain');
+      const digits = pasteData.slice(0, 6).split('');
+      this.otpDigits = digits.concat(Array(6 - digits.length).fill(''));
     },
-    forgot()
-      {
-        axios.post('forgotpassword',{email:this.email1}).then((res)=>{
-          
-            console.log(res.data.data);
-            this.inception = false;
-            this.emailPopup = true;
+    forgot() {
+      axios.post('forgotpassword', { email: this.email1 }).then((res) => {
 
-        });
+        console.log(res.data.data);
+        this.inception = false;
+        this.emailPopup = true;
+
+      });
 
 
-      } ,
-      
-      async loginUser() {
-     
+    },
+
+    async loginUser() {
+
       try {
         const response = await axios.post('login', {
           email: this.email1,
@@ -1109,13 +855,13 @@ export default {
         });
 
         // Process the response as needed
-        localStorage.setItem("token" , response.data.data.token);
+        localStorage.setItem("token", response.data.data.token);
         this.$router.push('/CreativeBuy');
         this.$store.commit("setEmail", this.email1);
         this.$store.commit("setPassword", this.password1);
-        
+
       } catch (error) {
-        
+
         console.error('Error:', error);
       }
     },
@@ -1134,132 +880,144 @@ export default {
       // Process the selected file as needed
     },
     PayNow() {
-      
-    
-
-const formData = new FormData();
 
 
 
-// Append the company_logo (image) field
-      if(this.id == 13){
+      const formData = new FormData();
+
+
+
+      // Append the company_logo (image) field
+      if (this.id == 13) {
         formData.append('company_logo', fileInput.files[0]);
       }
-   
-formData.append('firstname', this.formData.firstname);
-  formData.append('lastname', this.formData.lastname);
-  formData.append('businessName', this.formData.businessName);
-  formData.append('businessGst', this.formData.businessGst);
-  formData.append('salesmanName', this.formData.salesmanName);
-  formData.append('email', this.formData.email);
-  formData.append('product', this.id);
-  formData.append('PhoneNumber', this.formData.PhoneNumber);
-  formData.append('phoneno', this.formData.phoneno);
-  formData.append('website', this.formData.website);
-  formData.append('pincode', this.formData.pincode);
-  formData.append('address', this.formData.address);
-  formData.append('country', this.formData.country);
-  formData.append('state', this.formData.state);
-  formData.append('city', this.formData.city);
- if(this.productData.id){
 
-  formData.append('domain_name', localStorage.getItem('domainname'));
-      formData.append('color_select', localStorage.getItem('color'));
-      formData.append('sub_category', localStorage.getItem('subcategories_id'));
-      formData.append('category', localStorage.getItem('categories_id'));
+      formData.append('firstname', this.formData.firstname);
+      formData.append('first_name', this.formData.firstname);
+      formData.append('product_name', 'Make Your Website/App In 10 Minutes');
+      formData.append('lastname', this.formData.lastname);
+      formData.append('last_name', this.formData.lastname);
+      formData.append('businessName', this.formData.businessName);
+      formData.append('business_name', this.formData.businessName);
+      formData.append('businessGst', this.formData.businessGst);
+      formData.append('salesmanName', this.formData.salesmanName);
+      formData.append('email', this.formData.email);
+      formData.append('email_id', this.formData.email);
+      formData.append('product', this.id);
+      formData.append('PhoneNumber', this.formData.PhoneNumber);
+      formData.append('contact_no', this.formData.phoneno);
+      formData.append('phoneno', this.formData.phoneno);
+      formData.append('website', this.formData.website);
+      formData.append('pincode', this.formData.pincode);
+      formData.append('address', this.formData.address);
+      formData.append('country', this.formData.country);
+      formData.append('countries_name', this.formData.country);
+      formData.append('state', this.formData.state);
+      formData.append('states_name', this.formData.state);
+      formData.append('city', this.formData.city);
+      formData.append('cities_name', this.formData.city);
+      if (this.productData.id) {
+
+        formData.append('domain_name', localStorage.getItem('domainname'));
+        formData.append('color_select', localStorage.getItem('color'));
+        formData.append('sub_category', localStorage.getItem('subcategories_id'));
+        formData.append('category', localStorage.getItem('categories_id'));
+        formData.append('product_price', this.finalAmount1);
 
 
- } 
+      }
 
-  if(this.productData.id  == 17 ){
+      if (this.productData.id == 17) {
 
-    axios.post(`add_addthemestore`, formData, {})
-    .then((res) => {
-      formData.append('user_id',  res.data.data.id);
-      formData.append('contact_number', this.formData.phoneno);
-      axios
-    .post(`creativedata`, formData).then((res)=>{
-      console.log(res.data);
-    });
-          console.log(res.data.data);
-          // alert(res.data.data.id);
-          localStorage.setItem("userId", res.data.data.id);
-          localStorage.setItem("prodId", this.id);
-          localStorage.setItem("amount", this.finalAmount1);
-          localStorage.setItem("userpass", this.formData.password);
-          var data =
-            this.mkey +
-            "|" +
-            this.txnid +
-            "|" +
-            this.finalAmount1 +
-            "|" +
-            this.productData.name +
-            "|" +
-            this.formData.firstname +
-            "|" +
-            this.formData.email +
-            "|||||||||||";
-          var sha512 = require("js-sha512");
-          var salt = "3oFxUMtWG2";
-          var hash = sha512(data + salt);
+        axios.post(`add_addthemestore`, formData, {})
+          .then((res) => {
+            formData.append('user_id', res.data.data.id);
+            formData.append('contact_number', this.formData.phoneno);
+            axios
+              .post(`creativedata`, formData).then((res) => {
+                console.log(res.data);
+              });
+            console.log(res.data.data);
+            // alert(res.data.data.id);
+            localStorage.setItem("userId", res.data.data.id);
+            localStorage.setItem("prodId", this.id);
+            localStorage.setItem("amount", this.finalAmount1);
+            localStorage.setItem("userpass", this.formData.password);
+            var data =
+              this.mkey +
+              "|" +
+              this.txnid +
+              "|" +
+              this.finalAmount1 +
+              "|" +
+              this.productData.name +
+              "|" +
+              this.formData.firstname +
+              "|" +
+              this.formData.email +
+              "|||||||||||";
+            var sha512 = require("js-sha512");
+            var salt = "3oFxUMtWG2";
+            var hash = sha512(data + salt);
 
-          console.log(hash);
-          console.log("Here Is yourData", data);
+            console.log(hash);
+            console.log("Here Is yourData", data);
 
-          document.getElementById("hash").value = hash;
-          document.getElementById("paymentForm").submit();
-        })
-        .catch((e) => {
-          this.errorForm = e.response.data.message;
-          this.showForm = true;
-        });
+            document.getElementById("hash").value = hash;
+            document.getElementById("paymentForm").submit();
+          })
+          .catch((e) => {
+            this.errorForm = e.response.data.message;
+            this.showForm = true;
+          });
 
-      
-  }
 
-  axios
-    .post(`payment/${this.productData.id}`, formData, {})
-    .then((res) => {
-      formData.append('user_id',  res.data.data.id);
-      formData.append('contact_number', this.formData.phoneno);
-      axios
-    .post(`creativedata`, formData).then((res)=>{
-      console.log(res.data);
-    });
-          console.log(res.data.data);
-          // alert(res.data.data.id);
-          localStorage.setItem("userId", res.data.data.id);
-          localStorage.setItem("prodId", this.id);
-          localStorage.setItem("amount", this.finalAmount1);
-          localStorage.setItem("userpass", this.formData.password);
-          var data =
-            this.mkey +
-            "|" +
-            this.txnid +
-            "|" +
-            this.finalAmount1 +
-            "|" +
-            this.productData.name +
-            "|" +
-            this.formData.firstname +
-            "|" +
-            this.formData.email +
-            "|||||||||||";
-          var sha512 = require("js-sha512");
-          var salt = "3oFxUMtWG2";
-          var hash = sha512(data + salt);
+      } else {
+        axios
+          .post(`payment/${this.id}`, formData, {})
+          .then((res) => {
+            formData.append('user_id', res.data.data.id);
+            formData.append('contact_number', this.formData.phoneno);
+            axios
+              .post(`creativedata`, formData).then((res) => {
+                console.log(res.data);
+              });
+            console.log(res.data.data);
+            // alert(res.data.data.id);
+            localStorage.setItem("userId", res.data.data.id);
+            localStorage.setItem("prodId", this.id);
+            localStorage.setItem("amount", this.finalAmount1);
+            localStorage.setItem("userpass", this.formData.password);
+            var data =
+              this.mkey +
+              "|" +
+              this.txnid +
+              "|" +
+              this.finalAmount1 +
+              "|" +
+              this.productData.name +
+              "|" +
+              this.formData.firstname +
+              "|" +
+              this.formData.email +
+              "|||||||||||";
+            var sha512 = require("js-sha512");
+            var salt = "3oFxUMtWG2";
+            var hash = sha512(data + salt);
 
-          console.log(hash);
-          console.log("Here Is yourData", data);
+            console.log(hash);
+            console.log("Here Is yourData", data);
 
-          document.getElementById("hash").value = hash;
-          document.getElementById("paymentForm").submit();
-        })
-        .catch((e) => {
-          this.errorForm = e.response.data.message;
-          this.showForm = true;
-        });
+            document.getElementById("hash").value = hash;
+            document.getElementById("paymentForm").submit();
+          })
+          .catch((e) => {
+            this.errorForm = e.response.data.message;
+            this.showForm = true;
+          });
+
+      }
+
 
       this.$store.commit("setUserId", 21);
       this.$store.commit(
@@ -1363,7 +1121,7 @@ formData.append('firstname', this.formData.firstname);
     },
     calculateDiscountPercentage(originalPrice, discountedPrice) {
       // console.log("thow ",originalPrice , discountedPrice);
-            const percentageOff = (discountedPrice / originalPrice) * 100;
+      const percentageOff = (discountedPrice / originalPrice) * 100;
 
       return percentageOff.toFixed(2);
     },
@@ -1380,7 +1138,7 @@ formData.append('firstname', this.formData.firstname);
           console.log(res.data.data);
           this.Discount = res.data.data;
           this.finalAmount1 = this.calculateCGST(this.subTotal(), 9) * 2 + this.subTotal();
-          
+
         })
         .catch();
     },
@@ -1401,11 +1159,11 @@ formData.append('firstname', this.formData.firstname);
     },
   },
   mounted() {
-    this.formData.domainname =  localStorage.getItem('domainname');
-    this.formData.color =  localStorage.getItem('color');
-    this.formData.subcategories_id =  localStorage.getItem('subcategories_id');
-    this.formData.categories_id =  localStorage.getItem('categories_id');
-    this.formData.businessName =  localStorage.getItem('b_name');
+    this.formData.domainname = localStorage.getItem('domainname');
+    this.formData.color = localStorage.getItem('color');
+    this.formData.subcategories_id = localStorage.getItem('subcategories_id');
+    this.formData.categories_id = localStorage.getItem('categories_id');
+    this.formData.businessName = localStorage.getItem('b_name');
     this.makeid();
     this.id = this.$route.params.id;
 
@@ -1414,21 +1172,22 @@ formData.append('firstname', this.formData.firstname);
     axios
       .get(`/show/${this.id}`)
       .then((res) => {
-        if(this.id == 17 ){
+        if (this.id == 17) {
 
           this.productData = {
-                  name: "Make Your Website In 10 Minutes",
-                  price: "9999",
-                  product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
-                  product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
-                };
+            id: 17,
+            name: "Make Your Website In 10 Minutes",
+            price: "9999",
+            product_image: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/images/mJj4i3PY56kq7S1Hbs5hpxxsAmVHuTulw92IlmhI.jpg",
+            product_video: "https://uat-ib-bucketlive.s3.ap-south-1.amazonaws.com/public/videos/"
+          };
 
-        }else{
+        } else {
 
-            this.productData = res.data.data;
+          this.productData = res.data.data;
 
         }
-        
+
         // alert( this.productData.price);
 
         const productPrice = parseFloat(this.productData.price);
@@ -1458,7 +1217,7 @@ formData.append('firstname', this.formData.firstname);
       `${window.location.origin}/img/logo_blue.ca47717c.png`
     );
     store.commit("changeColor", "#012A71");
-    
+
 
     // alert("hellow im updated  ");
   },
@@ -1483,6 +1242,7 @@ formData.append('firstname', this.formData.firstname);
   background-position: top left;
   background-size: cover;
 }
+
 .nubu {
   margin-top: 15vh;
 }
@@ -1499,6 +1259,7 @@ input {
 .halfinput {
   width: 95%;
 }
+
 .couponInput {
   width: 50%;
   padding: 0px;
@@ -1511,9 +1272,11 @@ input {
   padding-left: 14%;
   padding-right: 14%;
 }
+
 .innerContainer {
   padding: 0px 8%;
 }
+
 .plancontainer {
   /* height: 485px; */
   max-height: fit-content;
@@ -1523,6 +1286,7 @@ input {
   margin-bottom: 30px;
   padding: 4vh;
 }
+
 .disc {
   letter-spacing: var(--unnamed-character-spacing-0);
   text-align: left;
@@ -1531,21 +1295,23 @@ input {
   /* color: #3D4141; */
   opacity: 1;
 }
+
 .rate {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600)
-    var(--unnamed-font-size-25) / 34px var(--unnamed-font-family-open-sans);
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-25) / 34px var(--unnamed-font-family-open-sans);
   letter-spacing: var(--unnamed-character-spacing-0);
   text-align: right;
   font: normal normal 600 2.7vh Nunito;
   letter-spacing: 0px;
   color: #2f518a;
 }
+
 .couponDescription {
   text-align: left;
   font: normal normal 600 2.3vmin Nunito;
   letter-spacing: 0px;
   color: #5e5e5e;
 }
+
 .couponCode {
   text-align: left;
   font: normal normal 600 2.8vmin Nunito;
@@ -1553,16 +1319,19 @@ input {
   line-height: 2vmin;
   color: #2f518a;
 }
+
 .title {
   text-align: left;
   font: normal normal 600 1.2rem Nunito;
   letter-spacing: 0px;
   color: #272727;
 }
+
 .container1 {
   margin-left: 2%;
   width: 100%;
 }
+
 .parDiv {
   line-height: 1;
   background-color: #2f518a;
@@ -1575,6 +1344,7 @@ input {
   letter-spacing: 0px;
   color: #ffffff;
 }
+
 .ApplyCouponCodeContainer {
   height: 100px;
   padding-bottom: 8px;
@@ -1591,8 +1361,10 @@ input {
 
   /* align-items: center; */
 }
+
 .outerDiv::-webkit-scrollbar {
-  display: none; /* Hide the scrollbar */
+  display: none;
+  /* Hide the scrollbar */
 }
 
 .loading-overlay {
@@ -1606,12 +1378,14 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 1; /* Start with 0 opacity to make it invisible initially */
- 
-  transition: opacity 0.3s ease-in-out; /* Add transition property for opacity */
+  opacity: 1;
+  /* Start with 0 opacity to make it invisible initially */
+
+  transition: opacity 0.3s ease-in-out;
+  /* Add transition property for opacity */
 }
-.overlay-content
-{
+
+.overlay-content {
 
   width: 70vh;
   padding: 22px;
@@ -1622,7 +1396,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-   /* Align items to the left */
+  /* Align items to the left */
   background-color: #ffffff;
   /* padding: 20px; */
   border-radius: 8px;
@@ -1643,9 +1417,9 @@ input {
   border-radius: 0px;
   color: #ffffff;
 }
+
 /* Media query for screens with a width less than 940px */
-@media (max-width: 940px) {
-}
+@media (max-width: 940px) {}
 
 @media (max-width: 940px) {
   input {
@@ -1656,15 +1430,19 @@ input {
     padding-left: 15px;
     width: 100%;
   }
+
   .halfinput {
-    width: 100%; /* Set a different width, such as 50% */
+    width: 100%;
+    /* Set a different width, such as 50% */
   }
+
   .couponDescription {
     text-align: left;
     font: normal normal 600 3vmin Nunito;
     letter-spacing: 0px;
     color: #5e5e5e;
   }
+
   .row {
     display: grid;
   }
@@ -1672,13 +1450,16 @@ input {
   .innerContainer {
     padding: 0px 0%;
   }
+
   .container {
     padding-left: 4%;
     padding-right: 4%;
   }
+
   .nubu {
     margin-top: 9vh;
   }
+
   .couponInput {
     width: 60%;
     padding: 0px;
@@ -1687,6 +1468,7 @@ input {
     padding-bottom: 1%;
   }
 }
+
 .otp-container {
   display: flex;
   justify-content: center;
@@ -1704,6 +1486,7 @@ input {
   border-bottom: 2px solid #0AAFE3;
   outline: none;
 }
+
 .title12 {
   text-align: left;
   text-decoration: underline;

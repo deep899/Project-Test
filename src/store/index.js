@@ -23,6 +23,7 @@ const store = createStore({
     domainName:'',
     category_id:'',
     magaswala_color:'',
+    TextileColor:''
    },
   mutations: {
     setMagaswalaColor(state , newMagaswalaColor){
@@ -30,6 +31,11 @@ const store = createStore({
         state.magaswala_color = newMagaswalaColor
 
     },
+    setTextileColor(state , newTextileColor){
+
+      state.TextileColor = newTextileColor
+
+  },
     setCategory_id(state , newCategory_id){
 
           state.category_id = newCategory_id ;

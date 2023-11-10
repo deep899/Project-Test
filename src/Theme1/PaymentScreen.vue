@@ -153,15 +153,18 @@
 
         <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
           <div class="innerContainer" style="">
-            <div class="row" style=" margin-bottom: 5%; padding:10px;background-color: #2f518a;color: white; "> 
-                <div class="col-6" @click="website()" style="cursor: pointer;  display: flex;align-items: center;justify-content: center;" >WEB-Site</div><hr style=" border: none; /* Remove the default horizontal line */
+            <div class="row" style=" margin-bottom: 5%; padding:10px;background-color: #2f518a;color: white; ">
+              <div class="col-6" @click="website()"
+                style="cursor: pointer;  display: flex;align-items: center;justify-content: center;">WEB-Site</div>
+              <hr style=" border: none; /* Remove the default horizontal line */
   border-left: 1px solid #ffffff; /* Add a 1px solid black left border */
   height: 25px; /* Set the desired height of the vertical line */
-  margin: 0 10px;"/>
-                <div class="col-5" @click="phone1()" style="cursor: pointer;  display: flex;align-items: center;justify-content: center;">Application </div>
-              </div>
+  margin: 0 10px;" />
+              <div class="col-5" @click="phone1()"
+                style="cursor: pointer;  display: flex;align-items: center;justify-content: center;">Application </div>
+            </div>
             <div class="plancontainer">
-              
+
 
               <span class="title12" style="">BILLING INFORMATION</span>
 
@@ -309,7 +312,7 @@ export default {
       state: " ",
       city: " ",
       totalList: 0,
-      price:0,
+      price: 0,
       countries: [],
       states: [],
       cities: [],
@@ -363,18 +366,18 @@ export default {
     };
   },
   methods: {
-    website(){
+    website() {
 
       this.productData.price = 24999;
 
       this.price = 24999;
-    
+
 
     },
-    
-    phone1(){
-      
-     this.price = 9999
+
+    phone1() {
+
+      this.price = 9999
 
     },
 
@@ -690,12 +693,12 @@ export default {
     this.user_id = this.$route.params.user_id;
     this.getData();
     this.price = 24999;
-   
+
     let productPrice = parseFloat(this.productData.price);
-        let cgstAmount = parseFloat((this.price * 9) / 100);
-        let sgstAmount = parseFloat((this.price * 9) / 100);
-        this.total_price = this.price   + cgstAmount + sgstAmount;
-       
+    let cgstAmount = parseFloat((this.price * 9) / 100);
+    let sgstAmount = parseFloat((this.price * 9) / 100);
+    this.total_price = this.price + cgstAmount + sgstAmount;
+
     this.total_amount = this.price + cgstAmount + sgstAmount;
     axios
       .get(`/show/${this.id}`)
