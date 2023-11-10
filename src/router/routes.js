@@ -48,6 +48,7 @@ const routes1 = [
         path: "/IbsfPrivacy", name: "privacy1",
         component: () => import("pages/product_pages/privercy1.vue"),
       },
+      
 
       {
 
@@ -96,6 +97,16 @@ const routes1 = [
       //   component: () => import("./../../public/Sitemap.xml"),
       // },
     ],
+  },
+  {
+    path: "/Food",
+    name: "theam21",
+    component: () => import("../Theme2/Food.vue"),
+  },
+  {
+    path: "/textile",
+    name: "theam22",
+    component: () => import("./../../src/Theme2/Textile.vue"),
   },
 
   // Always leave this as last one,
@@ -150,16 +161,7 @@ const routes1 = [
     component: () => import("pages/product_pages/newPaymentForm.vue"),
   },
   
-  {
-    path: "/Magaswala",
-    name: "theam2",
-    component: () => import("./../../src/Theme2/Magaswala.vue"),
-  },
-  {
-    path: "/textile",
-    name: "theam2",
-    component: () => import("./../../src/Theme2/Textile.vue"),
-  },
+ 
 ];
 
 // Determine which routes to use based on the subdomain

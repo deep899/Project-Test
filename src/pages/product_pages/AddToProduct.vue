@@ -56,7 +56,7 @@
             color: #ffffff;
             border: none;
             margin-top: 2%;
-          " @click="redirectUrl"    >
+          " @click="redirectUrl">
           Buy Now
         </button>
         <!-- @click="this.$router.push(`/paymentForm/${products.id}`)" -->
@@ -291,26 +291,26 @@ export default {
   },
   methods: {
 
-    redirectUrl(){
-        // alert(this.id);
-        let url = null ;
+    redirectUrl() {
+      // alert(this.id);
+      let url = null;
 
-        if(this.id == 8){
-          window.location.href = 'https://ibhrms.com/buy'
-        }
-        else if(this.id == 9){
-          window.location.href= 'https://ibsales.infinitybrains.com/buy'
-        }
-        else if(this.id == 9){
-          window.location.href = 'https://ibsales.infinitybrains.com/buy'
-        }
-        else if(this.id == 14){
-          window.location.href = 'https://app.ibdelight.in/buy'
-        }else{
-          url = this.id
-        }
+      if (this.id == 8) {
+        window.location.href = 'https://ibhrms.com/buy'
+      }
+      else if (this.id == 9) {
+        window.location.href = 'https://ibsales.infinitybrains.com/buy'
+      }
+      else if (this.id == 9) {
+        window.location.href = 'https://ibsales.infinitybrains.com/buy'
+      }
+      else if (this.id == 14) {
+        window.location.href = 'https://app.ibdelight.in/buy'
+      } else {
+        url = this.id
+      }
 
-        return this.$router.push(`/paymentForm/${url}`);
+      return this.$router.push(`/paymentForm/${url}`);
     },
 
     formatNumber(number) {
@@ -480,7 +480,7 @@ export default {
       axios
         .get(
           "showpayment_product_details/" +
-            this.id
+          this.id
         )
         .then((result) => {
           this.Gst = result.data.data;
@@ -524,7 +524,7 @@ export default {
       axios
         .get(
           "https://api.restroworld.com/api/states_of_country?is_light=1" +
-            this.country_id,
+          this.country_id,
           {
             params: {
               country_id: this.country_id,
@@ -542,7 +542,7 @@ export default {
       axios
         .get(
           "https://api.restroworld.com/api/cities_of_state?is_light=1" +
-            this.state_id,
+          this.state_id,
           {
             params: {
               state_id: this.state_id,
@@ -637,8 +637,8 @@ export default {
       axios
         .get(
           'showcoupen?filter={"product":"' +
-            this.id +
-            '"}'
+          this.id +
+          '"}'
         )
         .then((response) => {
           // handle success

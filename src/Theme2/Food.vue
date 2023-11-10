@@ -79,7 +79,7 @@
             id: 2,
             name: "Pizza",
             description: "Classic pizza with tomato, mozzarella, and basil.",
-            image: "https://api.pizzahut.io/v1/content/en-in/in-1/images/deal/double-treat-box-ice-cream.9266b8899776fb8755c9262e84a5e2df.1.jpg",
+            image: "https://uatinfinitybackend.pizzahut.io/v1/content/en-in/in-1/images/deal/double-treat-box-ice-cream.9266b8899776fb8755c9262e84a5e2df.1.jpg",
           },
           {
             id: 3,
@@ -101,6 +101,58 @@
       return this.$store.state.magaswala_color;
     },
   },
+  methods: {
+    async handleSubdomain() {
+      const API_BASE_URL = 'https://uatinfinitybackend.infinitybrains.com/api';
+
+      try {
+        const subdomain = window.location.hostname.split('.');
+        console.log('hello', subdomain[0]);
+        const user = subdomain[0];
+        const response = await fetch(`${API_BASE_URL}/Searching?domain_name=${user}`);
+        const data = await response.json();
+
+        const subcategoryName = data.Subcategory.sub_category_details.sub_category_name;
+        this.$store.commit('setMagaswalaColor',  data.color_select);
+
+        if (subcategoryName) {
+          this.$router.push(`/${subcategoryName}`);
+        }
+        else{
+          this.$router.push(`/`);
+        }
+      } catch (error) {
+        console.error('Error fetching subcategory info:', error);
+        
+      }
+    },
+    extractSubdomain(url) {
+      const match = url.match(/^(?:https?:\/\/)?([^\/]+)\./);
+      return match ? match[1] : null;
+    },
+    checkSubdomainOnLoad() {
+      if (!this.$data.isHandleSubdomainExecuted) {
+        this.$data.isHandleSubdomainExecuted = true;
+
+        const currentUrl = window.location.href;
+        const subdomain = this.extractSubdomain(currentUrl);
+
+        if (subdomain) {
+          console.log(`Subdomain ${subdomain} in URL ${currentUrl} exists!`);
+          this.handleSubdomain();
+        } else {
+          console.error(`No subdomain found in URL ${currentUrl}`);
+        }
+      }
+    },
+  },
+    mounted(){
+
+      this.checkSubdomainOnLoad();
+
+
+    }
+
   };
   </script>
   
