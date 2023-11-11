@@ -20,7 +20,7 @@
       <!-- Displayed Cards -->
       <div class="card-container">
         <div v-for="(card, index) in cardData" :key="index" class="card card-small-mobile"
-          @click="handleCardClick(card.sub_category_name ,card.subcategories_id )">
+          @click="handleCardClick(card.sub_category_name, card.subcategories_id)">
           <div class="card-item-img">
             <!-- Update the image source -->
             <img :src="card.subcategories_template" alt="Card Image" class="card-image" />
@@ -91,7 +91,7 @@ export default {
 
   mounted() {
 
-    axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
+    axios.get('https://api.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
 
       console.log(res.data.data.subcategories);
 
