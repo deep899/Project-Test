@@ -23,8 +23,7 @@
           @click="handleCardClick(card.sub_category_name ,card.subcategories_id )">
           <div class="card-item-img">
             <!-- Update the image source -->
-            <img :src="card.subcategories_template" alt="Card Image"
-              class="card-image" />
+            <img :src="card.subcategories_template" alt="Card Image" class="card-image" />
           </div>
           <div class="card-item-heading">
             <!-- Display the card heading -->
@@ -66,7 +65,7 @@ export default {
         { id: 7, label: "Art & Design" },
         { id: 8, label: "Restaurant" },
       ],
-      category_id:0,
+      category_id: 0,
       cardData: [],
       // Add the following properties for pagination
       currentPage: 0, // Track the current page
@@ -90,16 +89,16 @@ export default {
     },
   },
 
-    mounted(){
+  mounted() {
 
-      axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/subcatagories/'+this.$route.params.id).then((res)=>{
+    axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
 
-        console.log(res.data.data.subcategories);
+      console.log(res.data.data.subcategories);
 
-        this.cardData = res.data.data.subcategories
+      this.cardData = res.data.data.subcategories
 
 
-      }).catch();
+    }).catch();
 
   },
   methods: {
@@ -122,11 +121,11 @@ export default {
         this.currentPage--;
       }
     },
-    handleCardClick(themeName ,id) {
+    handleCardClick(themeName, id) {
       localStorage.setItem('subcategory_name', themeName);
       localStorage.setItem('subcategories_id', id);
       localStorage.setItem('categories_id', this.$route.params.id);
-      
+
       // Now you have the themeNumber, and you can use it as needed
       console.log(`Card with  ${themeName} clicked.`);
 

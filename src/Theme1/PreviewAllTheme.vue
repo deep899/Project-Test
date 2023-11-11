@@ -39,34 +39,23 @@
           <!-- Display the selected image -->
           <!-- Color Picker -->
           <div class="color-picker-images">
-            <h6 class="heading-6">Selecte Theme</h6>
-            <div>
-              <div class="color-selector">
-                    <label
-                      v-for="(color, index) in colorArray"
-                      :key="index"
-                      :style="{ backgroundColor: color.colorselect, padding: '1.2vh', paddingLeft: '2vh', paddingRight: '2vh' }"
-                    >
-                      <input
-                        type="radio"
-                        :id="'color' + index"
-                        v-model="selectedColor"
-                        @change="colorChange(color.colorselect)"
-                        :value="color"
-                      />
-                    </label>
-                  </div>
+            <h6 class="heading-6">Select Theme</h6>
+            <div class="color-rows">
+              <div v-for="(color, index) in colorArray" :key="index" class="color-selector">
+                <label
+                  :style="{ backgroundColor: color.colorselect, padding: '1.2vh', paddingLeft: '2vh', paddingRight: '2vh' }">
+                  <input type="radio" :id="'color' + index" v-model="selectedColor"
+                    @change="colorChange(color.colorselect)" :value="color" />
+                </label>
+              </div>
+            </div>
+          </div>
 
-                <!-- <div class="selected-color">
-                  Selected Color: <span :style="{ backgroundColor: selectedColor }"></span>
-                </div> -->
-              </div>
-              </div>
-            <!-- <div class="color-picker-row">
+          <!-- <div class="color-picker-row">
               <img :src="colorImg1" alt="Selected Color" />
 
               <label for=""  style="background-color: black; padding: 1.2vh; padding-left: 2.5vh;">&nbsp;</label> -->
-              <!-- <img :src="colorImg2" alt="Selected Color" />
+          <!-- <img :src="colorImg2" alt="Selected Color" />
               <img :src="colorImg3" alt="Selected Color" />
               <img :src="colorImg4" alt="Selected Color" />
               <img :src="colorImg5" alt="Selected Color" />
@@ -79,7 +68,7 @@
               <img :src="colorImg10" alt="Selected Color" />
               <img :src="colorImg11" alt="Selected Color" />
               <img :src="colorImg12" alt="Selected Color" /> -->
-            <!-- </div>
+          <!-- </div>
           </div> -->
 
           <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
@@ -203,11 +192,11 @@ export default {
 
   methods: {
 
-    colorChange(color){
+    colorChange(color) {
 
       // alert(color);
       localStorage.setItem('color', color);
-      this.$store.commit('setMagaswalaColor' ,color);
+      this.$store.commit('setMagaswalaColor', color);
 
     },
 
@@ -230,7 +219,8 @@ export default {
 
     continueToCategories() {
 
-      this.$router.push('/10M_website/previewalltheme/paymentscreen/17');
+      this.$router.push('/10M_website/previewalltheme/paymentscreen/17');//Uat2.0
+      this.$router.push('/10M_website/previewalltheme/paymentscreen/6');//Uat1.0
     },
   },
 
@@ -245,8 +235,9 @@ export default {
       const themeModule = await import(`./../../src/Theme2/${themeName}.vue`);
       // Set the imported component as a data property
       this.themeComponent = themeModule.default;
-
-      axios.get('https://uatinfinitybackend.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=19&subcatagories_id=25').then((res)=>{
+      this.cate_id = localStorage.getItem('categories_id');
+      this.sub_id = localStorage.getItem('subcategories_id');
+      axios.get(`https://uatinfinitybackend.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=${this.cate_id}&subcatagories_id=${this.sub_id}`).then((res) => {
 
         this.colorArray = res.data.colorData;
         console.log(res.data.colorData);
@@ -410,6 +401,7 @@ export default {
 .color-picker-images {
   display: flex;
   flex-direction: column;
+
 }
 
 .color-picker-row {
@@ -457,6 +449,21 @@ export default {
   height: auto;
 }
 
+.color-rows {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1.2vh;
+  /* Adjust the negative margin to compensate for padding */
+}
+
+.color-selector {
+  flex: 1 0 25%;
+  /* Each color selector takes up 25% of the row */
+  padding: 1.2vh;
+  box-sizing: border-box;
+  /* Ensure padding doesn't affect the total width */
+}
+
 .color-selector {
   display: flex;
   justify-content: space-between;
@@ -467,5 +474,4 @@ export default {
   width: 20px;
   height: 20px;
   border: 1px solid #000;
-}
-</style>
+}</style>
