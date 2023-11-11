@@ -103,7 +103,7 @@
   },
   methods: {
     async handleSubdomain() {
-      const API_BASE_URL = 'https://uatinfinitybackend.infinitybrains.com/api';
+      const API_BASE_URL = 'https://api.infinitybrains.com/api';
 
       try {
         const subdomain = window.location.hostname.split('.');
@@ -113,7 +113,7 @@
         const data = await response.json();
 
         const subcategoryName = data.Subcategory.sub_category_details.sub_category_name;
-        this.$store.commit('setMagaswalaColor',  data.color_select);
+        this.$store.commit('setMagaswalaColor',  data.data.color_select);
 
         if (subcategoryName) {
           this.$router.push(`/${subcategoryName}`);

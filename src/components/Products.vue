@@ -27,7 +27,7 @@
               </div>
               <div v-else style="margin-top: 5%; "> <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
-                                    this.formatNumber(5999) }}</span>
+                    this.formatNumber(5999) }}</span>
                 <br /><span class="smallDis">Up to 10 employees after that 50
                   RS. Per employee per month.</span>
               </div>
@@ -53,7 +53,7 @@
           </div>
           <div class="row" style="display: flex;align-items: center;justify-content: center;">
             <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{
-                            reversedProductList[0].name }} </span>
+              reversedProductList[0].name }} </span>
               <br />
               <p class="prodDis">{{ reversedProductList[0].short_desc }}</p>
               <div style="margin-top: 3%;">
@@ -62,14 +62,14 @@
                     <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
                     </span> <br />
                     <span class="prodAmount">{{
-                                          this.formatNumber(24999) }}</span>
+                      this.formatNumber(24999) }}</span>
                     <br />
                   </div>
                   <div class="col-6">
 
                     <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span
                       class="prodAmount">{{
-                                            this.formatNumber(9999) }}</span>
+                        this.formatNumber(9999) }}</span>
 
 
 
@@ -104,7 +104,7 @@
           </div>
           <div class="row" style="display: flex;align-items: center;justify-content: center;">
             <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{
-                            reversedProductList[1].name }}</span>
+              reversedProductList[1].name }}</span>
               <br />
               <p class="prodDis">{{ reversedProductList[1].short_desc }}</p>
 
@@ -113,7 +113,7 @@
                 </span>
                 <br />
                 <span class="prodAmount">{{
-                                  this.formatNumber(reversedProductList[1].price) }}</span>
+                  this.formatNumber(reversedProductList[1].price) }}</span>
 
 
 
@@ -220,7 +220,7 @@ export default {
   methods: {
     async getProductList() {
       const resultfinal = await axios.get(
-        "https://uatinfinitybackend.infinitybrains.com/api/showproduct"
+        "https://api.infinitybrains.com/api/showproduct"
       );
       this.listdef = resultfinal.data.data;
     },

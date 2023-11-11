@@ -220,7 +220,7 @@ export default {
     continueToCategories() {
 
       this.$router.push('/10M_website/previewalltheme/paymentscreen/17');//Uat2.0
-      this.$router.push('/10M_website/previewalltheme/paymentscreen/6');//Uat1.0
+      // this.$router.push('/10M_website/previewalltheme/paymentscreen/6');//Uat1.0
     },
   },
 
@@ -237,7 +237,7 @@ export default {
       this.themeComponent = themeModule.default;
       this.cate_id = localStorage.getItem('categories_id');
       this.sub_id = localStorage.getItem('subcategories_id');
-      axios.get(`https://uatinfinitybackend.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=${this.cate_id}&subcatagories_id=${this.sub_id}`).then((res) => {
+      axios.get(`https://api.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=${this.cate_id}&subcatagories_id=${this.sub_id}`).then((res) => {
 
         this.colorArray = res.data.colorData;
         console.log(res.data.colorData);
@@ -474,4 +474,5 @@ export default {
   width: 20px;
   height: 20px;
   border: 1px solid #000;
-}</style>
+}
+</style>
