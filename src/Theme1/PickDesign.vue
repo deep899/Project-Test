@@ -13,7 +13,7 @@
       <!-- Navbar -->
       <div class="navbar">
         <button v-for="(button, index) in navBarData" :key="index" @click="handleButtonClick(button.id)">
-          {{ button.label }}
+          <!-- {{ button.label }} -->
         </button>
       </div>
 
@@ -91,7 +91,7 @@ export default {
 
   mounted() {
 
-    axios.get('https://api.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
+    axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
 
       console.log(res.data.data.subcategories);
 

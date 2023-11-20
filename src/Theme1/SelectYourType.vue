@@ -56,7 +56,7 @@
 
 
       <router-link :to="'/10M_website/pickdesign/' + selectedCategory" class="btnContinue">{{ continueButtonLabel
-      }}</router-link>
+              }}</router-link>
 
     </div>
   </div>
@@ -115,7 +115,7 @@ export default {
   },
   mounted() {
 
-    axios.get('https://api.infinitybrains.com/api/admin/catagories').then((res) => {
+    axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/catagories').then((res) => {
 
       console.log(res.data.data);
       this.grid = res.data.data
