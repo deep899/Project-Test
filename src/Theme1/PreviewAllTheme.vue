@@ -244,7 +244,7 @@ export default {
       this.themeComponent = themeModule.default;
       this.cate_id = localStorage.getItem('categories_id');
       this.sub_id = localStorage.getItem('subcategories_id');
-      axios.get(`https://uatinfinitybackend.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=${this.cate_id}&subcatagories_id=${this.sub_id}`).then((res) => {
+      axios.get(`https://api.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=${this.cate_id}&subcatagories_id=${this.sub_id}`).then((res) => {
 
         this.colorArray = res.data.colorData;
         console.log(res.data.colorData);
