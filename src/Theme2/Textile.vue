@@ -3,7 +3,7 @@
     <header>
       <h1 class="title">T-Shirts & Shirts Shop</h1>
       <p class="subtitle">Discover the Latest Styles</p>
-      <a class="cta-button" :style="{ backgroundColor: selectedColor }" href="#">Shop Now</a>
+      <label class="cta-button" :style="{ backgroundColor: selectedColor }">Shop Now</label>
     </header>
     <div class="client-reviews">
       <h2 class="section-title">Customer Reviews</h2>
@@ -108,12 +108,12 @@ export default {
         const subcategoryName = data.Subcategory.sub_category_details.sub_category_name;
         this.$store.commit('setMagaswalaColor', data.data.color_select);
 
-        if (subcategoryName) {
-          this.$router.push(`/${subcategoryName}`);
-        }
-        else {
-          this.$router.push(`/`);
-        }
+        // if (subcategoryName) {
+        //   this.$router.push(`/${subcategoryName}`);
+        // }
+        // else {
+        //   this.$router.push(`/`);
+        // }
       } catch (error) {
         console.error('Error fetching subcategory info:', error);
 

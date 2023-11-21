@@ -71,7 +71,6 @@
           <!-- </div>
           </div> -->
 
-          <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
 
         </div>
 
@@ -103,9 +102,12 @@
                 <div class="scrollable-content">
                   <!-- Render the component directly -->
                   <component :is="themeComponent" />
+
                 </div>
+
               </div>
             </div>
+
             <!-- <div class="card">
             <img :src="selectedImage" alt="Selected Image" />
           </div> -->
@@ -116,8 +118,13 @@
             <img :src="themefirstimg" alt="Selected Image" />
           </div> -->
           </div>
+          <button @click="continueToCategories" class="btnContinue">{{ continueButtonLabel }}</button>
+
         </div>
+
       </div>
+
+
     </div>
   </div>
 </template>
@@ -318,6 +325,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 33px;
+  height: 80vh;
 }
 
 .left-side {
@@ -329,6 +337,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -420,8 +429,11 @@ export default {
   border: none;
   padding: 5px 20px;
   margin-top: 3rem;
+
+
   cursor: pointer;
-  width: 100%;
+  width: 170px;
+
 }
 
 .card {

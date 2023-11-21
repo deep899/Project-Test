@@ -1,39 +1,24 @@
-const subdomain = window.location.hostname.split('.');
-console.log('hello', subdomain[0]);
+async function getMainLayout() {
+  const subdomain = window.location.hostname.split('.');
 
-const newSubdomain = 'gaurav'; // Define your custom subdomain here
-// Check if the current subdomain is equal to your custom subdomain
+  try {
+    const response = await fetch('https://api.infinitybrains.com/api/Searching?domain_name=' + subdomain[0]);
+    const data = await response.json();
 
-if (subdomain[0] == localStorage.getItem('domainname')) {
-  // Replace the subdomain with your custom subdomain
-  subdomain[0] = newSubdomain;
-  // alert("hell");
-  // Reconstruct the URL with the updated subdomain
-  // const updatedURL = window.location.protocol + '//' + subdomain.join('.') + ':' + window.location.port + window.location.pathname;
-
-  // Get the current URL without the subdomain
-  const currentURL = window.location.href.replace(subdomain[0] + '.', '');
-
-  // Update the URL with the new subdomain
-  const updatedURL = newSubdomain + '.' + currentURL;
-
-
-  // Redirect to the updated URL
-  // console.log(updatedURL);
-  window.location.href = updatedURL;
+    if (data.status_code == '200') {
+      return () => import("./../Theme2/RootTheme.vue");
+    } else {
+      return () => import("layouts/MainLayout.vue");
+    }
+  } catch (error) {
+    return () => import("layouts/MainLayout.vue");
+  }
 }
 
-
-// const routes2 = [
-
-// ];
-
-
 const routes1 = [
-
   {
     path: "/",
-    component: () => import("layouts/MainLayout.vue"),
+    component: await getMainLayout(),
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
 
@@ -48,7 +33,7 @@ const routes1 = [
         path: "/IbsfPrivacy", name: "privacy1",
         component: () => import("pages/product_pages/privercy1.vue"),
       },
-      
+
 
       {
 
@@ -160,8 +145,8 @@ const routes1 = [
     name: "paymentscreen",
     component: () => import("pages/product_pages/newPaymentForm.vue"),
   },
-  
- 
+
+
 ];
 
 // Determine which routes to use based on the subdomain

@@ -3,7 +3,7 @@
       <header>
         <h1 class="title">Delicious Food</h1>
         <p class="subtitle">Experience the Taste of Paradise</p>
-        <a class="cta-button"   :style="{ backgroundColor: selectedColor }" href="#">Order Now</a>
+        <label class="cta-button"   :style="{ backgroundColor: selectedColor }" >Order Now</label>
       </header>
       <div class="client-reviews">
     <h2 class="section-title">Client Reviews</h2>
@@ -112,15 +112,15 @@
         const response = await fetch(`${API_BASE_URL}/Searching?domain_name=${user}`);
         const data = await response.json();
 
-        const subcategoryName = data.Subcategory.sub_category_details.sub_category_name;
+        // const subcategoryName = data.Subcategory.sub_category_details.sub_category_name;
         this.$store.commit('setMagaswalaColor',  data.data.color_select);
 
-        if (subcategoryName) {
-          this.$router.push(`/${subcategoryName}`);
-        }
-        else{
-          this.$router.push(`/`);
-        }
+        // if (subcategoryName) {
+        //   this.$router.push(`/${subcategoryName}`);
+        // }
+        // else{
+        //   this.$router.push(`/`);
+        // }
       } catch (error) {
         console.error('Error fetching subcategory info:', error);
         

@@ -13,7 +13,7 @@
       <!-- Navbar -->
       <div class="navbar">
         <button v-for="(button, index) in navBarData" :key="index" @click="handleButtonClick(button.id)">
-          {{ button.label }}
+          <!-- {{ button.label }} -->
         </button>
       </div>
 
