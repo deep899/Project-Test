@@ -241,23 +241,26 @@
      
     </q-carousel>
     <!-- <div class="custom-buttons"> -->
-<!--   
+      <div style="display: flex;align-items: center;justify-content: center;">
     <q-btn
       class=""
-      style="  color: whitesmoke;  margin-top: -10vh;   margin-left: 1%;   height: fit-content; width: 1vh; border-radius: 100px ;   "
+      style="  color: whitesmoke;  margin-top: -10vh; background-color: #012a71; color: white;     height: fit-content; width: 37px; border-radius: 50% ;  "
       icon="chevron_left"
       @click="prev()"
     ></q-btn>
       
 
-
+        &nbsp;
+        &nbsp;
+        &nbsp;
     <q-btn
       class=""
-      style="  color: whitesmoke; margin-top: -10vh;    margin-left: 0.5%;  height: fit-content; width: 1vh; border-radius: 100px;   "
+      style="  color: whitesmoke; margin-top: -10vh; background-color: #012a71; color: white;     height: fit-content; width: 37px; border-radius: 50%;  "
       icon="chevron_right"
       @click="next()"
     >
-    </q-btn> -->
+    </q-btn>
+  </div>
 
     <!-- <q-btn
       class=""
@@ -288,7 +291,8 @@ export default {
   },
   methods: {
     prev() {
-      this.$refs.carousel.prev();
+      // this.$refs.carousel.prev();
+      this.slide = (this.slide - 1 + 5) % 5;
     },
     next() {
       this.$refs.carousel.next();

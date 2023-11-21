@@ -35,10 +35,23 @@
             color: rgb(65, 65, 65);
             /* text-align: justify;   text-justify: inter-word; */
           "
+          v-if="id !== 17"
           class="pl-5 pr-5 ml-5 mr-5 fw-300 text-danger-300 font-xssss mb-4"
         >
           Your Payment of ₹{{ this.amount }}.00 has been SuccessFul Payment
           receipt sent to your email
+        </p>
+        <p
+          style="
+            width: 70%;
+            color: rgb(65, 65, 65);
+            /* text-align: justify;   text-justify: inter-word; */
+          "
+          v-else
+          class="pl-5 pr-5 ml-5 mr-5 fw-300 text-danger-300 font-xssss mb-4"
+        >
+        <span style="font-weight: 900 bolder;">Congratulations your website will be live on subdomain </span>
+        <span>your website will be live on main domain in 72 hours </span>
         </p>
         <!-- <a v-bind:href="'/CreativeBuy'" style="" class="text-dark  ">
             <svg

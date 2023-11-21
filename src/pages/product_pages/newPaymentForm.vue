@@ -57,8 +57,8 @@
 
                 <div class="row">
                   <div class="col-md-12">
-                    <label class="lableForm" for="salesmanName">Salesman Code</label>
-                    <input style="width: 100%" placeholder="Salesman Code" type="text" id="salesmanName"
+                    <label class="lableForm" for="salesmanName">Sales Manager Code / License Code</label>
+                    <input style="width: 100%" placeholder="Code" type="text" id="salesmanName"
                       class="form-control" v-model="formData.salesmanName" />
                   </div>
                 </div>
@@ -250,7 +250,7 @@
                   padding-left: 3%;
                   height: fit-content;
                 ">
-                <span style="color: #2a4c86">OR SELECTED AN OFFER ({{ this.totalList }})</span>
+                <span style="color: #2a4c86">OR SELECT AN OFFER ({{ this.totalList }})</span>
               </div>
 
               <div class="outerDiv" style="">
