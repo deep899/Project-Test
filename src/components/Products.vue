@@ -140,9 +140,14 @@
           class="maincontainers  col-12 col-sm-12 col-md-6 col-xss-12 w-100   ">
           <div class="row " style="">
             <div class="col-12" style="display: flex;align-items: center;justify-content: center;">
-              <router-link :to="item.id">
+              <router-link :to="item.id" v-if="item.id !== '17'">
                 <img :src="item.product_image" alt="">
               </router-link>
+              <router-link v-else to="/10M_website/page">
+
+                <img :src="item.product_image" alt="">
+              </router-link>
+              
             </div>
             <div class="col-12" style="padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ item.name }} </span>
               <br />
@@ -220,7 +225,7 @@ export default {
   methods: {
     async getProductList() {
       const resultfinal = await axios.get(
-        "https://uatinfinitybackend.infinitybrains.com/api/showproduct"
+        "https://api.infinitybrains.com/api/showproduct"
       );
       this.listdef = resultfinal.data.data;
     },

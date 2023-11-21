@@ -2,7 +2,7 @@ async function getMainLayout() {
   const subdomain = window.location.hostname.split('.');
 
   try {
-    const response = await fetch('https://uatinfinitybackend.infinitybrains.com/api/Searching?domain_name=' + subdomain[0]);
+    const response = await fetch('https://api.infinitybrains.com/api/Searching?domain_name=' + subdomain[0]);
     const data = await response.json();
 
     if (data.status_code == '200') {

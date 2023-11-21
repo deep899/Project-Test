@@ -91,7 +91,7 @@ export default {
 
   mounted() {
 
-    axios.get('https://uatinfinitybackend.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
+    axios.get('https://api.infinitybrains.com/api/admin/subcatagories/' + this.$route.params.id).then((res) => {
 
       console.log(res.data.data.subcategories);
 
