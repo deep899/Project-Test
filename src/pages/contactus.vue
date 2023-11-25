@@ -30,7 +30,7 @@
       <contactform />
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12 center" style="padding-top: 50px">
-      <img src="../img/ContactUs.jpg" style="width: 80%; height: 500px" />
+      <img src="../img/ContactUs.png" style="width: 80%; height: 500px" />
     </div>
 
     <!-- Start google Map Integration -->

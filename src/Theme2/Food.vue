@@ -1,9 +1,24 @@
 <template>
+   <nav class="navbar"  :style="{ backgroundColor: selectedColor }" >
+      <div class="logo">
+𝖋𝖔𝖔𝖉𝖘
+</div>
+      <div class="menu-toggle" @click="toggleMenu">&#9776;</div>
+      <div class="menu" :class="{ 'menu-open': isMenuOpen }">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">favourites</a></li>
+          <li><a href="#">Add to Cart</a></li>
+        
+        </ul>
+      </div>
+    </nav>
     <div>
       <header>
         <h1 class="title">Delicious Food</h1>
         <p class="subtitle">Experience the Taste of Paradise</p>
-        <label class="cta-button"   :style="{ backgroundColor: selectedColor }" >Order Now</label>
+        <label @click="scrollToSection()"   class="cta-button"   :style="{ backgroundColor: selectedColor }" >Order Now</label>
       </header>
       <div class="client-reviews">
     <h2 class="section-title">Client Reviews</h2>
@@ -16,19 +31,29 @@
       </Slide>
     </Carousel>
   </div>
-      <div class="container">
-        <h2 class="section-title">Featured Dishes</h2>
-  
-        <Carousel :autoplay="true" :autoplaySpeed="4000" :infinite="true" :arrows="true">
-          <Slide v-for="dish in dishes" :key="dish.id">
-            <div class="dish-card">
-              <img :src="dish.image" :alt="dish.name" class="dish-image" />
-              <h3 class="dish-name">{{ dish.name }}</h3>
-              <p class="dish-description">{{ dish.description }}</p>
-            </div>
-          </Slide>
-        </Carousel>
-      </div>
+  <div class="container">
+      <h2 class="section-title">Featured Dishes</h2>
+      <Carousel :autoplay="true" :autoplaySpeed="4000" :infinite="true" :arrows="true">
+        <!-- <Slide v-for="dish in dishes" :key="dish.id">
+          <div class="dish-card">
+            <img :src="dish.image" :alt="dish.name" class="dish-image" />
+            <h3 class="dish-name">{{ dish.name }}</h3>
+            <p class="dish-description">{{ dish.description }}</p>
+            
+        <label class="cta-button1"  @click="addToBucket(dish)"  :style="{ backgroundColor: selectedColor }" > Add to Bucket</label>
+
+          </div>
+        </Slide> -->
+        <div class="dish-row " id="section1" v-for="(row, index) in Math.ceil(dishes.length / 4)" :key="index">
+        <div class="dish-card" v-for="(dish, dishIndex) in dishes.slice(index * 4, (index + 1) * 4)" :key="dishIndex">
+          <img :src="dish.image" :alt="dish.name" class="dish-image" />
+          <h3 class="dish-name">{{ dish.name }}</h3>
+          <p class="dish-description">{{ dish.description }}</p>
+          <button @click="addToBucket(dish)" class="add-to-bucket-button">Add to Bucket</button>
+        </div>
+        </div>
+      </Carousel>
+    </div>
 
 
       <footer  :style="{ backgroundColor: selectedColor }" >
@@ -45,6 +70,7 @@
   export default {
     data() {
       return {
+        isMenuOpen: false,
         clientReviews: [
         {
           id: 1,
@@ -73,13 +99,13 @@
             id: 1,
             name: "Pasta Carbonara",
             description: "Creamy pasta with bacon and cheese.",
-            image: "https://static.toiimg.com/thumb/84784534.cms?imgsize=468021&width=800&height=800",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToZiUUsDXBrMmKWEw-c_BQ2cP-8pmZUjL4TNY8delEHYf3PLRAeR4BN7GfYPX3wjXEVr0&usqp=CAU",
           },
           {
             id: 2,
             name: "Pizza",
             description: "Classic pizza with tomato, mozzarella, and basil.",
-            image: "https://uatinfinitybackend.pizzahut.io/v1/content/en-in/in-1/images/deal/double-treat-box-ice-cream.9266b8899776fb8755c9262e84a5e2df.1.jpg",
+            image: "https://t2.gstatic.com/images?q=tbn:ANd9GcQ8xM9urfeDyUCOW3fAfBh5KUmDZWHu0uZ-RiWwAQsMkwU68ELfcJKJcYWPuCG_2jTRyeDpTQ",
           },
           {
             id: 3,
@@ -91,7 +117,7 @@
             id: 4,
             name: "Chocolate Cake",
             description: "Decadent chocolate cake with a rich flavor.",
-            image: "https://mrbrownbakery.com/image/images/TXnSdEsXr1fMSXZSzgiVzTMJFs9Wi4PpJvvLKeNs.jpeg?p=med",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPsZ3Bbjo4SWUDRglk9yA_y380WYafvgU1AA&usqp=CAU",
           },
         ],
       };
@@ -102,6 +128,19 @@
     },
   },
   methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    scrollToSection(){
+     
+      const sectionElement = document.getElementById('section1');
+    if (sectionElement) {
+      window.scrollTo({
+        top: sectionElement.offsetTop - 50, // Adjust the offset as needed
+        behavior: 'smooth',
+      });
+    }
+    },
     async handleSubdomain() {
       const API_BASE_URL = 'https://api.infinitybrains.com/api';
 
@@ -191,6 +230,114 @@
     font-size: 20px;
     margin-top: 20px;
   }
+
+  .cta-button1 {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+/* Common styles for all screen sizes */
+.dish-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.logo {
+  font-size: 1.5em;
+}
+
+.menu-toggle {
+  font-size: 1.5em;
+  cursor: pointer;
+  display: none;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu li {
+  margin-right: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    z-index: 1;
+  }
+
+  .menu-open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+.dish-card {
+  width: calc(25% - 20px);
+  margin: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Media query for tablet screens */
+@media (max-width: 768px) {
+  .dish-card {
+    width: calc(33.33% - 20px);
+  }
+}
+
+/* Media query for phone screens */
+@media (max-width: 576px) {
+  .dish-card {
+    width: calc(50% - 20px);
+  }
+}
+
   
   .container {
     max-width: 1200px;
@@ -218,6 +365,7 @@
     height: auto;
     border-radius: 5px;
     margin-bottom: 20px;
+    width: 100%;
   }
   
   .dish-name {

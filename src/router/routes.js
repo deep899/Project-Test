@@ -87,7 +87,10 @@ const routes1 = [
     path: "/Food",
     name: "theam21",
     component: () => import("../Theme2/Food.vue"),
-  },
+    children: [
+      { path: "favourites_page", component: () => import("../Theme2/Food_Page/favourites_page.vue") }
+    ]
+  },  
   {
     path: "/textile",
     name: "theam22",
