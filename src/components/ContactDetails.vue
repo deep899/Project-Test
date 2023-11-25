@@ -6,7 +6,7 @@
         <q-icon name="location_on" class=" text-white q-icon--big"></q-icon>
       </div>  
       <div class="col-11" style="">
-        <p class="text-white name" style="font-size: 1rem;">408,Luxuria Business Hub,Nr <br/> Vesu,Surat,Gujarat</p> <br/>
+        <p class="text-white name" style="font-size: 1rem;">604,Luxuria Business Hub,Nr <br/> Vesu,Surat,Gujarat</p> <br/>
       </div>
     </div>
     <div class="row">
