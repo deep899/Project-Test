@@ -19,10 +19,10 @@
     </div>
     <div class="row">
       <div class="col-1">
-        <q-icon class="material-icons q-icon--big text-white">phone_iphone</q-icon>
+        <q-icon class="material-icons q-icon--big text-white ">phone_iphone</q-icon> 
       </div>
       <div class="col-11">
-        <p class="text-white name" style="font-size: 1.1rem;">+91 94267 34485</p>
+        <p class="text-white" style="margin-left: 10% ; margin-top: -10%; font-size: 1.1rem;"> <span>Sales Regarding : +91 94267 34485</span> <br/>  <span style="margin-top: 20%;">Hiring Regarding :  +91 9173544779</span></p>
       </div>
       <div class="col-11">
         <div class="inline">
