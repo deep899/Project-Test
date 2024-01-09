@@ -296,16 +296,13 @@ export default {
       let url = null;
 
       if (this.id == 8) {
-        window.location.href = 'https://ibhrms.com/buy'
-      }
-      else if (this.id == 9) {
-        window.location.href = 'https://ibsales.infinitybrains.com/buy'
+        window.location.href = 'https://ibhrms.com/freeTrial'
       }
       else if (this.id == 9) {
         window.location.href = 'https://ibsales.infinitybrains.com/buy'
       }
       else if (this.id == 14) {
-        window.location.href = 'https://app.ibdelight.in/buy'
+        window.location.href = 'app.ibdelight.in/freeTrial'
       } else {
         url = this.id
       }
