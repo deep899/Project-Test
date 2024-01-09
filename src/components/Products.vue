@@ -18,18 +18,29 @@
               <br />
 
               <p class="prodDis">{{ item.short_desc }}</p>
-              <div v-if="index == 2" style="margin-top: 12%; "> <span class="prodAmount"
+              <div v-if="index == 2" style="margin-top: 12%; ">
+                
+                
+                <!-- <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">
                   {{ this.formatNumber(item.price) }}
-                </span>
-
+                </span> -->
+                <router-link :to="item.id">
+                <span class="smallDis" style="font-size: 1.5rem;">Use free forever</span>
+                </router-link>
 
               </div>
-              <div v-else style="margin-top: 5%; "> <span class="prodAmount"
+              <div v-else style="margin-top: 5%; ">
+              
+               <!-- <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
-                                    this.formatNumber(5999) }}</span>
-                <br /><span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span>
+                                    this.formatNumber(5999) }}</span> -->
+                <br />
+                <!-- <span class="smallDis">Up to 10 employees after that 50
+                  RS. Per employee per month.</span> -->
+                  <router-link :to="item.id">
+                <span class="smallDis" style="font-size: 1.5rem;">Use free forever</span>
+                </router-link>
               </div>
             </div>
 
@@ -59,21 +70,21 @@
               <div style="margin-top: 3%;">
                 <div class="row">
                   <div class="col-6">
-                    <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
-                    </span> <br />
-                    <span class="prodAmount">{{
-                                          this.formatNumber(24999) }}</span>
+                    <!-- <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
+                    </span> -->
+                     <br />
+                    <!-- <span class="prodAmount">{{
+                                          this.formatNumber(24999) }}</span> -->
+                                          <router-link to="/10M_website/page">
+                <span class="smallDis" style="font-size: 1.5rem;">Use free forever</span>
+                </router-link>
                     <br />
                   </div>
                   <div class="col-6">
 
-                    <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span
+                    <!-- <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span
                       class="prodAmount">{{
-                                            this.formatNumber(9999) }}</span>
-
-
-
-
+                                            this.formatNumber(9999) }}</span> -->
 
                   </div>
 
@@ -109,17 +120,17 @@
               <p class="prodDis">{{ reversedProductList[1].short_desc }}</p>
 
               <div class="col-6" style="margin-top: 5%;">
-                <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
-                </span>
-                <br />
-                <span class="prodAmount">{{
-                                  this.formatNumber(reversedProductList[1].price) }}</span>
+                <!-- <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
+                </span><br /> -->
+                
+                <!-- <span class="prodAmount">{{
+                                  this.formatNumber(reversedProductList[1].price) }}</span> -->
+
+                                  <router-link :to="reversedProductList[1].id"><span class="smallDis" style="font-size: 1.5rem;">Use free forever</span></router-link>
 
 
-
-
-                <!-- <br /><span class="smallDis">Up to 10 employees after that 50
-                  RS. Per employee per month.</span> -->
+                  <!-- <br /><span class="smallDis">Up to 10 employees after that 50
+                    RS. Per employee per month.</span> -->
 
 
               </div>
@@ -469,6 +480,7 @@ export default {
 
 .smallDis {
   color: #012a71;
+  text-decoration: underline;
   font-weight: bold;
   font-size: 1.2em;
 
