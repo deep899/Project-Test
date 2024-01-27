@@ -660,9 +660,6 @@ export default {
           console.log(res);
           this.paynowbtn = false;
           localStorage.setItem("UserDetails", JSON.stringify(res.data.data));
-
-          console.log("thisis", res.data.data.id);
-
           let user_id = res.data.data.id;
           const formDatas = new FormData();
           formDatas.append("company_logo", this.CompanyImage);
@@ -677,7 +674,6 @@ export default {
               {}
             )
             .then((response) => {
-              console.log("hello", response.data);
               this.loading = true;
               this.hashGen();
               // this.rezorpayed();
