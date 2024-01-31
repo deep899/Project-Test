@@ -5,7 +5,7 @@
 
 
   <!-- Carousel End Here -->
-  <span class="OurTitle" style="margin-top: 0%;"> OUR PRODUCT </span>
+  <span class="OurTitle" style="margin-top: 0%;"> OUR PRODUCTS </span>
 
   <!-- OUR PRODUTCS -->
   <div v-show="showProducts">

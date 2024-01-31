@@ -4,7 +4,7 @@
       <div class="row w-100">
         <div v-for="(item, index) in listdef" :key="item.id" style=" margin-bottom: 5%;"
           class="maincontainers prodImg col-6 col-sm-12 col-md-6 col-xss-12 w-100   ">
-          <div class="row " v-if="item.name !== 'consultant' && item.name !== 'Make Your Website App In 10 Minutes'"
+          <div class="row " v-if="item.name !== 'consultant panel' && item.name !== 'Make Your Website / App In 10 Minutes'"
             style="">
             <div class="col-4 imgcontainer " style="">
               <router-link :to="item.id">
@@ -19,27 +19,27 @@
 
               <p class="prodDis">{{ item.short_desc }}</p>
               <div v-if="index == 2" style="margin-top: 12%; ">
-                
-                
+
+
                 <!-- <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">
                   {{ this.formatNumber(item.price) }}
                 </span> -->
                 <router-link :to="item.id">
-                <span class="smallDis" style="font-size: 1.5rem;">Use free forever</span>
+                  <span class="smallDis" style="font-size: 1.5rem;">Price : FREE FOREVER</span>
                 </router-link>
 
               </div>
               <div v-else style="margin-top: 5%; ">
-              
-               <!-- <span class="prodAmount"
+
+                <!-- <span class="prodAmount"
                   style="text-shadow: 1px 0 0 #012a71;">Price</span><br /><span class="prodAmount">{{
                                     this.formatNumber(5999) }}</span> -->
                 <br />
                 <!-- <span class="smallDis">Up to 10 employees after that 50
                   RS. Per employee per month.</span> -->
-                  <router-link :to="item.id">
-                <span class="smallDis" style="font-size: 1.5rem;">Use free forever</span>
+                <router-link :to="item.id">
+                  <span class="smallDis" style="font-size: 1.5rem;">Price : FREE FOREVER</span>
                 </router-link>
               </div>
             </div>
@@ -64,7 +64,7 @@
           </div>
           <div class="row" style="display: flex;align-items: center;justify-content: center;">
             <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{
-                            reversedProductList[0].name }} </span>
+              reversedProductList[0].name }} </span>
               <br />
               <p class="prodDis">{{ reversedProductList[0].short_desc }}</p>
               <div style="margin-top: 3%;">
@@ -72,12 +72,12 @@
                   <div class="col-6">
                     <!-- <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
                     </span> -->
-                     <br />
+                    <br />
                     <!-- <span class="prodAmount">{{
                                           this.formatNumber(24999) }}</span> -->
-                                          <router-link to="/10M_website/page">
-                <span class="smallDis" style="font-size: 1.5rem;">Use free forever</span>
-                </router-link>
+                    <router-link to="/10M_website/page">
+                      <span class="smallDis" style="font-size: 1.5rem;">Price : FREE FOREVER</span>
+                    </router-link>
                     <br />
                   </div>
                   <div class="col-6">
@@ -115,21 +115,22 @@
           </div>
           <div class="row" style="display: flex;align-items: center;justify-content: center;">
             <div class="col-8" style="margin-top: 3%;  padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{
-                            reversedProductList[1].name }}</span>
+              reversedProductList[1].name }}</span>
               <br />
               <p class="prodDis">{{ reversedProductList[1].short_desc }}</p>
 
               <div class="col-6" style="margin-top: 5%;">
                 <!-- <span class="prodAmount" style="text-shadow: 1px 0 0 #012a71;">Price
                 </span><br /> -->
-                
+
                 <!-- <span class="prodAmount">{{
                                   this.formatNumber(reversedProductList[1].price) }}</span> -->
 
-                                  <router-link :to="reversedProductList[1].id"><span class="smallDis" style="font-size: 1.5rem;">Use free forever</span></router-link>
+                <router-link :to="reversedProductList[1].id"><span class="smallDis" style="font-size: 1.5rem;">Price :
+                    FREE FOREVER</span></router-link>
 
 
-                  <!-- <br /><span class="smallDis">Up to 10 employees after that 50
+                <!-- <br /><span class="smallDis">Up to 10 employees after that 50
                     RS. Per employee per month.</span> -->
 
 
@@ -158,7 +159,7 @@
 
                 <img :src="item.product_image" alt="">
               </router-link>
-              
+
             </div>
             <div class="col-12" style="padding: 1.5%; padding-top:0.2% ;"><span class="prodName">{{ item.name }} </span>
               <br />
