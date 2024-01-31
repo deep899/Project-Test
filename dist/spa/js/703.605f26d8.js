@@ -1,1 +1,0 @@
-"use strict";(globalThis["webpackChunkinfinity_brains"]=globalThis["webpackChunkinfinity_brains"]||[]).push([[703],{2703:(i,n,s)=>{s.r(n),s.d(n,{default:()=>g});var r=s(9835),a=s(5394),t=s.n(a);const c={class:"img",src:t(),alt:"",srcset:""};function e(i,n){return(0,r.wg)(),(0,r.iD)("img",c)}var l=s(1639);const u={},b=(0,l.Z)(u,[["render",e]]),g=b}}]);
