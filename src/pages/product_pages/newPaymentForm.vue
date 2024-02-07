@@ -166,7 +166,9 @@
                   Submit
                 </button>
 
-                <span v-if="formData.error !=''" label="this span is show error of submit button error ">{{ formData.error }}</span>
+                <span v-if="formData.error != ''" label="this span is show error of submit button error ">{{
+                  formData.error
+                }}</span>
 
 
 
@@ -731,7 +733,7 @@ export default {
     expertservice,
     quicklink,
   },
-  
+
   data() {
     return {
       country: "101",
@@ -787,7 +789,7 @@ export default {
         company_logo: " ",
         state: " ",
         city: " ",
-        error:""
+        error: ""
       },
       errorForm: ``,
       activeTab: 'web'
@@ -796,7 +798,7 @@ export default {
   methods: {
 
     loginPopupOpen() {
-      
+
       this.inception = true;
     },
 
@@ -895,6 +897,8 @@ export default {
 
         // Process the response as needed
         localStorage.setItem("token", response.data.data.token);
+        localStorage.setItem("email", this.email1);
+        localStorage.setItem("password", this.password1);
         this.$router.push('/CreativeBuy');
         this.$store.commit("setEmail", this.email1);
         this.$store.commit("setPassword", this.password1);
@@ -975,6 +979,7 @@ export default {
             axios
               .post(`creativedata`, formData).then((res) => {
                 console.log(res.data);
+
               });
             console.log(res.data.data);
             // alert(res.data.data.id);
@@ -1024,6 +1029,7 @@ export default {
             axios
               .post(`creativedata`, formData).then((res) => {
                 console.log(res.data);
+                localStorage.setItem('company_logo', res.data.data.company_logo);
               });
 
             axios.post("paymentstatusupdate", {
@@ -1040,7 +1046,7 @@ export default {
                 this.password1 = this.formData.password;
                 this.inception = true;
               });
-          }) .catch((e) => {
+          }).catch((e) => {
             this.formData.error = e.response.data.message[0];
             this.showForm = true;
           });

@@ -47,6 +47,31 @@
     <q-btn @click="DownloadAllCreative()" style="width: 12rem" class="btnall" outline color="primary"><i
         class="fa fa-download"></i> &nbsp;&nbsp;&nbsp; Download All
     </q-btn>
+    <!-- <q-uploader
+      label="Upload Logo"
+      accept=".jpg, .jpeg, .png"
+      v-model="uploadedLogo"
+      @input="handleFileAdded"
+    >
+      <template v-slot:file="{ index, file }">
+        <q-aside
+          v-if="file.name"
+          :key="index"
+          class="q-ma-xs"
+        >
+          <q-icon name="image" />
+          {{ file.name }}
+        </q-aside>
+      </template>
+    </q-uploader>
+    
+    <q-img
+      v-if="uploadedLogo"
+      :src="uploadedLogo"
+      alt="Uploaded Logo"
+      class="q-mt-md"
+    /> -->
+    
   </div>
 
   <q-dialog v-model="alerted" @update:model-value="dialogClosed">
@@ -166,7 +191,7 @@
               color: #ffffff;
               opacity: 1;
             ">
-            2024 copyright. All right Reserved
+            2023 copyright. All right Reserved
           </p>
         </div>
       </div>
@@ -228,6 +253,7 @@ export default {
       // This Is The Creative Image DownloadUrls
       mainImageUrl: "",
       logoImageUrl: "",
+      uploadedLogo: null,
       text1: "",
       text2: "",
       text3: "",
@@ -271,10 +297,11 @@ export default {
   },
 
   methods: {
-    optionselected1() {
-
-
+    handleFileChange(event) {
+      this.logoImageUrl = event.target.files[0];
+      // Process the selected file as needed
     },
+
     shouldDisableCheckbox(index) {
       // return this.selectedOptions.length === 1 || this.selectedOptions.includes(this.options[index]);
     },
@@ -298,11 +325,11 @@ export default {
     },
     async ShereUrl(id) {
       this.loading = true;
+      this.logoImageUrl = localStorage.getItem('company_logo');
       await axios
         .get("https://api.infinitybrains.com/api/showcreative/" + id)
         .then((result) => {
           this.mainImageUrl =
-            // result.data.data.creative + "?not-from-cache-please";
             result.data.data.creative + "?not-from-cache-please";
           this.DownloadCreativeName = result.data.data.name;
         });
@@ -315,7 +342,7 @@ export default {
       // Load main image
       const mainImage = new Image();
       mainImage.crossOrigin = "anonymous";
-      mainImage.src = this.mainImageUrl ;
+      mainImage.src = this.mainImageUrl + "?not-from-cache-please";
       await new Promise((resolve) => (mainImage.onload = resolve));
 
       // Load logo image
@@ -393,8 +420,9 @@ export default {
     },
     Submitedkey() {
       const store = useStore();
-      this.email = store.state.email;
-      this.password = store.state.password;
+      this.email = localStorage.getItem('email');
+      this.password = localStorage.getItem('password');
+
       axios
         .post(
           "creativedata"
@@ -403,24 +431,20 @@ export default {
           console.log(result.data);
           this.alerted = false;
           axios.post('login', {
-            email: store.state.email,
-            password: store.state.password
+            email: this.email,
+            password: this.password
           }).then(async (result) => {
             console.log(result.data);
-            this.logoImageUrl = await result.data.data.company_logo;
-            this.text1 = await " Address :" + result.data.data.address;
-            this.text2 = await "+91" + result.data.data.contact_number;
-            this.text3 = await result.data.data.website;
+            // this.logoImageUrl = await result.data.data.company_logo;
+            // this.text1 = await " Address :" + result.data.data.address;
+            // this.text2 = await "+91" + result.data.data.contact_number;
+            // this.text3 = await result.data.data.website;
           }).catch((error) => {
 
           });
 
 
-          if (!this.logoImageUrl) {
 
-            this.logoImageUrl = window.location.origin + '/img/Ib_logo.446e007b.png'
-
-          }
 
 
           // if (this.text11 == null) {
@@ -515,7 +539,7 @@ export default {
       // Load logo image
       const logoImage1 = new Image();
       logoImage1.crossOrigin = "anonymous";
-      logoImage1.src = this.logoImageUrl + "?not-from-cache-please";
+      logoImage1.src = 'https://i.imgur.com/lF1GKDt.jpg' + "?not-from-cache-please";
       await new Promise((resolve) => (logoImage1.onload = resolve));
 
       // Draw main image
