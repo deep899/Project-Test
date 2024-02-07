@@ -1,37 +1,37 @@
 <template>
-   <nav class="navbar"  :style="{ backgroundColor: selectedColor }" >
-      <div class="logo">
-𝖋𝖔𝖔𝖉𝖘
-</div>
-      <div class="menu-toggle" @click="toggleMenu">&#9776;</div>
-      <div class="menu" :class="{ 'menu-open': isMenuOpen }">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">favourites</a></li>
-          <li><a href="#">Add to Cart</a></li>
-        
-        </ul>
-      </div>
-    </nav>
-    <div>
-      <header>
-        <h1 class="title">Delicious Food</h1>
-        <p class="subtitle">Experience the Taste of Paradise</p>
-        <label @click="scrollToSection()"   class="cta-button"   :style="{ backgroundColor: selectedColor }" >Order Now</label>
-      </header>
-      <div class="client-reviews">
-    <h2 class="section-title">Client Reviews</h2>
-    <Carousel :autoplay="true" :autoplaySpeed="4000" :infinite="true" :arrows="true">
-      <Slide v-for="review in clientReviews" :key="review.id">
-        <div class="review-card">
-          <p class="review-text">{{ review.text }}</p>
-          <p class="review-author">- {{ review.author }}</p>
-        </div>
-      </Slide>
-    </Carousel>
-  </div>
-  <div class="container">
+  <nav class="navbar" :style="{ backgroundColor: selectedColor }">
+    <div class="logo">
+      𝖋𝖔𝖔𝖉𝖘
+    </div>
+    <div class="menu-toggle" @click="toggleMenu">&#9776;</div>
+    <div class="menu" :class="{ 'menu-open': isMenuOpen }">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">favourites</a></li>
+        <li><a href="#">Add to Cart</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  <div>
+    <header>
+      <h1 class="title">Delicious Food</h1>
+      <p class="subtitle">Experience the Taste of Paradise</p>
+      <label @click="scrollToSection()" class="cta-button" :style="{ backgroundColor: selectedColor }">Order Now</label>
+    </header>
+    <div class="client-reviews">
+      <h2 class="section-title">Client Reviews</h2>
+      <Carousel :autoplay="true" :autoplaySpeed="4000" :infinite="true" :arrows="true">
+        <Slide v-for="review in clientReviews" :key="review.id">
+          <div class="review-card">
+            <p class="review-text">{{ review.text }}</p>
+            <p class="review-author">- {{ review.author }}</p>
+          </div>
+        </Slide>
+      </Carousel>
+    </div>
+    <div class="container">
       <h2 class="section-title">Featured Dishes</h2>
       <Carousel :autoplay="true" :autoplaySpeed="4000" :infinite="true" :arrows="true">
         <!-- <Slide v-for="dish in dishes" :key="dish.id">
@@ -45,33 +45,33 @@
           </div>
         </Slide> -->
         <div class="dish-row " id="section1" v-for="(row, index) in Math.ceil(dishes.length / 4)" :key="index">
-        <div class="dish-card" v-for="(dish, dishIndex) in dishes.slice(index * 4, (index + 1) * 4)" :key="dishIndex">
-          <img :src="dish.image" :alt="dish.name" class="dish-image" />
-          <h3 class="dish-name">{{ dish.name }}</h3>
-          <p class="dish-description">{{ dish.description }}</p>
-          <button @click="addToBucket(dish)" class="add-to-bucket-button">Add to Bucket</button>
-        </div>
+          <div class="dish-card" v-for="(dish, dishIndex) in dishes.slice(index * 4, (index + 1) * 4)" :key="dishIndex">
+            <img :src="dish.image" :alt="dish.name" class="dish-image" />
+            <h3 class="dish-name">{{ dish.name }}</h3>
+            <p class="dish-description">{{ dish.description }}</p>
+            <button @click="addToBucket(dish)" class="add-to-bucket-button">Add to Bucket</button>
+          </div>
         </div>
       </Carousel>
     </div>
 
 
-      <footer  :style="{ backgroundColor: selectedColor }" >
-      <div class="container"  :style="{ backgroundColor: selectedColor }">
-        <p  :style="{ backgroundColor: selectedColor }" >&copy; 2023 infinitybrains.com. All rights reserved.</p>
+    <footer :style="{ backgroundColor: selectedColor }">
+      <div class="container" :style="{ backgroundColor: selectedColor }">
+        <p :style="{ backgroundColor: selectedColor }">&copy; 2023 infinitybrains.com. All rights reserved.</p>
       </div>
     </footer>
-    </div>
-  </template>
+  </div>
+</template>
   
-  <script>
-  import { Carousel, Slide } from 'vue-Carousel';
+<script>
+import { Carousel, Slide } from 'vue-Carousel';
 
-  export default {
-    data() {
-      return {
-        isMenuOpen: false,
-        clientReviews: [
+export default {
+  data() {
+    return {
+      isMenuOpen: false,
+      clientReviews: [
         {
           id: 1,
           text: "Amazing food and great service! I keep coming back for more.",
@@ -93,36 +93,36 @@
           author: "Bob Wilson",
         },
       ],
-    
-        dishes: [
-          {
-            id: 1,
-            name: "Pasta Carbonara",
-            description: "Creamy pasta with bacon and cheese.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToZiUUsDXBrMmKWEw-c_BQ2cP-8pmZUjL4TNY8delEHYf3PLRAeR4BN7GfYPX3wjXEVr0&usqp=CAU",
-          },
-          {
-            id: 2,
-            name: "Pizza",
-            description: "Classic pizza with tomato, mozzarella, and basil.",
-            image: "https://t2.gstatic.com/images?q=tbn:ANd9GcQ8xM9urfeDyUCOW3fAfBh5KUmDZWHu0uZ-RiWwAQsMkwU68ELfcJKJcYWPuCG_2jTRyeDpTQ",
-          },
-          {
-            id: 3,
-            name: "Sushi Platter",
-            description: "Fresh and delicious sushi selection.",
-            image: "https://t4.ftcdn.net/jpg/06/05/83/35/360_F_605833578_EbcLZohjgPGAaRYUOrQF2Bn2DjApUedc.jpg",
-          },
-          {
-            id: 4,
-            name: "Chocolate Cake",
-            description: "Decadent chocolate cake with a rich flavor.",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPsZ3Bbjo4SWUDRglk9yA_y380WYafvgU1AA&usqp=CAU",
-          },
-        ],
-      };
-    },
-    computed: {
+
+      dishes: [
+        {
+          id: 1,
+          name: "Pasta Carbonara",
+          description: "Creamy pasta with bacon and cheese.",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToZiUUsDXBrMmKWEw-c_BQ2cP-8pmZUjL4TNY8delEHYf3PLRAeR4BN7GfYPX3wjXEVr0&usqp=CAU",
+        },
+        {
+          id: 2,
+          name: "Pizza",
+          description: "Classic pizza with tomato, mozzarella, and basil.",
+          image: "https://t2.gstatic.com/images?q=tbn:ANd9GcQ8xM9urfeDyUCOW3fAfBh5KUmDZWHu0uZ-RiWwAQsMkwU68ELfcJKJcYWPuCG_2jTRyeDpTQ",
+        },
+        {
+          id: 3,
+          name: "Sushi Platter",
+          description: "Fresh and delicious sushi selection.",
+          image: "https://t4.ftcdn.net/jpg/06/05/83/35/360_F_605833578_EbcLZohjgPGAaRYUOrQF2Bn2DjApUedc.jpg",
+        },
+        {
+          id: 4,
+          name: "Chocolate Cake",
+          description: "Decadent chocolate cake with a rich flavor.",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPsZ3Bbjo4SWUDRglk9yA_y380WYafvgU1AA&usqp=CAU",
+        },
+      ],
+    };
+  },
+  computed: {
     selectedColor() {
       return this.$store.state.magaswala_color;
     },
@@ -131,15 +131,15 @@
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
-    scrollToSection(){
-     
+    scrollToSection() {
+
       const sectionElement = document.getElementById('section1');
-    if (sectionElement) {
-      window.scrollTo({
-        top: sectionElement.offsetTop - 50, // Adjust the offset as needed
-        behavior: 'smooth',
-      });
-    }
+      if (sectionElement) {
+        window.scrollTo({
+          top: sectionElement.offsetTop - 50, // Adjust the offset as needed
+          behavior: 'smooth',
+        });
+      }
     },
     async handleSubdomain() {
       const API_BASE_URL = 'https://api.infinitybrains.com/api';
@@ -152,7 +152,7 @@
         const data = await response.json();
 
         // const subcategoryName = data.Subcategory.sub_category_details.sub_category_name;
-        this.$store.commit('setMagaswalaColor',  data.data.color_select);
+        this.$store.commit('setMagaswalaColor', data.data.color_select);
 
         // if (subcategoryName) {
         //   this.$router.push(`/${subcategoryName}`);
@@ -162,7 +162,7 @@
         // }
       } catch (error) {
         console.error('Error fetching subcategory info:', error);
-        
+
       }
     },
     extractSubdomain(url) {
@@ -185,68 +185,70 @@
       }
     },
   },
-    mounted(){
+  mounted() {
 
-      this.checkSubdomainOnLoad();
+    this.checkSubdomainOnLoad();
 
 
-    }
-
-  };
-  </script>
-  
-  <style scoped>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
-  }
-  
-  header {
-    background: url("https://st3.depositphotos.com/1194063/15070/i/450/depositphotos_150709644-stock-photo-various-herbs-and-spices.jpg") center/cover no-repeat;
-    text-align: center;
-    color: #fff;
-    padding: 100px 0;
-  }
-  
-  .title {
-    font-size: 48px;
-    margin: 0;
-  }
-  
-  .subtitle {
-    font-size: 24px;
-    margin: 20px 0;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 20px;
-    margin-top: 20px;
   }
 
-  .cta-button1 {
-    display: inline-block;
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 20px;
-    margin-top: 20px;
-  }
+};
+</script>
+  
+<style scoped>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header {
+  background: url("https://st3.depositphotos.com/1194063/15070/i/450/depositphotos_150709644-stock-photo-various-herbs-and-spices.jpg") center/cover no-repeat;
+  text-align: center;
+  color: #fff;
+  padding: 100px 0;
+}
+
+.title {
+  font-size: 48px;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.cta-button1 {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
 /* Common styles for all screen sizes */
 .dish-row {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -338,45 +340,45 @@
   }
 }
 
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .section-title {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .dish-card {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .dish-image {
-    max-width: 25vh;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  .dish-name {
-    font-size: 24px;
-  }
-  
-  .dish-description {
-    font-size: 18px;
-  }
 
-  footer {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.dish-card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dish-image {
+  max-width: 25vh;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.dish-name {
+  font-size: 24px;
+}
+
+.dish-description {
+  font-size: 18px;
+}
+
+footer {
   background-color: #333;
   color: #fff;
   padding: 20px 0;
@@ -387,6 +389,7 @@ footer p {
   margin: 0;
   font-size: 16px;
 }
+
 .client-reviews {
   background-color: #f2f2f2;
   padding: 40px 0;
@@ -444,5 +447,5 @@ footer p {
   font-size: 16px;
   margin-top: 10px;
 }
-  </style>
+</style>
   

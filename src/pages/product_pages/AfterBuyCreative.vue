@@ -98,7 +98,7 @@ export default {
     }
 
     axios
-      .post("https://uatbackend.infinitybrains.com/public/api/paymentstatusupdate", {
+      .post("https://api.infinitybrains.com/api/paymentstatusupdate", {
         user_id: this.user_id,
         payment_status: "1",
         product_id: this.id,

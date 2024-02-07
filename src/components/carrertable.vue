@@ -39,10 +39,10 @@ export default {
       list: [],
     };
   },
-  setup() {},
+  setup() { },
   async mounted() {
     let result = await axios.get(
-      "https://uatbackend.infinitybrains.com/public/api/showvacancy"
+      "https://api.infinitybrains.com/api/showvacancy"
     );
     console.warn(result.data.data);
     this.list = result.data.data;
@@ -80,4 +80,5 @@ thead tr:first-child th {
 .q-table--loading thead tr:last-child th {
   /* height of all previous header rows */
   top: 48px;
-}</style>
+}
+</style>

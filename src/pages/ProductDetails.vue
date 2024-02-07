@@ -30,10 +30,7 @@
     <!-- =======================demo image section===================================== -->
     <div class="demo"></div>
   </div>
-  <div
-    style="background-color: #2f518a"
-    class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
-  ></div>
+  <div style="background-color: #2f518a" class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
   <!-- Blacnk Background0-blue End Here -->
 
   <!-- Logo Image  -->
@@ -64,7 +61,7 @@
     <!-- Quick links End Here -->
 
     <div class="text-center text-white q-mt-md">
-      <p>2023 copyright. All right Reserved</p>
+      <p>2024 copyright. All right Reserved</p>
     </div>
   </div>
 </template>
@@ -135,10 +132,12 @@ export default {
 .headingtag {
   text-align: center;
 }
+
 .mainContainer {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 }
+
 /* <!-- =======================main product section===================================== --> */
 .product {
   grid-row: 1/2;

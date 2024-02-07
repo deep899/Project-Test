@@ -410,7 +410,7 @@
             color: #ffffff;
             opacity: 1;
           ">
-          2023 copyright. All right Reserved
+          2024 copyright. All right Reserved
         </p>
       </div>
     </div>
@@ -587,7 +587,7 @@ export default {
       // if (this.selectedPaymentMethod == "razorpay") {
       if ("nonvalue" == "razorpay") {
         axios
-          .post("https://uatbackend.infinitybrains.com/public/api/payment/" + 13, {
+          .post("https://api.infinitybrains.com/api/payment/" + 13, {
             email: this.email,
             firstname: this.first_name,
             lastname: this.last_name,
@@ -645,7 +645,7 @@ export default {
 
     async BuyConfirmation() {
       await axios
-        .post("https://uatbackend.infinitybrains.com/public/api/payment/13", {
+        .post("https://api.infinitybrains.com/api/payment/13", {
           email: this.email,
           firstname: this.first_name,
           lastname: this.last_name,
@@ -669,7 +669,7 @@ export default {
           formDatas.append("user_id", user_id);
           axios
             .post(
-              "https://uatbackend.infinitybrains.com/public/api/creativedata",
+              "https://api.infinitybrains.com/api/creativedata",
               formDatas,
               {}
             )
@@ -710,7 +710,7 @@ export default {
     getGstValye() {
       axios
         .get(
-          "https://uatbackend.infinitybrains.com/public/api/showpayment_product_details/13"
+          "https://api.infinitybrains.com/api/showpayment_product_details/13"
         )
         .then((result) => {
           this.Gst = result.data.data;
@@ -730,7 +730,7 @@ export default {
       // let naming = document.getElementsByClassName("CoupenIsHere").value;
       // console.log(naming);
       axios
-        .post("https://uatbackend.infinitybrains.com/public/api/checkcoupen/" + 13, {
+        .post("https://api.infinitybrains.com/api/checkcoupen/" + 13, {
           code: this.CouponCode,
         })
         .then((result) => {
@@ -784,7 +784,7 @@ export default {
     },
     getList() {
       axios
-        .get("https://uatbackend.infinitybrains.com/public/api/showproduct/13")
+        .get("https://api.infinitybrains.com/api/showproduct/13")
         .then((result) => {
           this.products = result.data.data;
           console.warn(result.data.data);
@@ -838,7 +838,7 @@ export default {
             this.usersidN = localStorage.getItem("UserDetails");
             axios
               .post(
-                "https://uatbackend.infinitybrains.com/public/api/paymentstatusupdate",
+                "https://api.infinitybrains.com/api/paymentstatusupdate",
                 {
                   user_id: this.usersidN,
                   payment_status: "1",
@@ -880,7 +880,7 @@ export default {
 
     // this.BeforeMountedApplyeCoupenCode();
     axios
-      .post("https://uatbackend.infinitybrains.com/public/api/checkcoupen/" + 13, {
+      .post("https://api.infinitybrains.com/api/checkcoupen/" + 13, {
         code: "Festival Creatives",
       })
       .then((result) => {
@@ -891,7 +891,7 @@ export default {
     console.log("name", this.id);
     axios
       .get(
-        'https://uatbackend.infinitybrains.com/public/api/showcoupen?filter={"product":"' +
+        'https://api.infinitybrains.com/api/showcoupen?filter={"product":"' +
         13 +
         '"}'
       )
@@ -902,7 +902,7 @@ export default {
         this.optionse = response.data.data.data;
       });
     axios
-      .get("https://uatbackend.infinitybrains.com/public/api/show/13")
+      .get("https://api.infinitybrains.com/api/show/13")
       .then((result) => {
         this.products = result.data.data;
       });

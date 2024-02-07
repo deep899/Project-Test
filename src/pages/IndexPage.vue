@@ -106,7 +106,7 @@
               color: #ffffff;
               opacity: 1;
             ">
-            2023 copyright. All right Reserved
+            2024 copyright. All right Reserved
           </p>
         </div>
       </div>

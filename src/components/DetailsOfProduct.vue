@@ -31,7 +31,7 @@ export default {
   },
   async mounted() {
     let result = await axios.get(
-      "https://uatbackend.infinitybrains.com/public/api/showproduct"
+      "https://api.infinitybrains.com/api/showproduct"
     );
     console.warn(result.data.data);
     this.list = result.data.data;

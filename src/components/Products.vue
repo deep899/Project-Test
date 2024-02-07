@@ -4,8 +4,8 @@
       <div class="row w-100">
         <div v-for="(item, index) in listdef" :key="item.id" style=" margin-bottom: 5%;"
           class="maincontainers prodImg col-6 col-sm-12 col-md-6 col-xss-12 w-100   ">
-          <div class="row " v-if="item.name !== 'consultant panel' && item.name !== 'Make Your Website / App In 10 Minutes'"
-            style="">
+          <div class="row "
+            v-if="item.name !== 'consultant panel' && item.name !== 'Make Your Website / App In 10 Minutes'" style="">
             <div class="col-4 imgcontainer " style="">
               <router-link :to="item.id">
                 <!-- <img src="./../assets/new2023-background/HPH.jpg" alt=""> -->
