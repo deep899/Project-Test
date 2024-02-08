@@ -1,24 +1,13 @@
 <template>
-  <banner
-    :heading="mydata[0].heading"
-    :text1="mydata[0].text1"
-    :text2="mydata[0].text2"
-  />
+  <banner :heading="mydata[0].heading" :text1="mydata[0].text1" :text2="mydata[0].text2" />
 
   <p class="q-mt-lg text-weight-bolder text-center text-indigo-7 text-h4">
     CAREERS AT INFINITY BRAINS
   </p>
 
-  <thoerysection
-    :img="theorydata[0].img"
-    :para1="theorydata[0].para1"
-    :para2="theorydata[0].para2"
-    :para3="theorydata[0].para3"
-    :para4="theorydata[0].para4"
-    :para5="theorydata[0].para5"
-    :para6="theorydata[0].para6"
-    :para7="theorydata[0].para7"
-  />
+  <thoerysection :img="theorydata[0].img" :para1="theorydata[0].para1" :para2="theorydata[0].para2"
+    :para3="theorydata[0].para3" :para4="theorydata[0].para4" :para5="theorydata[0].para5" :para6="theorydata[0].para6"
+    :para7="theorydata[0].para7" />
 
   <div class="q-ma-lg row justify-center">
     <div class="col-md-10 col-sm-12">
@@ -26,10 +15,7 @@
     </div>
   </div>
 
-  <div
-    style="background-color: #2f518a"
-    class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
-  ></div>
+  <div style="background-color: #2f518a" class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
   <!-- Blacnk Background0-blue End Here -->
 
   <!-- Logo Image  -->
@@ -40,10 +26,8 @@
 
   <!-- Link Mennu Contact Addreess -->
   <div class="q-pa-md bgclass">
-    <div
-      class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 1920px; width: 84%"
-    >
+    <div class="row justify-between items-start q-gutter-md q-mb-md"
+      style="margin: 0 auto; max-width: 1920px; width: 84%">
       <!-- Infinit ABout -->
       <div class="col-md-6 col-lg-2">
         <infinityabout :lorem="lorem" />
@@ -71,8 +55,7 @@
 
     <div class="row justify-center items-center text-white q-mt-lg">
       <div class="col-auto text-center">
-        <p
-          style="
+        <p style="
             top: 5672px;
             left: 750px;
             width: 421px;
@@ -84,9 +67,8 @@
             letter-spacing: 0px;
             color: #ffffff;
             opacity: 1;
-          "
-        >
-          2023 copyright. All right Reserved
+          ">
+          2024 copyright. All right Reserved
         </p>
       </div>
     </div>
@@ -162,6 +144,7 @@ export default {
   background-size: cover;
   width: 100%;
 }
+
 .center {
   padding-top: 170px;
 
@@ -174,6 +157,7 @@ export default {
     justify-content: space-between;
   }
 }
+
 @media (max-width: 767px) {
   .row.justify-between {
     flex-wrap: wrap;

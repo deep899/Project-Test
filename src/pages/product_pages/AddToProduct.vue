@@ -32,7 +32,7 @@
       <div class="col-lg-5 col-md-5 col-sm-12" style="padding-left: 3%">
         <span class="name">{{ products.name }}</span>
         <p class="longDec" style="color: #707070">{{ products.short_desc }}</p>
-        <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%">
+        <!-- <span style="font-size: 1.6em; line-height: 1em; margin-top: -20%">
           Price :
           <span v-if="this.effectiveprice" style="font-size: 0.9em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%">₹</span>
@@ -46,7 +46,7 @@
           <span style="font-size: 0.8em">
             <span style="font-size: 0.9em; margin-top: -20%; line-height: 1%">₹</span>
             {{ this.formatNumber(this.price) }}.00/-</span>
-        </span>
+        </span> -->
         <br />
         <button style="
             font-size: 1.3rem;
@@ -57,8 +57,9 @@
             border: none;
             margin-top: 2%;
           " @click="redirectUrl">
-          Buy Now
+          FREE FOREVER
         </button>
+
         <!-- @click="this.$router.push(`/paymentForm/${products.id}`)" -->
       </div>
     </div>
@@ -137,7 +138,7 @@
               color: #ffffff;
               opacity: 1;
             ">
-            2023 copyright. All right Reserved
+            2024 copyright. All right Reserved
           </p>
         </div>
       </div>
@@ -295,14 +296,17 @@ export default {
       // alert(this.id);
       let url = null;
 
-      if (this.id == 8) {
-        window.location.href = 'https://ibhrms.com/freeTrial'
+      if (this.id == 1) {
+        window.location.href = 'https://ibhrms.com'
       }
-      else if (this.id == 9) {
-        window.location.href = 'https://ibsales.infinitybrains.com/buy'
+      else if (this.id == 2) {
+        window.location.href = 'https://ibsales.infinitybrains.com'
       }
-      else if (this.id == 14) {
-        window.location.href = 'app.ibdelight.in/freeTrial'
+      else if (this.id == 3) {
+        window.location.href = 'https://ibdelight.in'
+      }
+      else if (this.id == 5) {
+        window.location.href = 'https://ibdelight.in/freeTrial'
       } else {
         url = this.id
       }

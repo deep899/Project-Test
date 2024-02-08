@@ -9,7 +9,7 @@
   <contentwriting />
   <seo />
   <ServiceSection />
-  
+
 
   <div class="black-space-blue bg-indigo-8 q-mt-lg q-mb-md"></div>
   <logoimageblack />
@@ -18,10 +18,8 @@
 
   <!-- Link Mennu Contact Addreess -->
   <div class="q-pa-md bgclass">
-    <div
-      class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 1920px; width: 84%"
-    >
+    <div class="row justify-between items-start q-gutter-md q-mb-md"
+      style="margin: 0 auto; max-width: 1920px; width: 84%">
       <!-- Infinit ABout -->
       <div class="col-md-6 col-lg-2">
         <infinityabout :lorem="lorem" />
@@ -49,8 +47,7 @@
 
     <div class="row justify-center items-center text-white q-mt-lg">
       <div class="col-auto text-center">
-        <p
-          style="
+        <p style="
             top: 5672px;
             left: 750px;
             width: 421px;
@@ -62,9 +59,8 @@
             letter-spacing: 0px;
             color: #ffffff;
             opacity: 1;
-          "
-        >
-          2023 copyright. All right Reserved
+          ">
+          2024 copyright. All right Reserved
         </p>
       </div>
     </div>
@@ -111,10 +107,10 @@ export default {
     uiux,
   },
 
-  mounted(){
+  mounted() {
     // console.clear();\
     const subdomain = window.location.hostname.split('.');
-    console.log('hello' ,subdomain[0]);
+    console.log('hello', subdomain[0]);
 
 
 
@@ -139,6 +135,7 @@ export default {
     justify-content: space-between;
   }
 }
+
 @media (max-width: 767px) {
   .row.justify-between {
     flex-wrap: wrap;

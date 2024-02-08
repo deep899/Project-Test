@@ -1,19 +1,10 @@
 <template>
   <div class="">
-    <q-carousel
-    class="carousel"
-      ref="carousel"
-      animated
-      v-model="slide"
-      infinite
-      :autoplay="autoplay"
-      
-      style= "width: 100%;  
+    <q-carousel class="carousel" ref="carousel" animated v-model="slide" infinite :autoplay="autoplay" style="width: 100%;  
     
-      "
-    > 
-     
-    <!-- <q-carousel-slide
+      ">
+
+      <!-- <q-carousel-slide
       :name="1"
       img-src="./../assets/BackGround/bg1.jpg"
       class="carousel"
@@ -37,79 +28,49 @@
       <span class="bgText t2">INFINITYBRAINS</span>
       </div>
     </q-carousel-slide> -->
-    <q-carousel-slide
-      :name="1"
-     class="carousel"
-    >
+      <q-carousel-slide :name="1" class="carousel">
 
-      
 
-      <router-link to="/">
-      <img src="./../assets/new2023-background/it_matlab_ib.png"
-      style="width:100%;  "
-       alt="">
-       </router-link>
 
-    </q-carousel-slide>
-    <q-carousel-slide
-      :name="2"
-     class="carousel"
-    >
+        <router-link to="/">
+          <img src="./../assets/new2023-background/it_matlab_ib.png" style="width:100%;  " alt="">
+        </router-link>
 
-      <router-link to="/10M_website/page">
-      <img src="./../assets/new2023-background/10mint.png"
-      style="width:100%;  "
-       alt="">
-       </router-link>
+      </q-carousel-slide>
+      <q-carousel-slide :name="2" class="carousel">
 
-    </q-carousel-slide>
-    <q-carousel-slide
-      :name="3"
-     class="carousel"
-    >
+        <router-link to="/10M_website/page">
+          <img src="./../assets/new2023-background/10mint.png" style="width:100%;  " alt="">
+        </router-link>
 
-      <router-link to="/14">
-      <img src="./../assets/new2023-background/ib_delight.jpg"
-      style="width:100%;max-width: 100;  "
-       alt="">
-       </router-link>
+      </q-carousel-slide>
+      <q-carousel-slide :name="3" class="carousel">
 
-    </q-carousel-slide>
-    <q-carousel-slide
-      :name="4"
-     class="carousel"
-    > <router-link to="/8">
-      <img src="./../assets/new2023-background/ibhrms_1.jpg"
-      style="width:100%;max-width: 100;"
-       alt="">
-      </router-link>
+        <router-link to="/14">
+          <img src="./../assets/new2023-background/ib_delight.jpg" style="width:100%;max-width: 100;  " alt="">
+        </router-link>
 
-    </q-carousel-slide>
-    <q-carousel-slide
-      :name="5"
-     class="carousel"
-    >
+      </q-carousel-slide>
+      <q-carousel-slide :name="4" class="carousel"> <router-link to="/8">
+          <img src="./../assets/new2023-background/ibhrms_1.jpg" style="width:100%;max-width: 100;" alt="">
+        </router-link>
 
-      <router-link to="/9">
-      <img src="./../assets/new2023-background/ibsf_10.jpg"
-      style="width:100%;  max-width: 100; "
-       alt="">
-       </router-link>
+      </q-carousel-slide>
+      <q-carousel-slide :name="5" class="carousel">
 
-    </q-carousel-slide>
+        <router-link to="/9">
+          <img src="./../assets/new2023-background/ibsf_10.jpg" style="width:100%;  max-width: 100; " alt="">
+        </router-link>
 
-    <q-carousel-slide
-      :name="6"
-     class="carousel"
-    >
+      </q-carousel-slide>
 
-      <router-link to="/15">
-      <img src="./../assets/new2023-background/consu.jpg"
-      style="width:100%;  "
-       alt="">
-       </router-link>
+      <q-carousel-slide :name="6" class="carousel">
 
-    </q-carousel-slide>
+        <router-link to="/15">
+          <img src="./../assets/new2023-background/consu.jpg" style="width:100%;  " alt="">
+        </router-link>
+
+      </q-carousel-slide>
 
 
 
@@ -119,7 +80,7 @@
 
 
 
-    <!-- <q-carousel-slide
+      <!-- <q-carousel-slide
       :name="2"
       img-src="./../assets/BackGround/bg2.png"
       class="carousel"
@@ -159,7 +120,7 @@
       <span class="bgText t2">INFINITYBRAINS</span>
       </div>
     </q-carousel-slide> -->
-    <!-- <q-carousel-slide
+      <!-- <q-carousel-slide
       :name="2"
       img-src="./../assets/BackGround/bg1.jpg"
       class="carousel"
@@ -203,7 +164,7 @@
       <span class="bgText t2">INFINITYBRAINS</span>
       </div>
     </q-carousel-slide> -->
-       <!-- <q-carousel-slide
+      <!-- <q-carousel-slide
         :name="2"
         img-src="./../img/Loading2.png"
         class="carousel"
@@ -223,7 +184,7 @@
         Customer Focused Projects, Convincing Projects that are 100% as the customer wants. The venture of a Well Reputed & Popular Business for 7 years; hence having experience and Trust among the clients & looking to maintain long term goals with our clients. We are all rounders; providing services like SEO friendly Websites, with latest technologies, applications in android, flutter & IOS; and also all kinds of marketing for that
         </h3> 
        </q-carousel-slide> -->
-<!-- 
+      <!-- 
       <q-carousel-slide
         :name="2"
         img-src="~/src/img/Slider_2.jpg"
@@ -238,29 +199,23 @@
       >
 
       </q-carousel-slide> -->
-     
+
     </q-carousel>
     <!-- <div class="custom-buttons"> -->
-      <div style="display: flex;align-items: center;justify-content: center;">
-    <q-btn
-      class=""
-      style="  color: whitesmoke;  margin-top: -10vh; background-color: #012a71; color: white;     height: fit-content; width: 37px; border-radius: 50% ;  "
-      icon="chevron_left"
-      @click="prev()"
-    ></q-btn>
-      
+    <div style="display: flex;align-items: center;justify-content: center;">
+      <q-btn class=""
+        style="  color: whitesmoke;  margin-top: -10vh; background-color: #012a71; color: white;     height: fit-content; width: 37px; border-radius: 50% ;  "
+        icon="chevron_left" @click="prev()"></q-btn>
 
-        &nbsp;
-        &nbsp;
-        &nbsp;
-    <q-btn
-      class=""
-      style="  color: whitesmoke; margin-top: -10vh; background-color: #012a71; color: white;     height: fit-content; width: 37px; border-radius: 50%;  "
-      icon="chevron_right"
-      @click="next()"
-    >
-    </q-btn>
-  </div>
+
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <q-btn class=""
+        style="  color: whitesmoke; margin-top: -10vh; background-color: #012a71; color: white;     height: fit-content; width: 37px; border-radius: 50%;  "
+        icon="chevron_right" @click="next()">
+      </q-btn>
+    </div>
 
     <!-- <q-btn
       class=""
@@ -269,11 +224,11 @@
       @click="scrolldown()"
     > -->
     <!-- <div style="border:solid ; margin-top: -5%; margin-left: 100vh; " @click="Downslide()" > -->
-      <!-- <div class="chevron"></div>
+    <!-- <div class="chevron"></div>
   <div class="chevron"></div>
   <div class="chevron"></div> 
 </div> -->
-  <!-- </q-btn> -->
+    <!-- </q-btn> -->
 
     <!-- </div> -->
   </div>
@@ -282,7 +237,7 @@
 <script>
 
 export default {
-  
+
   data() {
     return {
       slide: 1,
@@ -297,14 +252,14 @@ export default {
     next() {
       this.$refs.carousel.next();
     },
-    Downslide(){
+    Downslide() {
 
-        // window.scrollY
-        window.scrollTo(0, 700);
+      // window.scrollY
+      window.scrollTo(0, 700);
     }
   },
-  mounted(){
-//    
+  mounted() {
+    //    
 
 
   }
@@ -312,17 +267,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
-.carousel{
+.carousel {
   height: 85vh;
 }
-.carousel router-link img::-webkit-scrollbar{
-    display: none;
-  }
 
-  .carousel::-webkit-scrollbar{
-    display: none;
-  }
+.carousel router-link img::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
 
 
 
@@ -385,14 +340,17 @@ export default {
     opacity: 1;
 
   }
+
   33% {
     opacity: 1;
     transform: translateY(30px);
   }
+
   67% {
     opacity: 1;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 0;
     transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
@@ -420,9 +378,9 @@ export default {
 
 
 
-.caption-container{
+.caption-container {
   height: 100%;
-   
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -434,31 +392,33 @@ export default {
 
 .carousel-title {
   align-items: center;
-    text-align: center;
-    font:5vw/146px Impact;
-    position:absolute;
-   z-index: 1;
-   
+  text-align: center;
+  font: 5vw/146px Impact;
+  position: absolute;
+  z-index: 1;
+
   line-height: 6vw;
-  margin-bottom:1% ;
+  margin-bottom: 1%;
   letter-spacing: 0px;
   color: #FFFFFF;
   text-shadow: 0px 3px 6px #0000007D;
   justify-content: center;
   display: flex;
 }
-.titleDes{
+
+.titleDes {
   width: 100%;
-   
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .carousel-description {
-   z-index: 1;
+  z-index: 1;
   height: fit-content;
   text-align: center;
-  font: 500 1.8vw Nunito; 
+  font: 500 1.8vw Nunito;
   /* here responsive font height must be set on responsive manner  */
   letter-spacing: 0px;
   justify-content: center;
@@ -466,79 +426,87 @@ export default {
   color: #FFFFFF;
   text-shadow: 0px 3px 6px #00000070;
 }
-.bgText{
+
+.bgText {
   color: #FFFFFF;
   width: 100%;
-  font:8vw/146px Impact;
-   
+  font: 8vw/146px Impact;
+
   line-height: 8vw;
 }
-.t1{
+
+.t1 {
   /* margin-right: 0 auto; */
   text-align: right;
   margin-bottom: 5%;
   opacity: 0.1;
 }
-.t2{
+
+.t2 {
   /* margin-right: 0 auto; */
   text-align: left;
   margin-top: 5%;
   opacity: 0.1;
 }
-.top-Fit{
-  opacity: 0.2;
-    top: 0;
-    left: 6vh;
-    width: 19.5vw;
-    z-index: 0;
 
-    position: absolute; 
-}
-.bottom-Ft{
+.top-Fit {
   opacity: 0.2;
-    
-    bottom: 0;
-    right: 0;
-    width: 41.5vh;
-    z-index: 0; 
+  top: 0;
+  left: 6vh;
+  width: 19.5vw;
+  z-index: 0;
 
-    position: absolute;
+  position: absolute;
 }
+
+.bottom-Ft {
+  opacity: 0.2;
+
+  bottom: 0;
+  right: 0;
+  width: 41.5vh;
+  z-index: 0;
+
+  position: absolute;
+}
+
 @media (max-width: 960px) {
 
-      .carousel{
-        height: 50vh;
-      }
-      .carousel img{
-        height:70%;
-      }
-      .carousel-description{
+  .carousel {
+    height: 50vh;
+  }
 
-        font:1.8vw Nunito; 
-        width: 100%;
-      }
-      .top-Fit{
-  opacity: 0.2;
+  .carousel img {
+    height: 70%;
+  }
+
+  .carousel-description {
+
+    font: 1.8vw Nunito;
+    width: 100%;
+  }
+
+  .top-Fit {
+    opacity: 0.2;
     top: 0;
     left: 0;
     width: 27vw;
     z-index: 0;
-    position: absolute; 
-   
+    position: absolute;
 
-}
-      .bottom-Ft{
-  opacity: 0.2;
+
+  }
+
+  .bottom-Ft {
+    opacity: 0.2;
     bottom: 0;
     right: 0;
     overflow: hidden;
     width: 27vw;
-    z-index: 0; 
+    z-index: 0;
     position: absolute;
-}
+  }
 
 
 }
-
-
 </style>

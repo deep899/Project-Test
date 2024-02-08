@@ -56,7 +56,7 @@
 
 
       <router-link :to="'/10M_website/pickdesign/' + selectedCategory" class="btnContinue">{{ continueButtonLabel
-              }}</router-link>
+      }}</router-link>
 
     </div>
   </div>

@@ -18,10 +18,7 @@
   <!-- Form and Image  -->
 
   <div class="row justify-evenly">
-    <div
-      class="col-md-6 col-sm-12 col-xs-12 center contactusformdiv"
-      style="padding-top: 70px"
-    >
+    <div class="col-md-6 col-sm-12 col-xs-12 center contactusformdiv" style="padding-top: 70px">
       <p class="text-h4 text-indigo-7 text-center">GET IN TOUCH</p>
       <p class="text-indigo-7 text-center">
         Do You Have questions/queries, feel free to contact us Use the below
@@ -32,7 +29,7 @@
     <div class="col-md-6 col-sm-12 col-xs-12 center" style="padding-top: 50px">
       <img src="../img/ContactUs.png" style="width: 80%; height: 500px" />
     </div>
-    
+
 
     <!-- Start google Map Integration -->
     <div class="row" style="margin: auto">
@@ -43,10 +40,7 @@
     <!-- Footer -->
     <!-- Blacnk Background0-blue Start Here -->
 
-    <div
-      style="background-color: #2f518a"
-      class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"
-    ></div>
+    <div style="background-color: #2f518a" class="bg-indigo-8 q-mt-lg q-mb-md q-h-12"></div>
     <!-- Blacnk Background0-blue End Here -->
   </div>
   <!-- Logo Image  -->
@@ -56,10 +50,8 @@
 
   <!-- Link Mennu Contact Addreess -->
   <div class="q-pa-md bgclass">
-    <div
-      class="row justify-between items-start q-gutter-md q-mb-md"
-      style="margin: 0 auto; max-width: 1920px; width: 84%"
-    >
+    <div class="row justify-between items-start q-gutter-md q-mb-md"
+      style="margin: 0 auto; max-width: 1920px; width: 84%">
       <!-- Infinit ABout -->
       <div class="col-md-6 col-lg-2">
         <infinityabout :lorem="lorem" />
@@ -87,8 +79,7 @@
 
     <div class="row justify-center items-center text-white q-mt-lg">
       <div class="col-auto text-center">
-        <p
-          style="
+        <p style="
             top: 5672px;
             left: 750px;
             width: 421px;
@@ -100,9 +91,8 @@
             letter-spacing: 0px;
             color: #ffffff;
             opacity: 1;
-          "
-        >
-          2023 copyright. All right Reserved
+          ">
+          2024 copyright. All right Reserved
         </p>
       </div>
     </div>
@@ -145,6 +135,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
 }
+
 .contactusbanner {
   padding-top: 150px;
 
@@ -157,6 +148,7 @@ export default {
     justify-content: space-between;
   }
 }
+
 @media (max-width: 767px) {
   .row.justify-between {
     flex-wrap: wrap;

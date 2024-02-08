@@ -19,7 +19,7 @@
           <div v-if="showForm" style="margin-top: 2%">
             <div class="form-container formcontainer" style="width: 100%; border: 1px solid #c5c5c5">
               <!-- <span v-if="this.errorForm" sty>{{ this.errorForm }}</span> -->
-              <form style="padding: 1.5rem">
+              <div style="padding: 1.5rem">
                 <span style="
                     display: flex;
                     align-items: center;
@@ -58,8 +58,8 @@
                 <div class="row">
                   <div class="col-md-12">
                     <label class="lableForm" for="salesmanName">Sales Manager Code / License Code</label>
-                    <input style="width: 100%" placeholder="Code" type="text" id="salesmanName"
-                      class="form-control" v-model="formData.salesmanName" />
+                    <input style="width: 100%" placeholder="Code" type="text" id="salesmanName" class="form-control"
+                      v-model="formData.salesmanName" />
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
@@ -69,20 +69,20 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <label class="lableForm" for="emailPhoneNumber">website </label>
-                  <input style="width: 100%" placeholder="website Link" type="email" id="emailPhoneNumber"
+                  <input style="width: 100%" placeholder="website Link" type="url" id="emailPhoneNumber"
                     class="form-control" v-model="formData.website" />
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <label class="lableForm" for="emailPhoneNumber">Address </label>
-                  <input style="width: 100%" placeholder="Address" type="email" id="emailPhoneNumber" class="form-control"
+                  <input style="width: 100%" placeholder="Address" type="text" id="emailPhoneNumber" class="form-control"
                     v-model="formData.address" />
                 </div>
-                <div class="col-md-6 col-sm-12" v-if="this.id == 13">
+                <div class="col-md-6 col-sm-12" v-if="id == 4">
                   <label class="lableForm" for="emailPhoneNumber">password </label>
-                  <input style="width: 100%" placeholder="Password" type="email" id="emailPhoneNumber"
-                    class="form-control" v-model="formData.password" />
+                  <input style="width: 100%" placeholder="Password" type="text" id="emailPhoneNumber" class="form-control"
+                    v-model="formData.password" />
                 </div>
-                <div class="col-md-6 col-sm-12" v-if="this.id == 13">
+                <div class="col-md-6 col-sm-12" v-if="id == 4">
                   <label class="lableForm" for="CompanyLogo">Company Logo</label>
                   <input type="file" id="fileInput" style="width: 100%" @change="handleFileChange" />
                 </div>
@@ -97,8 +97,8 @@
                     <label for="country" class="lableForm">Country</label>
                     <div class="select-wrapper">
                       <select id="country" class="form-control halfinput" style="
-                          padding-top: 2%;
-                          padding-bottom: 2%;
+                          padding-top: 1%;
+                          padding-bottom: 1%;
                           font-size: 1rem;
                         " v-model="formData.country" @change="getState()" required>
                         <option value="">Select Country</option>
@@ -114,8 +114,8 @@
                     <label for="state" class="lableForm">State</label>
                     <select id="state" class="form-control" style="
                         width: 100%;
-                        padding-top: 2%;
-                        padding-bottom: 2%;
+                        padding-top: 1%;
+                          padding-bottom: 1%;
                         font-size: 1rem;
                       " v-model="formData.state" @change="getCity()" required>
                       <option value="">Select State</option>
@@ -129,10 +129,11 @@
 
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
-                    <label for="city" class="lableForm">City</label>
+                    <label for="city" class="lableForm" style="width: 100%;">City <br /></label>
+
                     <select id="city" style="
-                        padding-top: 2%;
-                        padding-bottom: 2%;
+                       padding-top: 1%;
+                          padding-bottom: 1%;
                         font-size: 1rem;
                       " class="form-control halfinput" v-model="this.formData.city">
                       <option value="" selected>Select City</option>
@@ -150,265 +151,29 @@
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
-          <hr style="margin-top: 3%" />
-          <div style="margin-top: 3%"></div>
-          <label @click="this.showForm2 = true" class="lableForm" style="line-height: 100%; font-size: 3vh">2. OFFERS :
-          </label>
-          <button v-if="showForm2" @click="this.showForm2 = false" style="
-              font-size: 1rem;
-              background-color: transparent;
-              color: red;
-              border: none;
-              cursor: pointer;
-              float: right;
-            ">
-            Close
-          </button>
 
-          <div v-if="showForm2">
-            <div style="padding: 2rem; border: 1px solid #c5c5c5; margin-top: 2%">
-              <div class="row p-5" v-if="this.discount" style="
-                  position: relative;
-                  z-index: 0;
-                  margin-bottom: 20px;
-                  padding-left: 15px;
-                  padding-right: 15px;
-                ">
-                <div class="col-sm-6 p-5" style="
-                    position: relative;
-                    z-index: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  ">
-                  <span style="
-                      color: #ffffff;
-                      font-weight: 500 normal;
-                      font-size: 16.5vmin;
-                    ">{{
-                      parseInt(
-                        this.calculateDiscountPercentage(
-                          this.productData.price,
-                          this.discount
-                        )
-                      )
-                    }}%</span>
-                </div>
-                <div class="col-sm-6 p-5" style="
-                    position: relative;
-                    z-index: 1;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                  ">
-                  <span style="
-                      color: #ffffffde;
-                      font-size: 1.3rem;
-                      margin-bottom: 2%;
-                    ">Your First Purchase.
-                  </span>
-                  <hr style="width: 70%" />
-                  <span style="color: #ffffff; font-size: 3rem">Discount</span>
-                </div>
-                <img src="./../../assets/BackGround/per.png" style="
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    z-index: 0;
-                  " alt="" />
-              </div>
-
-              <span for="title" class="lableForm" style="line-height: 2rem; margin-top: 50px">Enter Coupon Code</span>
-              <br />
-              <input style="" placeholder="Enter Coupon Code" type="text" class="halfinput couponInput form-control"
-                v-model="couponSearch" />
-              <button @click="applyeCouponCode()" style="
-                  border: none;
-                  color: #ffffff;
-                  cursor: pointer;
-                  font-size: 1.2rem;
-                  font-weight: 500;
-                  background-color: #2f518a;
-                  padding: 0.8% 5%;
-                  margin-left: 5%;
-                ">
-                APPLY
-              </button>
-
-              <div style="
-                  background-color: #e8f0ff;
-                  margin-top: 5%;
-                  padding-top: 1%;
-                  padding-bottom: 1%;
-                  padding-left: 3%;
-                  height: fit-content;
-                ">
-                <span style="color: #2a4c86">OR SELECT AN OFFER ({{ this.totalList }})</span>
-              </div>
-
-              <div class="outerDiv" style="">
-                <div class="ApplyCouponCodeContainer" v-for="item in couponlist" v-bind:key="item.id">
-                  <div class="parDiv">
-                    <span>
-                      {{
-                        parseInt(
-                          this.calculateDiscountPercentage(
-                            this.productData.price,
-                            item.price
-                          )
-                        )
-                      }}%<br />OFF
-                    </span>
-                  </div>
-                  <div class="container1">
-                    <span class="title">IB Offers</span>
-                    <button class="applyButton" @click="appliedCouponed(item.id)">
-                      APPLY
-                    </button>
-                    <br />
-                    <span class="couponCode">Coupon Code: "{{ item.code }}"</span><br />
-                    <span class="couponDescription">Use this coupon code and get
-                      {{
-                        parseInt(
-                          this.calculateDiscountPercentage(
-                            this.productData.price,
-                            item.price
-                          )
-                        )
-                      }}% off on the product.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr style="margin-top: 3%" />
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
-          <div class="innerContainer" style="">
-            <div v-if="this.id == 17 ||  this.id == 6 " class="row"
-              style="margin-bottom: 5%; padding: 10px; border: 1px solid rgb(173, 173, 173);">
-              <div class="col-6" @click="website" :style="{ backgroundColor: activeTab === 'web' ? '#2f518a' : 'gray' }"
-                style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                Web-Site</div>
-              <hr style="border: none; border-left: 1px solid #ffffff; height: 25px; margin: 0 10px;" />
-              <div class="col-5" :style="{ backgroundColor: activeTab === 'app' ? '#2f518a' : 'gray' }" @click="phone"
-                style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                Application</div>
-            </div>
-
-            <div class="plancontainer">
-              <span class="title12" style="">BILLING INFORMATION</span>
-
-              <div class="row">
-                <div class="col-12" style="margin-top: 5%; margin-bottom: 1%">
-                  <div style="float: left">
-                    <span class="rate">Product Name</span>
-                  </div>
-                  <div style="float: right">
-                    <span class="rate" style="">Rate(₹)</span>
-                  </div>
-                </div>
-
-                <hr style="width: 100%; border: 1px solid #7070709d" />
-
-                <div class="col-12" style="margin-top: 5%">
-                  <div class="disc" style="float: left; color: #101010">
-                    {{ this.productData.name }}
-                  </div>
-                  <div class="disc" style="float: right">
-                    {{ this.productData.price }}.00
-                  </div>
-                </div>
-                <div class="col-12" style="margin-top: 3%">
-                  <div class="disc" style="float: left; color: #3d4141">
-                    Coupon Discount
-                  </div>
-                  <div class="disc" style="float: right" v-if="this.Discount.discount">
-                    {{ this.Discount.discount }}.00
-                  </div>
-                  <div class="disc" style="float: right" v-else>00.0</div>
-                </div>
-                <div class="col-12" style="margin-top: 4%">
-                  <div style="border: 1px dashed #707070; opacity: 1;,   "></div>
-                </div>
-
-                <div class="col-12" style="margin-top: 2%">
-                  <div class="disc" style="float: left; color: #101010">
-                    Sub Total
-                  </div>
-                  <div class="disc" style="float: right; color: #101010" v-if="this.Discount.discount">
-                    {{ this.subTotal() }}.00
-                  </div>
-                  <div class="disc" style="float: right; color: #101010" v-else>
-                    {{ this.productData.price }}.00
-                  </div>
-                </div>
-
-                <div class="col-12" style="margin-top: 2%">
-                  <div class="" style="
-                      font-size: 2.5vh;
-                      text-decoration: underline;
-                      float: left;
-                      color: #101010;
-                    ">
-                    Gst:
-                  </div>
-                  <!-- <div class="disc" style="float: right; color: #101010;">{{ this.formatNumber(this.PaymentDetails.Grossamount) }}.00</div> -->
-                </div>
-
-                <div class="col-12" style="margin-top: 2%">
-                  <div class="disc" style="color: #3d4141; float: left">
-                    C-GST(9%)
-                  </div>
-                  <div v-if="this.Discount.discount" class="disc" style="float: right">
-                    {{ this.calculateCGST(this.subTotal(), 9) }}
-                  </div>
-                  <div v-else class="disc" style="float: right">
-                    {{ this.calculateCGST(this.productData.price, 9) }}
-                  </div>
-                </div>
-                <div class="col-12" style="margin-top: 2%">
-                  <div class="disc" style="color: #3d4141; float: left">
-                    S-GST(9%)
-                  </div>
-                  <div v-if="this.Discount.discount" class="disc" style="float: right">
-                    {{ this.calculateCGST(this.subTotal(), 9) }}
-                  </div>
-                  <div v-else class="disc" style="float: right">
-                    {{ this.calculateCGST(this.productData.price, 9) }}
-                  </div>
-                </div>
-                <div class="col-12" style="margin-top: 5%">
-                  <div style="border: 1px dashed #707070; opacity: 1"></div>
-                </div>
-                <div class="col-12" style="margin-top: 5%">
-                  <div class="disc" style="float: left">Total Payment:</div>
-                  <div class="disc" style="float: right">
-                    {{ parseFloat(finalAmount1) }}
-                  </div>
-                </div>
-                <div class="col-12" style="margin-top: 8%">
-                  <button class="PaynowButton" :class="{ disabled: PaynowVisible }" :disabled="PaynowVisible"
-                    @click="PayNow()" style="
+                <button v-if="4 == this.$route.params.id" class="PaynowButton" v-on:click="PayNow()" type="submit" style="
+                      margin-top: 5%;
+                      color: white;
                       background-color: #2f518a;
-                      color: #ffffff;
-                      border: transparent;
-                      padding-top: 10px;
+                      border: 1px solid;
                       cursor: pointer;
+                      padding-top: 10px;
                       padding-bottom: 10px;
                       width: 100%;
                       font-weight: 600;
                     ">
-                    PAY NOW
-                  </button>
-                  <button v-if="13 == this.$route.params.id" class="PaynowButton" @click="inception = true" style="
+                  Submit
+                </button>
+
+                <span v-if="formData.error != ''" label="this span is show error of submit button error ">{{
+                  formData.error
+                }}</span>
+
+
+
+
+                <button v-if="4 == this.$route.params.id" class="PaynowButton" v-on:click="loginPopupOpen()" style="
                       margin-top: 5%;
                       background-color: transparent;
                       color: #2f518a;
@@ -419,11 +184,13 @@
                       width: 100%;
                       font-weight: 600;
                     ">
-                    ALREADY PURCHASED ?
-                  </button>
-                </div>
-                <!-- <q-dialog v-model="inception" >
-                  <q-card style=" padding: 15px; width: 55vh; max-width: 100%;  display: flex;align-items: center;justify-content: center;flex-direction: column; "> -->
+                  ALREADY PURCHASED ?
+                </button>
+
+
+
+
+
                 <div class="loading-overlay" @click.self="inception = false" v-if="inception">
 
                   <div class="overlay-content">
@@ -593,6 +360,281 @@
               </div>
             </div>
           </div>
+          <hr style="margin-top: 3%" />
+          <div style="margin-top: 3%"></div>
+          <label @click="this.showForm2 = true" class="lableForm" style="line-height: 100%; font-size: 3vh">2. OFFERS :
+          </label>
+          <button v-if="showForm2" @click="this.showForm2 = false" style="
+              font-size: 1rem;
+              background-color: transparent;
+              color: red;
+              border: none;
+              cursor: pointer;
+              float: right;
+            ">
+            Close
+          </button>
+
+          <div v-if="showForm2">
+            <div style="padding: 2rem; border: 1px solid #c5c5c5; margin-top: 2%">
+              <div class="row p-5" v-if="this.discount" style="
+                  position: relative;
+                  z-index: 0;
+                  margin-bottom: 20px;
+                  padding-left: 15px;
+                  padding-right: 15px;
+                ">
+                <div class="col-sm-6 p-5" style="
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  ">
+                  <span style="
+                      color: #ffffff;
+                      font-weight: 500 normal;
+                      font-size: 16.5vmin;
+                    ">{{
+                      parseInt(
+                        this.calculateDiscountPercentage(
+                          this.productData.price,
+                          this.discount
+                        )
+                      )
+                    }}%</span>
+                </div>
+                <div class="col-sm-6 p-5" style="
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                  ">
+                  <span style="
+                      color: #ffffffde;
+                      font-size: 1.3rem;
+                      margin-bottom: 2%;
+                    ">Your First Purchase.
+                  </span>
+                  <hr style="width: 70%" />
+                  <span style="color: #ffffff; font-size: 3rem">Discount</span>
+                </div>
+                <img src="./../../assets/BackGround/per.png" style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    z-index: 0;
+                  " alt="" />
+              </div>
+
+              <span for="title" class="lableForm" style="line-height: 2rem; margin-top: 50px">Enter Coupon Code</span>
+              <br />
+              <input style="" placeholder="Enter Coupon Code" type="text" class="halfinput couponInput form-control"
+                v-model="couponSearch" />
+              <button @click="applyeCouponCode()" style="
+                  border: none;
+                  color: #ffffff;
+                  cursor: pointer;
+                  font-size: 1.2rem;
+                  font-weight: 500;
+                  background-color: #2f518a;
+                  padding: 0.8% 5%;
+                  margin-left: 5%;
+                ">
+                APPLY
+              </button>
+
+              <div style="
+                  background-color: #e8f0ff;
+                  margin-top: 5%;
+                  padding-top: 1%;
+                  padding-bottom: 1%;
+                  padding-left: 3%;
+                  height: fit-content;
+                ">
+                <span style="color: #2a4c86">OR SELECT AN OFFER ({{ this.totalList }})</span>
+              </div>
+
+              <div class="outerDiv" style="">
+                <div class="ApplyCouponCodeContainer" v-for="item in couponlist" v-bind:key="item.id">
+                  <div class="parDiv">
+                    <span>
+                      {{
+                        parseInt(
+                          this.calculateDiscountPercentage(
+                            this.productData.price,
+                            item.price
+                          )
+                        )
+                      }}%<br />OFF
+                    </span>
+                  </div>
+                  <div class="container1">
+                    <span class="title">IB Offers</span>
+                    <button class="applyButton" @click="appliedCouponed(item.id)">
+                      APPLY
+                    </button>
+                    <br />
+                    <span class="couponCode">Coupon Code: "{{ item.code }}"</span><br />
+                    <span class="couponDescription">Use this coupon code and get
+                      {{
+                        parseInt(
+                          this.calculateDiscountPercentage(
+                            this.productData.price,
+                            item.price
+                          )
+                        )
+                      }}% off on the product.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="margin-top: 3%" />
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12 nubu" style="">
+          <div class="innerContainer" style="">
+            <div v-if="this.id == 17 || this.id == 6" class="row"
+              style="margin-bottom: 5%; padding: 10px; border: 1px solid rgb(173, 173, 173);">
+              <div class="col-6" @click="website" :style="{ backgroundColor: activeTab === 'web' ? '#2f518a' : 'gray' }"
+                style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                Web-Site</div>
+              <hr style="border: none; border-left: 1px solid #ffffff; height: 25px; margin: 0 10px;" />
+              <div class="col-5" :style="{ backgroundColor: activeTab === 'app' ? '#2f518a' : 'gray' }" @click="phone"
+                style=" color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                Application</div>
+            </div>
+
+            <div v-if="id != 4" class="plancontainer">
+              <span class="title12" style="">BILLING INFORMATION </span>
+
+              <div class="row">
+                <div class="col-12" style="margin-top: 5%; margin-bottom: 1%">
+                  <div style="float: left">
+                    <span class="rate">Product Name</span>
+                  </div>
+                  <div style="float: right">
+                    <span class="rate" style="">Rate(₹)</span>
+                  </div>
+                </div>
+
+                <hr style="width: 100%; border: 1px solid #7070709d" />
+
+                <div class="col-12" style="margin-top: 5%">
+                  <div class="disc" style="float: left; color: #101010">
+                    {{ this.productData.name }}
+                  </div>
+                  <div class="disc" style="float: right">
+                    {{ this.productData.price }}.00
+                  </div>
+                </div>
+                <div class="col-12" style="margin-top: 3%">
+                  <div class="disc" style="float: left; color: #3d4141">
+                    Coupon Discount
+                  </div>
+                  <div class="disc" style="float: right" v-if="this.Discount.discount">
+                    {{ this.Discount.discount }}.00
+                  </div>
+                  <div class="disc" style="float: right" v-else>00.0</div>
+                </div>
+                <div class="col-12" style="margin-top: 4%">
+                  <div style="border: 1px dashed #707070; opacity: 1;,   "></div>
+                </div>
+
+                <div class="col-12" style="margin-top: 2%">
+                  <div class="disc" style="float: left; color: #101010">
+                    Sub Total
+                  </div>
+                  <div class="disc" style="float: right; color: #101010" v-if="this.Discount.discount">
+                    {{ this.subTotal() }}.00
+                  </div>
+                  <div class="disc" style="float: right; color: #101010" v-else>
+                    {{ this.productData.price }}.00
+                  </div>
+                </div>
+
+                <div class="col-12" style="margin-top: 2%">
+                  <div class="" style="
+                      font-size: 2.5vh;
+                      text-decoration: underline;
+                      float: left;
+                      color: #101010;
+                    ">
+                    Gst:
+                  </div>
+                  <!-- <div class="disc" style="float: right; color: #101010;">{{ this.formatNumber(this.PaymentDetails.Grossamount) }}.00</div> -->
+                </div>
+
+                <div class="col-12" style="margin-top: 2%">
+                  <div class="disc" style="color: #3d4141; float: left">
+                    C-GST(9%)
+                  </div>
+                  <div v-if="this.Discount.discount" class="disc" style="float: right">
+                    {{ this.calculateCGST(this.subTotal(), 9) }}
+                  </div>
+                  <div v-else class="disc" style="float: right">
+                    {{ this.calculateCGST(this.productData.price, 9) }}
+                  </div>
+                </div>
+                <div class="col-12" style="margin-top: 2%">
+                  <div class="disc" style="color: #3d4141; float: left">
+                    S-GST(9%)
+                  </div>
+                  <div v-if="this.Discount.discount" class="disc" style="float: right">
+                    {{ this.calculateCGST(this.subTotal(), 9) }}
+                  </div>
+                  <div v-else class="disc" style="float: right">
+                    {{ this.calculateCGST(this.productData.price, 9) }}
+                  </div>
+                </div>
+                <div class="col-12" style="margin-top: 5%">
+                  <div style="border: 1px dashed #707070; opacity: 1"></div>
+                </div>
+                <div class="col-12" style="margin-top: 5%">
+                  <div class="disc" style="float: left">Total Payment:</div>
+                  <div class="disc" style="float: right">
+                    {{ parseFloat(finalAmount1) }}
+                  </div>
+                </div>
+                <div class="col-12" style="margin-top: 8%">
+                  <button class="PaynowButton" :class="{ disabled: PaynowVisible }" :disabled="PaynowVisible"
+                    @click="PayNow()" style="
+                      background-color: #2f518a;
+                      color: #ffffff;
+                      border: transparent;
+                      padding-top: 10px;
+                      cursor: pointer;
+                      padding-bottom: 10px;
+                      width: 100%;
+                      font-weight: 600;
+                    ">
+                    PAY NOW
+                  </button>
+                  <button v-if="4 == this.$route.params.id" class="PaynowButton" @click="inception = true" style="
+                      margin-top: 5%;
+                      background-color: transparent;
+                      color: #2f518a;
+                      border: 1px solid;
+                      cursor: pointer;
+                      padding-top: 10px;
+                      padding-bottom: 10px;
+                      width: 100%;
+                      font-weight: 600;
+                    ">
+                    ALREADY PURCHASED ?
+                  </button>
+                </div>
+                <!-- <q-dialog v-model="inception" >
+                  <q-card style=" padding: 15px; width: 55vh; max-width: 100%;  display: flex;align-items: center;justify-content: center;flex-direction: column; "> -->
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -646,7 +688,7 @@
               color: #ffffff;
               opacity: 1;
             ">
-            2023 copyright. All right Reserved
+            2024 copyright. All right Reserved
           </p>
         </div>
       </div>
@@ -691,18 +733,11 @@ export default {
     expertservice,
     quicklink,
   },
-  setup() {
 
-    return {
-
-      inception: ref(false),
-
-    }
-  },
   data() {
     return {
       country: "101",
-      inception: ref(false),
+      inception: false,
       state: " ",
       city: " ",
       totalList: 0,
@@ -754,12 +789,18 @@ export default {
         company_logo: " ",
         state: " ",
         city: " ",
+        error: ""
       },
       errorForm: ``,
       activeTab: 'web'
     };
   },
   methods: {
+
+    loginPopupOpen() {
+
+      this.inception = true;
+    },
 
     website() {
       this.activeTab = 'web';
@@ -856,6 +897,8 @@ export default {
 
         // Process the response as needed
         localStorage.setItem("token", response.data.data.token);
+        localStorage.setItem("email", this.email1);
+        localStorage.setItem("password", this.password1);
         this.$router.push('/CreativeBuy');
         this.$store.commit("setEmail", this.email1);
         this.$store.commit("setPassword", this.password1);
@@ -888,7 +931,7 @@ export default {
 
 
       // Append the company_logo (image) field
-      if (this.id == 13) {
+      if (this.id == 4) {
         formData.append('company_logo', fileInput.files[0]);
       }
 
@@ -936,6 +979,7 @@ export default {
             axios
               .post(`creativedata`, formData).then((res) => {
                 console.log(res.data);
+
               });
             console.log(res.data.data);
             // alert(res.data.data.id);
@@ -972,7 +1016,47 @@ export default {
           });
 
 
-      } else {
+      }
+
+      else if (this.id == 4) {
+
+
+        axios
+          .post(`payment/${this.id}`, formData, {})
+          .then((res) => {
+            formData.append('user_id', res.data.data.id);
+            formData.append('contact_number', this.formData.phoneno);
+            axios
+              .post(`creativedata`, formData).then((res) => {
+                console.log(res.data);
+                localStorage.setItem('company_logo', res.data.data.company_logo);
+              });
+
+            axios.post("paymentstatusupdate", {
+              user_id: res.data.data.id,
+              payment_status: "1",
+              product_id: this.id,
+              email: this.formData.email,
+              password: this.formData.password,
+
+            })
+              .then((result) => {
+                console.log(result.data);
+                this.email1 = this.formData.email;
+                this.password1 = this.formData.password;
+                this.inception = true;
+              });
+          }).catch((e) => {
+            this.formData.error = e.response.data.message[0];
+            this.showForm = true;
+          });
+
+
+
+
+      }
+
+      else {
         axios
           .post(`payment/${this.id}`, formData, {})
           .then((res) => {
