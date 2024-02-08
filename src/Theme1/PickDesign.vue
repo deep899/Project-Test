@@ -95,7 +95,7 @@ export default {
 
       console.log(res.data.data.subcategories);
 
-      this.cardData = res.data.data.subcategories
+      this.cardData = res.data.data
 
 
     }).catch();

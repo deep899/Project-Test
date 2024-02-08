@@ -71,7 +71,7 @@
       alt="Uploaded Logo"
       class="q-mt-md"
     /> -->
-    
+
   </div>
 
   <q-dialog v-model="alerted" @update:model-value="dialogClosed">

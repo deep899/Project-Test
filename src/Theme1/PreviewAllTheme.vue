@@ -152,7 +152,49 @@ export default {
       backgroundImageUrl: require('./../../src/Theme1/10_Min_assets/img/wave2.png'), // Set the background image dynamically
       selectedColor: '#ffffff', // Store the selected color
       selectedImage: null,
-      colorArray: ['black', 'red', 'blue', 'green', 'orange'],
+      colorArray : [
+  { name: 'Red', colorselect: '#FF0000' },
+  { name: 'Green', colorselect: '#00FF00' },
+  { name: 'Blue', colorselect: '#0000FF' },
+  { name: 'Yellow', colorselect: '#FFFF00' },
+  { name: 'Cyan', colorselect: '#00FFFF' },
+  { name: 'Magenta', colorselect: '#FF00FF' },
+  { name: 'Purple', colorselect: '#800080' },
+  { name: 'Orange', colorselect: '#FFA500' },
+  { name: 'Pink', colorselect: '#FFC0CB' },
+  { name: 'Lime', colorselect: '#00FF00' },
+  { name: 'Brown', colorselect: '#A52A2A' },
+  { name: 'Teal', colorselect: '#008080' },
+  { name: 'Maroon', colorselect: '#800000' },
+  { name: 'Navy', colorselect: '#000080' },
+  { name: 'Olive', colorselect: '#808000' },
+  { name: 'Silver', colorselect: '#C0C0C0' },
+  { name: 'Gold', colorselect: '#FFD700' },
+  { name: 'Indigo', colorselect: '#4B0082' },
+  { name: 'Turquoise', colorselect: '#40E0D0' },
+  { name: 'SteelBlue', colorselect: '#4682B4' },
+  { name: 'SlateGray', colorselect: '#708090' },
+  { name: 'DarkSlateGray', colorselect: '#2F4F4F' },
+  { name: 'MediumSeaGreen', colorselect: '#3CB371' },
+  { name: 'MediumPurple', colorselect: '#9370DB' },
+  { name: 'MediumOrchid', colorselect: '#BA55D3' },
+  { name: 'MediumAquamarine', colorselect: '#66CDAA' },
+  { name: 'MediumSlateBlue', colorselect: '#7B68EE' },
+  { name: 'MediumVioletRed', colorselect: '#C71585' },
+  { name: 'PaleVioletRed', colorselect: '#DB7093' },
+  { name: 'DarkKhaki', colorselect: '#BDB76B' },
+  { name: 'DarkOliveGreen', colorselect: '#556B2F' },
+  { name: 'DarkOrchid', colorselect: '#9932CC' },
+  { name: 'DarkSlateBlue', colorselect: '#483D8B' },
+  { name: 'DarkTurquoise', colorselect: '#00CED1' },
+  { name: 'DeepSkyBlue', colorselect: '#00BFFF' },
+  { name: 'FireBrick', colorselect: '#B22222' },
+  { name: 'ForestGreen', colorselect: '#228B22' },
+  { name: 'HotPink', colorselect: '#FF69B4' },
+  { name: 'Khaki', colorselect: '#F0E68C' },
+  { name: 'Lavender', colorselect: '#E6E6FA' },
+  { name: 'LemonChiffon', colorselect: '#FFFACD' },
+],
       selectedColor: '',
       UploadImage: require('./../../src/Theme1/10_Min_assets/img/download.png'),
       colorImg1: require('./../../src/Theme1/10_Min_assets/img/01 (1).png'),
@@ -246,7 +288,7 @@ export default {
       this.sub_id = localStorage.getItem('subcategories_id');
       axios.get(`https://api.infinitybrains.com/api/categoryasSubcategory_colorselect?catagories_id=${this.cate_id}&subcatagories_id=${this.sub_id}`).then((res) => {
 
-        this.colorArray = res.data.colorData;
+        // this.colorArray = res.data.colorData;
         console.log(res.data.colorData);
 
       })

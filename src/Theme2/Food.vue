@@ -142,7 +142,7 @@ export default {
       }
     },
     async handleSubdomain() {
-      const API_BASE_URL = 'https://api.infinitybrains.com/api';
+      const API_BASE_URL = 'https://api.infinitybrains.com/api/';
 
       try {
         const subdomain = window.location.hostname.split('.');

@@ -296,14 +296,17 @@ export default {
       // alert(this.id);
       let url = null;
 
-      if (this.id == 8) {
-        window.location.href = 'https://ibhrms.com/freeTrial'
+      if (this.id == 1) {
+        window.location.href = 'https://ibhrms.com'
       }
-      else if (this.id == 9) {
-        window.location.href = 'https://ibsales.infinitybrains.com/buy'
+      else if (this.id == 2) {
+        window.location.href = 'https://ibsales.infinitybrains.com'
       }
-      else if (this.id == 14) {
-        window.location.href = 'app.ibdelight.in/freeTrial'
+      else if (this.id == 3) {
+        window.location.href = 'https://ibdelight.in'
+      }
+      else if (this.id == 5) {
+        window.location.href = 'https://ibdelight.in/freeTrial'
       } else {
         url = this.id
       }
