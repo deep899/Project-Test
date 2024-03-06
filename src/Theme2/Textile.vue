@@ -31,9 +31,9 @@
     </footer>
   </div>
 </template>
-  
+
 <script>
-import { Carousel, Slide } from 'vue-Carousel';
+import { carousel, Slide } from 'vue-carousel';
 
 export default {
   data() {
@@ -147,8 +147,8 @@ export default {
   }
 }
 </script>
-  
-  
+
+
 <style scoped>
 /* Base styles for all screen sizes */
 body {
@@ -276,4 +276,3 @@ header {
   }
 }
 </style>
-  

@@ -39,7 +39,7 @@
             <img :src="dish.image" :alt="dish.name" class="dish-image" />
             <h3 class="dish-name">{{ dish.name }}</h3>
             <p class="dish-description">{{ dish.description }}</p>
-            
+
         <label class="cta-button1"  @click="addToBucket(dish)"  :style="{ backgroundColor: selectedColor }" > Add to Bucket</label>
 
           </div>
@@ -63,9 +63,9 @@
     </footer>
   </div>
 </template>
-  
+
 <script>
-import { Carousel, Slide } from 'vue-Carousel';
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   data() {
@@ -194,7 +194,7 @@ export default {
 
 };
 </script>
-  
+
 <style scoped>
 body {
   font-family: Arial, sans-serif;
@@ -448,4 +448,3 @@ footer p {
   margin-top: 10px;
 }
 </style>
-  

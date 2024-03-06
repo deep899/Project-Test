@@ -36,7 +36,7 @@
     "merge-images": "^2.0.0",
     "payumoney": "^1.0.1",
     "payumoney-node": "^2.0.1",
-    "quasar": "^2.13.0",
+    "quasar": "^2.14.6",
     "razorpay": "^2.8.6",
     "sharp": "^0.32.0",
     "sweetalert": "^2.1.2",
@@ -60,7 +60,7 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-vue": "^8.5.0",
     "eslint-webpack-plugin": "^3.1.1"
   },

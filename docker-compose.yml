@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+  ib-app:
+    image: infinitybrains:latest
+    ports:
+      - "8888:80"
