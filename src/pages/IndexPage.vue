@@ -40,7 +40,6 @@
       class="product-heading namine font-weight-black text-indigo-8 "
       style="font-size: 3.5rem; color:  #012A71; font-family: Impact, Bold, sans-serif; "
       >
-      OUR WORK IN PROGRESS
     </h4>
   </div> -->
 

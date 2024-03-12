@@ -1,3 +1,5 @@
+# Stage one
+
 # Build stage
 FROM node:16.20.2 as build-stage
 
@@ -9,10 +11,10 @@ RUN rm -rf node_modules
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
-RUN yarn global add @quasar/cli
+
 # Install Quasar and Vue CLI globally
-RUN npm i quasar
-RUN npm -g install @vue/cli
+RUN yarn global add @quasar/cli
+RUN npm i -g @vue/cli
 
 # Install dependencies
 RUN npm install
@@ -20,10 +22,14 @@ RUN npm install
 # Copy the entire project files to the working directory
 COPY . .
 
-# Set execute permissions for the Docker entrypoint script
+# Build the Vue.js application using Quasar
+RUN quasar build
 
 # Production stage
 FROM nginx:stable-alpine as production-stage
+
+# Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built application from the build-stage
 COPY --from=build-stage /home/dimpy/Documents/Docker/Infinitybrains-fronted/dist/spa /usr/share/nginx/html

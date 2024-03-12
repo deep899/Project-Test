@@ -1,0 +1,294 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from dockerfile
+#1 transferring dockerfile: 1.08kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:16.20.2
+#2 DONE 2.7s
+
+#3 [internal] load metadata for docker.io/library/nginx:stable-alpine
+#3 DONE 3.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [build-stage 1/9] FROM docker.io/library/node:16.20.2@sha256:f77a1aef2da8d83e45ec990f45df50f1a286c5fe8bbfb8c6e4246c6389705c0b
+#5 DONE 0.0s
+
+#6 [production-stage 1/3] FROM docker.io/library/nginx:stable-alpine@sha256:6845649eadc1f0a5dacaf5bb3f01b480ce200ae1249114be11fef9d389196eaf
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 6.85MB 2.4s done
+#7 DONE 2.4s
+
+#8 [build-stage 2/9] WORKDIR /home/dimpy/Documents/Docker/Infinitybrains-fronted
+#8 CACHED
+
+#9 [build-stage 3/9] COPY . .
+#9 DONE 18.8s
+
+#10 [build-stage 4/9] RUN rm -rf node_modules
+#10 DONE 2.2s
+
+#11 [build-stage 5/9] COPY package*.json ./
+#11 DONE 0.4s
+
+#12 [build-stage 6/9] RUN yarn global add @quasar/cli
+#12 0.445 yarn global v1.22.19
+#12 0.523 [1/4] Resolving packages...
+#12 5.957 [2/4] Fetching packages...
+#12 11.10 [3/4] Linking dependencies...
+#12 13.35 [4/4] Building fresh packages...
+#12 13.39 success Installed "@quasar/cli@2.4.0" with binaries:
+#12 13.39       - quasar
+#12 13.39 Done in 12.96s.
+#12 DONE 13.9s
+
+#13 [build-stage 7/9] RUN npm i -g @vue/cli
+#13 62.30 npm WARN deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+#13 62.39 npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+#13 62.40 npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+#13 62.58 npm WARN deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+#13 63.63 npm WARN deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+#13 63.63 npm WARN deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+#13 64.75 npm WARN deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+#13 69.79 npm WARN deprecated apollo-server-errors@3.3.1: The `apollo-server-errors` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
+#13 69.85 npm WARN deprecated apollo-server-plugin-base@3.7.2: The `apollo-server-plugin-base` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
+#13 69.85 npm WARN deprecated apollo-datasource@3.3.2: The `apollo-datasource` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
+#13 69.85 npm WARN deprecated apollo-server-env@4.2.1: The `apollo-server-env` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). This package's functionality is now found in the `@apollo/utils.fetcher` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
+#13 69.86 npm WARN deprecated apollo-reporting-protobuf@3.4.0: The `apollo-reporting-protobuf` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). This package's functionality is now found in the `@apollo/usage-reporting-protobuf` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
+#13 70.63 npm WARN deprecated apollo-server-types@3.8.0: The `apollo-server-types` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
+#13 72.26 npm WARN deprecated subscriptions-transport-ws@0.11.0: The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `graphql-ws` instead. For help migrating Apollo software to `graphql-ws`, see https://www.apollographql.com/docs/apollo-server/data/subscriptions/#switching-from-subscriptions-transport-ws    For general help using `graphql-ws`, see https://github.com/enisdenjo/graphql-ws/blob/master/README.md
+#13 74.87 npm WARN deprecated shortid@2.2.16: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+#13 78.13 npm WARN deprecated vue@2.7.16: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
+#13 80.74 
+#13 80.74 added 859 packages, and audited 860 packages in 1m
+#13 80.74 
+#13 80.74 74 packages are looking for funding
+#13 80.74   run `npm fund` for details
+#13 80.75 
+#13 80.75 6 vulnerabilities (1 moderate, 5 high)
+#13 80.75 
+#13 80.75 To address all issues (including breaking changes), run:
+#13 80.75   npm audit fix --force
+#13 80.75 
+#13 80.75 Run `npm audit` for details.
+#13 80.75 npm notice 
+#13 80.75 npm notice New major version of npm available! 8.19.4 -> 10.5.0
+#13 80.75 npm notice Changelog: <https://github.com/npm/cli/releases/tag/v10.5.0>
+#13 80.75 npm notice Run `npm install -g npm@10.5.0` to update!
+#13 80.75 npm notice 
+#13 DONE 81.8s
+
+#14 [build-stage 8/9] RUN npm install
+#14 1.919 npm WARN ERESOLVE overriding peer dependency
+#14 1.920 npm WARN While resolving: portal-vue@2.1.7
+#14 1.920 npm WARN Found: vue@3.3.4
+#14 1.921 npm WARN node_modules/vue
+#14 1.921 npm WARN   vue@"^3.2.45" from the root project
+#14 1.921 npm WARN   6 more (@fortawesome/vue-fontawesome, @quasar/app-webpack, ...)
+#14 1.921 npm WARN 
+#14 1.921 npm WARN Could not resolve dependency:
+#14 1.921 npm WARN peer vue@"^2.5.18" from portal-vue@2.1.7
+#14 1.921 npm WARN node_modules/portal-vue
+#14 1.921 npm WARN   portal-vue@"^2.1.7" from bootstrap-vue@2.23.1
+#14 1.921 npm WARN   node_modules/bootstrap-vue
+#14 1.921 npm WARN 
+#14 1.921 npm WARN Conflicting peer dependency: vue@2.7.16
+#14 1.921 npm WARN node_modules/vue
+#14 1.922 npm WARN   peer vue@"^2.5.18" from portal-vue@2.1.7
+#14 1.922 npm WARN   node_modules/portal-vue
+#14 1.922 npm WARN     portal-vue@"^2.1.7" from bootstrap-vue@2.23.1
+#14 1.922 npm WARN     node_modules/bootstrap-vue
+#14 2.664 npm WARN deprecated payumoney-node@2.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+#14 6.570 npm WARN deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+#14 7.349 npm WARN deprecated webpack-chain@6.5.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+#14 9.212 npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+#14 9.695 npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+#14 9.757 npm WARN deprecated request-promise@4.2.6: request-promise has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142
+#14 11.80 npm WARN deprecated popper.js@1.16.1: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
+#14 14.42 npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+#14 16.99 npm WARN deprecated crypto@0.0.3: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
+#14 25.75 npm WARN deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
+#14 25.89 npm WARN deprecated @babel/plugin-proposal-json-strings@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-json-strings instead.
+#14 25.89 npm WARN deprecated @babel/plugin-proposal-export-namespace-from@7.18.9: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-export-namespace-from instead.
+#14 28.37 npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+#14 28.60 npm WARN deprecated vue@2.7.14: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
+#14 29.69 npm WARN deprecated vue@2.7.14: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
+#14 30.54 npm WARN deprecated vue@2.7.15: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
+#14 101.3 
+#14 101.3 added 1289 packages, and audited 1291 packages in 2m
+#14 101.3 
+#14 101.3 241 packages are looking for funding
+#14 101.3   run `npm fund` for details
+#14 101.3 
+#14 101.3 10 vulnerabilities (1 low, 9 moderate)
+#14 101.3 
+#14 101.3 To address issues that do not require attention, run:
+#14 101.3   npm audit fix
+#14 101.3 
+#14 101.3 To address all issues possible (including breaking changes), run:
+#14 101.3   npm audit fix --force
+#14 101.3 
+#14 101.3 Some issues need review, and may require choosing
+#14 101.3 a different dependency.
+#14 101.3 
+#14 101.3 Run `npm audit` for details.
+#14 DONE 101.8s
+
+#15 [build-stage 9/9] RUN quasar build
+#15 0.618 
+#15 0.618  .d88888b.
+#15 0.618 d88P" "Y88b
+#15 0.618 888     888
+#15 0.618 888     888 888  888  8888b.  .d8888b   8888b.  888d888
+#15 0.618 888     888 888  888     "88b 88K          "88b 888P"
+#15 0.618 888 Y8b 888 888  888 .d888888 "Y8888b. .d888888 888
+#15 0.618 Y88b.Y8b88P Y88b 888 888  888      X88 888  888 888
+#15 0.618  "Y888888"   "Y88888 "Y888888  88888P' "Y888888 888
+#15 0.618        Y8b
+#15 0.618 
+#15 0.648 
+#15 0.648  Build mode................ spa
+#15 0.648  Pkg quasar................ v2.14.6
+#15 0.648  Pkg @quasar/app-webpack... v3.11.2
+#15 0.648  Pkg webpack............... v5
+#15 0.648  Debugging................. no
+#15 0.648  Publishing................ no
+#15 0.648 
+#15 0.658  Configured browser support (>= 85.85% of global marketshare):
+#15 0.658  · Chrome for Android >= 117
+#15 0.658  · Firefox for Android >= 118
+#15 0.658  · Android >= 117
+#15 0.658  · Chrome >= 109
+#15 0.658  · Edge >= 115
+#15 0.658  · Firefox >= 109
+#15 0.658  · iOS >= 15.5
+#15 0.658  · Opera >= 99
+#15 0.658  · Safari >= 16.1
+#15 0.658 
+#15 1.867  App • Chaining "UI" Webpack config
+#15 2.198  App • Cleaned build artifact: "/home/dimpy/Documents/Docker/Infinitybrains-fronted/dist/spa"
+#15 2.479  App •  WAIT  • Compiling of "UI" in progress...
+#15 25.60  App •  DONE  • "UI" compiled, but with warnings • 23119ms
+#15 25.60 
+#15 25.60  App •  WARNING  •  UI  in ./src/components/Products.vue?vue&type=style&index=0&id=809862de&lang=css
+#15 25.60 
+#15 25.60 Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+#15 25.60 Warning
+#15 25.60 
+#15 25.60 (90:3) autoprefixer: end value has mixed support, consider using flex-end instead
+#15 25.60 
+#15 25.60 
+#15 25.60  App •  WARNING  • Compilation succeeded but there are warning(s). Please check the log above.
+#15 25.60 
+#15 25.64 
+#15 25.74  Summary for "UI" (only css/js/json)
+#15 25.74  ╔══════════════════════════╤═══════════╤═══════════╗
+#15 25.74  ║                    Asset │      Size │   Gzipped ║
+#15 25.74  ╟──────────────────────────┼───────────┼───────────╢
+#15 25.74  ║         217.231c5008.css │   9.10 KB │   2.49 KB ║
+#15 25.74  ║         227.4fd6d305.css │   3.29 KB │   0.77 KB ║
+#15 25.74  ║         263.cc6c9e95.css │   0.33 KB │   0.21 KB ║
+#15 25.74  ║         284.08b4afd2.css │   1.72 KB │   0.61 KB ║
+#15 25.74  ║         309.2e396b55.css │   4.82 KB │   1.25 KB ║
+#15 25.74  ║         335.b0d6ee1e.css │   8.95 KB │   3.77 KB ║
+#15 25.74  ║         408.b2b2e362.css │   4.63 KB │   1.29 KB ║
+#15 25.74  ║         414.304b8d1b.css │   3.00 KB │   0.95 KB ║
+#15 25.74  ║         416.cb2d49a9.css │   1.70 KB │   0.61 KB ║
+#15 25.74  ║         423.8ab50860.css │   3.72 KB │   1.05 KB ║
+#15 25.74  ║         474.d13b4f37.css │   2.61 KB │   0.90 KB ║
+#15 25.74  ║         572.96b8cb6a.css │   1.85 KB │   0.69 KB ║
+#15 25.74  ║         639.7f13c232.css │   0.27 KB │   0.18 KB ║
+#15 25.74  ║         664.7a0a8a0b.css │  10.57 KB │   2.67 KB ║
+#15 25.74  ║         700.dc5e3275.css │   3.70 KB │   1.04 KB ║
+#15 25.74  ║         703.705d87f0.css │   0.03 KB │   0.04 KB ║
+#15 25.74  ║         763.5352330a.css │   8.49 KB │   2.16 KB ║
+#15 25.74  ║         776.beba5e31.css │   7.49 KB │   2.04 KB ║
+#15 25.74  ║           8.fee7bc55.css │   8.90 KB │   3.75 KB ║
+#15 25.74  ║         813.e653d3cc.css │   5.18 KB │   1.36 KB ║
+#15 25.74  ║         815.df6410fd.css │   1.69 KB │   0.61 KB ║
+#15 25.74  ║         983.40f01c6d.css │   3.40 KB │   0.98 KB ║
+#15 25.74  ║         app.d33c32fd.css │   1.00 KB │   0.49 KB ║
+#15 25.74  ║      vendor.86c25f89.css │ 216.01 KB │  37.22 KB ║
+#15 25.74  ╟──────────────────────────┼───────────┼───────────╢
+#15 25.74  ║          134.ac66fc6f.js │   0.77 KB │   0.50 KB ║
+#15 25.74  ║          158.e083df73.js │   0.24 KB │   0.19 KB ║
+#15 25.74  ║          178.0740bedd.js │   0.29 KB │   0.23 KB ║
+#15 25.74  ║          188.cad757c7.js │   0.30 KB │   0.23 KB ║
+#15 25.74  ║          217.e10844b0.js │  13.46 KB │   5.09 KB ║
+#15 25.74  ║          227.a72a3ccc.js │  12.10 KB │   3.90 KB ║
+#15 25.74  ║          263.87b1eabc.js │   1.97 KB │   0.89 KB ║
+#15 25.74  ║          284.62bb49b6.js │   6.51 KB │   2.88 KB ║
+#15 25.74  ║          309.3704e02a.js │   3.25 KB │   1.42 KB ║
+#15 25.74  ║          335.ee0ce8b5.js │   3.35 KB │   1.61 KB ║
+#15 25.74  ║          373.dce71ec8.js │   5.22 KB │   2.36 KB ║
+#15 25.74  ║          408.590496be.js │   2.77 KB │   1.38 KB ║
+#15 25.74  ║          414.13631f75.js │   5.12 KB │   2.32 KB ║
+#15 25.74  ║          416.22ec021d.js │   6.63 KB │   2.37 KB ║
+#15 25.74  ║          423.267379dc.js │   1.95 KB │   0.98 KB ║
+#15 25.74  ║          474.da8b7edb.js │   9.84 KB │   3.56 KB ║
+#15 25.74  ║          572.f8c2a2e1.js │  28.06 KB │  14.94 KB ║
+#15 25.74  ║          639.07492b11.js │   4.64 KB │   2.00 KB ║
+#15 25.74  ║          664.7faf89c0.js │  39.78 KB │   9.15 KB ║
+#15 25.74  ║          700.fd77cbe1.js │   1.87 KB │   0.94 KB ║
+#15 25.74  ║          703.7e72f789.js │   0.34 KB │   0.26 KB ║
+#15 25.74  ║          763.c8dc070e.js │  12.52 KB │   4.83 KB ║
+#15 25.74  ║          776.3a6d50b9.js │   3.28 KB │   1.63 KB ║
+#15 25.74  ║            8.02459cfe.js │   3.04 KB │   1.51 KB ║
+#15 25.74  ║          813.b28ec63a.js │   5.89 KB │   2.26 KB ║
+#15 25.74  ║          815.d6d26005.js │   3.83 KB │   1.80 KB ║
+#15 25.74  ║          983.00968ac0.js │   2.81 KB │   0.90 KB ║
+#15 25.74  ║          app.214bd425.js │  12.53 KB │   5.06 KB ║
+#15 25.74  ║ chunk-common.d2528298.js │  50.15 KB │  22.65 KB ║
+#15 25.74  ║       vendor.7c9eb93f.js │ 515.35 KB │ 164.84 KB ║
+#15 25.74  ╚══════════════════════════╧═══════════╧═══════════╝
+#15 25.74  
+#15 25.74 
+#15 25.74  App •  WARNING  •  UI  in ./src/components/Products.vue?vue&type=style&index=0&id=809862de&lang=css
+#15 25.74 
+#15 25.74 Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+#15 25.74 Warning
+#15 25.74 
+#15 25.74 (90:3) autoprefixer: end value has mixed support, consider using flex-end instead
+#15 25.74 
+#15 25.74  App • ⚠️  Build succeeded, but with 1 warning. Check log above.
+#15 25.74 
+#15 25.74  Build succeeded
+#15 25.74 
+#15 25.74  Build mode................ spa
+#15 25.74  Pkg quasar................ v2.14.6
+#15 25.74  Pkg @quasar/app-webpack... v3.11.2
+#15 25.74  Pkg webpack............... v5
+#15 25.74  Debugging................. no
+#15 25.74  Publishing................ no
+#15 25.74  Transpiled JS..... yes (Babel)
+#15 25.74  ==========================
+#15 25.74  Output folder............. /home/dimpy/Documents/Docker/Infinitybrains-fronted/dist/spa
+#15 25.74 
+#15 25.74  Tip: Built files are meant to be served over an HTTP server
+#15 25.74       Opening index.html over file:// won't work
+#15 25.74 
+#15 25.74  Tip: You can use "$ quasar serve" command to create a web server,
+#15 25.74       both for testing or production. Type "$ quasar serve -h" for
+#15 25.74       parameters. Also, an npm script (usually named "start") can
+#15 25.74       be added for deployment environments.
+#15 25.74       If you're using Vue Router "history" mode, don't forget to
+#15 25.74       specify the "--history" parameter: "$ quasar serve --history"
+#15 25.74 
+#15 DONE 26.1s
+
+#16 [production-stage 2/3] RUN rm -rf /usr/share/nginx/html/*
+#16 CACHED
+
+#17 [production-stage 3/3] COPY --from=build-stage /home/dimpy/Documents/Docker/Infinitybrains-fronted/dist/spa /usr/share/nginx/html
+#17 CACHED
+
+#18 exporting to image
+#18 exporting layers done
+#18 writing image sha256:2934e4107eb6d426a28a8fbdabb75829b0855a7cb43f34f0a3e96399dca4b6a9 done
+#18 naming to docker.io/library/web-app done
+#18 DONE 0.0s
