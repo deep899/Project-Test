@@ -1,8 +1,8 @@
 .DS_Store
 .thumbs.db
 node_modules
-dockerfiles
-docker-compose.yml
+dockerfiles/
+.docker-compose.yml
 
 
 # Quasar core related directories
