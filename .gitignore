@@ -1,9 +1,16 @@
 .DS_Store
 .thumbs.db
 node_modules
+dockerfiles
+docker-compose.yml
+
 
 # Quasar core related directories
 .quasar
+
+# ignore files
+
+
 
 
 # Cordova related directories and files
